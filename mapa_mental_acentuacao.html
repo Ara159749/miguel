@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Mapa Mental - Acentuação das Palavras</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@600;700;800&display=swap');
+
+  :root{
+    --bg: #FFF8EC;
+    --roxo: #7B3FE4;
+    --rosa: #FF5DA2;
+    --laranja: #FF8A3D;
+    --verde: #2FBF71;
+    --azul: #2F9BFF;
+    --amarelo: #FFC93C;
+    --texto: #3A2E5C;
+    --linha: #D8CCF0;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html,body{
+    margin:0;
+    padding:0;
+    background:
+      radial-gradient(circle at 8% 10%, #FFE9C7 0%, transparent 40%),
+      radial-gradient(circle at 95% 15%, #D9F2E6 0%, transparent 35%),
+      radial-gradient(circle at 90% 92%, #FFD9EC 0%, transparent 40%),
+      radial-gradient(circle at 5% 90%, #DDEBFF 0%, transparent 35%),
+      var(--bg);
+    font-family: 'Nunito', sans-serif;
+    color: var(--texto);
+    width: 1500px;
+  }
+
+  .page{
+    padding: 28px 34px 34px;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header{
+    text-align:center;
+    margin-bottom: 10px;
+  }
+  .header .kicker{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    color: var(--rosa);
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+  .header h1{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size: 40px;
+    margin: 2px 0 4px;
+    color: var(--roxo);
+  }
+  .header p{
+    margin:0;
+    font-size:16px;
+    font-weight:600;
+    color:#6B5F94;
+  }
+
+  /* ---------- CENTER HUB ---------- */
+  .hub-row{
+    display:flex;
+    justify-content:center;
+    margin: 6px 0 18px;
+  }
+  .hub{
+    background: linear-gradient(135deg, var(--roxo), #9D5CFF);
+    color:white;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size: 30px;
+    border-radius: 50%;
+    width: 210px;
+    height: 210px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    box-shadow: 0 10px 0 #5A28B0, 0 14px 20px rgba(90,40,176,0.25);
+    border: 6px solid white;
+    line-height:1.15;
+    position:relative;
+  }
+  .hub .emoji{ font-size:44px; display:block; margin-bottom:2px;}
+
+  /* ---------- TONICA / ATONA STRIP ---------- */
+  .base-explain{
+    display:flex;
+    gap:22px;
+    justify-content:center;
+    margin: 0 0 24px;
+  }
+  .base-card{
+    background:white;
+    border-radius: 22px;
+    padding: 14px 22px;
+    width: 430px;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.06);
+    border: 4px dashed var(--linha);
+    text-align:center;
+  }
+  .base-card h3{
+    font-family:'Baloo 2', sans-serif;
+    margin: 2px 0 6px;
+    font-size: 22px;
+  }
+  .base-card.tonica h3{ color: var(--laranja); }
+  .base-card.atona h3{ color: var(--azul); }
+  .base-card p{
+    margin: 0;
+    font-size: 14.5px;
+    font-weight:600;
+    color:#5B4E80;
+  }
+  .base-card .exemplo{
+    margin-top:8px;
+    font-family:'Baloo 2', sans-serif;
+    font-size: 24px;
+    font-weight:700;
+  }
+  .forte{ color: var(--rosa); text-decoration: underline wavy var(--rosa); text-decoration-thickness: 2px;}
+
+  /* ---------- 3 BRANCHES ---------- */
+  .branches{
+    display:flex;
+    gap: 22px;
+    justify-content:center;
+    align-items:flex-start;
+  }
+  .branch{
+    width: 460px;
+    border-radius: 28px;
+    padding: 18px 20px 20px;
+    background: white;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.07);
+    position:relative;
+  }
+  .branch-title{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size: 25px;
+    text-align:center;
+    color:white;
+    border-radius: 16px;
+    padding: 8px 6px;
+    margin: -6px 0 12px;
+  }
+  .branch-title .emoji{ font-size:22px; margin-right:6px; }
+
+  .oxi .branch-title{ background: var(--rosa); }
+  .paro .branch-title{ background: var(--verde); }
+  .propa .branch-title{ background: var(--laranja); }
+
+  .branch .sub{
+    font-size: 14.5px;
+    font-weight: 700;
+    text-align:center;
+    color:#6B5F94;
+    margin-bottom: 12px;
+  }
+
+  .regra-box{
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-size: 13.5px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color:white;
+  }
+  .oxi .regra-box{ background: #FFB7D7; color:#7A1249; }
+  .paro .regra-box{ background: #C3F0D8; color:#0C5C33; }
+  .propa .regra-box{ background: #FFDDBB; color:#7A3A05; }
+
+  .exemplos{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 8px;
+    justify-content:center;
+  }
+  .chip{
+    background: #F6F3FF;
+    border-radius: 14px;
+    padding: 8px 12px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size: 19px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    border: 2px solid var(--linha);
+  }
+  .chip .ico{ font-size: 20px; }
+  .oxi .chip .marc{ color: var(--rosa); text-decoration: underline; text-decoration-thickness: 3px; }
+  .paro .chip .marc{ color: var(--verde); text-decoration: underline; text-decoration-thickness: 3px; }
+  .propa .chip .marc{ color: var(--laranja); text-decoration: underline; text-decoration-thickness: 3px; }
+
+  .macete{
+    margin-top: 12px;
+    background: #FFF6DD;
+    border-radius: 14px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color:#7A5B00;
+    text-align:center;
+    border: 2px dashed var(--amarelo);
+  }
+
+  /* ---------- FOOTER MASCOT ---------- */
+  .footer{
+    margin-top: 20px;
+    text-align:center;
+    background: linear-gradient(135deg, var(--amarelo), #FFDD7A);
+    border-radius: 20px;
+    padding: 12px 20px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size: 17px;
+    color:#7A4E00;
+    width: 720px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="kicker">✨ <u>RESUMO DE ACENTUAÇÃO GRÁFICA</u> ✨</div>
+    <h1>Para onde foi a força da palavra?</h1>
+    <p>Um mapa mental para descobrir o "golpe forte" em cada palavra!</p>
+  </div>
+
+  <div class="hub-row">
+    <div class="hub"><span class="emoji">🔎</span>ACENTUAÇÃO</div>
+  </div>
+
+  <div class="base-explain">
+    <div class="base-card tonica">
+      <h3>🔊 Sílaba TÔNICA</h3>
+      <p>É a sílaba que a gente fala com MAIS FORÇA quando diz a palavra.</p>
+      <div class="exemplo">bo<span class="forte">NI</span>to</div>
+    </div>
+    <div class="base-card atona">
+      <h3>🤫 Sílaba ÁTONA</h3>
+      <p>São as outras sílabas da palavra. Ditas mais fraquinho, sem força.</p>
+      <div class="exemplo"><span class="forte">CA</span>sa</div>
+    </div>
+  </div>
+
+  <div class="branches">
+
+    <div class="branch oxi">
+      <div class="branch-title"><span class="emoji">👉</span>OXÍTONA</div>
+      <div class="sub">A força está na ÚLTIMA sílaba</div>
+      <div class="branch-title">Acentua quando termina em:<br>A(S), E(S), O(S), EM, ENS</div>
+      <div class="exemplos">
+        <div class="chip"><span class="ico">🛋️</span>so<span class="marc">FÁ</span></div>
+        <div class="chip"><span class="ico">🤖</span>vo<span class="marc">CÊ</span></div>
+        <div class="chip"><span class="ico">🐊</span>ja ca<span class="marc">RÉ</span></div>
+        <div class="chip"><span class="ico">👶</span>be<span class="marc">BÊ</span></div>
+      </div>
+      <div class="macete">💡 Macete: a última sílaba "grita" na sua boca!</div>
+    </div>
+
+    <div class="branch paro">
+      <div class="branch-title"><span class="emoji">👉</span>PAROXÍTONA</div>
+      <div class="sub">A força está na PENÚLTIMA sílaba</div>
+      <div class="branch-title">Acentua quando terminadas em:<br>L N R X PS I IS U US UM UNS ÃO ÃOS Ã ÃS</div>
+      <div class="exemplos">
+        <div class="chip"><span class="ico">✏️</span><span class="marc">LÁ</span>pis</div>
+        <div class="chip"><span class="ico">🍬</span>a<span class="marc">ÇÚ</span>car</div>
+        <div class="chip"><span class="ico">🌳</span>ca<span class="marc">RÁ</span>ter</div>
+        <div class="chip"><span class="ico">😊</span><span class="marc">fá</span>cil</div>
+      </div>
+      <div class="macete">💡 Macete: é a mais comum de todas as palavras!</div>
+    </div>
+
+    <div class="branch propa">
+      <div class="branch-title"><span class="emoji">👉</span>PROPAROXÍTONA</div>
+      <div class="sub">A força está na ANTEPENÚLTIMA sílaba</div>
+      <div class="branch-title">TODA proparoxítona tem acento, sem exceção!</div>
+      <div class="exemplos">
+        <div class="chip"><span class="ico">🚀</span><span class="marc">MÉ</span>di co</div>
+        <div class="chip"><span class="ico">🔢</span>ma te<span class="marc">MÁ</span>ti ca</div>
+        <div class="chip"><span class="ico">🚁</span>he li<span class="marc">CÓ</span>pte ro</div>
+        <div class="chip"><span class="ico">🌳</span><span class="marc">ÁR</span>vo re</div>
+      </div>
+      <div class="macete">💡 Macete: é rara e SEMPRE tem acento — sem desculpa!</div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    🎯 Dica de ouro: conte as sílabas de trás para frente — última, penúltima, antepenúltima — e descubra onde mora a força da palavra!
+  </div>
+
+</div>
+</body>
+</html>
