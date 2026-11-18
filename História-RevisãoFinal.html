@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="sticker">
+  <title>Quiz de História (4º Ano) — Consumo, Indústria e Imprensa no Brasil</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Sticker style) */
+      --background: #fef7ff;
+      --surface-container-low: #ffffff;
+      --surface-container: #f8eef8;
+      --surface-container-high: #f2e8f2;
+
+      /* Ink */
+      --on-surface: #2e1a28;
+      --on-surface-variant: #604868;
+
+      /* Rules */
+      --outline: #907898;
+      --outline-variant: #dcc8e0;
+
+      /* Accents */
+      --primary: #c2207f;
+      --on-primary: #ffffff;
+      --primary-container: #f080c0;
+      --on-primary-container: #2e1a28;
+      --secondary: #7c52aa;
+      --on-secondary: #ffffff;
+      --secondary-container: #ede2fa;
+      --tertiary: #0096cc;
+      --tertiary-container: #dff4fc;
+      --error: #c53030;
+      --on-error: #ffffff;
+      --error-container: #fde8e8;
+      --on-error-container: #7f1d1d;
+
+      /* Data series */
+      --data-1: #c2207f;
+      --data-2: #7c52aa;
+      --data-3: #0096cc;
+      --data-4: #d96a00;
+      --data-context: #c8b8d0;
+
+      /* Semantic */
+      --positive: #15803d;
+      --on-positive: #ffffff;
+      --positive-container: #dcfce7;
+      --on-positive-container: #14532d;
+      --warning: #b45309;
+      --warning-container: #fef3c7;
+      --on-warning-container: #78350f;
+      --focus: #c2207f;
+
+      /* Fonts */
+      --font-headline: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-label: 'DM Sans', sans-serif;
+
+      /* Type scale (Focused Tool) */
+      --display-size: clamp(1.75rem, 1.35rem + 1.4vw, 2.35rem);
+      --headline-size: clamp(1.25rem, 1.1rem + 0.55vw, 1.55rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.2rem);
+      --body-size: clamp(0.95rem, 0.92rem + 0.18vw, 1.05rem);
+      --label-size: 0.75rem;
+
+      /* Shape */
+      --rounded: 1rem;
+      --rounded-lg: 2rem;
+      --rounded-full: 9999px;
+
+      /* Style effects */
+      --shadow-pink: 0 4px 16px rgb(224 64 160 / 0.2);
+      --shadow-pink-deep: 0 10px 28px rgb(224 64 160 / 0.32);
+      --shadow-grape: 0 4px 16px rgb(124 82 170 / 0.2);
+      --shadow-grape-deep: 0 10px 26px rgb(124 82 170 / 0.3);
+      --shadow-sky: 0 4px 16px rgb(0 150 204 / 0.2);
+      --pop-scale: scale(1.03);
+      --press-scale: scale(0.97);
+      --lift: translateY(-4px);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .page-grid {
+      display: grid;
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Header / Hero slab */
+    .hero-panel {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-pink);
+      display: grid;
+      gap: var(--space-md);
+      animation: popIn var(--dur-long) var(--ease-bounce) both;
+    }
+
+    .kicker-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      border-radius: var(--rounded-full);
+      padding: var(--space-xs) var(--space-md);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      border-radius: var(--rounded-full);
+      padding: var(--space-xs) var(--space-md);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 2px solid var(--secondary);
+      color: var(--secondary);
+      background: var(--surface-container-low);
+    }
+
+    .tag-sky {
+      border-color: var(--tertiary);
+      background: var(--tertiary-container);
+      color: var(--on-surface);
+    }
+
+    .display {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: var(--display-size);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .display em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .hero-lede {
+      margin: 0;
+      max-width: 65ch;
+      color: var(--on-surface-variant);
+      font-size: var(--subhead-size);
+      line-height: 1.5;
+    }
+
+    .action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding-top: var(--space-xs);
+    }
+
+    .score-pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      background: var(--surface-container);
+      color: var(--on-surface);
+      border-radius: var(--rounded-full);
+      padding: var(--space-sm) var(--space-md);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      min-height: 44px;
+    }
+
+    .stat-pill strong {
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      border-radius: var(--rounded-full);
+      padding: var(--space-sm) var(--space-lg);
+      min-height: 44px;
+      border: none;
+      font-size: var(--body-size);
+      font-weight: 700;
+      line-height: 1.2;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  box-shadow var(--dur-short) var(--ease-out),
+                  background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: var(--pop-scale);
+    }
+    .btn:active:not(:disabled) {
+      transform: var(--press-scale);
+    }
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--shadow-pink);
+    }
+    .btn-primary:hover:not(:disabled) {
+      box-shadow: var(--shadow-pink-deep);
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      box-shadow: var(--shadow-grape);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      box-shadow: var(--shadow-grape-deep);
+    }
+
+    .btn-outline {
+      background: var(--surface-container-low);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-outline:hover:not(:disabled) {
+      background: var(--surface-container);
+    }
+
+    .btn-quiet {
+      background: var(--surface-container);
+      color: var(--on-surface);
+    }
+    .btn-quiet:hover:not(:disabled) {
+      background: var(--surface-container-high);
+    }
+
+    .btn-danger-armed {
+      background: var(--error);
+      color: var(--on-error);
+      box-shadow: var(--shadow-pink);
+    }
+
+    /* Lollipop progress strip */
+    .progress-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      box-shadow: var(--shadow-sky);
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .progress-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      font-size: var(--label-size);
+      font-family: var(--font-label);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 16px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded-full);
+      overflow: hidden;
+      padding: 3px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--tertiary);
+      border-radius: var(--rounded-full);
+      transition: width var(--dur-long) var(--ease-bounce);
+    }
+
+    /* Main workspace 2-col asymmetric grid */
+    .quiz-workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.85fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    /* Question card */
+    .card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-pink);
+    }
+
+    .question-card {
+      display: grid;
+      gap: var(--space-lg);
+      container-type: inline-size;
+    }
+
+    .question-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .q-number-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: 900;
+      font-size: var(--subhead-size);
+      color: var(--on-surface);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .q-number-dot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      height: 36px;
+      padding: 0 var(--space-sm);
+      border-radius: var(--rounded-full);
+      background: var(--primary);
+      color: var(--on-primary);
+      font-weight: 800;
+      font-size: var(--body-size);
+    }
+
+    .visual-stage {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: grid;
+      grid-template-columns: minmax(140px, 190px) minmax(0, 1fr);
+      gap: var(--space-md);
+      align-items: center;
+    }
+
+    .visual-svg-wrap {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      padding: var(--space-sm);
+      box-shadow: var(--shadow-sky);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+    }
+
+    .visual-svg-wrap svg {
+      width: 100%;
+      max-width: 165px;
+      height: auto;
+      display: block;
+    }
+
+    .visual-caption-wrap {
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .visual-kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--secondary);
+    }
+
+    .visual-caption {
+      margin: 0;
+      font-size: var(--body-size);
+      color: var(--on-surface);
+      font-weight: 500;
+    }
+
+    @container (max-width: 480px) {
+      .visual-stage {
+        grid-template-columns: 1fr;
+      }
+      .visual-svg-wrap {
+        max-width: 220px;
+        margin: 0 auto;
+      }
+    }
+
+    .question-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--headline-size);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--on-surface);
+    }
+
+    /* Options list */
+    .options-list {
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .option-btn {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: var(--space-md);
+      width: 100%;
+      min-height: 56px;
+      text-align: left;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      background: var(--surface-container-low);
+      border: 2px solid var(--outline-variant);
+      color: var(--on-surface);
+      font-size: var(--body-size);
+      font-weight: 500;
+      line-height: 1.45;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-micro) var(--ease-out),
+                  box-shadow var(--dur-short) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out);
+    }
+
+    .option-btn:hover:not(:disabled) {
+      transform: var(--lift);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-pink);
+      background: var(--surface-container);
+    }
+
+    .option-btn:active:not(:disabled) {
+      transform: var(--press-scale);
+    }
+
+    .option-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container-high);
+      color: var(--on-surface);
+      font-weight: 800;
+      font-size: var(--body-size);
+      flex-shrink: 0;
+    }
+
+    .option-status-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: inherit;
+    }
+
+    .option-btn.is-wrong {
+      background: var(--error-container);
+      border-color: var(--error);
+      color: var(--on-error-container);
+      cursor: not-allowed;
+      opacity: 0.92;
+      transform: none;
+      box-shadow: none;
+    }
+    .option-btn.is-wrong .option-letter {
+      background: var(--error);
+      color: var(--on-error);
+    }
+
+    .option-btn.is-correct {
+      background: var(--positive-container);
+      border-color: var(--positive);
+      color: var(--on-positive-container);
+      font-weight: 700;
+      box-shadow: var(--shadow-sky);
+      cursor: default;
+    }
+    .option-btn.is-correct .option-letter {
+      background: var(--positive);
+      color: var(--on-positive);
+    }
+
+    .option-btn.is-locked-other {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    /* Feedback panel */
+    .feedback-box {
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      display: grid;
+      gap: var(--space-xs);
+      animation: popIn var(--dur-short) var(--ease-bounce) both;
+    }
+    .feedback-box.is-hidden {
+      display: none;
+    }
+    .feedback-box.is-try-again {
+      background: var(--warning-container);
+      color: var(--on-warning-container);
+      box-shadow: var(--shadow-pink);
+    }
+    .feedback-box.is-success {
+      background: var(--positive-container);
+      color: var(--on-positive-container);
+      box-shadow: var(--shadow-sky);
+    }
+
+    .feedback-title {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: 800;
+      font-size: var(--subhead-size);
+      margin: 0;
+    }
+
+    .feedback-text {
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .question-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding-top: var(--space-xs);
+    }
+
+    /* Tracker Sidebar / Panel */
+    .tracker-panel {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-grape);
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    .panel-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--headline-size);
+      letter-spacing: -0.02em;
+      color: var(--on-surface);
+    }
+
+    .block-heading {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+      margin: 0 0 var(--space-sm) 0;
+    }
+
+    .q-map-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .q-map-btn {
+      min-height: 44px;
+      border-radius: var(--rounded-full);
+      border: 2px solid var(--outline-variant);
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-weight: 800;
+      font-size: var(--body-size);
+      font-variant-numeric: tabular-nums;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-micro) var(--ease-out),
+                  box-shadow var(--dur-short) var(--ease-out);
+    }
+
+    .q-map-btn:hover {
+      transform: var(--pop-scale);
+      border-color: var(--primary);
+    }
+
+    .q-map-btn.is-current {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-pink);
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+
+    .q-map-btn.is-first-try {
+      background: var(--positive-container);
+      border-color: var(--positive);
+      color: var(--on-positive-container);
+    }
+
+    .q-map-btn.is-retried-solved {
+      background: var(--secondary-container);
+      border-color: var(--secondary);
+      color: var(--on-surface);
+    }
+
+    .q-map-btn.is-current.is-first-try,
+    .q-map-btn.is-current.is-retried-solved {
+      box-shadow: 0 0 0 3px var(--primary);
+    }
+
+    .legend-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      font-weight: 600;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .legend-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: var(--rounded-full);
+      display: inline-block;
+      border: 2px solid var(--outline-variant);
+    }
+    .swatch-green { background: var(--positive-container); border-color: var(--positive); }
+    .swatch-grape { background: var(--secondary-container); border-color: var(--secondary); }
+    .swatch-pending { background: var(--surface-container); border-color: var(--outline-variant); }
+
+    /* Result summary view */
+    .result-card {
+      display: grid;
+      gap: var(--space-lg);
+      box-shadow: var(--shadow-grape);
+    }
+
+    .result-hero {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-lg);
+      display: grid;
+      grid-template-columns: minmax(110px, 140px) minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .result-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+
+    .metric-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      box-shadow: var(--shadow-pink);
+      display: grid;
+      gap: var(--space-xs);
+    }
+    .metric-card:nth-child(3n+2) { box-shadow: var(--shadow-sky); }
+    .metric-card:nth-child(3n+3) { box-shadow: var(--shadow-grape); }
+
+    .metric-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+    }
+
+    .metric-value {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: var(--display-size);
+      line-height: 1.05;
+      color: var(--primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .metric-caption {
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      font-weight: 600;
+    }
+
+    .theme-bars {
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .theme-row {
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .theme-row-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: 700;
+      font-size: var(--body-size);
+    }
+
+    .theme-bar-track {
+      height: 12px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container-high);
+      overflow: hidden;
+    }
+
+    .theme-bar-fill {
+      height: 100%;
+      border-radius: var(--rounded-full);
+      background: var(--data-1);
+      transition: width var(--dur-long) var(--ease-bounce);
+    }
+    .theme-row:nth-child(3n+2) .theme-bar-fill { background: var(--data-2); }
+    .theme-row:nth-child(3n+3) .theme-bar-fill { background: var(--data-3); }
+
+    .source-note {
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      padding: var(--space-sm) var(--space-md);
+      text-align: left;
+    }
+
+    .is-hidden { display: none !important; }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: translateY(10px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 900px) {
+      .quiz-workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-sm);
+        gap: var(--space-md);
+      }
+      .hero-panel, .card, .tracker-panel {
+        padding: var(--space-md);
+        border-radius: var(--rounded);
+      }
+      .result-hero {
+        grid-template-columns: 1fr;
+      }
+      .q-map-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-grid">
+    <header class="hero-panel">
+      <div class="kicker-row">
+        <span class="badge"><i data-lucide="sparkles" aria-hidden="true"></i> História • 4º Ano</span>
+        <span class="tag"><i data-lucide="book-open" aria-hidden="true"></i> Módulo 4 • Capítulo 8</span>
+        <span class="tag tag-sky"><i data-lucide="layers" aria-hidden="true"></i> 30 Questões Interativas</span>
+      </div>
+      <h1 class="display">Aventura pela História do <em>Consumo</em> e da Imprensa</h1>
+      <p class="hero-lede">
+        Explore 30 desafios divertidos sobre publicidade, fábricas do Brasil, governo JK, jornais antigos e consumo consciente. Errou? Sem problemas — você pode tentar outra alternativa até descobrir!
+      </p>
+
+      <div class="action-bar">
+        <div class="score-pill-group">
+          <div class="stat-pill" aria-live="polite">
+            <i data-lucide="star" aria-hidden="true"></i>
+            <span>Acertos de 1ª: <strong id="header-first-try">0</strong> / 30</span>
+          </div>
+          <div class="stat-pill" aria-live="polite">
+            <i data-lucide="check-circle-2" aria-hidden="true"></i>
+            <span>Concluídas: <strong id="header-solved">0</strong> / 30</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-secondary" id="btn-show-results" onclick="toggleResultView(true)">
+            <i data-lucide="trophy" aria-hidden="true"></i>
+            Ver Resultado Final
+          </button>
+          <button type="button" class="btn btn-outline" id="btn-reset-all" onclick="handleResetAll(this)">
+            <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+            Reiniciar Todas as Questões
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="progress-card" aria-label="Progresso do quiz">
+      <div class="progress-meta">
+        <span id="progress-label">Progresso da missão: 0 de 30 questões concluídas (0%)</span>
+        <span id="progress-block-label">Bloco Atual: Banco Avaliativo (1–20)</span>
+      </div>
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" id="progress-bar-role">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </section>
+
+    <main class="quiz-workspace">
+      <!-- Question Interactive Area -->
+      <section class="card question-card" id="question-view" aria-live="polite">
+        <div class="question-header">
+          <div class="q-number-badge">
+            <span class="q-number-dot" id="q-dot-num">1</span>
+            <span id="q-counter-text">Questão 1 de 30</span>
+          </div>
+          <div class="kicker-row">
+            <span class="badge" id="q-source-badge">Banco Avaliativo</span>
+            <span class="tag" id="q-theme-badge">Consumo e Publicidade</span>
+          </div>
+        </div>
+
+        <div class="visual-stage">
+          <div class="visual-svg-wrap" id="q-illustration" aria-hidden="true"></div>
+          <div class="visual-caption-wrap">
+            <span class="visual-kicker">Pista Visual da História</span>
+            <p class="visual-caption" id="q-visual-caption"></p>
+          </div>
+        </div>
+
+        <h2 class="question-title" id="q-text"></h2>
+
+        <div class="options-list" id="q-options" role="group" aria-label="Alternativas da questão"></div>
+
+        <div class="feedback-box is-hidden" id="q-feedback" role="status">
+          <p class="feedback-title" id="q-feedback-title"></p>
+          <p class="feedback-text" id="q-feedback-text"></p>
+        </div>
+
+        <div class="question-footer">
+          <button type="button" class="btn btn-quiet" id="btn-prev" onclick="navigateQuestion(-1)">
+            <i data-lucide="arrow-left" aria-hidden="true"></i>
+            Anterior
+          </button>
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary" id="btn-next" onclick="navigateQuestion(1)">
+              Próxima Questão
+              <i data-lucide="arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final Result View -->
+      <section class="card result-card is-hidden" id="result-view" aria-live="polite">
+        <div class="question-header">
+          <span class="badge"><i data-lucide="award" aria-hidden="true"></i> Boletim da Aventura</span>
+          <button type="button" class="btn btn-quiet" onclick="toggleResultView(false)">
+            <i data-lucide="arrow-left" aria-hidden="true"></i>
+            Voltar ao Quiz
+          </button>
+        </div>
+
+        <div class="result-hero">
+          <div class="visual-svg-wrap" id="result-trophy-svg" aria-hidden="true"></div>
+          <div class="visual-caption-wrap">
+            <h2 class="question-title" id="result-headline">Seu Resultado Final</h2>
+            <p class="feedback-text" id="result-message"></p>
+          </div>
+        </div>
+
+        <div class="result-metrics-grid">
+          <div class="metric-card">
+            <span class="metric-label">Acertos (de 1ª tentativa)</span>
+            <span class="metric-value" id="res-first-try">0 / 30</span>
+            <span class="metric-caption">Respostas certas logo na 1ª escolha</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Questões Concluídas</span>
+            <span class="metric-value" id="res-total-solved">0 / 30</span>
+            <span class="metric-caption">Total resolvido (incluindo tentativas)</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Por Bloco do Quiz</span>
+            <span class="metric-value" id="res-blocks-summary">0%</span>
+            <span class="metric-caption" id="res-blocks-detail">Banco: 0/20 • Extras: 0/10</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="block-heading">Desempenho por Tema</h3>
+          <div class="theme-bars" id="res-theme-bars"></div>
+        </div>
+
+        <div class="question-footer">
+          <button type="button" class="btn btn-secondary" id="btn-jump-pending" onclick="jumpToFirstPending()">
+            <i data-lucide="compass" aria-hidden="true"></i>
+            Ir para Próxima Pendente
+          </button>
+          <button type="button" class="btn btn-outline" id="btn-reset-from-result" onclick="handleResetAll(this)">
+            <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+            Reiniciar Todas as Questões
+          </button>
+        </div>
+      </section>
+
+      <!-- 30-Question Map & Overview Sidebar -->
+      <section class="tracker-panel" aria-label="Mapa das 30 questões">
+        <div>
+          <h2 class="panel-title">Mapa de Figurinhas</h2>
+          <p class="visual-caption">Clique em qualquer número para viajar direto até a questão!</p>
+        </div>
+
+        <div class="legend-list">
+          <span class="legend-item"><span class="legend-swatch swatch-green"></span> Acertou de 1ª</span>
+          <span class="legend-item"><span class="legend-swatch swatch-grape"></span> Acertou após tentar</span>
+          <span class="legend-item"><span class="legend-swatch swatch-pending"></span> Falta responder</span>
+        </div>
+
+        <div>
+          <p class="block-heading">Banco Avaliativo (Questões 1 a 20)</p>
+          <div class="q-map-grid" id="map-block-1"></div>
+        </div>
+
+        <div>
+          <p class="block-heading">Complementares (Questões 21 a 30)</p>
+          <div class="q-map-grid" id="map-block-2"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="source-note">
+      Conteúdo alinhado à BNCC (EF04HI08) e aos estudos de História do Brasil (4º ano): Observatório da Imprensa, Ensinar História, Nova Escola, Blog ECDD, Maxiverso e Eu Militar.
+    </footer>
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    const THEMES = [
+      `Consumo e Publicidade`,
+      `Industrialização (1930–40)`,
+      `Governo JK e Consumo`,
+      `História da Imprensa`,
+      `Consumo Consciente`
+    ];
+
+    const QUESTIONS = [
+      {
+        id: 1,
+        block: `Banco Avaliativo`,
+        theme: `Consumo e Publicidade`,
+        scene: `consumo_necessidade`,
+        caption: `Comparando itens essenciais do dia a dia com desejos que podem esperar.`,
+        question: `Na hora de fazer compras, qual é a diferença entre uma necessidade e um desejo?`,
+        options: [
+          `Necessidade é tudo o que aparece na propaganda da TV, e desejo é apenas comida.`,
+          `Necessidade é o que precisamos para viver com saúde e bem-estar, como alimento e moradia; desejo é algo que queremos ter, mas que não é indispensável.`,
+          `Não existe nenhuma diferença: precisamos comprar tudo o que vemos nas lojas.`,
+          `Desejo é o que compramos no mercado, e necessidade é somente um brinquedo novo.`
+        ],
+        correct: 1,
+        hint: `Dica: pense no que o nosso corpo e nossa família realmente precisam todos os dias para viver com saúde.`,
+        explanation: `Muito bem! Alimentos, água, roupas adequadas e moradia são necessidades básicas. Já um brinquedo extra ou um doce especial é um desejo — gostoso de ter às vezes, mas não indispensável.`
+      },
+      {
+        id: 2,
+        block: `Banco Avaliativo`,
+        theme: `Consumo e Publicidade`,
+        scene: `publicidade_antiga`,
+        caption: `Nas cidades antigas, os anúncios eram feitos na voz alta das ruas ou pintados em paredes.`,
+        question: `Antes de existirem jornais, rádios e televisão, como os vendedores divulgavam seus produtos nas ruas das cidades?`,
+        options: [
+          `Enviando mensagens instantâneas pelo celular.`,
+          `Gritando em voz alta pelas ruas (os "gritadores da cidade") ou escrevendo avisos em paredes e papiros.`,
+          `Gravando vídeos curtos para a internet.`,
+          `Distribuindo panfletos coloridos por meio de satélites.`
+        ],
+        correct: 1,
+        hint: `Dica: lembre-se de como ainda hoje ouvimos vendedores anunciando pamonha ou frutas passando na rua!`,
+        explanation: `Isso mesmo! Antigamente, sem rádio ou TV, os vendedores gritavam suas ofertas pelas ruas — uma tradição que ainda lembramos hoje com o carro da pamonha — ou pintavam avisos em muros e papiros.`
+      },
+      {
+        id: 3,
+        block: `Banco Avaliativo`,
+        theme: `Consumo e Publicidade`,
+        scene: `radio_jingle`,
+        caption: `Entre as décadas de 1940 e 1950, o rádio reunia as famílias com músicas, notícias e anúncios.`,
+        question: `Quando o rádio se popularizou no Brasil (anos 1940 e 1950), o que a publicidade criou para fazer as pessoas lembrarem das marcas usando apenas o som?`,
+        options: [
+          `Fotos coloridas que saíam impressas da caixa de som.`,
+          `Os jingles, que são musiquinhas alegres e fáceis de cantar que grudam na cabeça.`,
+          `Textos muito longos lidos em voz baixa e sem emoção.`,
+          `Jogos digitais gratuitos dentro do aparelho de rádio.`
+        ],
+        correct: 1,
+        hint: `Dica: pense naquelas musiquinhas curtas de propaganda que todo mundo sai cantando junto!`,
+        explanation: `Acertou! Como o rádio só transmitia som, os publicitários criaram os jingles — músicas curtinhas, animadas e fáceis de decorar para conquistar os ouvintes.`
+      },
+      {
+        id: 4,
+        block: `Banco Avaliativo`,
+        theme: `Consumo e Publicidade`,
+        scene: `tv_comercial`,
+        caption: `Em 1950, foi inaugurada a TV Tupi, o primeiro canal de televisão brasileiro.`,
+        question: `Por que a chegada da televisão no Brasil, em 1950, foi uma grande mudança para a publicidade e os hábitos de consumo?`,
+        options: [
+          `Porque a TV proibiu as lojas de venderem produtos novos.`,
+          `Porque passou a unir texto, som e imagem em movimento, mostrando o produto funcionando na tela.`,
+          `Porque os comerciais de TV só podiam passar de madrugada em completo silêncio.`,
+          `Porque a televisão substituía os alimentos nas casas das famílias.`
+        ],
+        correct: 1,
+        hint: `Dica: o que a TV tem a mais que o jornal impresso e o rádio juntos?`,
+        explanation: `Perfeito! Na TV, as famílias podiam ver o produto em ação com som, imagem e texto ao mesmo tempo, o que despertava ainda mais vontade de comprar.`
+      },
+      {
+        id: 5,
+        block: `Banco Avaliativo`,
+        theme: `Consumo e Publicidade`,
+        scene: `conar_etica`,
+        caption: `Na década de 1970, surgiu no Brasil o Código de Autorregulamentação Publicitária (CONAR).`,
+        question: `Nos jornais antigos havia muitas propagandas falsas prometendo curas milagrosas. Para que existe hoje o código ético aplicado pelo CONAR?`,
+        options: [
+          `Para obrigar as crianças a comprarem mais brinquedos todos os meses.`,
+          `Para ajudar a garantir que as propagandas sejam honestas, verdadeiras e respeitem as pessoas.`,
+          `Para proibir qualquer loja de anunciar seus produtos no Brasil.`,
+          `Para escolher somente músicas tristes para os comerciais de rádio.`
+        ],
+        correct: 1,
+        hint: `Dica: pense na importância da honestidade e da proteção contra propagandas enganosas.`,
+        explanation: `Muito bem! O Código de Autorregulamentação Publicitária orienta os publicitários a agirem com ética e honestidade, protegendo os consumidores de mentiras.`
+      },
+      {
+        id: 6,
+        block: `Banco Avaliativo`,
+        theme: `Industrialização (1930–40)`,
+        scene: `industria_1930`,
+        caption: `A partir de 1930, o Brasil passou a fabricar produtos que antes precisava importar de outros países.`,
+        question: `Durante muito tempo, o Brasil exportava café e comprava quase tudo industrializado de fora. O que mudou a partir da década de 1930?`,
+        options: [
+          `O Brasil iniciou uma industrialização mais forte para produzir aqui mesmo o que antes importava.`,
+          `Todas as fábricas foram fechadas para o país voltar ao período colonial.`,
+          `O café foi proibido em todas as cidades brasileiras.`,
+          `As cidades diminuíram porque ninguém queria morar perto de fábricas.`
+        ],
+        correct: 0,
+        hint: `Dica: esse movimento ficou conhecido como "substituição das importações".`,
+        explanation: `Isso aí! A partir de 1930, o Brasil investiu em fábricas nacionais para produzir bens que antes vinham de navio da Europa e dos Estados Unidos.`
+      },
+      {
+        id: 7,
+        block: `Banco Avaliativo`,
+        theme: `Industrialização (1930–40)`,
+        scene: `csn_vargas`,
+        caption: `A Companhia Siderúrgica Nacional (CSN) foi fundada em 1941 em Volta Redonda (RJ).`,
+        question: `No governo de Getúlio Vargas, nos anos 1940, surgiu a CSN (Companhia Siderúrgica Nacional). O que essa indústria de base produzia de tão importante?`,
+        options: [
+          `Brinquedos de plástico e jogos de tabuleiro.`,
+          `Aço e ferro, fundamentais para fazer máquinas, pontes, trilhos e outras indústrias.`,
+          `Sapatos e roupas para festas.`,
+          `Revistas em quadrinhos e jornais diários.`
+        ],
+        correct: 1,
+        hint: `Dica: "siderúrgica" vem do trabalho com metais muito resistentes usados nas construções e máquinas.`,
+        explanation: `Mandou bem! A CSN produzia aço — a base para fabricar peças, veículos, edifícios e equipamentos para muitas outras fábricas do país.`
+      },
+      {
+        id: 8,
+        block: `Banco Avaliativo`,
+        theme: `Industrialização (1930–40)`,
+        scene: `cidade_operarios`,
+        caption: `O crescimento industrial atraiu trabalhadores para as cidades e trouxe novas leis trabalhistas.`,
+        question: `Com o avanço das fábricas nos anos 1930 e 1940, o que aconteceu com a vida nas cidades e com os trabalhadores brasileiros?`,
+        options: [
+          `As cidades ficaram vazias e todas as pessoas voltaram para as fazendas.`,
+          `As cidades cresceram com mais operários nas fábricas, e surgiram direitos como salário mínimo e férias anuais.`,
+          `Os operários passaram a receber apenas sacos de café como pagamento.`,
+          `A energia elétrica foi desligada em todo o Sudeste.`
+        ],
+        correct: 1,
+        hint: `Dica: na década de 1930 foram criadas regras importantes para proteger quem trabalhava nas cidades.`,
+        explanation: `Excelente! A industrialização transformou cidades como Rio de Janeiro e São Paulo, ampliou a classe operária e veio acompanhada de conquistas como o salário mínimo e o descanso remunerado.`
+      },
+      {
+        id: 9,
+        block: `Banco Avaliativo`,
+        theme: `Governo JK e Consumo`,
+        scene: `jk_brasilia`,
+        caption: `Juscelino Kubitschek governou de 1955 a 1960 com o lema "50 anos de progresso em 5".`,
+        question: `O que buscava o "Plano de Metas" do presidente Juscelino Kubitschek (JK)?`,
+        options: [
+          `Fechar as estradas e parar a construção de usinas de energia.`,
+          `Acelerar a modernização do Brasil com investimentos em energia, transportes, indústrias e a construção de Brasília.`,
+          `Mudar a capital do Brasil de Brasília para Londres.`,
+          `Voltar a usar apenas carroças puxadas por cavalos nas cidades.`
+        ],
+        correct: 1,
+        hint: `Dica: lembre-se do lema "50 anos em 5" e da grande cidade inaugurada no centro do Brasil!`,
+        explanation: `Muito bem! O Plano de Metas tinha 31 objetivos para modernizar o país rapidamente, integrando o território com rodovias, energia e a nova capital, Brasília.`
+      },
+      {
+        id: 10,
+        block: `Banco Avaliativo`,
+        theme: `Governo JK e Consumo`,
+        scene: `bens_duraveis`,
+        caption: `Nos anos JK, novas fábricas passaram a produzir carros e aparelhos domésticos no Brasil.`,
+        question: `No governo JK, cresceram as indústrias de "bens de consumo duráveis". Quais produtos fazem parte desse grupo que mudou o dia a dia dos lares?`,
+        options: [
+          `Pão fresco, leite e frutas da feira.`,
+          `Automóveis e eletrodomésticos, como geladeira, fogão e televisão.`,
+          `Cartas de papel e penas de escrever.`,
+          `Sementes de café e cana-de-açúcar.`
+        ],
+        correct: 1,
+        hint: `Dica: bens "duráveis" não acabam quando usamos uma única vez, como a comida; eles duram anos na casa da família!`,
+        explanation: `Acertou em cheio! Carros, geladeiras, TVs e eletrodomésticos passaram a ser produzidos em maior escala no Brasil, mudando a rotina e os sonhos de consumo das famílias.`
+      },
+      {
+        id: 11,
+        block: `Banco Avaliativo`,
+        theme: `Governo JK e Consumo`,
+        scene: `exodo_urbano`,
+        caption: `Muitas pessoas migraram do campo para as cidades do Sudeste em busca de trabalho.`,
+        question: `O crescimento rápido das fábricas na época de JK trouxe progresso, mas também desafios. Qual foi um problema causado por esse crescimento concentrado no Sudeste?`,
+        options: [
+          `Ninguém quis se mudar do campo para trabalhar nas cidades.`,
+          `Muitas pessoas migraram rápido para grandes cidades (êxodo rural), gerando bairros sem saneamento básico e aumento da dívida e da inflação.`,
+          `Sobrou tanto dinheiro que todos os preços caíram a zero.`,
+          `Todas as fábricas foram construídas somente no meio da floresta.`
+        ],
+        correct: 1,
+        hint: `Dica: quando milhões de pessoas chegam juntas a uma cidade, nem sempre há casas, água encanada e esgoto prontos para todos.`,
+        explanation: `Ótima resposta! O êxodo rural fez São Paulo e Rio de Janeiro crescerem muito depressa, sem estrutura urbana suficiente para atender toda a população.`
+      },
+      {
+        id: 12,
+        block: `Banco Avaliativo`,
+        theme: `História da Imprensa`,
+        scene: `imprensa_regia`,
+        caption: `Em 13 de maio de 1808 foi criada a Impressão Régia, no Rio de Janeiro.`,
+        question: `Até 1808, era proibido imprimir livros e jornais no Brasil. Que acontecimento histórico fez surgir a Impressão Régia e o jornal Gazeta do Rio de Janeiro?`,
+        options: [
+          `A chegada da família real portuguesa ao Brasil, que precisava imprimir atos oficiais e notícias para a Corte.`,
+          `A invenção dos smartphones pelos navegadores portugueses.`,
+          `Uma feira de ciências organizada pelas escolas da Bahia.`,
+          `O fechamento de todas as livrarias da Europa.`
+        ],
+        correct: 0,
+        hint: `Dica: em 1808, D. João VI veio de Portugal para o Rio de Janeiro e precisou de uma tipografia na nova sede do reino.`,
+        explanation: `Parabéns! Com a Corte portuguesa no Rio de Janeiro, foi criada a Impressão Régia, que em 10 de setembro de 1808 lançou a Gazeta do Rio de Janeiro — o primeiro jornal impresso no Brasil!`
+      },
+      {
+        id: 13,
+        block: `Banco Avaliativo`,
+        theme: `História da Imprensa`,
+        scene: `correio_gazeta`,
+        caption: `Gazeta do Rio de Janeiro (1808) e Correio Braziliense (impresso em Londres por Hipólito da Costa).`,
+        question: `Em 1808, existiam dois jornais famosos: a Gazeta do Rio de Janeiro e o Correio Braziliense. Qual era a diferença entre eles?`,
+        options: [
+          `A Gazeta era oficial do governo e passava por censura; o Correio Braziliense, feito em Londres, criticava o governo e trazia ideias de liberdade.`,
+          `A Gazeta passava na televisão e o Correio era falado pelo rádio.`,
+          `Os dois jornais falavam somente sobre campeonatos de futebol.`,
+          `Apenas o Correio Braziliense era controlado pelos censores do rei no Rio.`
+        ],
+        correct: 0,
+        hint: `Dica: um vivia "na gaiola" da censura oficial e o outro era feito longe, em Londres, com mais liberdade!`,
+        explanation: `Muito bem! A Gazeta do Rio de Janeiro só publicava o que o governo aprovava, enquanto Hipólito da Costa escrevia o Correio Braziliense em Londres para debater novas ideias para o Brasil.`
+      },
+      {
+        id: 14,
+        block: `Banco Avaliativo`,
+        theme: `História da Imprensa`,
+        scene: `imprensa_abolicionista`,
+        caption: `Jornais abolicionistas denunciavam a escravidão e defendiam a liberdade no século XIX.`,
+        question: `Qual era a grande causa defendida pelos jornais da "imprensa abolicionista" no Brasil?`,
+        options: [
+          `Manter o trabalho escravo por mais cem anos nas fazendas.`,
+          `O fim da escravidão e a liberdade para as pessoas negras escravizadas.`,
+          `Proibir que qualquer pessoa aprendesse a ler no país.`,
+          `Aumentar os impostos sobre cadernos e lápis escolares.`
+        ],
+        correct: 1,
+        hint: `Dica: a palavra "abolição" significa acabar com a escravidão!`,
+        explanation: `Isso mesmo! A imprensa abolicionista teve um papel corajoso ao usar notícias, crônicas e ilustrações para defender a liberdade e combater a escravidão.`
+      },
+      {
+        id: 15,
+        block: `Banco Avaliativo`,
+        theme: `História da Imprensa`,
+        scene: `imprensa_operaria`,
+        caption: `A imprensa operária nasceu da organização dos trabalhadores das fábricas brasileiras.`,
+        question: `O que os trabalhadores das fábricas defendiam por meio dos jornais da "imprensa operária"?`,
+        options: [
+          `Apenas os lucros dos grandes fazendeiros de café.`,
+          `Direitos trabalhistas, salários justos e melhores condições de trabalho nas fábricas.`,
+          `O retorno de um rei português para governar o Brasil.`,
+          `O fim das férias e do descanso semanal para todos.`
+        ],
+        correct: 1,
+        hint: `Dica: "operário" é quem trabalha nas fábricas e oficinas.`,
+        explanation: `Acertou! A imprensa operária dava voz aos trabalhadores para reivindicar jornadas mais justas, segurança nas fábricas e respeito aos seus direitos.`
+      },
+      {
+        id: 16,
+        block: `Banco Avaliativo`,
+        theme: `História da Imprensa`,
+        scene: `imprensa_feminina`,
+        caption: `Publicações como O Espelho Diamantino e Correio de Senhoras abriram espaço para as mulheres.`,
+        question: `Desde o século XIX, jornais como O Espelho Diamantino e Correio de Senhoras marcaram a "imprensa feminina". Por que ela foi tão importante?`,
+        options: [
+          `Porque ensinava que mulheres não podiam estudar nem opinar.`,
+          `Porque abriu espaço para mulheres escreverem, debaterem educação, cultura e direitos na sociedade.`,
+          `Porque era impressa em placas de ouro só para rainhas.`,
+          `Porque falava exclusivamente sobre máquinas de aço e petróleo.`
+        ],
+        correct: 1,
+        hint: `Dica: pense em como os jornais ajudam grupos que antes eram pouco ouvidos a expressar suas ideias.`,
+        explanation: `Perfeito! A imprensa feminina mostrou o talento e o pensamento das mulheres brasileiras, defendendo o direito à educação e à participação social.`
+      },
+      {
+        id: 17,
+        block: `Banco Avaliativo`,
+        theme: `História da Imprensa`,
+        scene: `imprensa_alternativa`,
+        caption: `Durante a ditadura militar, pequenos jornais independentes usavam humor e crítica contra a censura.`,
+        question: `Em períodos de censura no Brasil, como na ditadura militar (1964–1985), surgiu a "imprensa alternativa". Qual era sua principal característica?`,
+        options: [
+          `Obedecer calada a todas as ordens dos censores do governo.`,
+          `Produzir jornais independentes, muitas vezes com humor e charges, para criticar a censura e defender a liberdade.`,
+          `Circular apenas por redes sociais em smartphones.`,
+          `Publicar somente resultados de corridas de cavalos.`
+        ],
+        correct: 1,
+        hint: `Dica: "alternativa" significa oferecer um caminho diferente da mídia controlada pela censura.`,
+        explanation: `Muito bem! Mesmo com poucos recursos, a imprensa alternativa foi muito criativa para furar a censura, informar o público e defender a democracia.`
+      },
+      {
+        id: 18,
+        block: `Banco Avaliativo`,
+        theme: `História da Imprensa`,
+        scene: `imprensa_online`,
+        caption: `Com a internet, a imprensa online trouxe velocidade, mas exige atenção contra notícias falsas.`,
+        question: `Qual é uma grande transformação trazida pela "imprensa online" (digital) em relação aos jornais antigos de papel?`,
+        options: [
+          `As notícias passaram a demorar meses de navio para chegar aos leitores.`,
+          `As notícias chegam em segundos com textos, vídeos e áudios, mas precisamos verificar sempre se não são fake news.`,
+          `Apenas membros da família real podem postar textos na internet.`,
+          `Não é mais possível colocar fotos ou ilustrações nas reportagens.`
+        ],
+        correct: 1,
+        hint: `Dica: pense na rapidez do celular hoje e no cuidado que devemos ter com notícias falsas!`,
+        explanation: `Excelente! A imprensa online democratizou e acelerou muito a informação, mas cabe a nós checar se a notícia é verdadeira antes de compartilhar.`
+      },
+      {
+        id: 19,
+        block: `Banco Avaliativo`,
+        theme: `Consumo Consciente`,
+        scene: `consumo_consciente`,
+        caption: `Os 3 Rs da sustentabilidade: Reduzir, Reutilizar e Reciclar ajudam a cuidar do planeta.`,
+        question: `O que significa praticar o "consumo consciente" no dia a dia?`,
+        options: [
+          `Comprar tudo o que está na moda e jogar fora na semana seguinte.`,
+          `Refletir antes de comprar, evitar desperdícios e praticar os 3 Rs: reduzir, reutilizar e reciclar.`,
+          `Deixar as luzes acesas e a torneira aberta o tempo todo.`,
+          `Misturar plástico, vidro e restos de comida em qualquer lugar.`
+        ],
+        correct: 1,
+        hint: `Dica: lembre-se de cuidar da natureza evitando lixo desnecessário e compras por impulso.`,
+        explanation: `Parabéns! Consumir de forma consciente é perguntar "eu realmente preciso disso?", cuidar das nossas coisas e ajudar o meio ambiente.`
+      },
+      {
+        id: 20,
+        block: `Banco Avaliativo`,
+        theme: `Consumo Consciente`,
+        scene: `pensamento_critico`,
+        caption: `Analisar propagandas com atenção ajuda a fazer escolhas inteligentes e cidadãs.`,
+        question: `Quando você vê um anúncio muito colorido dizendo "Compre agora para ser feliz!", qual é a atitude de um consumidor consciente?`,
+        options: [
+          `Pedir para comprar na mesma hora, mesmo sem precisar.`,
+          `Pensar com calma, lembrar que a propaganda quer convencer a comprar e avaliar se aquilo é necessário.`,
+          `Acreditar que todo produto anunciado resolve todos os problemas da vida.`,
+          `Jogar no lixo os brinquedos antigos que ainda funcionam perfeitamente.`
+        ],
+        correct: 1,
+        hint: `Dica: pensar antes de agir é o superpoder de quem entende como a publicidade funciona!`,
+        explanation: `Arrasou! As propagandas usam cores, músicas e emoções para chamar atenção. Analisar com calma ajuda você a fazer escolhas boas para você e para o planeta.`
+      },
+
+      // --- 10 QUESTÕES NOVAS COMPLEMENTARES (21 a 30) ---
+      {
+        id: 21,
+        block: `Complementar`,
+        theme: `Consumo e Publicidade`,
+        scene: `advergame_digital`,
+        caption: `Na era da internet, muitas marcas criam jogos digitais para divulgar seus produtos.`,
+        question: `Na publicidade digital atual, existem os chamados "advergames" e vídeos patrocinados em aplicativos. O que é um advergame?`,
+        options: [
+          `Um livro impresso nas primeiras oficinas de 1808.`,
+          `Um jogo eletrônico criado para divertir enquanto faz propaganda de uma marca ou produto.`,
+          `Um jornal operário distribuído na porta das fábricas nos anos 1930.`,
+          `Uma carta enviada por navio entre Portugal e Brasil.`
+        ],
+        correct: 1,
+        hint: `Dica: a palavra junta "advertising" (publicidade) com "game" (jogo).`,
+        explanation: `Isso mesmo! Advergames são jogos que também funcionam como anúncio. Perceber isso ajuda as crianças a brincarem sabendo quando há propaganda no meio!`
+      },
+      {
+        id: 22,
+        block: `Complementar`,
+        theme: `Industrialização (1930–40)`,
+        scene: `brinquedos_plastico`,
+        caption: `A produção nacional de plástico, iniciada em 1949, transformou brinquedos e jogos de tabuleiro.`,
+        question: `Você sabia que até os brinquedos e jogos de tabuleiro brasileiros dependiam da industrialização? O que mudou depois de 1949 com a produção nacional de plástico?`,
+        options: [
+          `Ficou mais fácil e barato fabricar dados, peças de jogos e bonecas inteiras de plástico no Brasil.`,
+          `O plástico foi proibido em todas as fábricas de brinquedos do país.`,
+          `Todos os jogos passaram a ser esculpidos apenas em pedra pesada.`,
+          `As crianças deixaram de brincar com jogos de tabuleiro.`
+        ],
+        correct: 0,
+        hint: `Dica: pense nos dados e nas peças coloridas que usamos nos jogos de tabuleiro!`,
+        explanation: `Que curiosidade legal! Antes da indústria de plástico no Brasil, bonecas e peças eram mais difíceis de fazer. Depois de 1949, a produção nacional de brinquedos cresceu muito!`
+      },
+      {
+        id: 23,
+        block: `Complementar`,
+        theme: `História da Imprensa`,
+        scene: `fonte_historica`,
+        caption: `Historiadores pesquisam anúncios antigos para entender como as pessoas viviam no século XIX.`,
+        question: `Por que os historiadores consideram os anúncios antigos da Gazeta do Rio de Janeiro tão importantes para estudar o passado?`,
+        options: [
+          `Porque eles mostram a previsão do tempo do futuro.`,
+          `Porque revelam como as pessoas viviam, o que compravam, quais aulas existiam e também as injustiças da escravidão.`,
+          `Porque trazem listas de aplicativos de celular daquela época.`,
+          `Porque contam apenas receitas de doces da Inglaterra.`
+        ],
+        correct: 1,
+        hint: `Dica: um jornal antigo funciona como uma fotografia do dia a dia da cidade naquele tempo.`,
+        explanation: `Muito bem! Pelos anúncios de 1808, descobrimos desde aulas de dança e produtos raros até registros tristes sobre pessoas escravizadas que lutavam e fugiam em busca de liberdade.`
+      },
+      {
+        id: 24,
+        block: `Complementar`,
+        theme: `Consumo e Publicidade`,
+        scene: `radionovela`,
+        caption: `As radionovelas usavam vozes expressivas e efeitos sonoros para encantar as famílias.`,
+        question: `Antes da televisão entrar em quase todas as casas, o rádio divertia muito as famílias com as radionovelas. Como elas funcionavam?`,
+        options: [
+          `Eram histórias contadas apenas com vozes, músicas e efeitos sonoros, fazendo cada ouvinte imaginar as cenas na mente.`,
+          `Eram filmes coloridos projetados pela antena do rádio na parede.`,
+          `Eram transmissões de jogos de videogame em 3D.`,
+          `Eram cartas silenciosas que precisavam ser buscadas no correio.`
+        ],
+        correct: 0,
+        hint: `Dica: sem imagens na tela, qual sentido usávamos para acompanhar uma radionovela?`,
+        explanation: `Isso aí! Os atores faziam vozes diferentes e usavam truques de som (como cascas de coco para imitar cavalos) para criar imagens vivas na imaginação de quem ouvia!`
+      },
+      {
+        id: 25,
+        block: `Complementar`,
+        theme: `História da Imprensa`,
+        scene: `imprensa_republicana`,
+        caption: `No fim do século XIX, jornais republicanos debatiam uma nova forma de governo para o Brasil.`,
+        question: `Antes de 1889, o Brasil era governado por um imperador. O que os jornais da "imprensa republicana" defendiam?`,
+        options: [
+          `Que o imperador deveria governar para sempre sem eleições.`,
+          `Que o Brasil se tornasse uma República, com governantes escolhidos e sem monarquia.`,
+          `Que todas as tipografias do Brasil fossem fechadas.`,
+          `Que a capital voltasse para Lisboa, em Portugal.`
+        ],
+        correct: 1,
+        hint: `Dica: a palavra "República" está ligada a governos sem rei ou imperador.`,
+        explanation: `Mandou muito bem! A imprensa republicana espalhou ideias políticas por meio de artigos e charges, ajudando a preparar o caminho para a Proclamação da República em 1889.`
+      },
+      {
+        id: 26,
+        block: `Complementar`,
+        theme: `Industrialização (1930–40)`,
+        scene: `energia_petroleo`,
+        caption: `Indústrias e cidades modernas precisam de eletricidade e combustíveis para funcionar.`,
+        question: `Para que as novas fábricas da Era Vargas e do governo JK funcionassem e os aparelhos elétricos ligassem nas casas, em que setor foi preciso investir pesado?`,
+        options: [
+          `Na geração de energia elétrica (hidrelétricas) e na exploração de petróleo (como a Petrobras).`,
+          `Apenas na fabricação de velas de cera para iluminar as fábricas.`,
+          `Na troca de motores modernos por moinhos manuais.`,
+          `No fechamento de todos os rios e estradas do país.`
+        ],
+        correct: 0,
+        hint: `Dica: pense no que faz girar as máquinas das fábricas e mantém a geladeira gelada!`,
+        explanation: `Perfeito! Com grandes usinas hidrelétricas (como Furnas e Paulo Afonso) e a criação da Petrobras em 1953, o Brasil garantiu a energia necessária para sua industrialização.`
+      },
+      {
+        id: 27,
+        block: `Complementar`,
+        theme: `Governo JK e Consumo`,
+        scene: `rodovias_jk`,
+        caption: `No governo JK, grandes rodovias foram abertas para integrar o país aos novos automóveis.`,
+        question: `Enquanto no século XIX o café viajava principalmente de trem (ferrovias), o que o governo Juscelino Kubitschek priorizou nos anos 1950 para transportar pessoas e mercadorias?`,
+        options: [
+          `A abertura de grandes rodovias para carros, ônibus e caminhões fabricados no país.`,
+          `O uso exclusivo de barcos a remo entre todas as capitais.`,
+          `A proibição de carros circularem pelas avenidas de Brasília.`,
+          `A retirada de todas as estradas pavimentadas do Sudeste.`
+        ],
+        correct: 0,
+        hint: `Dica: JK atraiu montadoras de carros — por onde esses carros precisavam andar?`,
+        explanation: `Acertou! O governo JK apostou forte nas rodovias e nas montadoras de automóveis, conectando várias regiões do Brasil à nova capital, Brasília.`
+      },
+      {
+        id: 28,
+        block: `Complementar`,
+        theme: `História da Imprensa`,
+        scene: `inclusao_comunicacao`,
+        caption: `Nem todas as pessoas tiveram acesso aos meios de comunicação ao mesmo tempo na história.`,
+        question: `Quando estudamos as transformações dos meios de comunicação, percebemos que a inclusão nem sempre foi igual para todos. O que isso significa na prática?`,
+        options: [
+          `Que todas as famílias do Brasil ganharam rádio, TV e internet no mesmo dia.`,
+          `Que novidades tecnológicas costumam chegar primeiro a quem tem mais dinheiro ou mora em grandes cidades, exigindo ações de inclusão.`,
+          `Que saber ler nunca fez diferença para acessar jornais impressos.`,
+          `Que as histórias contadas oralmente perderam todo o valor cultural.`
+        ],
+        correct: 1,
+        hint: `Dica: pense em quem conseguia comprar jornais em 1808 ou computadores e internet hoje em dia.`,
+        explanation: `Excelente reflexão! A história mostra que muitas pessoas foram excluídas pelo custo ou pela falta de escolas. Hoje, trabalhar pela inclusão digital ajuda todos a terem direito à informação.`
+      },
+      {
+        id: 29,
+        block: `Complementar`,
+        theme: `Consumo Consciente`,
+        scene: `doacao_reutilizar`,
+        caption: `Doar roupas ou calçados que não servem mais dá uma nova vida útil a objetos bons.`,
+        question: `Lucas ganhou um tênis novo e percebeu que o antigo ainda está ótimo, só ficou apertado no pé. Pensando no consumo consciente, qual é a melhor atitude?`,
+        options: [
+          `Jogar o tênis bom no lixo comum na mesma hora.`,
+          `Limpar e doar o tênis para outra criança que possa usá-lo novamente.`,
+          `Comprar mais três pares iguais apenas para deixar guardados na caixa.`,
+          `Enterrar o tênis no fundo do quintal.`
+        ],
+        correct: 1,
+        hint: `Dica: lembre-se do "R" de Reutilizar e da solidariedade com outras crianças!`,
+        explanation: `Muito bem! Doar o que ainda está em bom estado evita desperdício, diminui o lixo no planeta e ajuda outra pessoa a aproveitar aquele item.`
+      },
+      {
+        id: 30,
+        block: `Complementar`,
+        theme: `História da Imprensa`,
+        scene: `viagem_comunicacao`,
+        caption: `De cartas trazidas por navios em 1808 às mensagens instantâneas de hoje: uma grande transformação!`,
+        question: `Pensando em toda a nossa viagem histórica: o que mais mudou na velocidade da comunicação desde os jornais e cartas de 1808 até a internet de hoje?`,
+        options: [
+          `A comunicação ficou muito mais lenta do que os antigos navios a vela.`,
+          `Saímos de semanas de espera por cartas e jornais impressos para notícias e mensagens instantâneas em texto, som e vídeo.`,
+          `As pessoas pararam totalmente de usar a leitura e a escrita.`,
+          `Todo texto enviado pelo celular ainda precisa do carimbo de um censor do rei.`
+        ],
+        correct: 1,
+        hint: `Dica: compare o tempo de uma viagem de navio com o tempo de uma mensagem no celular!`,
+        explanation: `Uau, você completou as 30 questões! A comunicação ficou incrivelmente rápida e conectada, e conhecer essa história nos ajuda a ser leitores críticos e cidadãos conscientes.`
+      }
+    ];
+
+    // State management
+    const DEFAULT_STATE = {
+      currentIndex: 0,
+      showResults: false,
+      progress: {} // { [id]: { wrongIndices: number[], solved: boolean, firstTry: boolean } }
+    };
+
+    let appState = cloneDefaultState();
+
+    function cloneDefaultState() {
+      return {
+        currentIndex: 0,
+        showResults: false,
+        progress: {}
+      };
+    }
+
+    function getQuestionState(qId) {
+      if (!appState.progress[qId]) {
+        appState.progress[qId] = {
+          wrongIndices: [],
+          solved: false,
+          firstTry: false
+        };
+      }
+      return appState.progress[qId];
+    }
+
+    async function persistState() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
+          await window.notebookAppApi.setAppState(appState);
+        }
+      } catch (err) {
+        // Ignore persistence errors silently in fallback preview
+      }
+    }
+
+    // SVG Illustration Generator (uses CSS variables only, zero inline hex/rgb)
+    function buildSceneSVG(sceneKey) {
+      const wrapStart = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 130" role="img" aria-hidden="true">`;
+      const wrapEnd = `</svg>`;
+
+      const scenes = {
+        consumo_necessidade: `
+          <rect x="8" y="14" width="76" height="102" rx="14" fill="var(--positive-container)" stroke="var(--positive)" stroke-width="2.5"/>
+          <rect x="96" y="14" width="76" height="102" rx="14" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="2.5"/>
+          <circle cx="46" cy="54" r="20" fill="var(--primary)"/>
+          <path d="M46 34 C48 25, 57 25, 56 32" stroke="var(--positive)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <path d="M32 94 L46 80 L60 94 Z" fill="var(--tertiary)"/>
+          <rect x="37" y="94" width="18" height="12" rx="2" fill="var(--surface-container-low)"/>
+          <polygon points="134,36 140,48 153,50 144,59 146,72 134,66 122,72 124,59 115,50 128,48" fill="var(--data-4)"/>
+          <rect x="116" y="84" width="36" height="20" rx="8" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2"/>
+        `,
+        publicidade_antiga: `
+          <rect x="14" y="20" width="152" height="90" rx="16" fill="var(--surface-container)"/>
+          <circle cx="54" cy="48" r="14" fill="var(--primary-container)" stroke="var(--on-surface)" stroke-width="2.5"/>
+          <rect x="38" y="65" width="32" height="36" rx="12" fill="var(--secondary)"/>
+          <polygon points="72,48 108,34 108,64" fill="var(--tertiary)" stroke="var(--on-surface)" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M118 38 Q128 49 118 60" stroke="var(--primary)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <path d="M128 32 Q141 49 128 66" stroke="var(--primary)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <rect x="114" y="74" width="42" height="28" rx="6" fill="var(--warning-container)" stroke="var(--warning)" stroke-width="2"/>
+          <line x1="122" y1="84" x2="148" y2="84" stroke="var(--on-surface)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="122" y1="93" x2="142" y2="93" stroke="var(--on-surface)" stroke-width="2.5" stroke-linecap="round"/>
+        `,
+        radio_jingle: `
+          <rect x="26" y="34" width="128" height="78" rx="18" fill="var(--data-4)" stroke="var(--on-surface)" stroke-width="3"/>
+          <rect x="38" y="48" width="60" height="46" rx="10" fill="var(--warning-container)"/>
+          <line x1="46" y1="60" x2="90" y2="60" stroke="var(--on-surface)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="46" y1="71" x2="90" y2="71" stroke="var(--on-surface)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="46" y1="82" x2="90" y2="82" stroke="var(--on-surface)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="126" cy="60" r="11" fill="var(--surface-container-low)" stroke="var(--on-surface)" stroke-width="2.5"/>
+          <circle cx="126" cy="88" r="8" fill="var(--tertiary)" stroke="var(--on-surface)" stroke-width="2.5"/>
+          <circle cx="62" cy="18" r="6" fill="var(--primary)"/>
+          <path d="M68 18 L68 6 L82 9 L82 21" stroke="var(--primary)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="77" cy="22" r="5" fill="var(--primary)"/>
+        `,
+        tv_comercial: `
+          <line x1="72" y1="14" x2="88" y2="32" stroke="var(--on-surface)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="112" y1="14" x2="92" y2="32" stroke="var(--on-surface)" stroke-width="3" stroke-linecap="round"/>
+          <rect x="24" y="32" width="132" height="82" rx="18" fill="var(--secondary)" stroke="var(--on-surface)" stroke-width="3"/>
+          <rect x="36" y="44" width="84" height="58" rx="12" fill="var(--tertiary-container)" stroke="var(--on-surface)" stroke-width="2.5"/>
+          <polygon points="78,54 84,66 97,67 87,76 90,89 78,82 66,89 69,76 59,67 72,66" fill="var(--primary)"/>
+          <circle cx="136" cy="58" r="7" fill="var(--primary-container)"/>
+          <circle cx="136" cy="78" r="7" fill="var(--surface-container-low)"/>
+        `,
+        conar_etica: `
+          <path d="M90 16 L138 34 V66 C138 92 114 108 90 116 C66 108 42 92 42 66 V34 Z" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="3.5"/>
+          <path d="M68 64 L84 80 L114 48" stroke="var(--positive)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="140" cy="92" r="16" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+          <line x1="151" y1="103" x2="162" y2="114" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/>
+        `,
+        industria_1930: `
+          <rect x="22" y="56" width="136" height="56" rx="8" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="3"/>
+          <polygon points="22,56 56,34 56,56 90,34 90,56 124,34 124,56" fill="var(--secondary)"/>
+          <rect x="128" y="20" width="18" height="36" rx="4" fill="var(--on-surface)"/>
+          <circle cx="137" cy="12" r="7" fill="var(--data-context)"/>
+          <circle cx="149" cy="8" r="5" fill="var(--data-context)"/>
+          <circle cx="64" cy="84" r="15" fill="var(--primary)" stroke="var(--surface-container-low)" stroke-width="3"/>
+          <circle cx="64" cy="84" r="5" fill="var(--surface-container-low)"/>
+          <rect x="98" y="72" width="40" height="24" rx="6" fill="var(--tertiary)"/>
+        `,
+        csn_vargas: `
+          <rect x="20" y="22" width="52" height="90" rx="8" fill="var(--on-surface)"/>
+          <path d="M72 48 Q104 48 104 82" stroke="var(--data-4)" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <rect x="84" y="84" width="76" height="24" rx="6" fill="var(--tertiary)" stroke="var(--on-surface)" stroke-width="2.5"/>
+          <rect x="34" y="34" width="24" height="18" rx="4" fill="var(--data-4)"/>
+          <line x1="94" y1="96" x2="150" y2="96" stroke="var(--surface-container-low)" stroke-width="3" stroke-dasharray="6 5"/>
+          <circle cx="134" cy="40" r="16" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+          <path d="M126 40 L134 32 L142 40 L134 48 Z" fill="var(--primary)"/>
+        `,
+        cidade_operarios: `
+          <rect x="18" y="42" width="34" height="72" rx="6" fill="var(--secondary)"/>
+          <rect x="58" y="24" width="42" height="90" rx="6" fill="var(--tertiary)"/>
+          <rect x="106" y="54" width="56" height="60" rx="6" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+          <rect x="68" y="36" width="8" height="8" rx="2" fill="var(--surface-container-low)"/>
+          <rect x="82" y="36" width="8" height="8" rx="2" fill="var(--surface-container-low)"/>
+          <rect x="68" y="52" width="8" height="8" rx="2" fill="var(--surface-container-low)"/>
+          <rect x="82" y="52" width="8" height="8" rx="2" fill="var(--surface-container-low)"/>
+          <circle cx="134" cy="84" r="14" fill="var(--surface-container-low)" stroke="var(--on-surface)" stroke-width="2.5"/>
+          <line x1="134" y1="84" x2="134" y2="75" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="134" y1="84" x2="141" y2="84" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"/>
+        `,
+        jk_brasilia: `
+          <rect x="12" y="96" width="156" height="14" rx="7" fill="var(--tertiary)"/>
+          <rect x="76" y="26" width="12" height="70" rx="4" fill="var(--secondary)"/>
+          <rect x="92" y="26" width="12" height="70" rx="4" fill="var(--secondary)"/>
+          <path d="M22 96 A26 22 0 0 1 70 96 Z" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+          <path d="M110 74 Q134 98 158 74 L150 96 H118 Z" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="2.5"/>
+          <circle cx="144" cy="30" r="14" fill="var(--warning-container)" stroke="var(--data-4)" stroke-width="2.5"/>
+        `,
+        bens_duraveis: `
+          <rect x="16" y="36" width="46" height="76" rx="10" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="3"/>
+          <line x1="16" y1="64" x2="62" y2="64" stroke="var(--tertiary)" stroke-width="2.5"/>
+          <line x1="52" y1="46" x2="52" y2="56" stroke="var(--on-surface)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="52" y1="72" x2="52" y2="86" stroke="var(--on-surface)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M74 96 L84 70 H136 L148 96 Z" fill="var(--primary)" stroke="var(--on-surface)" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="68" y="88" width="96" height="20" rx="10" fill="var(--primary)" stroke="var(--on-surface)" stroke-width="2.5"/>
+          <circle cx="88" cy="110" r="9" fill="var(--on-surface)"/>
+          <circle cx="144" cy="110" r="9" fill="var(--on-surface)"/>
+          <rect x="92" y="26" width="54" height="36" rx="8" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="2.5"/>
+        `,
+        exodo_urbano: `
+          <path d="M18 96 L36 74 L54 96 Z" fill="var(--positive)"/>
+          <rect x="26" y="96" width="20" height="16" fill="var(--warning-container)"/>
+          <path d="M62 66 L94 66" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/>
+          <polygon points="90,58 104,66 90,74" fill="var(--primary)"/>
+          <rect x="108" y="42" width="24" height="70" rx="4" fill="var(--secondary)"/>
+          <rect x="136" y="24" width="28" height="88" rx="4" fill="var(--tertiary)"/>
+          <circle cx="120" cy="54" r="3" fill="var(--surface-container-low)"/>
+          <circle cx="150" cy="40" r="3" fill="var(--surface-container-low)"/>
+          <circle cx="150" cy="54" r="3" fill="var(--surface-container-low)"/>
+        `,
+        imprensa_regia: `
+          <rect x="24" y="22" width="84" height="88" rx="10" fill="var(--warning-container)" stroke="var(--warning)" stroke-width="2.5"/>
+          <line x1="36" y1="38" x2="96" y2="38" stroke="var(--on-surface)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="36" y1="54" x2="96" y2="54" stroke="var(--on-surface-variant)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="66" x2="88" y2="66" stroke="var(--on-surface-variant)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="36" y1="78" x2="92" y2="78" stroke="var(--on-surface-variant)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M116 54 L126 36 L138 48 L150 36 L160 54 Z" fill="var(--data-4)" stroke="var(--on-surface)" stroke-width="2.5" stroke-linejoin="round"/>
+          <rect x="116" y="54" width="44" height="10" rx="4" fill="var(--primary)"/>
+          <rect x="116" y="74" width="44" height="32" rx="8" fill="var(--secondary)"/>
+        `,
+        correio_gazeta: `
+          <rect x="14" y="24" width="66" height="82" rx="10" fill="var(--surface-container-low)" stroke="var(--outline)" stroke-width="2.5"/>
+          <circle cx="47" cy="44" r="10" fill="var(--warning-container)" stroke="var(--warning)" stroke-width="2"/>
+          <line x1="26" y1="64" x2="68" y2="64" stroke="var(--on-surface)" stroke-width="3"/>
+          <line x1="26" y1="76" x2="60" y2="76" stroke="var(--on-surface-variant)" stroke-width="2.5"/>
+          <rect x="98" y="24" width="68" height="82" rx="10" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="2.5"/>
+          <path d="M112 50 Q132 34 152 50" stroke="var(--primary)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <line x1="110" y1="68" x2="154" y2="68" stroke="var(--on-surface)" stroke-width="3"/>
+          <line x1="110" y1="80" x2="146" y2="80" stroke="var(--on-surface-variant)" stroke-width="2.5"/>
+        `,
+        imprensa_abolicionista: `
+          <circle cx="90" cy="64" r="44" fill="var(--warning-container)"/>
+          <rect x="44" y="34" width="92" height="64" rx="10" fill="var(--surface-container-low)" stroke="var(--on-surface)" stroke-width="2.5"/>
+          <line x1="56" y1="50" x2="124" y2="50" stroke="var(--primary)" stroke-width="5" stroke-linecap="round"/>
+          <ellipse cx="72" cy="76" rx="12" ry="7" fill="none" stroke="var(--secondary)" stroke-width="3.5"/>
+          <ellipse cx="108" cy="76" rx="12" ry="7" fill="none" stroke="var(--secondary)" stroke-width="3.5"/>
+          <line x1="86" y1="68" x2="94" y2="84" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"/>
+        `,
+        imprensa_operaria: `
+          <rect x="26" y="24" width="92" height="84" rx="10" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="2.5"/>
+          <line x1="38" y1="42" x2="106" y2="42" stroke="var(--secondary)" stroke-width="5" stroke-linecap="round"/>
+          <line x1="38" y1="58" x2="98" y2="58" stroke="var(--on-surface-variant)" stroke-width="2.5"/>
+          <line x1="38" y1="70" x2="90" y2="70" stroke="var(--on-surface-variant)" stroke-width="2.5"/>
+          <circle cx="132" cy="76" r="24" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="3"/>
+          <circle cx="132" cy="76" r="8" fill="var(--surface-container-low)"/>
+        `,
+        imprensa_feminina: `
+          <rect x="28" y="22" width="90" height="86" rx="12" fill="var(--surface-container)" stroke="var(--primary)" stroke-width="2.5"/>
+          <line x1="42" y1="42" x2="104" y2="42" stroke="var(--primary)" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="42" y1="58" x2="98" y2="58" stroke="var(--on-surface-variant)" stroke-width="2.5"/>
+          <line x1="42" y1="70" x2="92" y2="70" stroke="var(--on-surface-variant)" stroke-width="2.5"/>
+          <path d="M114 96 L146 34 C152 28 158 34 152 44 L124 98 Z" fill="var(--secondary)"/>
+          <circle cx="56" cy="88" r="9" fill="var(--primary-container)"/>
+        `,
+        imprensa_alternativa: `
+          <rect x="22" y="28" width="84" height="74" rx="12" fill="var(--warning-container)" stroke="var(--on-surface)" stroke-width="2.5"/>
+          <path d="M40 50 Q64 36 88 50" stroke="var(--primary)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <circle cx="52" cy="68" r="5" fill="var(--on-surface)"/>
+          <circle cx="76" cy="68" r="5" fill="var(--on-surface)"/>
+          <path d="M52 82 Q64 90 76 82" stroke="var(--on-surface)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <rect x="114" y="40" width="46" height="44" rx="10" fill="var(--tertiary)"/>
+          <polygon points="124,84 114,96 138,84" fill="var(--tertiary)"/>
+        `,
+        imprensa_online: `
+          <rect x="22" y="20" width="136" height="84" rx="14" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="3"/>
+          <rect x="34" y="34" width="60" height="36" rx="8" fill="var(--tertiary-container)"/>
+          <polygon points="58,44 74,52 58,60" fill="var(--primary)"/>
+          <line x1="104" y1="42" x2="144" y2="42" stroke="var(--on-surface)" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="104" y1="54" x2="138" y2="54" stroke="var(--on-surface-variant)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="54" cy="90" r="14" fill="var(--positive-container)" stroke="var(--positive)" stroke-width="2.5"/>
+          <path d="M48 90 L52 94 L60 86" stroke="var(--positive)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <rect x="78" y="82" width="66" height="16" rx="8" fill="var(--primary-container)"/>
+        `,
+        consumo_consciente: `
+          <circle cx="90" cy="64" r="40" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="3"/>
+          <path d="M72 48 C82 36 102 36 112 48" stroke="var(--positive)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M114 60 C116 78 102 92 86 92" stroke="var(--positive)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M74 88 C62 76 62 58 70 48" stroke="var(--positive)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M84 64 C90 50 104 52 104 66 C94 74 84 72 84 64 Z" fill="var(--positive)"/>
+        `,
+        pensamento_critico: `
+          <rect x="20" y="28" width="76" height="68" rx="14" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+          <polygon points="58,40 62,50 72,51 64,58 66,68 58,63 50,68 52,58 44,51 54,50" fill="var(--primary)"/>
+          <circle cx="128" cy="56" r="24" fill="var(--warning-container)" stroke="var(--data-4)" stroke-width="3"/>
+          <rect x="120" y="82" width="16" height="12" rx="4" fill="var(--on-surface)"/>
+          <line x1="128" y1="20" x2="128" y2="26" stroke="var(--data-4)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="158" y1="56" x2="164" y2="56" stroke="var(--data-4)" stroke-width="3" stroke-linecap="round"/>
+        `,
+        advergame_digital: `
+          <rect x="24" y="34" width="132" height="68" rx="34" fill="var(--secondary)" stroke="var(--on-surface)" stroke-width="3"/>
+          <rect x="44" y="58" width="24" height="10" rx="4" fill="var(--surface-container-low)"/>
+          <rect x="51" y="51" width="10" height="24" rx="4" fill="var(--surface-container-low)"/>
+          <circle cx="122" cy="58" r="7" fill="var(--primary-container)"/>
+          <circle cx="136" cy="72" r="7" fill="var(--tertiary)"/>
+          <rect x="64" y="16" width="52" height="20" rx="10" fill="var(--warning-container)" stroke="var(--data-4)" stroke-width="2"/>
+        `,
+        brinquedos_plastico: `
+          <rect x="18" y="34" width="90" height="74" rx="14" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="2.5"/>
+          <path d="M30 88 C42 54, 72 88, 94 52" stroke="var(--primary)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <rect x="116" y="42" width="44" height="44" rx="10" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+          <circle cx="128" cy="54" r="4" fill="var(--primary)"/>
+          <circle cx="148" cy="54" r="4" fill="var(--primary)"/>
+          <circle cx="138" cy="64" r="4" fill="var(--primary)"/>
+          <circle cx="128" cy="74" r="4" fill="var(--primary)"/>
+          <circle cx="148" cy="74" r="4" fill="var(--primary)"/>
+        `,
+        fonte_historica: `
+          <rect x="22" y="22" width="96" height="86" rx="10" fill="var(--warning-container)" stroke="var(--warning)" stroke-width="2.5"/>
+          <line x1="34" y1="40" x2="104" y2="40" stroke="var(--on-surface)" stroke-width="3.5"/>
+          <line x1="34" y1="54" x2="90" y2="54" stroke="var(--on-surface-variant)" stroke-width="2.5"/>
+          <line x1="34" y1="68" x2="84" y2="68" stroke="var(--on-surface-variant)" stroke-width="2.5"/>
+          <circle cx="124" cy="72" r="24" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="4"/>
+          <line x1="141" y1="89" x2="160" y2="108" stroke="var(--secondary)" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="124" cy="72" r="9" fill="var(--primary-container)"/>
+        `,
+        radionovela: `
+          <circle cx="52" cy="66" r="26" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+          <circle cx="44" cy="62" r="3" fill="var(--on-surface)"/>
+          <circle cx="60" cy="62" r="3" fill="var(--on-surface)"/>
+          <path d="M44 74 Q52 80 60 74" stroke="var(--on-surface)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <rect x="92" y="34" width="64" height="64" rx="16" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="2.5"/>
+          <path d="M106 66 Q124 46 142 66" stroke="var(--secondary)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <circle cx="124" cy="76" r="6" fill="var(--primary)"/>
+        `,
+        imprensa_republicana: `
+          <rect x="22" y="24" width="96" height="84" rx="12" fill="var(--surface-container-low)" stroke="var(--tertiary)" stroke-width="3"/>
+          <polygon points="70,36 74,46 84,47 76,54 78,64 70,59 62,64 64,54 56,47 66,46" fill="var(--positive)"/>
+          <line x1="38" y1="76" x2="102" y2="76" stroke="var(--on-surface)" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="38" y1="88" x2="92" y2="88" stroke="var(--on-surface-variant)" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="128" y="48" width="32" height="50" rx="8" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+          <line x1="136" y1="58" x2="152" y2="58" stroke="var(--on-surface)" stroke-width="3"/>
+        `,
+        energia_petroleo: `
+          <rect x="20" y="30" width="64" height="80" rx="10" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="2.5"/>
+          <polygon points="54,42 40,70 52,70 46,96 66,64 54,64" fill="var(--data-4)"/>
+          <path d="M126 32 C126 32 150 62 150 80 A24 24 0 0 1 102 80 C102 62 126 32 126 32 Z" fill="var(--on-surface)"/>
+          <circle cx="120" cy="78" r="5" fill="var(--surface-container-low)"/>
+        `,
+        rodovias_jk: `
+          <rect x="14" y="24" width="152" height="86" rx="16" fill="var(--tertiary-container)"/>
+          <path d="M56 110 L82 46 H98 L124 110 Z" fill="var(--on-surface-variant)"/>
+          <line x1="90" y1="54" x2="90" y2="104" stroke="var(--warning-container)" stroke-width="3.5" stroke-dasharray="8 6"/>
+          <rect x="64" y="76" width="52" height="20" rx="8" fill="var(--primary)"/>
+          <circle cx="76" cy="96" r="7" fill="var(--on-surface)"/>
+          <circle cx="104" cy="96" r="7" fill="var(--on-surface)"/>
+        `,
+        inclusao_comunicacao: `
+          <circle cx="44" cy="54" r="22" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+          <circle cx="136" cy="54" r="22" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="2.5"/>
+          <path d="M66 54 Q90 30 114 54" stroke="var(--tertiary)" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M66 64 Q90 88 114 64" stroke="var(--positive)" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <circle cx="90" cy="58" r="10" fill="var(--surface-container-low)" stroke="var(--on-surface)" stroke-width="2.5"/>
+        `,
+        doacao_reutilizar: `
+          <rect x="28" y="42" width="54" height="58" rx="12" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="2.5"/>
+          <path d="M40 62 H70 V78 H36 C36 68 40 62 40 62 Z" fill="var(--tertiary)"/>
+          <path d="M90 64 H116" stroke="var(--positive)" stroke-width="4" stroke-linecap="round"/>
+          <polygon points="112,56 126,64 112,72" fill="var(--positive)"/>
+          <circle cx="142" cy="64" r="20" fill="var(--positive-container)" stroke="var(--positive)" stroke-width="2.5"/>
+          <path d="M134 64 C134 56 142 54 142 60 C142 54 150 56 150 64 C150 72 142 76 142 76 C142 76 134 72 134 64 Z" fill="var(--primary)"/>
+        `,
+        viagem_comunicacao: `
+          <line x1="24" y1="66" x2="156" y2="66" stroke="var(--outline)" stroke-width="4" stroke-linecap="round"/>
+          <rect x="20" y="42" width="32" height="24" rx="6" fill="var(--warning-container)" stroke="var(--warning)" stroke-width="2"/>
+          <circle cx="76" cy="66" r="14" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="2.5"/>
+          <rect x="102" y="46" width="26" height="22" rx="6" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="2.5"/>
+          <rect x="138" y="38" width="24" height="42" rx="6" fill="var(--primary)" stroke="var(--on-surface)" stroke-width="2.5"/>
+          <circle cx="150" cy="72" r="2.5" fill="var(--surface-container-low)"/>
+        `
+      };
+
+      const body = scenes[sceneKey] || scenes.viagem_comunicacao;
+      return wrapStart + body + wrapEnd;
+    }
+
+    function buildTrophySVG(ratio) {
+      const accent = ratio >= 0.7 ? `var(--positive)` : ratio >= 0.4 ? `var(--primary)` : `var(--secondary)`;
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 120" role="img" aria-hidden="true">
+          <circle cx="70" cy="60" r="50" fill="var(--warning-container)"/>
+          <path d="M44 28 H96 V58 C96 74 84 84 70 84 C56 84 44 74 44 58 Z" fill="var(--data-4)" stroke="var(--on-surface)" stroke-width="3"/>
+          <path d="M44 36 H30 C26 36 26 56 36 58 H44" fill="none" stroke="var(--on-surface)" stroke-width="3"/>
+          <path d="M96 36 H110 C114 36 114 56 104 58 H96" fill="none" stroke="var(--on-surface)" stroke-width="3"/>
+          <rect x="64" y="84" width="12" height="14" fill="var(--on-surface)"/>
+          <rect x="48" y="98" width="44" height="10" rx="5" fill="${accent}"/>
+          <polygon points="70,40 74,49 84,50 76,56 78,66 70,61 62,66 64,56 56,50 66,49" fill="var(--surface-container-low)"/>
+        </svg>
+      `;
+    }
+
+    function computeSummary() {
+      let firstTryCount = 0;
+      let solvedCount = 0;
+      let block1Solved = 0;
+      let block2Solved = 0;
+      const byTheme = {};
+
+      THEMES.forEach(function (t) {
+        byTheme[t] = { total: 0, solved: 0, firstTry: 0 };
+      });
+
+      QUESTIONS.forEach(function (q) {
+        const st = getQuestionState(q.id);
+        byTheme[q.theme].total += 1;
+        if (st.solved) {
+          solvedCount += 1;
+          byTheme[q.theme].solved += 1;
+          if (q.block === `Banco Avaliativo`) block1Solved += 1;
+          else block2Solved += 1;
+        }
+        if (st.firstTry) {
+          firstTryCount += 1;
+          byTheme[q.theme].firstTry += 1;
+        }
+      });
+
+      return { firstTryCount, solvedCount, block1Solved, block2Solved, byTheme };
+    }
+
+    function renderAll() {
+      const summary = computeSummary();
+
+      const headerFirst = document.getElementById('header-first-try');
+      const headerSolved = document.getElementById('header-solved');
+      const progressLabel = document.getElementById('progress-label');
+      const progressBlock = document.getElementById('progress-block-label');
+      const progressFill = document.getElementById('progress-fill');
+      const progressRole = document.getElementById('progress-bar-role');
+
+      if (headerFirst) headerFirst.textContent = String(summary.firstTryCount);
+      if (headerSolved) headerSolved.textContent = String(summary.solvedCount);
+
+      const pct = Math.round((summary.solvedCount / QUESTIONS.length) * 100);
+      if (progressLabel) {
+        progressLabel.textContent = `Progresso da missão: ${summary.solvedCount} de 30 questões concluídas (${pct}%)`;
+      }
+      const currentQ = QUESTIONS[appState.currentIndex] || QUESTIONS[0];
+      if (progressBlock) {
+        progressBlock.textContent = currentQ.block === `Banco Avaliativo`
+          ? `Bloco Atual: Banco Avaliativo (1–20)`
+          : `Bloco Atual: Complementares (21–30)`;
+      }
+      if (progressFill) progressFill.style.width = `${pct}%`;
+      if (progressRole) progressRole.setAttribute('aria-valuenow', String(summary.solvedCount));
+
+      renderQuestionCard();
+      renderMapGrids();
+      renderResultView(summary);
+
+      const qView = document.getElementById('question-view');
+      const rView = document.getElementById('result-view');
+      const resBtn = document.getElementById('btn-show-results');
+
+      if (qView && rView) {
+        if (appState.showResults) {
+          qView.classList.add('is-hidden');
+          rView.classList.remove('is-hidden');
+          if (resBtn) resBtn.textContent = `Voltar ao Quiz`;
+        } else {
+          rView.classList.add('is-hidden');
+          qView.classList.remove('is-hidden');
+          if (resBtn) {
+            resBtn.innerHTML = `<i data-lucide="trophy" aria-hidden="true"></i> Ver Resultado Final`;
+          }
+        }
+      }
+
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    }
+
+    function renderQuestionCard() {
+      const q = QUESTIONS[appState.currentIndex];
+      if (!q) return;
+      const st = getQuestionState(q.id);
+
+      const dotNum = document.getElementById('q-dot-num');
+      const counterText = document.getElementById('q-counter-text');
+      const sourceBadge = document.getElementById('q-source-badge');
+      const themeBadge = document.getElementById('q-theme-badge');
+      const illu = document.getElementById('q-illustration');
+      const visCap = document.getElementById('q-visual-caption');
+      const qText = document.getElementById('q-text');
+      const optionsWrap = document.getElementById('q-options');
+      const feedbackBox = document.getElementById('q-feedback');
+      const feedbackTitle = document.getElementById('q-feedback-title');
+      const feedbackText = document.getElementById('q-feedback-text');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+
+      if (dotNum) dotNum.textContent = String(q.id);
+      if (counterText) counterText.textContent = `Questão ${q.id} de 30`;
+      if (sourceBadge) sourceBadge.textContent = q.block;
+      if (themeBadge) themeBadge.textContent = q.theme;
+      if (illu) illu.innerHTML = buildSceneSVG(q.scene);
+      if (visCap) visCap.textContent = q.caption;
+      if (qText) qText.textContent = q.question;
+
+      if (optionsWrap) {
+        const letters = [`A`, `B`, `C`, `D`];
+        optionsWrap.innerHTML = q.options.map(function (optText, idx) {
+          const isWrong = st.wrongIndices.indexOf(idx) !== -1;
+          const isCorrectSolved = st.solved && idx === q.correct;
+          const isOtherLocked = st.solved && idx !== q.correct && !isWrong;
+
+          let cls = `option-btn`;
+          let iconHtml = ``;
+          let disabledAttr = ``;
+
+          if (isCorrectSolved) {
+            cls += ` is-correct`;
+            iconHtml = `<span class="option-status-icon"><i data-lucide="check-circle-2" aria-hidden="true"></i></span>`;
+            disabledAttr = `disabled`;
+          } else if (isWrong) {
+            cls += ` is-wrong`;
+            iconHtml = `<span class="option-status-icon"><i data-lucide="x-circle" aria-hidden="true"></i></span>`;
+            disabledAttr = `disabled`;
+          } else if (isOtherLocked) {
+            cls += ` is-locked-other`;
+            disabledAttr = `disabled`;
+          }
+
+          return `
+            <button type="button" class="${cls}" ${disabledAttr} onclick="selectOption(${idx})">
+              <span class="option-letter">${letters[idx]}</span>
+              <span>${optText}</span>
+              ${iconHtml}
+            </button>
+          `;
+        }).join('');
+      }
+
+      if (feedbackBox && feedbackTitle && feedbackText) {
+        feedbackBox.classList.remove('is-hidden', 'is-try-again', 'is-success');
+        if (st.solved) {
+          feedbackBox.classList.add('is-success');
+          const prefix = st.firstTry ? `Mandou bem de primeira!` : `Isso aí, você descobriu!`;
+          feedbackTitle.innerHTML = `<i data-lucide="sparkles" aria-hidden="true"></i> ${prefix}`;
+          feedbackText.textContent = q.explanation;
+        } else if (st.wrongIndices.length > 0) {
+          feedbackBox.classList.add('is-try-again');
+          feedbackTitle.innerHTML = `<i data-lucide="lightbulb" aria-hidden="true"></i> Quase lá! Tente outra alternativa`;
+          feedbackText.textContent = q.hint;
+        } else {
+          feedbackBox.classList.add('is-hidden');
+        }
+      }
+
+      if (btnPrev) btnPrev.disabled = appState.currentIndex === 0;
+      if (btnNext) {
+        if (appState.currentIndex === QUESTIONS.length - 1) {
+          btnNext.innerHTML = `Ver Resultado Final <i data-lucide="trophy" aria-hidden="true"></i>`;
+          btnNext.setAttribute('onclick', 'toggleResultView(true)');
+        } else {
+          btnNext.innerHTML = `Próxima Questão <i data-lucide="arrow-right" aria-hidden="true"></i>`;
+          btnNext.setAttribute('onclick', 'navigateQuestion(1)');
+        }
+      }
+    }
+
+    function renderMapGrids() {
+      const block1 = document.getElementById('map-block-1');
+      const block2 = document.getElementById('map-block-2');
+      if (!block1 || !block2) return;
+
+      function makeBtn(q, index) {
+        const st = getQuestionState(q.id);
+        let cls = `q-map-btn`;
+        if (index === appState.currentIndex && !appState.showResults) cls += ` is-current`;
+        if (st.solved && st.firstTry) cls += ` is-first-try`;
+        else if (st.solved) cls += ` is-retried-solved`;
+
+        return `<button type="button" class="${cls}" onclick="jumpToQuestion(${index})" aria-label="Ir para questão ${q.id}">${q.id}</button>`;
+      }
+
+      block1.innerHTML = QUESTIONS.slice(0, 20).map(function (q, i) { return makeBtn(q, i); }).join('');
+      block2.innerHTML = QUESTIONS.slice(20, 30).map(function (q, i) { return makeBtn(q, i + 20); }).join('');
+    }
+
+    function renderResultView(summary) {
+      const trophyWrap = document.getElementById('result-trophy-svg');
+      const headline = document.getElementById('result-headline');
+      const message = document.getElementById('result-message');
+      const resFirst = document.getElementById('res-first-try');
+      const resSolved = document.getElementById('res-total-solved');
+      const resBlocks = document.getElementById('res-blocks-summary');
+      const resBlocksDetail = document.getElementById('res-blocks-detail');
+      const barsWrap = document.getElementById('res-theme-bars');
+      const jumpBtn = document.getElementById('btn-jump-pending');
+
+      const ratio = summary.firstTryCount / QUESTIONS.length;
+      if (trophyWrap) trophyWrap.innerHTML = buildTrophySVG(ratio);
+
+      let titleStr = `Jornada em Andamento!`;
+      let msgStr = `Você já acertou ${summary.firstTryCount} de 30 questões de primeira e concluiu ${summary.solvedCount} desafios. Continue explorando!`;
+
+      if (summary.solvedCount === 30) {
+        if (summary.firstTryCount >= 26) {
+          titleStr = `Super Historiador(a) do 4º Ano!`;
+          msgStr = `Incrível! Você acertou ${summary.firstTryCount} de 30 questões logo na primeira tentativa e completou toda a aventura histórica!`;
+        } else if (summary.firstTryCount >= 18) {
+          titleStr = `Ótima Viagem no Tempo!`;
+          msgStr = `Parabéns por concluir todas as 30 questões! Você acertou ${summary.firstTryCount} de 30 de primeira e aprendeu bastante com as dicas.`;
+        } else {
+          titleStr = `Missão Concluída com Persistência!`;
+          msgStr = `Você completou todas as 30 questões (com ${summary.firstTryCount} acertos de primeira)! Que tal clicar em reiniciar para tentar bater seu recorde?`;
+        }
+      }
+
+      if (headline) headline.textContent = titleStr;
+      if (message) message.textContent = msgStr;
+      if (resFirst) resFirst.textContent = `${summary.firstTryCount} / 30`;
+      if (resSolved) resSolved.textContent = `${summary.solvedCount} / 30`;
+
+      const pctDone = Math.round((summary.solvedCount / 30) * 100);
+      if (resBlocks) resBlocks.textContent = `${pctDone}%`;
+      if (resBlocksDetail) {
+        resBlocksDetail.textContent = `Banco: ${summary.block1Solved}/20 • Extras: ${summary.block2Solved}/10`;
+      }
+
+      if (barsWrap) {
+        barsWrap.innerHTML = THEMES.map(function (t) {
+          const info = summary.byTheme[t];
+          const wPct = info.total > 0 ? Math.round((info.solved / info.total) * 100) : 0;
+          return `
+            <div class="theme-row">
+              <div class="theme-row-head">
+                <span>${t}</span>
+                <span>${info.solved} / ${info.total} concl. (${info.firstTry} de 1ª)</span>
+              </div>
+              <div class="theme-bar-track">
+                <div class="theme-bar-fill" style="width: ${wPct}%"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      if (jumpBtn) {
+        jumpBtn.disabled = summary.solvedCount === 30;
+      }
+    }
+
+    // Interaction Handlers (hoisted function declarations)
+    function selectOption(optionIdx) {
+      const q = QUESTIONS[appState.currentIndex];
+      if (!q) return;
+      const st = getQuestionState(q.id);
+      if (st.solved) return;
+
+      if (optionIdx === q.correct) {
+        st.solved = true;
+        st.firstTry = st.wrongIndices.length === 0;
+      } else {
+        if (st.wrongIndices.indexOf(optionIdx) === -1) {
+          st.wrongIndices.push(optionIdx);
+        }
+      }
+
+      resetArmingButtons();
+      renderAll();
+      persistState();
+    }
+
+    function navigateQuestion(delta) {
+      const next = appState.currentIndex + delta;
+      if (next >= 0 && next < QUESTIONS.length) {
+        appState.currentIndex = next;
+        appState.showResults = false;
+        resetArmingButtons();
+        renderAll();
+        persistState();
+      }
+    }
+
+    function jumpToQuestion(index) {
+      if (index >= 0 && index < QUESTIONS.length) {
+        appState.currentIndex = index;
+        appState.showResults = false;
+        resetArmingButtons();
+        renderAll();
+        persistState();
+      }
+    }
+
+    function toggleResultView(show) {
+      if (typeof show === 'boolean') {
+        appState.showResults = show ? !appState.showResults || show : false;
+        if (show === true && document.getElementById('result-view') && !document.getElementById('result-view').classList.contains('is-hidden')) {
+          appState.showResults = false;
+        } else {
+          appState.showResults = Boolean(show);
+        }
+      } else {
+        appState.showResults = !appState.showResults;
+      }
+      resetArmingButtons();
+      renderAll();
+      persistState();
+    }
+
+    function jumpToFirstPending() {
+      for (let i = 0; i < QUESTIONS.length; i++) {
+        const st = getQuestionState(QUESTIONS[i].id);
+        if (!st.solved) {
+          appState.currentIndex = i;
+          appState.showResults = false;
+          renderAll();
+          persistState();
+          return;
+        }
+      }
+    }
+
+    function resetArmingButtons() {
+      const resetBtns = [
+        document.getElementById('btn-reset-all'),
+        document.getElementById('btn-reset-from-result')
+      ];
+      resetBtns.forEach(function (b) {
+        if (b && b.dataset.armed === 'true') {
+          b.dataset.armed = 'false';
+          b.classList.remove('btn-danger-armed');
+          b.classList.add('btn-outline');
+          b.innerHTML = `<i data-lucide="rotate-ccw" aria-hidden="true"></i> Reiniciar Todas as Questões`;
+        }
+      });
+    }
+
+    function handleResetAll(btn) {
+      if (!btn) return;
+      if (btn.dataset.armed !== 'true') {
+        btn.dataset.armed = 'true';
+        btn.classList.remove('btn-outline');
+        btn.classList.add('btn-danger-armed');
+        btn.innerHTML = `<i data-lucide="alert-triangle" aria-hidden="true"></i> Clique de novo para zerar tudo`;
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+        return;
+      }
+
+      appState = cloneDefaultState();
+      resetArmingButtons();
+      renderAll();
+      persistState();
+    }
+
+    async function initApp() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === 'function') {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === 'object' && saved.progress) {
+            appState = {
+              currentIndex: typeof saved.currentIndex === 'number' ? Math.max(0, Math.min(QUESTIONS.length - 1, saved.currentIndex)) : 0,
+              showResults: Boolean(saved.showResults),
+              progress: saved.progress || {}
+            };
+          }
+        }
+      } catch (err) {
+        appState = cloneDefaultState();
+      }
+
+      renderAll();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    initApp();
+  </script>
+</body>
+</html>
