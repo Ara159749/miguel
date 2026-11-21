@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="sticker">
+  <title>Missão Inglês 4º Ano — Let’s Celebrate! &amp; My Weekend</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Sticker) */
+      --background: #fef7ff;
+      --surface-container-low: #ffffff;
+      --surface-container: #f8eef8;
+      --surface-container-high: #f2e8f2;
+
+      /* Ink */
+      --on-surface: #2e1a28;
+      --on-surface-variant: #604868;
+
+      /* Rules */
+      --outline: #907898;
+      --outline-variant: #dcc8e0;
+
+      /* Accents */
+      --primary: #c2207f;
+      --on-primary: #ffffff;
+      --primary-container: #f080c0;
+      --on-primary-container: #2e1a28;
+      --secondary: #7c52aa;
+      --on-secondary: #ffffff;
+      --secondary-container: #ede4f7;
+      --tertiary: #0096cc;
+      --error: #c53030;
+      --on-error: #ffffff;
+
+      /* Data series */
+      --data-1: #c2207f;
+      --data-2: #7c52aa;
+      --data-3: #0096cc;
+      --data-4: #d96a00;
+      --data-context: #c8b8d0;
+
+      /* Fonts */
+      --font-headline: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-label: 'DM Sans', sans-serif;
+
+      /* Shape */
+      --rounded: 1.25rem;
+      --rounded-lg: 2rem;
+      --rounded-full: 9999px;
+
+      /* Style effects */
+      --shadow-pink: 0 6px 20px rgb(224 64 160 / 0.18);
+      --shadow-pink-deep: 0 10px 28px rgb(224 64 160 / 0.32);
+      --shadow-grape: 0 6px 20px rgb(124 82 170 / 0.18);
+      --shadow-grape-deep: 0 10px 26px rgb(124 82 170 / 0.3);
+      --shadow-sky: 0 6px 20px rgb(0 150 204 / 0.18);
+      --pop-scale: scale(1.03);
+      --press-scale: scale(0.97);
+      --lift: translateY(-4px);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      /* Semantic tokens */
+      --positive: #14532d;
+      --positive-accent: #16a34a;
+      --positive-bg: #dcfce7;
+      --positive-border: #86efac;
+      --warning: #92400e;
+      --warning-accent: #d97706;
+      --warning-bg: #fef3c7;
+      --warning-border: #fcd34d;
+      --focus: #c2207f;
+
+      /* Illustration tokens */
+      --illus-gold: #f59e0b;
+      --illus-gold-soft: #fef3c7;
+      --illus-mint: #10b981;
+      --illus-mint-soft: #d1fae5;
+      --illus-coral: #e11d48;
+      --illus-coral-soft: #ffe4e6;
+      --illus-sky-soft: #e0f2fe;
+      --illus-brown: #92400e;
+      --illus-brown-light: #d97706;
+      --illus-slate: #475569;
+
+      /* Type scale (Focused learning tool) */
+      --display-size: clamp(1.85rem, 1.35rem + 1.8vw, 2.75rem);
+      --headline-size: clamp(1.25rem, 1.1rem + 0.55vw, 1.55rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+      --body-size: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
+      --label-size: 0.75rem;
+
+      /* Spacing scale (4pt base) */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      max-width: 960px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Hero panel */
+    .hero-panel {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-xl);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .kicker-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      border-radius: var(--rounded-full);
+      padding: var(--space-xs) var(--space-md);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .badge-bubblegum {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+
+    .badge-grape {
+      background: var(--secondary-container);
+      color: var(--secondary);
+    }
+
+    .badge-neutral {
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+    }
+
+    .badge-positive {
+      background: var(--positive-bg);
+      color: var(--positive);
+    }
+
+    .badge-warning {
+      background: var(--warning-bg);
+      color: var(--warning);
+    }
+
+    .display {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: var(--display-size);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .display em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .hero-lede {
+      margin: 0;
+      color: var(--on-surface-variant);
+      max-width: 65ch;
+      font-size: var(--subhead-size);
+      line-height: 1.5;
+    }
+
+    /* Progress strip */
+    .progress-box {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .progress-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .progress-stats {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-md);
+      font-weight: 700;
+      color: var(--on-surface);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 14px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded-full);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--tertiary);
+      border-radius: var(--rounded-full);
+      transition: width var(--dur-long) var(--ease-bounce);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      border: none;
+      border-radius: var(--rounded-full);
+      padding: var(--space-sm) var(--space-lg);
+      min-height: 44px;
+      font-size: var(--body-size);
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  box-shadow var(--dur-short) var(--ease-out),
+                  background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: var(--pop-scale);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: var(--press-scale);
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--shadow-pink);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      box-shadow: var(--shadow-pink-deep);
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      box-shadow: var(--shadow-grape);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      box-shadow: var(--shadow-grape-deep);
+    }
+
+    .btn-soft {
+      background: var(--surface-container-low);
+      color: var(--primary);
+      box-shadow: var(--shadow-pink);
+    }
+
+    .btn-outline-grape {
+      background: var(--surface-container-low);
+      color: var(--secondary);
+      box-shadow: 0 0 0 2px var(--outline-variant);
+    }
+
+    .btn-outline-grape:hover:not(:disabled) {
+      box-shadow: 0 0 0 2px var(--secondary), var(--shadow-grape);
+    }
+
+    .btn-danger-armed {
+      background: var(--error);
+      color: var(--on-error);
+      box-shadow: var(--shadow-pink);
+    }
+
+    /* Study helper card */
+    .helper-toggle-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .helper-panel {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-sky);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .helper-panel[hidden] {
+      display: none;
+    }
+
+    .helper-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+
+    .helper-chunk {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .helper-chunk h3 {
+      margin: 0;
+      font-size: var(--body-size);
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .helper-chunk p {
+      margin: 0;
+      font-size: 0.9375rem;
+      color: var(--on-surface);
+    }
+
+    /* Filter and Mission Map card */
+    .nav-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-grape);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      border: none;
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-micro) var(--ease-out),
+                  color var(--dur-micro) var(--ease-out);
+    }
+
+    .chip:hover {
+      transform: var(--pop-scale);
+      background: var(--surface-container-high);
+    }
+
+    .chip.is-active {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--shadow-pink);
+    }
+
+    .mission-map {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+
+    .map-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--rounded-full);
+      border: none;
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+      font-weight: 800;
+      font-size: 0.875rem;
+      font-variant-numeric: tabular-nums;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .map-dot:hover {
+      transform: var(--pop-scale);
+    }
+
+    .map-dot.is-solved {
+      background: var(--positive-bg);
+      color: var(--positive);
+      box-shadow: 0 0 0 2px var(--positive-border);
+    }
+
+    .map-dot.is-tried {
+      background: var(--warning-bg);
+      color: var(--warning);
+      box-shadow: 0 0 0 2px var(--warning-border);
+    }
+
+    .map-dot.is-hidden-by-filter {
+      opacity: 0.4;
+    }
+
+    /* Questions list */
+    .questions-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .q-wrapper {
+      container-type: inline-size;
+    }
+
+    .q-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+      transition: box-shadow var(--dur-short) var(--ease-out);
+    }
+
+    .q-wrapper:nth-child(3n+2) .q-card {
+      box-shadow: var(--shadow-sky);
+    }
+
+    .q-wrapper:nth-child(3n+3) .q-card {
+      box-shadow: var(--shadow-grape);
+    }
+
+    .q-card.is-solved {
+      box-shadow: 0 0 0 2px var(--positive-border), var(--shadow-sky);
+    }
+
+    .q-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    @container (min-width: 560px) {
+      .q-inner {
+        grid-template-columns: 168px minmax(0, 1fr);
+      }
+    }
+
+    .illus-frame {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-sm);
+      display: grid;
+      place-items: center;
+      gap: var(--space-xs);
+    }
+
+    .illus-frame svg {
+      width: 100%;
+      max-width: 152px;
+      height: auto;
+      display: block;
+    }
+
+    .illus-caption {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+      text-align: center;
+    }
+
+    .q-content {
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .q-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .q-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .q-num-badge {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-radius: var(--rounded-full);
+      padding: var(--space-xs) var(--space-md);
+      font-size: var(--label-size);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .q-prompt {
+      margin: 0;
+      font-weight: 700;
+      font-size: var(--headline-size);
+      line-height: 1.3;
+      color: var(--on-surface);
+    }
+
+    .q-sentence {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      font-weight: 700;
+      font-size: var(--subhead-size);
+      color: var(--on-surface);
+      line-height: 1.45;
+    }
+
+    /* Options Grid */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: var(--space-sm);
+    }
+
+    .opt-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      width: 100%;
+      min-height: 50px;
+      padding: var(--space-sm) var(--space-md);
+      border: none;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-size: var(--body-size);
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      box-shadow: 0 0 0 2px transparent;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-micro) var(--ease-out),
+                  box-shadow var(--dur-micro) var(--ease-out);
+    }
+
+    .opt-btn:hover:not(:disabled) {
+      transform: var(--pop-scale);
+      background: var(--surface-container-high);
+      box-shadow: 0 0 0 2px var(--primary-container);
+    }
+
+    .opt-btn:active:not(:disabled) {
+      transform: var(--press-scale);
+    }
+
+    .opt-letter {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container-low);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .opt-text {
+      flex: 1;
+      line-height: 1.3;
+    }
+
+    .opt-btn.is-wrong-tried {
+      background: var(--warning-bg);
+      color: var(--warning);
+      box-shadow: 0 0 0 2px var(--warning-border);
+      cursor: default;
+      opacity: 0.85;
+    }
+
+    .opt-btn.is-wrong-tried .opt-letter {
+      background: var(--warning-border);
+      color: var(--warning);
+    }
+
+    .opt-btn.is-correct-chosen {
+      background: var(--positive-bg);
+      color: var(--positive);
+      box-shadow: 0 0 0 2px var(--positive-accent);
+      font-weight: 800;
+      cursor: default;
+    }
+
+    .opt-btn.is-correct-chosen .opt-letter {
+      background: var(--positive-accent);
+      color: var(--on-primary);
+    }
+
+    .opt-btn.is-muted-locked {
+      opacity: 0.55;
+      cursor: default;
+    }
+
+    /* Feedback banner */
+    .feedback-box {
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      font-size: 0.96875rem;
+      line-height: 1.5;
+    }
+
+    .feedback-box[hidden] {
+      display: none;
+    }
+
+    .feedback-retry {
+      background: var(--warning-bg);
+      color: var(--warning);
+      box-shadow: 0 0 0 2px var(--warning-border);
+    }
+
+    .feedback-success {
+      background: var(--positive-bg);
+      color: var(--positive);
+      box-shadow: 0 0 0 2px var(--positive-border);
+    }
+
+    .feedback-icon {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feedback-body {
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .feedback-title {
+      font-weight: 800;
+    }
+
+    /* Empty filter state */
+    .empty-state {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-grape);
+      padding: var(--space-xl);
+      text-align: center;
+      display: grid;
+      place-items: center;
+      gap: var(--space-md);
+    }
+
+    .empty-state[hidden] {
+      display: none;
+    }
+
+    /* Final Controls & Scoreboard */
+    .final-actions-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-xl);
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    .final-actions-head {
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .section-title {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--headline-size);
+      letter-spacing: -0.02em;
+      color: var(--on-surface);
+    }
+
+    .final-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .reset-note {
+      font-size: 0.9375rem;
+      color: var(--on-surface-variant);
+      margin: 0;
+    }
+
+    .score-panel {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-lg);
+    }
+
+    .score-panel[hidden] {
+      display: none;
+    }
+
+    .score-hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+    }
+
+    .score-big {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: clamp(2.5rem, 2rem + 2vw, 3.75rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .score-msg-title {
+      margin: 0 0 var(--space-xs) 0;
+      font-weight: 800;
+      font-size: var(--headline-size);
+      color: var(--on-surface);
+    }
+
+    .score-msg-sub {
+      margin: 0;
+      color: var(--on-surface-variant);
+      max-width: 55ch;
+    }
+
+    .score-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+
+    .metric-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      box-shadow: var(--shadow-grape);
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .metric-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+    }
+
+    .metric-value {
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--on-surface);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pending-jump {
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .pending-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+
+    .footer-source {
+      padding: var(--space-md) var(--space-sm);
+      color: var(--on-surface-variant);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-sm);
+        gap: var(--space-md);
+      }
+      .hero-panel,
+      .final-actions-card {
+        padding: var(--space-lg);
+      }
+      .q-card,
+      .nav-card {
+        padding: var(--space-md);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-grid">
+    <!-- Hero / Header -->
+    <header class="hero-panel">
+      <div class="kicker-row">
+        <span class="badge badge-bubblegum">4º Ano EF · iGrow 4 &amp; BNCC</span>
+        <span class="badge badge-grape">30 Desafios Interativos</span>
+      </div>
+
+      <h1 class="display">Missão Inglês: <em>Celebrações</em> e Fim de Semana</h1>
+
+      <p class="hero-lede">
+        Explore 30 desafios ilustrados sobre <strong>Let’s celebrate!</strong> e <strong>My weekend</strong>.
+        Se escolher uma opção errada, não tem problema: você recebe uma dica e pode tentar de novo!
+      </p>
+
+      <div class="progress-box">
+        <div class="progress-top">
+          <div class="progress-stats">
+            <span id="progress-solved-text">0 de 30 respondidas</span>
+            <span class="badge badge-positive" id="progress-first-try-badge">0 de primeira</span>
+          </div>
+          <button type="button" class="btn btn-soft" onclick="jumpToScoreboard()">
+            <i data-lucide="trophy" width="18" height="18" aria-hidden="true"></i>
+            <span>Ir para o placar</span>
+          </button>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" id="progress-bar-track">
+          <div class="progress-fill" id="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <div class="helper-toggle-row">
+        <button type="button" class="btn btn-outline-grape" id="btn-toggle-helper" onclick="toggleStudyHelper()" aria-expanded="false" aria-controls="study-helper-panel">
+          <i data-lucide="sparkles" width="18" height="18" aria-hidden="true"></i>
+          <span>Abrir Dica Mágica do Simple Past</span>
+        </button>
+        <span class="badge badge-neutral">20 do Caderno Base + 10 Inéditas</span>
+      </div>
+    </header>
+
+    <!-- Collapsible Study Helper -->
+    <section class="helper-panel" id="study-helper-panel" hidden>
+      <h2 class="section-title">Guia Rápido do Passado (Simple Past)</h2>
+      <div class="helper-grid">
+        <div class="helper-chunk">
+          <h3>Verbos Regulares (+ed / +d)</h3>
+          <p><strong>celebrate</strong> → celebrated · <strong>visit</strong> → visited · <strong>open</strong> → opened · <strong>dance</strong> → danced · <strong>stay</strong> → stayed (com vogal antes do y!)</p>
+        </div>
+        <div class="helper-chunk">
+          <h3>Verbos Irregulares</h3>
+          <p><strong>go</strong> → went · <strong>eat</strong> → ate · <strong>see</strong> → saw · <strong>win</strong> → won · <strong>give</strong> → gave · <strong>sing</strong> → sang · <strong>drink</strong> → drank · <strong>buy</strong> → bought · <strong>lose</strong> → lost</p>
+        </div>
+        <div class="helper-chunk">
+          <h3>Negativa e Perguntas</h3>
+          <p>Com <strong>didn’t</strong> ou <strong>Did...?</strong>, o verbo volta ao normal: <em>didn’t go</em>, <em>Did she wear...?</em>, <em>Where did you go?</em></p>
+        </div>
+        <div class="helper-chunk">
+          <h3>Lazer com go + -ing</h3>
+          <p>No passado: <strong>went swimming</strong>, <strong>went hiking</strong>, <strong>went ice skating</strong>, <strong>went horseback riding</strong>, <strong>went fishing</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters & Mission Map -->
+    <section class="nav-card" aria-label="Filtros e mapa das questões">
+      <div class="filter-row" id="filter-buttons">
+        <button type="button" class="chip is-active" data-filter="all" onclick="setFilter('all')">Todas (30)</button>
+        <button type="button" class="chip" data-filter="unit1" onclick="setFilter('unit1')">Unit 1: Let’s celebrate! (13)</button>
+        <button type="button" class="chip" data-filter="unit2" onclick="setFilter('unit2')">Unit 2: My weekend (17)</button>
+        <button type="button" class="chip" data-filter="new" onclick="setFilter('new')">Questões Inéditas (10)</button>
+        <button type="button" class="chip" data-filter="pending" onclick="setFilter('pending')">Faltam responder</button>
+      </div>
+      <div class="mission-map" id="mission-map" aria-label="Atalho rápido para cada questão"></div>
+    </section>
+
+    <!-- Questions Stream -->
+    <main class="questions-list" id="questions-container"></main>
+
+    <div class="empty-state" id="empty-filter-state" hidden>
+      <p class="section-title">Você já respondeu todas as questões deste filtro!</p>
+      <p class="hero-lede">Clique abaixo para ver todas as 30 questões novamente ou confira o seu placar final.</p>
+      <button type="button" class="btn btn-primary" onclick="setFilter('all')">Mostrar todas as 30 questões</button>
+    </div>
+
+    <!-- Final Controls & Scoreboard -->
+    <section class="final-actions-card" id="scoreboard-section" aria-label="Controles finais e placar">
+      <div class="final-actions-head">
+        <h2 class="section-title">Hora de Conferir sua Missão!</h2>
+        <p class="reset-note">Quando quiser ver sua pontuação total de 0 a 30 ou recomeçar o desafio do zero, use os botões abaixo.</p>
+      </div>
+
+      <div class="final-btn-row">
+        <button type="button" class="btn btn-primary" id="btn-calc-score" onclick="calculateAndShowScore()">
+          <i data-lucide="award" width="20" height="20" aria-hidden="true"></i>
+          <span>Calcular e Exibir Placar Final</span>
+        </button>
+
+        <button type="button" class="btn btn-outline-grape" id="btn-reset-quiz" onclick="handleResetClick(this)">
+          <i data-lucide="rotate-ccw" width="18" height="18" aria-hidden="true"></i>
+          <span>Reiniciar Todas as Respostas</span>
+        </button>
+
+        <button type="button" class="btn btn-soft" id="btn-cancel-reset" onclick="cancelResetArmed()" hidden>
+          <span>Cancelar reinício</span>
+        </button>
+      </div>
+
+      <p class="reset-note" id="reset-status-msg" hidden></p>
+
+      <!-- Scoreboard Result Panel -->
+      <div class="score-panel" id="final-score-panel" hidden>
+        <div class="score-hero">
+          <div>
+            <span class="badge badge-bubblegum" id="score-rank-badge">Placar Final</span>
+            <div class="score-big" id="score-big-number">0 / 30</div>
+          </div>
+          <div>
+            <h3 class="score-msg-title" id="score-msg-title">Vamos começar!</h3>
+            <p class="score-msg-sub" id="score-msg-sub">Responda às questões acima para conquistar estrelas e acompanhar seu progresso.</p>
+          </div>
+        </div>
+
+        <div class="score-metrics">
+          <div class="metric-card">
+            <span class="metric-label">Acertos no Placar</span>
+            <span class="metric-value" id="metric-total">0 / 30 (0%)</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Acertos de 1ª Tentativa</span>
+            <span class="metric-value" id="metric-first">0 / 30</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Unit 1 · Let’s celebrate!</span>
+            <span class="metric-value" id="metric-u1">0 / 13</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Unit 2 · My weekend</span>
+            <span class="metric-value" id="metric-u2">0 / 17</span>
+          </div>
+        </div>
+
+        <div class="pending-jump" id="pending-jump-box" hidden>
+          <span class="metric-label">Questões que ainda faltam responder:</span>
+          <div class="pending-pills" id="pending-pills"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-source">
+      Conteúdo pedagógico baseado nas unidades <strong>Let’s celebrate!</strong> e <strong>My weekend</strong> do material
+      <strong>iGrow 4</strong> (Casa Thomas Jefferson / National Geographic Learning), alinhado às habilidades de Língua Inglesa da
+      <strong>BNCC (4º ano do Ensino Fundamental)</strong> e ao Caderno de Questões de Língua Inglesa.
+    </footer>
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    const QUESTIONS = [
+      {
+        id: 1,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Fácil`,
+        illus: `cake`,
+        illusCaption: `Birthday cake`,
+        prompt: `Observe o bolo de aniversário com velas acesas. Escolha a opção que melhor completa a frase:`,
+        sentence: `On my birthday party, we put ten ________ on the cake and sang Happy Birthday.`,
+        options: [`lanterns`, `candles`, `balloons`, `masks`],
+        correct: 1,
+        hint: `Pense no que colocamos em cima do bolo para assoprar e fazer um pedido!`,
+        explanation: `Isso mesmo! “Candles” significa velas em inglês. Colocamos as velas acesas no “birthday cake” (bolo de aniversário) na hora de cantar parabéns!`
+      },
+      {
+        id: 2,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Fácil`,
+        illus: `fireworks`,
+        illusCaption: `Night festival`,
+        prompt: `Analise a cena com luzes coloridas no céu noturno e responda à pergunta:`,
+        sentence: `What did the children see in the sky during the festival?`,
+        options: [
+          `They saw lanterns and flags.`,
+          `They saw colorful fireworks.`,
+          `They saw balloons and costumes.`,
+          `They saw a large feast.`
+        ],
+        correct: 1,
+        hint: `O que brilha e explode com muitas cores no céu durante a noite?`,
+        explanation: `Perfeito! “Fireworks” são fogos de artifício. E repare no verbo “saw”: ele é o passado irregular de “see” (ver) — They saw = Eles viram!`
+      },
+      {
+        id: 3,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Médio`,
+        illus: `picnic`,
+        illusCaption: `Sunny park`,
+        prompt: `Observe a família reunida na toalha xadrez no parque ensolarado:`,
+        sentence: `Last Saturday, the weather was sunny, so Carlos and his family ________.`,
+        options: [
+          `went on a picnic`,
+          `stayed home to study`,
+          `went ice skating`,
+          `texted their friends`
+        ],
+        correct: 0,
+        hint: `Quando levamos uma cesta de lanches para comer na grama do parque, fazemos um piquenique!`,
+        explanation: `Arrasou! “Go on a picnic” significa fazer um piquenique. No passado, “go” muda para “went”: went on a picnic!`
+      },
+      {
+        id: 4,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Médio`,
+        illus: `no_movies`,
+        illusCaption: `No movies`,
+        prompt: `Veja a placa de negação (❌) em frente ao cinema. Qual frase descreve corretamente a cena no passado?`,
+        sentence: `Qual frase negativa no Simple Past está certa?`,
+        options: [
+          `We didn’t go to the movies last night.`,
+          `We went to the beach.`,
+          `We didn’t visited a museum.`,
+          `We goes to the movies yesterday.`
+        ],
+        correct: 0,
+        hint: `Lembre-se da regra de ouro: depois de “didn’t”, o verbo principal fica sempre na forma normal (sem -ed e sem virar went)!`,
+        explanation: `Excelente! Para negar no passado usamos “didn’t” + verbo normal: “We didn’t go to the movies last night.”`
+      },
+      {
+        id: 5,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Médio`,
+        illus: `trophy`,
+        illusCaption: `1st place!`,
+        prompt: `Observe o troféu de 1º lugar conquistado pelo time de basquete:`,
+        sentence: `We played basketball on Saturday. We were very happy because we ________ the game!`,
+        options: [`lost`, `winned`, `won`, `didn’t win`],
+        correct: 2,
+        hint: `O verbo “win” (vencer) é irregular — ele NÃO recebe -ed no passado!`,
+        explanation: `Isso aí! O passado do verbo irregular “win” (vencer) é “won”. A forma “winned” não existe em inglês!`
+      },
+      {
+        id: 6,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Desafio`,
+        illus: `superhero`,
+        illusCaption: `School party`,
+        prompt: `Observe o diálogo entre dois amigos sobre a fantasia da festa escolar:`,
+        sentence: `— “Did she ________ a costume to the celebration?”  — “Yes, she ________. She dressed up as a superhero.”`,
+        options: [`wore / did`, `wear / did`, `wear / didn’t`, `wore / wore`],
+        correct: 1,
+        hint: `Em perguntas com “Did”, o verbo principal volta para a forma normal (wear), e a resposta curta repete “did”!`,
+        explanation: `Mandou muito bem! Como já tem “Did” no começo da pergunta, usamos “wear” (forma normal). E na resposta curta afirmativa: “Yes, she did.”`
+      },
+      {
+        id: 7,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Fácil`,
+        illus: `mask`,
+        illusCaption: `Face accessory`,
+        prompt: `Leia a pista em inglês e descubra qual palavra do iGrow 4 ela descreve:`,
+        sentence: `Clue: “You wear it on your face during celebrations.”`,
+        options: [`a parade`, `a mask`, `a feast`, `an invitation`],
+        correct: 1,
+        hint: `“On your face” significa “no seu rosto”. O que colocamos no rosto nas festas?`,
+        explanation: `Certinho! “A mask” é uma máscara que usamos no rosto (“on your face”) em bailes, desfiles e festas!`
+      },
+      {
+        id: 8,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Fácil`,
+        illus: `feast`,
+        illusCaption: `Big meal`,
+        prompt: `Leia a pista sobre tradições culturais e escolha a palavra correta:`,
+        sentence: `Clue: “A very big meal with lots of delicious food.”`,
+        options: [`a feast`, `a candle`, `a lantern`, `a balloon`],
+        correct: 0,
+        hint: `“A very big meal” quer dizer “uma refeição bem grande” cheia de comidas gostosas!`,
+        explanation: `Que delícia! “A feast” é um banquete — aquela grande refeição comemorativa com vários pratos especiais!`
+      },
+      {
+        id: 9,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Médio`,
+        illus: `parade`,
+        illusCaption: `Street music`,
+        prompt: `Leia a pista sobre celebrações na rua e identifique o termo em inglês:`,
+        sentence: `Clue: “People walk, dance and play music on the street.”`,
+        options: [`a party`, `a costume`, `a parade`, `fireworks`],
+        correct: 2,
+        hint: `Quando as pessoas caminham, dançam e tocam música na rua, elas fazem um desfile!`,
+        explanation: `Muito bem! “A parade” significa desfile festivo na rua, com música, dança e muita alegria!`
+      },
+      {
+        id: 10,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Fácil`,
+        illus: `invitation`,
+        illusCaption: `Party card`,
+        prompt: `Leia a pista e escolha o item que enviamos aos amigos antes de uma festa:`,
+        sentence: `Clue: “You send it to invite your friends to a party.”`,
+        options: [`a present`, `an invitation`, `a birthday cake`, `decorations`],
+        correct: 1,
+        hint: `A palavra começa bem parecida com o verbo “invite” (convidar)!`,
+        explanation: `Isso mesmo! “An invitation” é um convite! Usamos “an” antes de palavras que começam com som de vogal.`
+      },
+      {
+        id: 11,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Médio`,
+        illus: `hiking`,
+        illusCaption: `Mountain trail`,
+        prompt: `Leia a pista sobre atividades de tempo livre ao ar livre:`,
+        sentence: `Clue: “To walk for exercise in the mountains or woods.”`,
+        options: [`go swimming`, `go ice skating`, `go hiking`, `go fishing`],
+        correct: 2,
+        hint: `Caminhar nas montanhas ou na floresta (“woods”) é fazer uma trilha!`,
+        explanation: `Boa! “Go hiking” significa fazer trilha ou caminhada na natureza, nas montanhas ou no bosque.`
+      },
+      {
+        id: 12,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Médio`,
+        illus: `horseback`,
+        illusCaption: `Riding outdoors`,
+        prompt: `Leia a pista sobre passeios e escolha a atividade correta:`,
+        sentence: `Clue: “An outdoor activity where you ride on a horse.”`,
+        options: [
+          `go horseback riding`,
+          `go on a picnic`,
+          `go to the beach`,
+          `visit a museum`
+        ],
+        correct: 0,
+        hint: `Procure a palavra “horse” (cavalo) na alternativa certa!`,
+        explanation: `Perfeito! “Go horseback riding” é andar a cavalo — mais uma atividade que usa “go + -ing”!`
+      },
+      {
+        id: 13,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Fácil`,
+        illus: `party`,
+        illusCaption: `Big party`,
+        prompt: `Complete a frase com a forma correta do verbo regular “celebrate” no Simple Past:`,
+        sentence: `Yesterday, Lucy and Leo ________ (celebrate) their sister’s birthday with a big party.`,
+        options: [`celebrate`, `celebrated`, `celebratied`, `celebrating`],
+        correct: 1,
+        hint: `O verbo “celebrate” já termina com a letra “e”, então só precisamos colocar “-d” no final!`,
+        explanation: `Acertou! Como “celebrate” é um verbo regular terminado em “-e”, no passado adicionamos apenas “-d”: “celebrated”!`
+      },
+      {
+        id: 14,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Fácil`,
+        illus: `restaurant`,
+        illusCaption: `Italian dinner`,
+        prompt: `Observe a refeição em família e complete com o passado irregular de “eat” (comer):`,
+        sentence: `Last Sunday, our family ________ (eat) out at a great Italian restaurant.`,
+        options: [`eated`, `eats`, `ate`, `eat`],
+        correct: 2,
+        hint: `“Eat” é irregular: ele muda as letrinhas no passado e NÃO recebe -ed!`,
+        explanation: `Delícia! O passado irregular de “eat” é “ate”. E “ate out” quer dizer “comeu fora” em um restaurante!`
+      },
+      {
+        id: 15,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Médio`,
+        illus: `skating`,
+        illusCaption: `Frozen lake`,
+        prompt: `Observe a atividade de inverno e complete usando “go + -ing” no Simple Past:`,
+        sentence: `Last winter, Carlos ________ (go / ice skate) with his cousins on the lake.`,
+        options: [
+          `go ice skate`,
+          `went ice skated`,
+          `went ice skating`,
+          `goes ice skating`
+        ],
+        correct: 2,
+        hint: `No passado, só o verbo “go” muda para “went”. A palavra da atividade continua com “-ing”!`,
+        explanation: `Show! Em atividades com “go + -ing”, transformamos “go” em “went” e mantemos o “-ing”: “went ice skating”!`
+      },
+      {
+        id: 16,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Médio`,
+        illus: `no_fishing`,
+        illusCaption: `Rainy day ❌`,
+        prompt: `A chuva impediu a pescaria! Complete na forma NEGATIVA usando (not / go / fish):`,
+        sentence: `We had bad weather on Saturday, so we ________.`,
+        options: [
+          `didn’t went fishing`,
+          `didn’t go fishing`,
+          `not went fishing`,
+          `didn’t go fished`
+        ],
+        correct: 1,
+        hint: `Na negativa, usamos “didn’t” + “go” (sem mudar para went!) + “fishing”!`,
+        explanation: `Isso mesmo! Na negativa, “didn’t” já mostra o passado, por isso o verbo fica “go” normal + “fishing”: “didn’t go fishing”.`
+      },
+      {
+        id: 17,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Médio`,
+        illus: `museum`,
+        illusCaption: `Dinosaur museum`,
+        prompt: `Observe o passeio escolar ao museu e complete com o passado simples de “visit”:`,
+        sentence: `Last month, my classmates and I ________ (visit) a historical museum in the city.`,
+        options: [`visited`, `visit`, `visiting`, `did visited`],
+        correct: 0,
+        hint: `“Visit” é um verbo regular — basta acrescentar “-ed” no final!`,
+        explanation: `Incrível! “Visit” é um verbo regular, então no Simple Past ele recebe o sufixo “-ed” e vira “visited”!`
+      },
+      {
+        id: 18,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Desafio`,
+        illus: `gift_bike`,
+        illusCaption: `Birthday gift`,
+        prompt: `Tom abriu os presentes e ganhou uma bicicleta! Complete com os verbos “open” e “give” no passado:`,
+        sentence: `Tom ________ (open) his presents, and his grandparents ________ (give) him a fantastic bicycle.`,
+        options: [
+          `openned / gived`,
+          `opened / gave`,
+          `opened / gived`,
+          `open / gave`
+        ],
+        correct: 1,
+        hint: `“Open” ganha “-ed” (opened), mas “give” (dar) é irregular e troca o “i” por “a”!`,
+        explanation: `Uau! “Open” é regular (opened) e “give” é irregular (gave). Você acertou os dois tipos de verbos na mesma frase!`
+      },
+      {
+        id: 19,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Médio`,
+        illus: `zoo_map`,
+        illusCaption: `City map`,
+        prompt: `Observe a resposta da criança e o mapa indicando o zoológico. Como formular a pergunta com Where + did?`,
+        sentence: `Resposta: “I went to the zoo.” — Qual é a pergunta correta?`,
+        options: [
+          `Where did you went?`,
+          `Where do you go?`,
+          `Where did you go?`,
+          `What did you go?`
+        ],
+        correct: 2,
+        hint: `“Where” pergunta sobre lugar (“Aonde”). E com o auxiliar “did”, o verbo “go” fica normal!`,
+        explanation: `Perfeito! Para perguntar “Aonde você foi?”, usamos: Where + did + you + go (forma normal): “Where did you go?”`
+      },
+      {
+        id: 20,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Caderno Base`,
+        isNew: false,
+        level: `Desafio`,
+        illus: `detective`,
+        illusCaption: `Grammar detective`,
+        prompt: `Detetive Gramatical! Investigue a frase errada: “I didn’t went to school yesterday.” Qual é a frase corrigida?`,
+        sentence: `Escolha a reescrita gramaticalmente correta:`,
+        options: [
+          `I didn’t went to school yesterday.`,
+          `I not went to school yesterday.`,
+          `I didn’t going to school yesterday.`,
+          `I didn’t go to school yesterday.`
+        ],
+        correct: 3,
+        hint: `Encontre o erro de “passado duplicado”: não podemos usar “didn’t” junto com “went”!`,
+        explanation: `Caso resolvido, detetive! Como “didn’t” já indica o passado negativo, o verbo principal fica na forma base (“go”): “I didn’t go to school yesterday.”`
+      },
+      {
+        id: 21,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Inédita`,
+        isNew: true,
+        level: `Fácil`,
+        illus: `lanterns_balloons`,
+        illusCaption: `Decorations`,
+        prompt: `Observe as decorações brilhantes na rua do festival e complete a frase com duas palavras da Unit 1:`,
+        sentence: `For the street festival, people decorated the houses with bright paper ________ and colorful ________.`,
+        options: [
+          `masks / candles`,
+          `lanterns / balloons`,
+          `feasts / costumes`,
+          `invitations / presents`
+        ],
+        correct: 1,
+        hint: `“Paper” (papel) combina com lanternas iluminadas, e os enfeites cheios de ar são balões!`,
+        explanation: `Muito bem! “Lanterns” são as lanternas decorativas de papel e “balloons” são os balões coloridos que deixam qualquer celebração mais alegre!`
+      },
+      {
+        id: 22,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Inédita`,
+        isNew: true,
+        level: `Fácil`,
+        illus: `astronaut`,
+        illusCaption: `Space costume`,
+        prompt: `Veja Maya fantasiada na festa da escola e complete com dois verbos regulares no Simple Past:`,
+        sentence: `At the school party, Maya ________ (dress up) as an astronaut and ________ (dance) with her friends.`,
+        options: [
+          `dressed up / danced`,
+          `dress up / dance`,
+          `dressed up / dancied`,
+          `wore / danced`
+        ],
+        correct: 0,
+        hint: `“Dress up” ganha “-ed” (dressed up), e “dance” já termina com “e”, então só ganha “-d”!`,
+        explanation: `Demais! “Dressed up” significa “se fantasiou” e “danced” significa “dançou”. Ambos são verbos regulares no passado!`
+      },
+      {
+        id: 23,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Inédita`,
+        isNew: true,
+        level: `Médio`,
+        illus: `sing_juice`,
+        illusCaption: `Music & juice`,
+        prompt: `Complete a cena da festa de aniversário com o passado irregular de “sing” (cantar) e “drink” (beber):`,
+        sentence: `During the celebration, everyone ________ (sing) Happy Birthday and ________ (drink) cold orange juice.`,
+        options: [
+          `singed / drinked`,
+          `sang / drank`,
+          `sung / drink`,
+          `sang / drinked`
+        ],
+        correct: 1,
+        hint: `Esses dois verbos irregulares trocam a vogal “i” pela vogal “a” no Simple Past!`,
+        explanation: `Show de bola! Tanto “sing” quanto “drink” são verbos irregulares que mudam o “i” para “a” no passado: “sing → sang” e “drink → drank”!`
+      },
+      {
+        id: 24,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Inédita`,
+        isNew: true,
+        level: `Fácil`,
+        illus: `rainy_home`,
+        illusCaption: `Cozy Sunday`,
+        prompt: `Leo teve um fim de semana agitado, mas no domingo choveu. Atenção à escrita correta de “stay” no passado:`,
+        sentence: `Leo had a ________ weekend! On Sunday it rained, so he ________ (stay) home and read a comic book.`,
+        options: [
+          `exciting / staied`,
+          `busy / stayed`,
+          `lose / stay`,
+          `busy / staied`
+        ],
+        correct: 1,
+        hint: `Olho vivo! Antes do “y” de “stay” existe uma vogal (“a”), por isso o “y” NÃO sai — basta colocar “-ed”!`,
+        explanation: `Nota 10! “Busy” significa agitado/ocupado. E “stay” vira “stayed” (nunca “staied”), pois tem uma vogal antes do “y”!`
+      },
+      {
+        id: 25,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Inédita`,
+        isNew: true,
+        level: `Médio`,
+        illus: `swimming`,
+        illusCaption: `Club pool`,
+        prompt: `Domingo fez muito calor! Qual opção usa a estrutura padrão do iGrow 4 (go + -ing) no Simple Past?`,
+        sentence: `Last Sunday was very hot! Sofia and her brother ________ at the club pool.`,
+        options: [
+          `went to swim`,
+          `go swimming`,
+          `went swimming`,
+          `went swim`
+        ],
+        correct: 2,
+        hint: `No iGrow 4, para falar de atividades de lazer como nadar no passado, usamos “went + verbo com -ing”!`,
+        explanation: `Mergulho perfeito! Para esportes e lazer com “go”, dizemos “went swimming” no passado (e não “went to swim”).`
+      },
+      {
+        id: 26,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Inédita`,
+        isNew: true,
+        level: `Médio`,
+        illus: `beach_friends`,
+        illusCaption: `At the beach`,
+        prompt: `Leia a resposta do Lucas sobre com quem ele foi à praia. Qual pergunta com “Who + did” está correta?`,
+        sentence: `Resposta: “I went to the beach with my cousins.” — Escolha a pergunta certa:`,
+        options: [
+          `Who did you went with?`,
+          `Who did you go with?`,
+          `Where did you go with?`,
+          `Who you went with?`
+        ],
+        correct: 1,
+        hint: `Usamos “Who” (Quem) + “did” + sujeito + verbo normal (“go” — sem virar went)!`,
+        explanation: `Brilhante! “Who” pergunta sobre pessoas (“Com quem você foi?”), e com o auxiliar “did”, o verbo fica normal: “Who did you go with?”!`
+      },
+      {
+        id: 27,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Inédita`,
+        isNew: true,
+        level: `Médio`,
+        illus: `cap_bag`,
+        illusCaption: `New cap`,
+        prompt: `Que pena, o boné sumiu no parque! Complete com o passado irregular de “lose” (perder) e “buy” (comprar):`,
+        sentence: `My sister ________ (lose) her favorite cap at the park, so Mom ________ (buy) her a new one yesterday.`,
+        options: [
+          `losed / buyed`,
+          `lost / bought`,
+          `lost / buy`,
+          `lose / bought`
+        ],
+        correct: 1,
+        hint: `Nem “lose” nem “buy” ganham -ed no passado! Lembre-se de que “buy” muda bastante.`,
+        explanation: `Isso aí! “Lose → lost” (perdeu) e “buy → bought” (comprou) são dois verbos irregulares super comuns em histórias do fim de semana!`
+      },
+      {
+        id: 28,
+        unit: `unit1`,
+        unitLabel: `Unit 1 · Let’s celebrate!`,
+        origin: `Inédita`,
+        isNew: true,
+        level: `Desafio`,
+        illus: `check_sentence`,
+        illusCaption: `Check the rule`,
+        prompt: `Detetive da Língua Inglesa! Apenas UMA das frases negativas abaixo está 100% correta no Simple Past. Qual é?`,
+        sentence: `Descubra a única frase sem nenhum erro:`,
+        options: [
+          `They didn’t watched the parade on Sunday.`,
+          `They not watched the parade on Sunday.`,
+          `They didn’t saw the parade on Sunday.`,
+          `They didn’t watch the parade on Sunday.`
+        ],
+        correct: 3,
+        hint: `Depois de “didn’t”, o verbo principal precisa estar limpinho (sem -ed e sem virar irregular)!`,
+        explanation: `Olho de águia! Só a letra D está certa: “didn’t watch”. As outras misturaram “didn’t” com verbo no passado (“watched” / “saw”) ou esqueceram o “did”!`
+      },
+      {
+        id: 29,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Inédita`,
+        isNew: true,
+        level: `Desafio`,
+        illus: `no_hiking`,
+        illusCaption: `Hiking ❌`,
+        prompt: `Veja a placa ❌ na trilha: os amigos NÃO foram caminhar. Qual “short answer” negativa responde corretamente?`,
+        sentence: `Question: “Did your friends go hiking last Saturday?”`,
+        options: [
+          `No, they don’t.`,
+          `Yes, they did.`,
+          `No, they didn’t go.`,
+          `No, they didn’t.`
+        ],
+        correct: 3,
+        hint: `Em inglês, a resposta curta (“short answer”) termina logo no auxiliar “didn’t”, sem repetir o verbo!`,
+        explanation: `Perfeito! Quando a pergunta começa com “Did...?”, a resposta curta negativa usa o mesmo auxiliar: “No, they didn’t.”`
+      },
+      {
+        id: 30,
+        unit: `unit2`,
+        unitLabel: `Unit 2 · My weekend`,
+        origin: `Inédita`,
+        isNew: true,
+        level: `Desafio`,
+        illus: `diary`,
+        illusCaption: `Mia’s diary`,
+        prompt: `Leitura do Diário! Leia o texto da Mia em inglês e descubra o que ela NÃO fez no sábado:`,
+        sentence: `“On Saturday, I texted my friends and we went to the movies. We ate popcorn, but we didn’t eat out at a restaurant.”`,
+        options: [
+          `She didn’t text her friends.`,
+          `She didn’t go to the movies.`,
+          `She didn’t eat out at a restaurant.`,
+          `She didn’t eat popcorn.`
+        ],
+        correct: 2,
+        hint: `Leia com atenção a frase final que começa com “but we didn’t...”!`,
+        explanation: `Parabéns por concluir o diário! No texto, Mia mandou mensagem (“texted”), foi ao cinema (“went to the movies”) e comeu pipoca (“ate popcorn”), mas NÃO comeu fora (“didn’t eat out”)!`
+      }
+    ];
+
+    const LETTERS = [`A`, `B`, `C`, `D`];
+    let currentFilter = `all`;
+    let scoreRevealed = false;
+
+    // Progress state persisted via notebookAppApi
+    // Structure: { answers: { "1": { solved: true, firstTry: true, wrongTried: [] } }, scoreRevealed: false }
+    let quizState = {
+      answers: {},
+      scoreRevealed: false
+    };
+
+    function getQState(qId) {
+      const key = String(qId);
+      if (!quizState.answers[key]) {
+        quizState.answers[key] = {
+          solved: false,
+          firstTry: false,
+          wrongTried: []
+        };
+      }
+      return quizState.answers[key];
+    }
+
+    async function persistState() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+          await window.notebookAppApi.setAppState({
+            answers: quizState.answers,
+            scoreRevealed: scoreRevealed
+          });
+        }
+      } catch (err) {
+        // Safe fallback inside preview
+      }
+    }
+
+    function renderIllustration(illusId) {
+      const wrapStart = `<svg viewBox="0 0 160 130" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">`;
+      const wrapEnd = `</svg>`;
+      let inner = ``;
+
+      switch (illusId) {
+        case `cake`:
+          inner = `
+            <rect x="20" y="96" width="120" height="14" rx="7" fill="var(--primary-container)"/>
+            <rect x="34" y="62" width="92" height="36" rx="10" fill="var(--primary)"/>
+            <path d="M34 70 C46 78, 56 64, 68 72 C80 80, 92 64, 104 72 C114 78, 120 68, 126 70 L126 62 L34 62 Z" fill="var(--surface-container-low)"/>
+            <rect x="52" y="38" width="8" height="24" rx="4" fill="var(--tertiary)"/>
+            <rect x="76" y="34" width="8" height="28" rx="4" fill="var(--secondary)"/>
+            <rect x="100" y="38" width="8" height="24" rx="4" fill="var(--tertiary)"/>
+            <path d="M56 24 C60 30, 60 35, 56 37 C52 35, 52 30, 56 24 Z" fill="var(--illus-gold)"/>
+            <path d="M80 20 C84 26, 84 31, 80 33 C76 31, 76 26, 80 20 Z" fill="var(--illus-gold)"/>
+            <path d="M104 24 C108 30, 108 35, 104 37 C100 35, 100 30, 104 24 Z" fill="var(--illus-gold)"/>
+          `;
+          break;
+        case `fireworks`:
+          inner = `
+            <rect x="16" y="14" width="128" height="102" rx="18" fill="var(--on-surface)"/>
+            <circle cx="56" cy="52" r="5" fill="var(--illus-gold)"/>
+            <path d="M56 30 L56 41 M56 63 L56 74 M34 52 L45 52 M67 52 L78 52 M40 36 L48 44 M64 60 L72 68 M72 36 L64 44 M48 60 L40 68" stroke="var(--primary-container)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="106" cy="44" r="5" fill="var(--tertiary)"/>
+            <path d="M106 24 L106 34 M106 54 L106 64 M86 44 L96 44 M116 44 L126 44 M92 30 L99 37 M113 51 L120 58 M120 30 L113 37 M99 51 L92 58" stroke="var(--illus-gold)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="88" cy="88" r="4" fill="var(--illus-mint)"/>
+            <path d="M88 73 L88 80 M88 96 L88 103 M73 88 L80 88 M96 88 L103 88" stroke="var(--tertiary)" stroke-width="3.5" stroke-linecap="round"/>
+          `;
+          break;
+        case `picnic`:
+          inner = `
+            <circle cx="122" cy="30" r="14" fill="var(--illus-gold)"/>
+            <path d="M16 98 Q80 82 144 98 L144 116 L16 116 Z" fill="var(--illus-mint-soft)"/>
+            <polygon points="34,94 126,94 136,112 24,112" fill="var(--primary)"/>
+            <line x1="56" y1="94" x2="50" y2="112" stroke="var(--surface-container-low)" stroke-width="5"/>
+            <line x1="80" y1="94" x2="80" y2="112" stroke="var(--surface-container-low)" stroke-width="5"/>
+            <line x1="104" y1="94" x2="110" y2="112" stroke="var(--surface-container-low)" stroke-width="5"/>
+            <rect x="60" y="68" width="40" height="24" rx="6" fill="var(--illus-brown-light)"/>
+            <path d="M68 68 C68 54, 92 54, 92 68" stroke="var(--illus-brown)" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="44" cy="86" r="7" fill="var(--illus-coral)"/>
+          `;
+          break;
+        case `no_movies`:
+          inner = `
+            <rect x="28" y="34" width="104" height="72" rx="14" fill="var(--secondary)"/>
+            <rect x="38" y="44" width="84" height="40" rx="8" fill="var(--surface-container-low)"/>
+            <path d="M28 34 L132 34 L126 22 L34 22 Z" fill="var(--primary)"/>
+            <circle cx="44" cy="28" r="3" fill="var(--illus-gold)"/>
+            <circle cx="62" cy="28" r="3" fill="var(--illus-gold)"/>
+            <circle cx="80" cy="28" r="3" fill="var(--illus-gold)"/>
+            <circle cx="98" cy="28" r="3" fill="var(--illus-gold)"/>
+            <circle cx="116" cy="28" r="3" fill="var(--illus-gold)"/>
+            <circle cx="80" cy="64" r="24" fill="var(--illus-coral-soft)" stroke="var(--illus-coral)" stroke-width="5"/>
+            <line x1="65" y1="49" x2="95" y2="79" stroke="var(--illus-coral)" stroke-width="6" stroke-linecap="round"/>
+          `;
+          break;
+        case `trophy`:
+          inner = `
+            <path d="M52 30 H108 V56 C108 74, 94 86, 80 86 C66 86, 52 74, 52 56 Z" fill="var(--illus-gold)"/>
+            <path d="M52 38 C36 38, 34 58, 52 62" stroke="var(--illus-gold)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M108 38 C124 38, 126 58, 108 62" stroke="var(--illus-gold)" stroke-width="6" stroke-linecap="round"/>
+            <rect x="73" y="86" width="14" height="16" fill="var(--illus-brown-light)"/>
+            <rect x="56" y="102" width="48" height="12" rx="6" fill="var(--secondary)"/>
+            <polygon points="80,42 84,51 94,52 86,59 88,68 80,63 72,68 74,59 66,52 76,51" fill="var(--surface-container-low)"/>
+          `;
+          break;
+        case `superhero`:
+          inner = `
+            <path d="M40 96 Q80 76 120 96 L128 114 L32 114 Z" fill="var(--primary)"/>
+            <circle cx="80" cy="54" r="26" fill="var(--illus-gold-soft)"/>
+            <path d="M56 50 Q80 42 104 50 Q104 62 90 60 Q80 56 70 60 Q56 62 56 50 Z" fill="var(--secondary)"/>
+            <circle cx="70" cy="53" r="3.5" fill="var(--surface-container-low)"/>
+            <circle cx="90" cy="53" r="3.5" fill="var(--surface-container-low)"/>
+            <path d="M72 68 Q80 74 88 68" stroke="var(--on-surface)" stroke-width="3.5" stroke-linecap="round"/>
+            <polygon points="80,82 84,90 92,91 86,97 87,105 80,101 73,105 74,97 68,91 76,90" fill="var(--illus-gold)"/>
+          `;
+          break;
+        case `mask`:
+          inner = `
+            <path d="M24 52 C24 34, 64 32, 80 48 C96 32, 136 34, 136 52 C136 82, 108 94, 80 78 C52 94, 24 82, 24 52 Z" fill="var(--primary)"/>
+            <ellipse cx="56" cy="58" rx="13" ry="9" fill="var(--surface-container-low)"/>
+            <ellipse cx="104" cy="58" rx="13" ry="9" fill="var(--surface-container-low)"/>
+            <path d="M72 36 L80 20 L88 36" fill="var(--illus-gold)"/>
+            <circle cx="40" cy="48" r="4" fill="var(--tertiary)"/>
+            <circle cx="120" cy="48" r="4" fill="var(--tertiary)"/>
+          `;
+          break;
+        case `feast`:
+          inner = `
+            <rect x="22" y="88" width="116" height="14" rx="7" fill="var(--illus-brown-light)"/>
+            <rect x="34" y="102" width="10" height="16" rx="4" fill="var(--illus-brown)"/>
+            <rect x="116" y="102" width="10" height="16" rx="4" fill="var(--illus-brown)"/>
+            <ellipse cx="80" cy="84" rx="34" ry="8" fill="var(--surface-container-low)"/>
+            <path d="M54 82 C54 58, 106 58, 106 82 Z" fill="var(--illus-gold)"/>
+            <circle cx="42" cy="78" r="10" fill="var(--primary)"/>
+            <circle cx="118" cy="78" r="10" fill="var(--illus-mint)"/>
+            <path d="M74 48 Q78 40 74 34 M86 48 Q90 40 86 34" stroke="var(--secondary)" stroke-width="3" stroke-linecap="round"/>
+          `;
+          break;
+        case `parade`:
+          inner = `
+            <line x1="26" y1="28" x2="134" y2="28" stroke="var(--on-surface)" stroke-width="3" stroke-linecap="round"/>
+            <polygon points="32,28 48,28 40,46" fill="var(--primary)"/>
+            <polygon points="56,28 72,28 64,46" fill="var(--tertiary)"/>
+            <polygon points="80,28 96,28 88,46" fill="var(--illus-gold)"/>
+            <polygon points="104,28 120,28 112,46" fill="var(--secondary)"/>
+            <rect x="52" y="64" width="56" height="40" rx="10" fill="var(--primary)"/>
+            <line x1="56" y1="74" x2="104" y2="74" stroke="var(--illus-gold)" stroke-width="5"/>
+            <line x1="64" y1="74" x2="80" y2="100" stroke="var(--surface-container-low)" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="96" y1="74" x2="80" y2="100" stroke="var(--surface-container-low)" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="34" cy="74" r="6" fill="var(--secondary)"/>
+            <path d="M40 74 V54 L50 50" stroke="var(--secondary)" stroke-width="3.5" stroke-linecap="round"/>
+          `;
+          break;
+        case `invitation`:
+          inner = `
+            <rect x="26" y="38" width="108" height="72" rx="14" fill="var(--secondary)"/>
+            <path d="M26 44 L80 82 L134 44" stroke="var(--surface-container-low)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="44" y="20" width="72" height="40" rx="10" fill="var(--surface-container-low)"/>
+            <line x1="56" y1="34" x2="104" y2="34" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/>
+            <line x1="64" y1="46" x2="96" y2="46" stroke="var(--outline)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="80" cy="80" r="10" fill="var(--primary)"/>
+          `;
+          break;
+        case `hiking`:
+          inner = `
+            <polygon points="20,108 64,34 106,108" fill="var(--secondary)"/>
+            <polygon points="66,108 104,44 142,108" fill="var(--tertiary)"/>
+            <polygon points="52,54 64,34 76,54 64,48" fill="var(--surface-container-low)"/>
+            <path d="M62 108 Q82 90 78 72" stroke="var(--illus-gold)" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="118" cy="28" r="10" fill="var(--illus-gold)"/>
+          `;
+          break;
+        case `horseback`:
+          inner = `
+            <path d="M20 104 Q80 94 140 104 L140 116 L20 116 Z" fill="var(--illus-mint-soft)"/>
+            <rect x="52" y="58" width="52" height="24" rx="12" fill="var(--illus-brown-light)"/>
+            <path d="M96 62 L112 36 L124 44 L108 70 Z" fill="var(--illus-brown-light)"/>
+            <rect x="56" y="80" width="8" height="24" rx="4" fill="var(--illus-brown)"/>
+            <rect x="92" y="80" width="8" height="24" rx="4" fill="var(--illus-brown)"/>
+            <path d="M52 64 Q36 68 38 86" stroke="var(--illus-brown)" stroke-width="6" stroke-linecap="round"/>
+            <rect x="68" y="48" width="20" height="12" rx="4" fill="var(--primary)"/>
+          `;
+          break;
+        case `party`:
+          inner = `
+            <ellipse cx="48" cy="48" rx="16" ry="20" fill="var(--primary)"/>
+            <ellipse cx="82" cy="36" rx="16" ry="20" fill="var(--tertiary)"/>
+            <ellipse cx="114" cy="50" rx="16" ry="20" fill="var(--illus-gold)"/>
+            <path d="M48 68 Q44 88 54 106" stroke="var(--on-surface-variant)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M82 56 Q86 82 80 106" stroke="var(--on-surface-variant)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M114 70 Q118 88 108 106" stroke="var(--on-surface-variant)" stroke-width="2.5" stroke-linecap="round"/>
+          `;
+          break;
+        case `restaurant`:
+          inner = `
+            <circle cx="80" cy="68" r="36" fill="var(--surface-container-low)" stroke="var(--outline-variant)" stroke-width="4"/>
+            <circle cx="80" cy="68" r="24" fill="var(--illus-gold-soft)"/>
+            <path d="M62 66 Q80 52 98 66 Q88 80 72 80 Z" fill="var(--illus-gold)"/>
+            <circle cx="75" cy="66" r="5" fill="var(--illus-coral)"/>
+            <circle cx="86" cy="68" r="4" fill="var(--illus-coral)"/>
+            <rect x="26" y="42" width="6" height="52" rx="3" fill="var(--secondary)"/>
+            <rect x="128" y="42" width="6" height="52" rx="3" fill="var(--secondary)"/>
+          `;
+          break;
+        case `skating`:
+          inner = `
+            <ellipse cx="80" cy="96" rx="56" ry="18" fill="var(--illus-sky-soft)"/>
+            <path d="M54 36 L72 36 L78 72 L106 72 C114 72, 114 86, 102 86 L54 86 Z" fill="var(--primary)"/>
+            <line x1="48" y1="96" x2="112" y2="96" stroke="var(--on-surface)" stroke-width="4.5" stroke-linecap="round"/>
+            <line x1="64" y1="86" x2="64" y2="96" stroke="var(--on-surface)" stroke-width="4"/>
+            <line x1="94" y1="86" x2="94" y2="96" stroke="var(--on-surface)" stroke-width="4"/>
+            <circle cx="42" cy="34" r="4" fill="var(--tertiary)"/>
+            <circle cx="116" cy="40" r="4" fill="var(--tertiary)"/>
+          `;
+          break;
+        case `no_fishing`:
+          inner = `
+            <path d="M40 50 C40 30, 116 30, 116 50 Z" fill="var(--tertiary)"/>
+            <circle cx="46" cy="64" r="3.5" fill="var(--tertiary)"/>
+            <circle cx="64" cy="70" r="3.5" fill="var(--tertiary)"/>
+            <circle cx="96" cy="68" r="3.5" fill="var(--tertiary)"/>
+            <ellipse cx="78" cy="94" rx="22" ry="11" fill="var(--illus-gold)"/>
+            <polygon points="98,94 112,84 112,104" fill="var(--illus-gold)"/>
+            <circle cx="80" cy="64" r="24" fill="none" stroke="var(--illus-coral)" stroke-width="5"/>
+            <line x1="64" y1="48" x2="96" y2="80" stroke="var(--illus-coral)" stroke-width="5" stroke-linecap="round"/>
+          `;
+          break;
+        case `museum`:
+          inner = `
+            <polygon points="24,48 80,22 136,48" fill="var(--secondary)"/>
+            <rect x="34" y="48" width="12" height="52" fill="var(--surface-container-low)"/>
+            <rect x="74" y="48" width="12" height="52" fill="var(--surface-container-low)"/>
+            <rect x="114" y="48" width="12" height="52" fill="var(--surface-container-low)"/>
+            <rect x="24" y="100" width="112" height="12" rx="5" fill="var(--primary)"/>
+            <circle cx="80" cy="76" r="14" fill="var(--illus-mint)"/>
+            <path d="M74 74 Q80 68 88 74" stroke="var(--surface-container-low)" stroke-width="3" stroke-linecap="round"/>
+          `;
+          break;
+        case `gift_bike`:
+          inner = `
+            <circle cx="48" cy="88" r="18" stroke="var(--primary)" stroke-width="6"/>
+            <circle cx="112" cy="88" r="18" stroke="var(--primary)" stroke-width="6"/>
+            <path d="M48 88 L76 88 L94 60 L64 60 Z" stroke="var(--tertiary)" stroke-width="5" stroke-linejoin="round"/>
+            <line x1="94" y1="60" x2="112" y2="88" stroke="var(--tertiary)" stroke-width="5" stroke-linecap="round"/>
+            <rect x="64" y="24" width="32" height="24" rx="6" fill="var(--illus-gold)"/>
+            <line x1="80" y1="24" x2="80" y2="48" stroke="var(--primary)" stroke-width="4"/>
+          `;
+          break;
+        case `zoo_map`:
+          inner = `
+            <polygon points="24,34 62,24 98,36 136,24 136,104 98,114 62,102 24,112" fill="var(--illus-mint-soft)"/>
+            <path d="M42 90 Q66 56 84 72 T116 46" stroke="var(--primary)" stroke-width="5" stroke-dasharray="6 6" stroke-linecap="round"/>
+            <path d="M116 24 C126 24, 130 38, 116 50 C102 38, 106 24, 116 24 Z" fill="var(--illus-coral)"/>
+            <circle cx="116" cy="34" r="4" fill="var(--surface-container-low)"/>
+          `;
+          break;
+        case `detective`:
+          inner = `
+            <circle cx="72" cy="58" r="28" fill="var(--illus-sky-soft)" stroke="var(--secondary)" stroke-width="7"/>
+            <line x1="92" y1="78" x2="120" y2="106" stroke="var(--primary)" stroke-width="10" stroke-linecap="round"/>
+            <path d="M62 56 L70 64 L84 48" stroke="var(--positive-accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          `;
+          break;
+        case `lanterns_balloons`:
+          inner = `
+            <ellipse cx="52" cy="60" rx="20" ry="26" fill="var(--illus-coral)"/>
+            <line x1="34" y1="60" x2="70" y2="60" stroke="var(--illus-gold)" stroke-width="3"/>
+            <line x1="52" y1="24" x2="52" y2="34" stroke="var(--on-surface)" stroke-width="3"/>
+            <rect x="46" y="86" width="12" height="6" rx="3" fill="var(--illus-gold)"/>
+            <ellipse cx="106" cy="52" rx="18" ry="22" fill="var(--tertiary)"/>
+            <path d="M106 74 Q112 92 102 108" stroke="var(--on-surface-variant)" stroke-width="3" stroke-linecap="round"/>
+          `;
+          break;
+        case `astronaut`:
+          inner = `
+            <circle cx="80" cy="56" r="28" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="5"/>
+            <rect x="60" y="42" width="40" height="24" rx="12" fill="var(--tertiary)"/>
+            <path d="M52 84 H108 L114 112 H46 Z" fill="var(--primary)"/>
+            <circle cx="34" cy="32" r="5" fill="var(--illus-gold)"/>
+            <circle cx="126" cy="38" r="4" fill="var(--illus-gold)"/>
+          `;
+          break;
+        case `sing_juice`:
+          inner = `
+            <circle cx="48" cy="86" r="10" fill="var(--primary)"/>
+            <path d="M58 86 V40 L84 32 V76" stroke="var(--primary)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="74" cy="76" r="10" fill="var(--primary)"/>
+            <polygon points="98,48 128,48 122,104 104,104" fill="var(--illus-gold)"/>
+            <line x1="114" y1="26" x2="112" y2="56" stroke="var(--tertiary)" stroke-width="5" stroke-linecap="round"/>
+          `;
+          break;
+        case `rainy_home`:
+          inner = `
+            <polygon points="34,62 80,26 126,62" fill="var(--primary)"/>
+            <rect x="46" y="62" width="68" height="46" rx="8" fill="var(--surface-container-low)"/>
+            <rect x="70" y="78" width="20" height="30" rx="4" fill="var(--secondary)"/>
+            <circle cx="40" cy="30" r="4" fill="var(--tertiary)"/>
+            <circle cx="120" cy="28" r="4" fill="var(--tertiary)"/>
+          `;
+          break;
+        case `swimming`:
+          inner = `
+            <path d="M18 82 Q36 72 54 82 T90 82 T126 82 T144 82 L144 112 L18 112 Z" fill="var(--tertiary)"/>
+            <circle cx="72" cy="56" r="13" fill="var(--illus-gold-soft)"/>
+            <path d="M60 54 H84" stroke="var(--primary)" stroke-width="5" stroke-linecap="round"/>
+            <path d="M36 74 Q58 58 76 74" stroke="var(--primary)" stroke-width="6" stroke-linecap="round"/>
+          `;
+          break;
+        case `beach_friends`:
+          inner = `
+            <circle cx="118" cy="30" r="13" fill="var(--illus-gold)"/>
+            <path d="M18 88 Q80 76 142 88 L142 114 L18 114 Z" fill="var(--illus-gold-soft)"/>
+            <path d="M18 74 Q80 66 142 74 L142 88 Q80 76 18 88 Z" fill="var(--tertiary)"/>
+            <path d="M40 60 C46 38, 84 38, 90 60 Z" fill="var(--primary)"/>
+            <line x1="65" y1="60" x2="65" y2="96" stroke="var(--on-surface)" stroke-width="4" stroke-linecap="round"/>
+          `;
+          break;
+        case `cap_bag`:
+          inner = `
+            <path d="M32 68 C32 42, 82 42, 82 68 Z" fill="var(--primary)"/>
+            <path d="M74 68 H102" stroke="var(--secondary)" stroke-width="7" stroke-linecap="round"/>
+            <rect x="88" y="64" width="44" height="44" rx="10" fill="var(--illus-mint)"/>
+            <path d="M100 64 C100 50, 120 50, 120 64" stroke="var(--secondary)" stroke-width="4.5" stroke-linecap="round"/>
+          `;
+          break;
+        case `check_sentence`:
+          inner = `
+            <rect x="34" y="24" width="92" height="84" rx="16" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="4"/>
+            <line x1="52" y1="48" x2="108" y2="48" stroke="var(--outline-variant)" stroke-width="5" stroke-linecap="round"/>
+            <line x1="52" y1="66" x2="94" y2="66" stroke="var(--outline-variant)" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="104" cy="84" r="18" fill="var(--positive-accent)"/>
+            <path d="M96 84 L102 90 L113 78" stroke="var(--surface-container-low)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          `;
+          break;
+        case `no_hiking`:
+          inner = `
+            <polygon points="24,106 66,40 108,106" fill="var(--secondary)"/>
+            <polygon points="72,106 106,52 138,106" fill="var(--illus-mint)"/>
+            <circle cx="80" cy="66" r="24" fill="var(--illus-coral-soft)" stroke="var(--illus-coral)" stroke-width="5"/>
+            <line x1="64" y1="50" x2="96" y2="82" stroke="var(--illus-coral)" stroke-width="6" stroke-linecap="round"/>
+          `;
+          break;
+        case `diary`:
+          inner = `
+            <rect x="36" y="22" width="88" height="88" rx="14" fill="var(--primary)"/>
+            <rect x="48" y="32" width="64" height="68" rx="8" fill="var(--surface-container-low)"/>
+            <line x1="58" y1="48" x2="100" y2="48" stroke="var(--secondary)" stroke-width="4" stroke-linecap="round"/>
+            <line x1="58" y1="64" x2="96" y2="64" stroke="var(--outline)" stroke-width="4" stroke-linecap="round"/>
+            <line x1="58" y1="80" x2="88" y2="80" stroke="var(--outline)" stroke-width="4" stroke-linecap="round"/>
+          `;
+          break;
+        default:
+          inner = `<circle cx="80" cy="65" r="34" fill="var(--primary-container)"/>`;
+      }
+
+      return wrapStart + inner + wrapEnd;
+    }
+
+    function matchesFilter(q) {
+      const qState = getQState(q.id);
+      if (currentFilter === `unit1`) return q.unit === `unit1`;
+      if (currentFilter === `unit2`) return q.unit === `unit2`;
+      if (currentFilter === `new`) return q.isNew === true;
+      if (currentFilter === `pending`) return !qState.solved;
+      return true;
+    }
+
+    function renderMissionMap() {
+      const mapEl = document.getElementById(`mission-map`);
+      if (!mapEl) return;
+
+      let html = ``;
+      for (let i = 0; i < QUESTIONS.length; i++) {
+        const q = QUESTIONS[i];
+        const st = getQState(q.id);
+        const visible = matchesFilter(q);
+        let cls = `map-dot`;
+        if (st.solved) cls += ` is-solved`;
+        else if (st.wrongTried.length > 0) cls += ` is-tried`;
+        if (!visible) cls += ` is-hidden-by-filter`;
+
+        html += `<button type="button" class="${cls}" onclick="jumpToQuestion(${q.id})" aria-label="Ir para questão ${q.id}">${q.id}</button>`;
+      }
+      mapEl.innerHTML = html;
+    }
+
+    function renderQuestions() {
+      const container = document.getElementById(`questions-container`);
+      const emptyEl = document.getElementById(`empty-filter-state`);
+      if (!container) return;
+
+      const filtered = QUESTIONS.filter(matchesFilter);
+      if (filtered.length === 0) {
+        container.innerHTML = ``;
+        if (emptyEl) emptyEl.hidden = false;
+        return;
+      }
+      if (emptyEl) emptyEl.hidden = true;
+
+      let html = ``;
+      for (let i = 0; i < filtered.length; i++) {
+        const q = filtered[i];
+        const st = getQState(q.id);
+        const solvedClass = st.solved ? ` is-solved` : ``;
+
+        let statusBadge = `<span class="badge badge-neutral">Aguardando</span>`;
+        if (st.solved && st.firstTry) {
+          statusBadge = `<span class="badge badge-positive">De primeira! ★</span>`;
+        } else if (st.solved) {
+          statusBadge = `<span class="badge badge-positive">Acertou! ✓</span>`;
+        } else if (st.wrongTried.length > 0) {
+          statusBadge = `<span class="badge badge-warning">Tente outra!</span>`;
+        }
+
+        const originBadge = q.isNew
+          ? `<span class="badge badge-bubblegum">Inédita</span>`
+          : `<span class="badge badge-grape">Caderno Base</span>`;
+
+        let optionsHtml = ``;
+        for (let idx = 0; idx < q.options.length; idx++) {
+          const optText = q.options[idx];
+          const isWrongTried = st.wrongTried.indexOf(idx) !== -1;
+          const isCorrectChosen = st.solved && idx === q.correct;
+
+          let optClass = `opt-btn`;
+          let disabledAttr = ``;
+          if (st.solved) {
+            disabledAttr = ` disabled`;
+            if (isCorrectChosen) {
+              optClass += ` is-correct-chosen`;
+            } else if (isWrongTried) {
+              optClass += ` is-wrong-tried`;
+            } else {
+              optClass += ` is-muted-locked`;
+            }
+          } else if (isWrongTried) {
+            optClass += ` is-wrong-tried`;
+            disabledAttr = ` disabled`;
+          }
+
+          optionsHtml += `
+            <button type="button" class="${optClass}"${disabledAttr} onclick="selectOption(${q.id}, ${idx})">
+              <span class="opt-letter">${LETTERS[idx]}</span>
+              <span class="opt-text">${optText}</span>
+            </button>
+          `;
+        }
+
+        let feedbackHtml = `<div class="feedback-box" hidden></div>`;
+        if (st.solved) {
+          feedbackHtml = `
+            <div class="feedback-box feedback-success" role="status">
+              <span class="feedback-icon"><i data-lucide="check-circle-2" width="22" height="22" aria-hidden="true"></i></span>
+              <div class="feedback-body">
+                <span class="feedback-title">${st.firstTry ? `Mandou muito bem de primeira!` : `Isso aí! Você conseguiu!`}</span>
+                <span>${q.explanation}</span>
+              </div>
+            </div>
+          `;
+        } else if (st.wrongTried.length > 0) {
+          feedbackHtml = `
+            <div class="feedback-box feedback-retry" role="status">
+              <span class="feedback-icon"><i data-lucide="lightbulb" width="22" height="22" aria-hidden="true"></i></span>
+              <div class="feedback-body">
+                <span class="feedback-title">Ops, quase lá! Tente outra opção — você consegue!</span>
+                <span><strong>Dica:</strong> ${q.hint}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        html += `
+          <div class="q-wrapper" id="q-card-${q.id}">
+            <article class="q-card${solvedClass}">
+              <div class="q-inner">
+                <div class="illus-frame">
+                  ${renderIllustration(q.illus)}
+                  <span class="illus-caption">${q.illusCaption}</span>
+                </div>
+                <div class="q-content">
+                  <div class="q-meta">
+                    <div class="q-tags">
+                      <span class="q-num-badge">Questão ${q.id < 10 ? `0` + q.id : q.id}</span>
+                      <span class="badge badge-neutral">${q.unitLabel}</span>
+                      ${originBadge}
+                      <span class="badge badge-neutral">${q.level}</span>
+                    </div>
+                    ${statusBadge}
+                  </div>
+                  <h3 class="q-prompt">${q.prompt}</h3>
+                  <div class="q-sentence">${q.sentence}</div>
+                  <div class="options-grid">
+                    ${optionsHtml}
+                  </div>
+                  ${feedbackHtml}
+                </div>
+              </div>
+            </article>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+      if (window.lucide && typeof window.lucide.createIcons === `function`) {
+        window.lucide.createIcons();
+      }
+    }
+
+    function updateProgressBar() {
+      let solvedCount = 0;
+      let firstTryCount = 0;
+      for (let i = 0; i < QUESTIONS.length; i++) {
+        const st = getQState(QUESTIONS[i].id);
+        if (st.solved) {
+          solvedCount++;
+          if (st.firstTry) firstTryCount++;
+        }
+      }
+
+      const solvedText = document.getElementById(`progress-solved-text`);
+      const firstBadge = document.getElementById(`progress-first-try-badge`);
+      const track = document.getElementById(`progress-bar-track`);
+      const fill = document.getElementById(`progress-bar-fill`);
+
+      if (solvedText) solvedText.textContent = `${solvedCount} de ${QUESTIONS.length} respondidas`;
+      if (firstBadge) firstBadge.textContent = `${firstTryCount} de primeira`;
+      if (track) track.setAttribute(`aria-valuenow`, String(solvedCount));
+      if (fill) fill.style.width = `${Math.round((solvedCount / QUESTIONS.length) * 100)}%`;
+    }
+
+    function selectOption(qId, optionIdx) {
+      let question = null;
+      for (let i = 0; i < QUESTIONS.length; i++) {
+        if (QUESTIONS[i].id === qId) {
+          question = QUESTIONS[i];
+          break;
+        }
+      }
+      if (!question) return;
+
+      const st = getQState(qId);
+      if (st.solved) return;
+
+      if (optionIdx === question.correct) {
+        st.solved = true;
+        st.firstTry = st.wrongTried.length === 0;
+      } else {
+        if (st.wrongTried.indexOf(optionIdx) === -1) {
+          st.wrongTried.push(optionIdx);
+        }
+      }
+
+      disarmResetButton();
+      renderQuestions();
+      renderMissionMap();
+      updateProgressBar();
+      if (scoreRevealed) {
+        renderScoreboard();
+      }
+      persistState();
+    }
+
+    function setFilter(filterName) {
+      currentFilter = filterName;
+      const btns = document.querySelectorAll(`#filter-buttons .chip`);
+      for (let i = 0; i < btns.length; i++) {
+        const btn = btns[i];
+        if (btn.getAttribute(`data-filter`) === filterName) {
+          btn.classList.add(`is-active`);
+        } else {
+          btn.classList.remove(`is-active`);
+        }
+      }
+      renderQuestions();
+      renderMissionMap();
+    }
+
+    function jumpToQuestion(qId) {
+      let target = document.getElementById(`q-card-${qId}`);
+      if (!target) {
+        setFilter(`all`);
+        target = document.getElementById(`q-card-${qId}`);
+      }
+      if (target) {
+        target.scrollIntoView({ behavior: `smooth`, block: `center` });
+      }
+    }
+
+    function jumpToScoreboard() {
+      const el = document.getElementById(`scoreboard-section`);
+      if (el) el.scrollIntoView({ behavior: `smooth`, block: `start` });
+    }
+
+    function toggleStudyHelper() {
+      const panel = document.getElementById(`study-helper-panel`);
+      const btn = document.getElementById(`btn-toggle-helper`);
+      if (!panel || !btn) return;
+      const isHidden = panel.hidden;
+      panel.hidden = !isHidden;
+      btn.setAttribute(`aria-expanded`, isHidden ? `true` : `false`);
+      const span = btn.querySelector(`span`);
+      if (span) {
+        span.textContent = isHidden ? `Fechar Dica Mágica do Simple Past` : `Abrir Dica Mágica do Simple Past`;
+      }
+    }
+
+    function renderScoreboard() {
+      const panel = document.getElementById(`final-score-panel`);
+      if (!panel) return;
+      panel.hidden = false;
+
+      let totalSolved = 0;
+      let firstTry = 0;
+      let u1Solved = 0;
+      let u2Solved = 0;
+      const pendingIds = [];
+
+      for (let i = 0; i < QUESTIONS.length; i++) {
+        const q = QUESTIONS[i];
+        const st = getQState(q.id);
+        if (st.solved) {
+          totalSolved++;
+          if (st.firstTry) firstTry++;
+          if (q.unit === `unit1`) u1Solved++;
+          else u2Solved++;
+        } else {
+          pendingIds.push(q.id);
+        }
+      }
+
+      const pct = Math.round((totalSolved / QUESTIONS.length) * 100);
+      const bigEl = document.getElementById(`score-big-number`);
+      const rankBadge = document.getElementById(`score-rank-badge`);
+      const msgTitle = document.getElementById(`score-msg-title`);
+      const msgSub = document.getElementById(`score-msg-sub`);
+      const mTotal = document.getElementById(`metric-total`);
+      const mFirst = document.getElementById(`metric-first`);
+      const mU1 = document.getElementById(`metric-u1`);
+      const mU2 = document.getElementById(`metric-u2`);
+      const pendingBox = document.getElementById(`pending-jump-box`);
+      const pendingPills = document.getElementById(`pending-pills`);
+
+      if (bigEl) bigEl.textContent = `${totalSolved} / 30`;
+      if (mTotal) mTotal.textContent = `${totalSolved} / 30 (${pct}%)`;
+      if (mFirst) mFirst.textContent = `${firstTry} / 30`;
+      if (mU1) mU1.textContent = `${u1Solved} / 13`;
+      if (mU2) mU2.textContent = `${u2Solved} / 17`;
+
+      let rank = `Explorador Iniciante`;
+      let title = `Continue a aventura!`;
+      let sub = `Você já começou sua missão! Responda às questões restantes para completar os 30 desafios.`;
+
+      if (totalSolved === 30) {
+        rank = `Missão 100% Completa 🏆`;
+        title = `Super Estrela Bilíngue!`;
+        sub = `Parabéns! Você completou todas as 30 questões de Let’s celebrate! e My weekend (${firstTry} delas de primeira tentativa)!`;
+      } else if (totalSolved >= 20) {
+        rank = `Quase no Topo 🌟`;
+        title = `Mandou muito bem!`;
+        sub = `Faltam apenas ${30 - totalSolved} questões para você fechar a missão inteira!`;
+      } else if (totalSolved >= 10) {
+        rank = `Bom Progresso 🚀`;
+        title = `Você está no caminho certo!`;
+        sub = `Já acertou ${totalSolved} questões. Que tal completar as outras ${30 - totalSolved}?`;
+      } else if (totalSolved === 0) {
+        rank = `Pronto para Começar ✨`;
+        title = `Nenhuma questão respondida ainda!`;
+        sub = `Suba um pouquinho a tela e clique na primeira alternativa que achar correta.`;
+      }
+
+      if (rankBadge) rankBadge.textContent = rank;
+      if (msgTitle) msgTitle.textContent = title;
+      if (msgSub) msgSub.textContent = sub;
+
+      if (pendingBox && pendingPills) {
+        if (pendingIds.length > 0 && pendingIds.length < 30) {
+          pendingBox.hidden = false;
+          let pillsHtml = ``;
+          for (let i = 0; i < pendingIds.length; i++) {
+            const pid = pendingIds[i];
+            pillsHtml += `<button type="button" class="chip" onclick="jumpToQuestion(${pid})">Ir para Questão ${pid}</button>`;
+          }
+          pendingPills.innerHTML = pillsHtml;
+        } else {
+          pendingBox.hidden = true;
+          pendingPills.innerHTML = ``;
+        }
+      }
+    }
+
+    function calculateAndShowScore() {
+      scoreRevealed = true;
+      renderScoreboard();
+      persistState();
+      const panel = document.getElementById(`final-score-panel`);
+      if (panel) panel.scrollIntoView({ behavior: `smooth`, block: `nearest` });
+    }
+
+    function disarmResetButton() {
+      const btn = document.getElementById(`btn-reset-quiz`);
+      const cancelBtn = document.getElementById(`btn-cancel-reset`);
+      const msg = document.getElementById(`reset-status-msg`);
+      if (btn) {
+        btn.dataset.armed = `false`;
+        btn.className = `btn btn-outline-grape`;
+        const span = btn.querySelector(`span`);
+        if (span) span.textContent = `Reiniciar Todas as Respostas`;
+      }
+      if (cancelBtn) cancelBtn.hidden = true;
+      if (msg) msg.hidden = true;
+    }
+
+    function cancelResetArmed() {
+      disarmResetButton();
+    }
+
+    function handleResetClick(btn) {
+      const cancelBtn = document.getElementById(`btn-cancel-reset`);
+      const msg = document.getElementById(`reset-status-msg`);
+
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.className = `btn btn-danger-armed`;
+        const span = btn.querySelector(`span`);
+        if (span) span.textContent = `Clique de novo para confirmar`;
+        if (cancelBtn) cancelBtn.hidden = false;
+        if (msg) {
+          msg.hidden = false;
+          msg.textContent = `Tem certeza? Isso apagará todas as suas respostas para começar do zero.`;
+        }
+        return;
+      }
+
+      // Perform reset
+      quizState.answers = {};
+      scoreRevealed = false;
+      const panel = document.getElementById(`final-score-panel`);
+      if (panel) panel.hidden = true;
+
+      disarmResetButton();
+      if (msg) {
+        msg.hidden = false;
+        msg.textContent = `Tudo limpo! Todas as 30 questões foram reiniciadas.`;
+      }
+
+      setFilter(`all`);
+      updateProgressBar();
+      persistState();
+      window.scrollTo({ top: 0, behavior: `smooth` });
+    }
+
+    async function initQuizApp() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            if (saved.answers && typeof saved.answers === `object`) {
+              quizState.answers = saved.answers;
+            }
+            if (typeof saved.scoreRevealed === `boolean`) {
+              scoreRevealed = saved.scoreRevealed;
+            }
+          }
+        }
+      } catch (err) {
+        // Ignore and use fresh state
+      }
+
+      renderQuestions();
+      renderMissionMap();
+      updateProgressBar();
+      if (scoreRevealed) {
+        renderScoreboard();
+      }
+      if (window.lucide && typeof window.lucide.createIcons === `function`) {
+        window.lucide.createIcons();
+      }
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, initQuizApp);
+  </script>
+</body>
+</html>
