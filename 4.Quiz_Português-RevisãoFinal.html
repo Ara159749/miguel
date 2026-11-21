@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="sticker">
+  <title>Quiz de Língua Portuguesa — 4º Ano (Módulo 4)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Sticker) */
+      --background: #fef7ff;
+      --surface-container-low: #ffffff;
+      --surface-container: #f8eef8;
+      --surface-container-high: #f2e8f2;
+
+      /* Ink */
+      --on-surface: #2e1a28;
+      --on-surface-variant: #604868;
+
+      /* Rules */
+      --outline: #907898;
+      --outline-variant: #dcc8e0;
+
+      /* Accents */
+      --primary: #c2207f;
+      --on-primary: #ffffff;
+      --primary-container: #f080c0;
+      --on-primary-container: #2e1a28;
+      --secondary: #7c52aa;
+      --on-secondary: #ffffff;
+      --tertiary: #0096cc;
+      --error: #c53030;
+      --on-error: #ffffff;
+
+      /* Data series */
+      --data-1: #c2207f;
+      --data-2: #7c52aa;
+      --data-3: #0096cc;
+      --data-4: #d96a00;
+      --data-context: #c8b8d0;
+
+      /* Semantic UI states */
+      --positive: #15803d;
+      --positive-bg: #ecfdf3;
+      --positive-border: #22c55e;
+      --positive-ink: #14532d;
+      --warning: #b45309;
+      --warning-bg: #fffbeb;
+      --warning-border: #f59e0b;
+      --warning-ink: #78350f;
+      --focus: var(--primary);
+
+      /* SVG illustration palette tokens (no inline hex in body) */
+      --svg-paper: #fdf8ee;
+      --svg-woodcut-ink: #2a1c14;
+      --svg-woodcut-ochre: #e9c46a;
+      --svg-woodcut-rust: #c85a32;
+      --svg-sky-light: #e6f6fc;
+      --svg-mint-light: #e8faf0;
+      --svg-skin-light: #f6c9a8;
+      --svg-skin-warm: #d4946a;
+      --svg-gold: #eab308;
+      --svg-gold-light: #fef08a;
+      --svg-silver: #94a3b8;
+      --svg-bronze: #d97706;
+      --svg-plum-soft: #eadce9;
+
+      /* Fonts */
+      --font-headline: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-label: 'DM Sans', sans-serif;
+
+      /* Type scale (Focused Tool) */
+      --display-size: clamp(1.85rem, 1.4rem + 1.5vw, 2.5rem);
+      --headline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+      --body-size: clamp(1rem, 0.95rem + 0.15vw, 1.0625rem);
+      --label-size: 0.78rem;
+
+      /* Shape */
+      --rounded: 1.25rem;
+      --rounded-lg: 2rem;
+      --rounded-full: 9999px;
+
+      /* Style effects */
+      --shadow-pink: 0 6px 20px rgb(194 32 127 / 0.14);
+      --shadow-pink-deep: 0 10px 28px rgb(194 32 127 / 0.28);
+      --shadow-grape: 0 6px 20px rgb(124 82 170 / 0.15);
+      --shadow-sky: 0 6px 20px rgb(0 150 204 / 0.16);
+      --shadow-positive: 0 6px 20px rgb(21 128 61 / 0.16);
+      --pop-scale: scale(1.02);
+      --lift: translateY(-3px);
+
+      /* Spacing scale (4pt base) */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      max-width: 960px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Hero / Header Banner */
+    .hero-panel {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-xl);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .kicker-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+    }
+
+    .tag-grape {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--surface-container);
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+    }
+
+    .display {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: var(--display-size);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--on-surface);
+    }
+
+    .display em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      margin: 0;
+      color: var(--on-surface-variant);
+      max-width: 65ch;
+      font-size: var(--subhead-size);
+      line-height: 1.55;
+    }
+
+    .hero-rules {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      padding-top: var(--space-xs);
+    }
+
+    .rule-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+    }
+
+    /* Progress & Navigation Card */
+    .progress-panel {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-sky);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .progress-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .progress-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .section-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--on-surface-variant);
+    }
+
+    .progress-numbers {
+      font-weight: 800;
+      font-size: var(--headline-size);
+      color: var(--on-surface);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+
+    .progress-numbers span {
+      color: var(--primary);
+    }
+
+    .score-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 16px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded-full);
+      overflow: hidden;
+      padding: 2px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--tertiary);
+      border-radius: var(--rounded-full);
+      transition: width var(--dur-long) var(--ease-bounce);
+    }
+
+    .nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .nav-pill {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--rounded-full);
+      border: 2px solid var(--outline-variant);
+      background: var(--surface-container-low);
+      color: var(--on-surface-variant);
+      font-weight: 700;
+      font-size: 0.82rem;
+      font-variant-numeric: tabular-nums;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: transform var(--dur-micro) var(--ease-bounce), background-color var(--dur-short) var(--ease-out);
+    }
+
+    .nav-pill:hover {
+      transform: var(--pop-scale);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .nav-pill.is-solved {
+      background: var(--positive);
+      border-color: var(--positive);
+      color: var(--on-primary);
+    }
+
+    .nav-pill.is-retried {
+      background: var(--warning-bg);
+      border-color: var(--warning-border);
+      color: var(--warning-ink);
+    }
+
+    /* Block Section Headings */
+    .block-divider {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding-top: var(--space-md);
+    }
+
+    .block-heading {
+      margin: 0;
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--headline-size);
+      letter-spacing: -0.02em;
+      color: var(--on-surface);
+    }
+
+    .block-desc {
+      margin: 0;
+      color: var(--on-surface-variant);
+      font-size: 0.95rem;
+    }
+
+    /* Question Cards */
+    .questions-list {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .question-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+      scroll-margin-top: var(--space-lg);
+      transition: box-shadow var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out);
+    }
+
+    .question-card:nth-child(3n+2) { box-shadow: var(--shadow-sky); }
+    .question-card:nth-child(3n+3) { box-shadow: var(--shadow-grape); }
+
+    .question-card.is-solved {
+      box-shadow: var(--shadow-positive);
+    }
+
+    .q-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .q-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .q-num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: var(--on-primary);
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .q-topic-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--surface-container);
+      color: var(--secondary);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+    }
+
+    .q-bncc-tag {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--on-surface-variant);
+      letter-spacing: 0.04em;
+    }
+
+    .q-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+    }
+
+    .q-status-pill.solved {
+      background: var(--positive-bg);
+      color: var(--positive-ink);
+    }
+
+    .q-status-pill.retry {
+      background: var(--warning-bg);
+      color: var(--warning-ink);
+    }
+
+    /* Reading Box / Excerpt */
+    .q-excerpt {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      color: var(--on-surface);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .q-excerpt.verse {
+      font-style: italic;
+      line-height: 1.75;
+    }
+
+    .q-excerpt-source {
+      display: block;
+      margin-top: var(--space-xs);
+      font-size: 0.85rem;
+      font-style: normal;
+      color: var(--on-surface-variant);
+      font-weight: 600;
+    }
+
+    /* Visual Illustration Container */
+    .q-visual {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-xs);
+      justify-items: center;
+    }
+
+    .q-visual svg {
+      width: 100%;
+      max-width: 640px;
+      height: auto;
+      display: block;
+      border-radius: var(--rounded);
+    }
+
+    .q-visual-caption {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--on-surface-variant);
+      text-align: center;
+    }
+
+    .q-prompt {
+      margin: 0;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      line-height: 1.5;
+      max-width: 68ch;
+    }
+
+    /* Multiple Choice Options */
+    .options-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-sm);
+    }
+
+    .option-btn {
+      width: 100%;
+      min-height: 48px;
+      text-align: left;
+      background: var(--surface-container);
+      color: var(--on-surface);
+      border: none;
+      box-shadow: inset 0 0 0 2px var(--outline-variant);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 500;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-micro) var(--ease-out),
+                  box-shadow var(--dur-micro) var(--ease-out);
+    }
+
+    .option-btn:hover:not(:disabled) {
+      transform: var(--pop-scale);
+      background: var(--surface-container-high);
+      box-shadow: inset 0 0 0 2px var(--primary);
+    }
+
+    .option-btn:active:not(:disabled) {
+      transform: scale(0.985);
+    }
+
+    .option-letter {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container-low);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .option-text {
+      flex: 1;
+      padding-top: 2px;
+    }
+
+    .option-btn.is-wrong {
+      background: var(--warning-bg);
+      color: var(--warning-ink);
+      box-shadow: inset 0 0 0 2px var(--warning-border);
+    }
+
+    .option-btn.is-wrong .option-letter {
+      background: var(--warning-border);
+      color: var(--on-primary);
+    }
+
+    .option-btn.is-correct {
+      background: var(--positive-bg);
+      color: var(--positive-ink);
+      font-weight: 700;
+      box-shadow: inset 0 0 0 2.5px var(--positive-border);
+      animation: popCelebrate var(--dur-long) var(--ease-bounce);
+    }
+
+    .option-btn.is-correct .option-letter {
+      background: var(--positive);
+      color: var(--on-primary);
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    /* Feedback Boxes */
+    .feedback-warning {
+      background: var(--warning-bg);
+      color: var(--warning-ink);
+      border-radius: var(--rounded);
+      box-shadow: inset 0 0 0 2px var(--warning-border);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: 600;
+      font-size: 0.95rem;
+      animation: fadeSlideIn var(--dur-short) var(--ease-out);
+    }
+
+    .feedback-explanation {
+      background: var(--positive-bg);
+      color: var(--positive-ink);
+      border-radius: var(--rounded);
+      box-shadow: inset 0 0 0 2px var(--positive-border);
+      padding: var(--space-md) var(--space-lg);
+      display: grid;
+      gap: var(--space-xs);
+      animation: fadeSlideIn var(--dur-long) var(--ease-bounce);
+    }
+
+    .explanation-head {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-weight: 800;
+      font-size: 1.02rem;
+      color: var(--positive-ink);
+    }
+
+    .explanation-body {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--on-surface);
+    }
+
+    .sparkle-burst {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-left: auto;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--positive);
+      background: var(--surface-container-low);
+      padding: 2px 10px;
+      border-radius: var(--rounded-full);
+    }
+
+    /* Footer Actions & Final Score Panel */
+    .actions-panel {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-grape);
+      padding: var(--space-xl);
+      display: grid;
+      gap: var(--space-lg);
+      justify-items: start;
+    }
+
+    .actions-head {
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .actions-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      min-height: 48px;
+      padding: var(--space-sm) var(--space-lg);
+      border-radius: var(--rounded-full);
+      border: none;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: transform var(--dur-short) var(--ease-bounce), box-shadow var(--dur-short) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .btn:hover { transform: var(--pop-scale); }
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--shadow-pink);
+    }
+
+    .btn-primary:hover {
+      box-shadow: var(--shadow-pink-deep);
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      box-shadow: var(--shadow-grape);
+    }
+
+    .btn-outline {
+      background: var(--surface-container);
+      color: var(--on-surface);
+      box-shadow: inset 0 0 0 2px var(--outline);
+    }
+
+    /* Final Result Card */
+    .result-card {
+      width: 100%;
+      background: var(--surface-container);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      display: grid;
+      gap: var(--space-lg);
+      animation: fadeSlideIn var(--dur-long) var(--ease-bounce);
+    }
+
+    .result-hero {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .medal-wrap {
+      width: 112px;
+      height: 112px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-full);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-sm);
+    }
+
+    .result-stats {
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .result-score-big {
+      margin: 0;
+      font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--primary);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+    }
+
+    .result-title {
+      margin: 0;
+      font-size: var(--headline-size);
+      font-weight: 800;
+      color: var(--on-surface);
+    }
+
+    .result-message {
+      margin: 0;
+      color: var(--on-surface-variant);
+      font-size: 1.02rem;
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
+    .result-breakdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: var(--space-sm);
+    }
+
+    .breakdown-tile {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .breakdown-name {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--on-surface-variant);
+    }
+
+    .breakdown-val {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--on-surface);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sources-note {
+      font-size: 0.85rem;
+      color: var(--on-surface-variant);
+      padding: var(--space-sm) var(--space-md);
+      text-align: left;
+    }
+
+    @keyframes popCelebrate {
+      0% { transform: scale(0.96); }
+      55% { transform: scale(1.025); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-sm);
+        gap: var(--space-md);
+      }
+      .hero-panel, .actions-panel, .result-card {
+        padding: var(--space-lg);
+      }
+      .question-card {
+        padding: var(--space-md);
+      }
+      .result-hero {
+        grid-template-columns: 1fr;
+        justify-items: start;
+      }
+      .nav-pill {
+        width: 32px;
+        height: 32px;
+        font-size: 0.78rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-grid">
+    <!-- Opening Hero -->
+    <header class="hero-panel">
+      <div class="kicker-row">
+        <span class="badge">4º Ano • Língua Portuguesa</span>
+        <span class="tag-grape">Módulo 4 — Capítulos 11 e 12 • BNCC</span>
+      </div>
+      <h1 class="display">Desafio da <em>Língua</em> Portuguesa: 30 Questões</h1>
+      <p class="hero-sub">
+        Explore descobertas científicas sobre o cérebro e as emoções, viaje pela poesia do cordel e pelas histórias de heroínas brasileiras, e domine os segredos dos pronomes, dos verbos e das palavras!
+      </p>
+      <div class="hero-rules">
+        <span class="rule-pill">🎯 30 desafios interativos</span>
+        <span class="rule-pill">🔄 Errou? Pode tentar de novo na hora!</span>
+        <span class="rule-pill">💡 Explicação carinhosa em cada acerto</span>
+      </div>
+    </header>
+
+    <!-- Dynamic Progress Bar & Map -->
+    <section class="progress-panel" aria-label="Progresso do Quiz">
+      <div class="progress-top">
+        <div class="progress-title-group">
+          <span class="section-label">Seu progresso na jornada</span>
+          <div class="progress-numbers">
+            <span id="progress-solved">0</span> de 30 questões respondidas
+          </div>
+        </div>
+        <div class="score-chip" id="live-score-chip">
+          ⭐ <span id="first-try-count">0</span> acertos de 1ª tentativa
+        </div>
+      </div>
+
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" id="progress-bar-track">
+        <div class="progress-fill" id="progress-bar-fill"></div>
+      </div>
+
+      <div class="nav-pills" id="question-nav-pills" aria-label="Atalho para as questões"></div>
+    </section>
+
+    <!-- Questions Container -->
+    <section id="quiz-container" aria-label="Lista de 30 questões"></section>
+
+    <!-- Final Actions & Scoreboard -->
+    <section class="actions-panel" id="final-section" aria-label="Pontuação Final e Controles">
+      <div class="actions-head">
+        <span class="section-label">Chegou até aqui?</span>
+        <h2 class="block-heading">Hora de conferir sua conquista!</h2>
+        <p class="block-desc">
+          Clique para ver sua pontuação em relação às 30 questões, descobrir sua medalha e revisar seu desempenho por tema.
+        </p>
+      </div>
+
+      <div class="actions-buttons">
+        <button type="button" class="btn btn-primary" id="btn-show-score" onclick="showFinalScore()">
+          🏆 Ver Pontuação Final
+        </button>
+        <button type="button" class="btn btn-outline" id="btn-reset-quiz" onclick="handleResetClick(this)">
+          🔄 Reiniciar Quiz
+        </button>
+      </div>
+
+      <div id="final-result-slot" style="width: 100%;"></div>
+    </section>
+
+    <footer class="sources-note">
+      Conteúdo pedagógico alinhado às habilidades da BNCC para o 4º ano do Ensino Fundamental (EF04LP06, EF04LP08, EF04LP19, EF04LP20, EF35LP08, EF35LP10, EF35LP11, EF35LP14, EF35LP23, EF35LP27, EF35LP28) e aos Capítulos 11 e 12 do Módulo 4 de Língua Portuguesa.
+    </footer>
+  </main>
+
+  <api-shim></api-shim>
+  <script>
+    // Inline educational SVG illustrations (no external URLs, semantic CSS token colors)
+    function getIllustrationHTML(key) {
+      if (key === 'brain_emotions') {
+        return `<div class="q-visual">
+          <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="600" height="250" rx="18" fill="var(--svg-sky-light)"/>
+            <!-- Title banner -->
+            <rect x="24" y="16" width="552" height="34" rx="17" fill="var(--secondary)"/>
+            <text x="300" y="38" text-anchor="middle" fill="var(--on-primary)" font-family="DM Sans, sans-serif" font-size="14" font-weight="800">INFOGRÁFICO: COMO O CÉREBRO COMANDA AS EMOÇÕES</text>
+            <!-- Left card: Riso / Endorfinas -->
+            <rect x="24" y="64" width="166" height="164" rx="16" fill="var(--surface-container-low)"/>
+            <circle cx="107" cy="112" r="30" fill="var(--svg-gold-light)"/>
+            <circle cx="96" cy="106" r="4" fill="var(--on-surface)"/>
+            <circle cx="118" cy="106" r="4" fill="var(--on-surface)"/>
+            <path d="M 94 118 Q 107 132 120 118" fill="none" stroke="var(--primary)" stroke-width="3.5" stroke-linecap="round"/>
+            <text x="107" y="162" text-anchor="middle" fill="var(--primary)" font-family="DM Sans, sans-serif" font-size="14" font-weight="800">ALEGRIA E RISO</text>
+            <text x="107" y="182" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="11.5" font-weight="600">Libera endorfinas</text>
+            <text x="107" y="198" text-anchor="middle" fill="var(--on-surface-variant)" font-family="DM Sans, sans-serif" font-size="11">Traz bem-estar e</text>
+            <text x="107" y="213" text-anchor="middle" fill="var(--on-surface-variant)" font-family="DM Sans, sans-serif" font-size="11">relaxamento</text>
+            <!-- Center: Cérebro + Setas -->
+            <circle cx="300" cy="136" r="54" fill="var(--primary-container)"/>
+            <path d="M 272 138 C 266 116, 286 98, 300 105 C 314 98, 334 116, 328 138 C 334 156, 316 168, 300 162 C 284 168, 266 156, 272 138 Z" fill="var(--primary)"/>
+            <path d="M 300 106 L 300 160 M 278 132 Q 290 124 296 135 M 322 132 Q 310 124 304 135" fill="none" stroke="var(--on-primary)" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="300" y="208" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="13" font-weight="800">CÉREBRO</text>
+            <text x="300" y="223" text-anchor="middle" fill="var(--on-surface-variant)" font-family="DM Sans, sans-serif" font-size="11">Envia sinais ao corpo</text>
+            <!-- Arrows -->
+            <path d="M 238 136 L 200 136" stroke="var(--secondary)" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M 208 129 L 198 136 L 208 143" fill="none" stroke="var(--secondary)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 362 136 L 400 136" stroke="var(--secondary)" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M 392 129 L 402 136 L 392 143" fill="none" stroke="var(--secondary)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Right card: Medo / Proteção -->
+            <rect x="410" y="64" width="166" height="164" rx="16" fill="var(--surface-container-low)"/>
+            <circle cx="493" cy="112" r="30" fill="var(--svg-mint-light)"/>
+            <path d="M 493 96 C 483 86, 469 96, 476 111 C 482 122, 493 130, 493 130 C 493 130, 504 122, 510 111 C 517 96, 503 86, 493 96 Z" fill="var(--error)"/>
+            <text x="493" y="162" text-anchor="middle" fill="var(--secondary)" font-family="DM Sans, sans-serif" font-size="14" font-weight="800">MEDO E ALERTA</text>
+            <text x="493" y="182" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="11.5" font-weight="600">Coração acelera</text>
+            <text x="493" y="198" text-anchor="middle" fill="var(--on-surface-variant)" font-family="DM Sans, sans-serif" font-size="11">Envia oxigênio para</text>
+            <text x="493" y="213" text-anchor="middle" fill="var(--on-surface-variant)" font-family="DM Sans, sans-serif" font-size="11">os músculos agirem</text>
+          </svg>
+          <span class="q-visual-caption">Esquema ilustrativo de divulgação científica infantil: texto curto + desenho explicativo.</span>
+        </div>`;
+      }
+
+      if (key === 'cordel_quiteria') {
+        return `<div class="q-visual">
+          <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="600" height="250" rx="18" fill="var(--svg-paper)"/>
+            <!-- String / Barbante -->
+            <path d="M 20 28 Q 300 44 580 28" fill="none" stroke="var(--svg-woodcut-ink)" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <!-- Folheto Frame -->
+            <rect x="170" y="26" width="260" height="206" rx="6" fill="var(--svg-woodcut-ochre)" stroke="var(--svg-woodcut-ink)" stroke-width="3"/>
+            <rect x="180" y="36" width="240" height="186" rx="3" fill="var(--svg-paper)" stroke="var(--svg-woodcut-ink)" stroke-width="2"/>
+            <!-- Clothespin / Pregador -->
+            <rect x="292" y="14" width="16" height="24" rx="3" fill="var(--svg-woodcut-rust)" stroke="var(--svg-woodcut-ink)" stroke-width="2"/>
+            <!-- Woodcut Title -->
+            <text x="300" y="58" text-anchor="middle" fill="var(--svg-woodcut-ink)" font-family="DM Sans, sans-serif" font-size="13" font-weight="900" letter-spacing="0.5">CORDEL: MARIA QUITÉRIA</text>
+            <line x1="198" y1="66" x2="402" y2="66" stroke="var(--svg-woodcut-ink)" stroke-width="2"/>
+            <!-- Woodcut illustration inside -->
+            <rect x="205" y="74" width="190" height="114" fill="var(--svg-woodcut-ink)" rx="4"/>
+            <!-- Sun rays woodcut -->
+            <circle cx="356" cy="98" r="14" fill="var(--svg-woodcut-ochre)"/>
+            <path d="M 334 98 L 324 98 M 356 76 L 356 68 M 340 82 L 333 75" stroke="var(--svg-woodcut-ochre)" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Silhouette Heroína Maria Quitéria -->
+            <path d="M 275 188 L 284 142 L 316 142 L 325 188 Z" fill="var(--svg-paper)"/>
+            <circle cx="300" cy="120" r="14" fill="var(--svg-paper)"/>
+            <!-- Soldier Shako Hat -->
+            <path d="M 285 110 L 288 88 L 312 88 L 315 110 Z" fill="var(--svg-woodcut-ochre)"/>
+            <path d="M 300 88 L 300 78" stroke="var(--svg-woodcut-rust)" stroke-width="4" stroke-linecap="round"/>
+            <!-- Ground carve lines -->
+            <path d="M 215 178 Q 245 172 268 180 M 332 178 Q 360 172 385 180" stroke="var(--svg-woodcut-ochre)" stroke-width="2" fill="none"/>
+            <text x="300" y="208" text-anchor="middle" fill="var(--svg-woodcut-ink)" font-family="DM Sans, sans-serif" font-size="11" font-weight="700">XILOGRAVURA POPULAR NORDESTINA</text>
+          </svg>
+          <span class="q-visual-caption">Capa de folheto de cordel pendurado no barbante com arte em estilo xilogravura.</span>
+        </div>`;
+      }
+
+      if (key === 'demonstratives_scene') {
+        return `<div class="q-visual">
+          <svg viewBox="0 0 600 245" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="600" height="245" rx="18" fill="var(--svg-sky-light)"/>
+            <!-- Floor -->
+            <rect x="0" y="185" width="600" height="60" fill="var(--svg-plum-soft)"/>
+            <!-- Ana (Left) holding redação -->
+            <circle cx="95" cy="96" r="22" fill="var(--svg-skin-warm)"/>
+            <path d="M 73 92 Q 95 66 117 92" fill="var(--svg-woodcut-ink)"/>
+            <rect x="73" y="120" width="44" height="66" rx="14" fill="var(--primary)"/>
+            <!-- Redação in Ana's hands -->
+            <rect x="116" y="124" width="32" height="42" rx="4" fill="var(--surface-container-low)" stroke="var(--on-surface)" stroke-width="2"/>
+            <line x1="122" y1="134" x2="142" y2="134" stroke="var(--outline)" stroke-width="2"/>
+            <line x1="122" y1="142" x2="142" y2="142" stroke="var(--outline)" stroke-width="2"/>
+            <line x1="122" y1="150" x2="136" y2="150" stroke="var(--outline)" stroke-width="2"/>
+            <rect x="42" y="28" width="136" height="32" rx="16" fill="var(--surface-container-low)"/>
+            <text x="110" y="48" text-anchor="middle" fill="var(--primary)" font-family="DM Sans, sans-serif" font-size="12" font-weight="800">Ana (com a folha)</text>
+
+            <!-- Pedro (Center) with estojo on his desk -->
+            <circle cx="295" cy="98" r="22" fill="var(--svg-skin-light)"/>
+            <path d="M 274 90 Q 295 68 316 90" fill="var(--svg-woodcut-ink)"/>
+            <rect x="273" y="122" width="44" height="64" rx="14" fill="var(--secondary)"/>
+            <!-- Desk -->
+            <rect x="245" y="156" width="110" height="12" rx="4" fill="var(--svg-woodcut-rust)"/>
+            <rect x="255" y="168" width="8" height="22" fill="var(--svg-woodcut-ink)"/>
+            <rect x="337" y="168" width="8" height="22" fill="var(--svg-woodcut-ink)"/>
+            <!-- Estojo on Pedro's desk -->
+            <rect x="260" y="138" width="38" height="18" rx="6" fill="var(--tertiary)" stroke="var(--on-surface)" stroke-width="2"/>
+            <rect x="228" y="28" width="144" height="32" rx="16" fill="var(--surface-container-low)"/>
+            <text x="300" y="48" text-anchor="middle" fill="var(--secondary)" font-family="DM Sans, sans-serif" font-size="12" font-weight="800">Pedro (com estojo)</text>
+
+            <!-- Armário & Troféu (Far Right) -->
+            <rect x="468" y="76" width="96" height="114" rx="8" fill="var(--surface-container-low)" stroke="var(--outline)" stroke-width="2.5"/>
+            <line x1="516" y1="76" x2="516" y2="190" stroke="var(--outline)" stroke-width="2"/>
+            <!-- Troféu inside top -->
+            <path d="M 502 96 L 530 96 L 525 116 L 507 116 Z" fill="var(--svg-gold)"/>
+            <rect x="513" y="116" width="6" height="10" fill="var(--svg-gold)"/>
+            <rect x="506" y="126" width="20" height="5" rx="2" fill="var(--svg-woodcut-ink)"/>
+            <rect x="436" y="28" width="148" height="32" rx="16" fill="var(--surface-container-low)"/>
+            <text x="510" y="48" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="12" font-weight="800">Armário lá longe</text>
+
+            <!-- Distance labels at bottom -->
+            <text x="110" y="220" text-anchor="middle" fill="var(--primary)" font-family="DM Sans, sans-serif" font-size="12" font-weight="800">1. Perto de Ana</text>
+            <text x="300" y="220" text-anchor="middle" fill="var(--secondary)" font-family="DM Sans, sans-serif" font-size="12" font-weight="800">2. Perto de Pedro</text>
+            <text x="510" y="220" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="12" font-weight="800">3. Longe dos dois</text>
+          </svg>
+          <span class="q-visual-caption">Cena escolar: observe onde está cada objeto em relação a Ana, que vai falar!</span>
+        </div>`;
+      }
+
+      if (key === 'jornal_1915') {
+        return `<div class="q-visual">
+          <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="600" height="220" rx="18" fill="var(--svg-paper)"/>
+            <rect x="24" y="18" width="552" height="184" rx="10" fill="var(--surface-container-low)" stroke="var(--svg-woodcut-ink)" stroke-width="2.5"/>
+            <rect x="34" y="28" width="532" height="36" rx="4" fill="var(--svg-plum-soft)"/>
+            <text x="300" y="51" text-anchor="middle" fill="var(--svg-woodcut-ink)" font-family="DM Sans, sans-serif" font-size="15" font-weight="900">JORNAL BRASILEIRO — ANO DE 1915</text>
+            <!-- Vintage bottle icon -->
+            <rect x="58" y="88" width="54" height="82" rx="10" fill="var(--svg-woodcut-ochre)" stroke="var(--svg-woodcut-ink)" stroke-width="2.5"/>
+            <rect x="74" y="74" width="22" height="16" rx="3" fill="var(--svg-woodcut-rust)" stroke="var(--svg-woodcut-ink)" stroke-width="2"/>
+            <rect x="66" y="112" width="38" height="34" rx="4" fill="var(--surface-container-low)"/>
+            <text x="85" y="133" text-anchor="middle" fill="var(--svg-woodcut-ink)" font-family="DM Sans, sans-serif" font-size="10" font-weight="800">XAROPE</text>
+            <!-- Text lines -->
+            <text x="136" y="96" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="14" font-weight="700">“Vende-se nesta bem montada</text>
+            <text x="136" y="118" fill="var(--primary)" font-family="DM Sans, sans-serif" font-size="14.5" font-weight="900">pharmacia um prodigioso xarope...</text>
+            <text x="136" y="142" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="14" font-weight="700">Os <tspan fill="var(--secondary)" font-weight="900">illustres</tspan> cavalheiros acham</text>
+            <text x="136" y="164" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="14" font-weight="700">neste <tspan fill="var(--primary)" font-weight="900">producto</tspan> grande conforto.”</text>
+          </svg>
+          <span class="q-visual-caption">Recorte ilustrativo de um anúncio de jornal antigo (1915) mostrando a ortografia da época.</span>
+        </div>`;
+      }
+
+      if (key === 'cordel_heroinas') {
+        return `<div class="q-visual">
+          <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="600" height="220" rx="18" fill="var(--svg-woodcut-ochre)"/>
+            <rect x="18" y="16" width="564" height="188" rx="12" fill="var(--svg-paper)" stroke="var(--svg-woodcut-ink)" stroke-width="3"/>
+            <!-- Left medallion: Dandara -->
+            <circle cx="110" cy="100" r="46" fill="var(--svg-woodcut-ink)"/>
+            <circle cx="110" cy="94" r="18" fill="var(--svg-paper)"/>
+            <path d="M 85 138 Q 110 112 135 138 Z" fill="var(--svg-paper)"/>
+            <path d="M 92 84 Q 110 66 128 84" fill="var(--svg-woodcut-rust)"/>
+            <text x="110" y="168" text-anchor="middle" fill="var(--svg-woodcut-ink)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="900">Dandara</text>
+            <text x="110" y="184" text-anchor="middle" fill="var(--on-surface-variant)" font-family="DM Sans, sans-serif" font-size="10.5" font-weight="700">Palmares</text>
+
+            <!-- Center medallion: Anita Garibaldi -->
+            <circle cx="300" cy="100" r="46" fill="var(--svg-woodcut-ink)"/>
+            <circle cx="300" cy="94" r="18" fill="var(--svg-paper)"/>
+            <path d="M 275 138 Q 300 112 325 138 Z" fill="var(--svg-paper)"/>
+            <path d="M 278 86 Q 300 66 322 86" fill="var(--svg-woodcut-ochre)"/>
+            <text x="300" y="168" text-anchor="middle" fill="var(--svg-woodcut-ink)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="900">Anita Garibaldi</text>
+            <text x="300" y="184" text-anchor="middle" fill="var(--on-surface-variant)" font-family="DM Sans, sans-serif" font-size="10.5" font-weight="700">Bravura</text>
+
+            <!-- Right medallion: Maria Quitéria -->
+            <circle cx="490" cy="100" r="46" fill="var(--svg-woodcut-ink)"/>
+            <circle cx="490" cy="94" r="18" fill="var(--svg-paper)"/>
+            <path d="M 465 138 Q 490 112 515 138 Z" fill="var(--svg-paper)"/>
+            <rect x="478" y="64" width="24" height="16" rx="3" fill="var(--svg-woodcut-ochre)"/>
+            <text x="490" y="168" text-anchor="middle" fill="var(--svg-woodcut-ink)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="900">Maria Quitéria</text>
+            <text x="490" y="184" text-anchor="middle" fill="var(--on-surface-variant)" font-family="DM Sans, sans-serif" font-size="10.5" font-weight="700">Independência</text>
+          </svg>
+          <span class="q-visual-caption">Xilogravuras em homenagem às heroínas brasileiras da nossa história.</span>
+        </div>`;
+      }
+
+      if (key === 'sintese_mod4') {
+        return `<div class="q-visual">
+          <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="600" height="200" rx="18" fill="var(--surface-container-low)"/>
+            <!-- Cap 11 card -->
+            <rect x="20" y="20" width="266" height="160" rx="16" fill="var(--svg-sky-light)"/>
+            <text x="153" y="54" text-anchor="middle" fill="var(--secondary)" font-family="DM Sans, sans-serif" font-size="14" font-weight="900">CAPÍTULO 11: CIÊNCIA</text>
+            <text x="153" y="84" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600">• Divulgação científica infantil</text>
+            <text x="153" y="108" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600">• Cérebro, emoções e infográficos</text>
+            <text x="153" y="132" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600">• Seminário e concordância</text>
+            <text x="153" y="156" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600">• Pronomes para evitar repetições</text>
+
+            <!-- Plus circle -->
+            <circle cx="300" cy="100" r="20" fill="var(--primary)"/>
+            <text x="300" y="107" text-anchor="middle" fill="var(--on-primary)" font-family="DM Sans, sans-serif" font-size="22" font-weight="900">+</text>
+
+            <!-- Cap 12 card -->
+            <rect x="314" y="20" width="266" height="160" rx="16" fill="var(--svg-paper)"/>
+            <text x="447" y="54" text-anchor="middle" fill="var(--primary)" font-family="DM Sans, sans-serif" font-size="14" font-weight="900">CAPÍTULO 12: CULTURA</text>
+            <text x="447" y="84" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600">• Literatura de cordel e rimas</text>
+            <text x="447" y="108" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600">• Heroínas do Brasil e xilogravura</text>
+            <text x="447" y="132" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600">• História das palavras no tempo</text>
+            <text x="447" y="156" text-anchor="middle" fill="var(--on-surface)" font-family="DM Sans, sans-serif" font-size="12.5" font-weight="600">• Sufixos -oso / -osa e recital</text>
+          </svg>
+          <span class="q-visual-caption">Os dois grandes eixos do Módulo 4 trabalhando juntos para formar leitores cidadãos.</span>
+        </div>`;
+      }
+
+      return '';
+    }
+
+    function getMedalSVG(tier) {
+      var fillColor = 'var(--svg-gold)';
+      var ribbonColor = 'var(--primary)';
+      if (tier === 'silver') {
+        fillColor = 'var(--svg-silver)';
+        ribbonColor = 'var(--secondary)';
+      } else if (tier === 'bronze') {
+        fillColor = 'var(--svg-bronze)';
+        ribbonColor = 'var(--tertiary)';
+      } else if (tier === 'seed') {
+        fillColor = 'var(--primary-container)';
+        ribbonColor = 'var(--secondary)';
+      }
+      return `<svg viewBox="0 0 100 100" width="84" height="84" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 32 10 L 45 48 L 55 48 L 68 10 Z" fill="${ribbonColor}"/>
+        <circle cx="50" cy="60" r="28" fill="${fillColor}" stroke="var(--on-surface)" stroke-width="3"/>
+        <circle cx="50" cy="60" r="20" fill="none" stroke="var(--surface-container-low)" stroke-width="2.5"/>
+        <path d="M 50 45 L 54 55 L 65 55 L 56 61 L 59 71 L 50 65 L 41 71 L 44 61 L 35 55 L 46 55 Z" fill="var(--surface-container-low)"/>
+      </svg>`;
+    }
+
+    // 30 Multiple-Choice Questions (4 options each) covering all 7 required themes
+    const QUESTIONS = [
+      // BLOCO 1 (1–10)
+      {
+        id: 1,
+        block: 1,
+        themeKey: `divulgacao`,
+        themeLabel: `Divulgação Científica`,
+        bncc: `EF04LP19`,
+        excerpt: `“O riso é uma reação involuntária do nosso corpo comandada pelo cérebro. Quando nos divertimos ou ouvimos uma piada engraçada, nosso cérebro libera substâncias chamadas endorfinas, que transmitem uma sensação imediata de bem-estar e relaxamento em todo o organismo.”`,
+        source: `Adaptado de Ciência Hoje das Crianças`,
+        prompt: `Qual é o principal objetivo desse texto de divulgação científica infantil?`,
+        options: [
+          `Contar uma história inventada sobre pessoas que adoravam dar gargalhadas.`,
+          `Ensinar uma receita mágica para ninguém ficar triste na escola.`,
+          `Explicar com base na ciência como o cérebro e o corpo produzem a sensação do riso.`,
+          `Fazer uma propaganda para vender livros e brinquedos divertidos.`
+        ],
+        correct: 2,
+        explanation: `Isso mesmo! O texto de divulgação científica para crianças serve para explicar curiosidades e descobertas da ciência com palavras claras. Aqui, ele mostra de verdade como o cérebro libera endorfinas quando rimos!`
+      },
+      {
+        id: 2,
+        block: 1,
+        themeKey: `pronomes`,
+        themeLabel: `Pronomes Possessivos`,
+        bncc: `EF04LP06`,
+        excerpt: `Observe as frases:\n1) Eu cuido muito bem da ______ saúde.\n2) Nós cuidamos da ______ sala de aula.\n3) Lucas, você esqueceu os ______ lápis coloridos?`,
+        prompt: `Qual alternativa traz os pronomes possessivos que completam corretamente as três frases na ordem?`,
+        options: [
+          `minha — nossa — seus`,
+          `nossa — minha — meus`,
+          `seus — minha — nossa`,
+          `minha — seus — nossa`
+        ],
+        correct: 0,
+        explanation: `Parabéns! Os pronomes possessivos indicam posse e combinam com quem fala e com a palavra que acompanham: “Eu” combina com “minha saúde”, “Nós” combina com “nossa sala”, e “você” (falando com Lucas) combina com “seus lápis”.`
+      },
+      {
+        id: 3,
+        block: 1,
+        themeKey: `cordel`,
+        themeLabel: `Literatura de Cordel`,
+        bncc: `EF35LP23`,
+        prompt: `Sobre a Literatura de Cordel, tradição popular muito forte no Brasil, qual afirmação é verdadeira?`,
+        options: [
+          `Os folhetos de cordel nunca usam rimas nem ritmo em seus versos.`,
+          `É uma poesia popular impressa em pequenos folhetos, pendurada em barbantes e ilustrada com xilogravuras.`,
+          `O cordel só pode falar de países distantes, sendo proibido contar histórias ou retratar heroínas do Brasil.`,
+          `Os folhetos de cordel são sempre escritos em forma de lista de compras.`
+        ],
+        correct: 1,
+        explanation: `Muito bem! O nome “cordel” vem justamente das cordas ou barbantes onde os folhetos ficavam pendurados nas feiras. Ele tem versos cheios de ritmo e rima, e suas capas costumam trazer xilogravuras entalhadas na madeira!`
+      },
+      {
+        id: 4,
+        block: 1,
+        themeKey: `pronomes`,
+        themeLabel: `Pronomes de Tratamento`,
+        bncc: `EF04LP06`,
+        prompt: `Os pronomes de tratamento mudam conforme o respeito e a intimidade com quem conversamos. Qual par está combinado de forma correta?`,
+        options: [
+          `Vossa Majestade → usado para conversar com um colega na hora do recreio.`,
+          `Você → usado para se dirigir exclusivamente a reis e rainhas em cerimônias.`,
+          `Vossa Excelência → usado para altas autoridades, como juízes, governadores e ministros.`,
+          `Senhor / Senhora → usado apenas em filmes de ficção científica.`
+        ],
+        correct: 2,
+        explanation: `Acertou em cheio! Cada pronome de tratamento tem um lugar especial: “Você” usamos com amigos e familiares; “Senhor/Senhora” mostra respeito com mais velhos ou desconhecidos; “Vossa Excelência” é para altas autoridades; e “Vossa Majestade” é para reis e rainhas.`
+      },
+      {
+        id: 5,
+        block: 1,
+        themeKey: `ortografia`,
+        themeLabel: `Sufixos -oso / -osa`,
+        bncc: `EF04LP08`,
+        excerpt: `Leia as frases:\n• Aquele menino tem muita coragem. Ele é um menino ______.\n• Esta flor tem um delicioso cheiro. Ela é uma flor muito ______.`,
+        prompt: `Transformando os substantivos “coragem” e “cheiro” em adjetivos, qual alternativa traz a grafia correta?`,
+        options: [
+          `corajozo — cheiroza`,
+          `corajoso — cheirosa`,
+          `corajosso — cheirossa`,
+          `corajoço — cheiroça`
+        ],
+        correct: 1,
+        explanation: `Perfeito! Quando formamos adjetivos que significam “cheio de” usando o sufixo -oso ou -osa, a palavra é sempre escrita com a letra S (e nunca com Z): corajoso, cheirosa, saboroso!`
+      },
+      {
+        id: 6,
+        block: 1,
+        themeKey: `concordancia`,
+        themeLabel: `Concordância Verbal`,
+        bncc: `EF35LP14`,
+        prompt: `Assinale a única frase em que o verbo concorda perfeitamente com o sujeito em número e pessoa:`,
+        options: [
+          `As crianças aprendeu rápido como funciona o cérebro.`,
+          `Nós foi ao laboratório de ciências da escola ontem.`,
+          `Os cientistas descobriram como os animais se comunicam na floresta.`,
+          `Eu e meus amigos gosta muito de ler poesias de cordel.`
+        ],
+        correct: 2,
+        explanation: `Mandou muito bem! “Os cientistas” está no plural, por isso o verbo também vai para o plural: “descobriram”. Nas outras frases, o correto seria “aprenderam”, “fomos” e “gostamos”.`
+      },
+      {
+        id: 7,
+        block: 1,
+        themeKey: `pronomes`,
+        themeLabel: `Pronomes Pessoais Retos`,
+        bncc: `EF04LP06`,
+        excerpt: `“Marina e Júlia estudaram bastante para o seminário. ______ fizeram uma excelente apresentação.\nEu e meu irmão fomos à biblioteca. ______ pegamos dois livretos de cordel.”`,
+        prompt: `Para evitar repetir os nomes, quais pronomes pessoais do caso reto completam os espaços na ordem certa?`,
+        options: [
+          `Elas — Nós`,
+          `Eles — Elas`,
+          `Ela — Eles`,
+          `Nós — Eles`
+        ],
+        correct: 0,
+        explanation: `Excelente! Substituir nomes por pronomes deixa o texto mais bonito e sem repetições: “Marina e Júlia” vira “Elas”, e “Eu e meu irmão” (quando você está incluído no grupo!) vira “Nós”.`
+      },
+      {
+        id: 8,
+        block: 1,
+        themeKey: `oralidade`,
+        themeLabel: `Oralidade: Seminário`,
+        bncc: `EF35LP10`,
+        prompt: `Sua turma vai apresentar um seminário escolar sobre as emoções humanas. Qual atitude ajuda a fazer uma ótima apresentação oral?`,
+        options: [
+          `Falar bem baixinho, de costas para a turma e olhando apenas para o chão.`,
+          `Pesquisar o assunto antes, montar um roteiro de tópicos e usar cartazes ou esquemas para ajudar os colegas.`,
+          `Proibir os colegas de fazerem perguntas ou tirarem dúvidas no final.`,
+          `Decorar tudo sem entender e sair correndo antes de terminar a fala.`
+        ],
+        correct: 1,
+        explanation: `Isso aí! Um bom seminário começa antes da apresentação: pesquisar, preparar um roteiro em tópicos, falar em voz clara olhando para a plateia e usar cartazes ou infográficos ajuda todo mundo a aprender junto!`
+      },
+      {
+        id: 9,
+        block: 1,
+        themeKey: `variacao`,
+        themeLabel: `Variação Histórica`,
+        bncc: `EF35LP08`,
+        prompt: `Com o passar dos anos, algumas palavras mudam de escrita ou de forma. Como escrevemos hoje as antigas expressões “pharmacia”, “photographia” e “Vossa mercê”?`,
+        options: [
+          `farmásia — fotografya — vosê`,
+          `farmácia — fotografia — você`,
+          `pharmásia — fotografia — senhor`,
+          `farmácia — retrataria — vossa`
+        ],
+        correct: 1,
+        explanation: `Que viagem no tempo incrível! Antigamente o som de F era escrito com PH (como em pharmacia e photographia), e a expressão respeitosa “Vossa mercê” foi ficando mais curta na fala até virar o nosso “você” de hoje.`
+      },
+      {
+        id: 10,
+        block: 1,
+        themeKey: `pronomes`,
+        themeLabel: `Pronomes Demonstrativos`,
+        bncc: `EF04LP06`,
+        excerpt: `1) Segurando uma caneta na própria mão, o aluno diz: “______ caneta aqui escreve azul.”\n2) Apontando para um quadro no fundo da sala, a professora diz: “Olhem para ______ quadro lá longe.”`,
+        prompt: `Observando a distância no espaço, quais pronomes completam corretamente as falas?`,
+        options: [
+          `Aquela — esta`,
+          `Esta — aquele`,
+          `Aquele — essa`,
+          `Essa — este`
+        ],
+        correct: 1,
+        explanation: `Certíssimo! Usamos “este / esta” quando o objeto está bem pertinho de quem fala (como a caneta na mão do aluno). Já para algo distante de quem fala e de quem ouve (como o quadro lá longe), usamos “aquele / aquela”.`
+      },
+
+      // BLOCO 2 (11–20)
+      {
+        id: 11,
+        block: 2,
+        themeKey: `divulgacao`,
+        themeLabel: `Infográfico Científico`,
+        bncc: `EF04LP19`,
+        visual: `brain_emotions`,
+        prompt: `Observe o infográfico acima sobre o cérebro e as emoções. Por que os textos de divulgação científica infantil costumam usar ilustrações, setas e esquemas visuais?`,
+        options: [
+          `Apenas para enfeitar a página sem nenhuma ligação com o assunto.`,
+          `Para substituir todas as palavras, pois textos científicos não têm frases.`,
+          `Para ajudar o leitor a visualizar com clareza e alegria como funcionam os fenômenos explicados no texto.`,
+          `Para impedir que as crianças pesquisem mais sobre o corpo humano.`
+        ],
+        correct: 2,
+        explanation: `Show! Em textos de divulgação científica, imagem e palavra trabalham em equipe: as setas, os ícones e as cores do infográfico transformam ideias difíceis em algo fácil e gostoso de enxergar.`
+      },
+      {
+        id: 12,
+        block: 2,
+        themeKey: `divulgacao`,
+        themeLabel: `Divulgação Científica`,
+        bncc: `EF04LP19`,
+        excerpt: `“O medo funciona como um alarme biológico natural: quando identificamos uma situação de perigo, o coração bate acelerado para enviar mais sangue e oxigênio aos músculos, preparando o corpo para fugir ou se defender.”`,
+        prompt: `Por que o autor comparou o medo a um “alarme biológico natural”?`,
+        options: [
+          `Para deixar a explicação científica mais fácil de entender, mostrando que o medo nos avisa do perigo e protege o corpo.`,
+          `Porque existe uma campainha de metal tocando dentro do nosso estômago.`,
+          `Para convencer as crianças de que sentir medo é proibido pela ciência.`,
+          `Porque o texto é uma receita culinária sobre como preparar um alarme.`
+        ],
+        correct: 0,
+        explanation: `Brilhante! Os autores de divulgação científica para crianças usam comparações do dia a dia (como comparar o medo a um alarme que toca para nos proteger) para tornar a ciência super clara e interessante.`
+      },
+      {
+        id: 13,
+        block: 2,
+        themeKey: `concordancia`,
+        themeLabel: `Concordância Verbal`,
+        bncc: `EF04LP06`,
+        excerpt: `Complete os verbos no tempo certo:\n• Ontem, a professora e os estudantes ______ (pesquisar - passado) curiosidades sobre a memória.\n• Hoje, nós ______ (compreender - presente) melhor nossas emoções.`,
+        prompt: `Qual alternativa traz os dois verbos corretamente flexionados?`,
+        options: [
+          `pesquisou — compreendeu`,
+          `pesquisaram — compreendemos`,
+          `pesquisam — compreendemos`,
+          `pesquisaram — compreendem`
+        ],
+        correct: 1,
+        explanation: `Acertou! “A professora e os estudantes” formam um sujeito composto (mais de uma pessoa) no passado → “pesquisaram”. Já “nós” no tempo presente combina com “compreendemos”.`
+      },
+      {
+        id: 14,
+        block: 2,
+        themeKey: `pronomes`,
+        themeLabel: `Pronomes Demonstrativos`,
+        bncc: `EF04LP06`,
+        prompt: `Quando queremos pedir um objeto que está nas mãos da pessoa COM QUEM estamos conversando (e não na nossa mão), qual frase segue a regra correta?`,
+        options: [
+          `“Por favor, me empreste esta régua que está aí com você.”`,
+          `“Por favor, me empreste essa régua que está aí com você.”`,
+          `“Por favor, me empreste aquela régua aqui na minha mão.”`,
+          `“Por favor, me empreste isto régua que está longe.”`
+        ],
+        correct: 1,
+        explanation: `Muito bem! Guarde esse segredo fácil: ESTe/ESTa = perto de mim (quem fala); ESSa/ESSe = perto de você (com quem eu converso); AQUELe/AQUELa = longe de nós dois!`
+      },
+      {
+        id: 15,
+        block: 2,
+        themeKey: `ortografia`,
+        themeLabel: `Sufixos -oso / -osa`,
+        bncc: `EF04LP08`,
+        prompt: `O sufixo -oso / -osa significa “cheio de” ou “com muita presença de algo”. Qual grupo associa corretamente todos os substantivos aos seus adjetivos derivados?`,
+        options: [
+          `afeto → afetuoso | bondade → bondosa | orgulho → orgulhoso | curiosidade → curiosa`,
+          `afeto → afetozo | bondade → bondoza | orgulho → orgulhozo | curiosidade → curioza`,
+          `afeto → afetoso | bondade → bondesso | orgulho → orgulhista | curiosidade → curiante`,
+          `afeto → afetuosso | bondade → bondossa | orgulho → orgulhosso | curiosidade → curiosso`
+        ],
+        correct: 0,
+        explanation: `Isso mesmo! Todos os adjetivos dessa família terminam em -oso ou -osa com S: afetuoso, bondosa, orgulhoso e curiosa. Mesmo quando o S tem som de Z entre vogais, a escrita continua com S!`
+      },
+      {
+        id: 16,
+        block: 2,
+        themeKey: `cordel`,
+        themeLabel: `Cordel e Xilogravura`,
+        bncc: `EF35LP23`,
+        visual: `cordel_quiteria`,
+        excerpt: `“Mulher de grande coragem,\nVestiu farda de soldado,\nLutou pela independência\nCom seu nome consagrado,\nMostrou para todo o povo\nO seu valor proclamado.”`,
+        prompt: `A união entre a xilogravura (desenho gravado na madeira) e os versos desse cordel sobre Maria Quitéria serve principalmente para:`,
+        options: [
+          `Mostrar que folhetos de cordel são livros de matemática com fotos de laboratório.`,
+          `Valorizar a história e a bravura da heroína brasileira, unindo a arte visual popular à homenagem poética.`,
+          `Criticar a participação das mulheres na história do Brasil.`,
+          `Substituir os versos, pois quem olha a gravura não precisa ler o poema.`
+        ],
+        correct: 1,
+        explanation: `Que lindo! A xilogravura na capa do cordel combina perfeitamente com a poesia para homenagear Maria Quitéria, mulher corajosa que lutou pela independência do Brasil!`
+      },
+      {
+        id: 17,
+        block: 2,
+        themeKey: `cordel`,
+        themeLabel: `Estrutura do Cordel`,
+        bncc: `EF35LP23`,
+        excerpt: `(1) “Mulher de grande coragem,\n(2) Vestiu farda de soldado,\n(3) Lutou pela independência\n(4) Com seu nome consagrado,\n(5) Mostrou para todo o povo\n(6) O seu valor proclamado.”`,
+        prompt: `Quantos versos formam essa estrofe de cordel (chamada de sextilha) e quais palavras rimam entre si?`,
+        options: [
+          `4 versos; rimam “coragem”, “independência” e “povo” (versos 1, 3 e 5).`,
+          `6 versos; rimam “soldado”, “consagrado” e “proclamado” (nos versos pares 2, 4 e 6).`,
+          `5 versos; rimam apenas “mulher” e “farda”.`,
+          `6 versos; nenhuma palavra rima na literatura de cordel.`
+        ],
+        correct: 1,
+        explanation: `Nota 10 em poesia! Uma estrofe com 6 versos chama-se sextilha. No cordel tradicional, a música do poema nasce justamente das rimas nos versos pares: 2 (soldado), 4 (consagrado) e 6 (proclamado)!`
+      },
+      {
+        id: 18,
+        block: 2,
+        themeKey: `pronomes`,
+        themeLabel: `Pronomes Oblíquos`,
+        bncc: `EF04LP06`,
+        excerpt: `Leia com atenção:\n• “Encontrei a poesia de cordel na estante e li-___ inteira em voz alta.”\n• “Quando eu caí no pátio, minha amiga segurou minha mão e ajudou-___ a levantar.”`,
+        prompt: `Quais pronomes pessoais oblíquos completam as duas frases corretamente?`,
+        options: [
+          `o — te`,
+          `a — me`,
+          `nos — o`,
+          `lhe — a`
+        ],
+        correct: 1,
+        explanation: `Perfeito! Em “li-a”, o pronome “a” retoma “a poesia de cordel” (feminino singular) sem precisar repetir a palavra. Em “ajudou-me”, o pronome “me” refere-se a “eu” (quem caiu e recebeu ajuda).`
+      },
+      {
+        id: 19,
+        block: 2,
+        themeKey: `oralidade`,
+        themeLabel: `Oralidade: Recital de Cordel`,
+        bncc: `EF35LP28`,
+        prompt: `Ao participar de um Recital de Cordel em voz alta para a escola, o que o declamador deve fazer para encantar os ouvintes?`,
+        options: [
+          `Ler tudo bem depressa, sem ritmo, sem pausas e sem respirar entre as estrofes.`,
+          `Usar entonação expressiva na voz, marcar o ritmo das rimas e fazer pausas e gestos moderados.`,
+          `Ficar olhando apenas para o teto sem demonstrar nenhuma emoção na voz.`,
+          `Dizer que apenas pessoas nascidas no Nordeste podem ler cordéis.`
+        ],
+        correct: 1,
+        explanation: `Bravo! O cordel nasceu para ser lido em voz alta e compartilhado por todo o Brasil. Quando você marca o ritmo, valoriza as rimas e faz pausas na hora certa, a história ganha vida!`
+      },
+      {
+        id: 20,
+        block: 2,
+        themeKey: `variacao`,
+        themeLabel: `Variação Histórica`,
+        bncc: `EF35LP08`,
+        prompt: `Assim como as palavras mudam com o tempo, os meios de comunicação também evoluem! Qual dupla liga corretamente uma prática antiga à sua versão atual?`,
+        options: [
+          `Telegrama → mensagem instantânea no aplicativo de celular.`,
+          `Gazeta impressa semanal → escrever carta com pena e tinta.`,
+          `Radiotelefonia antiga → comprar selos no correio.`,
+          `Escrever com mata-borrão → assistir a um filme no cinema mudo.`
+        ],
+        correct: 0,
+        explanation: `Acertou! Antigamente, notícias rápidas chegavam por telegrama (cobrado por palavra!), as cartas eram escritas à mão com tinta e os jornais eram gazetas impressas. Hoje, temos mensagens instantâneas, e-mails, portais digitais e podcasts!`
+      },
+
+      // BLOCO 3 (21–30)
+      {
+        id: 21,
+        block: 3,
+        themeKey: `concordancia`,
+        themeLabel: `Revisão de Concordância`,
+        bncc: `EF35LP14`,
+        excerpt: `Rascunho de um colega com erros de concordância:\n“Os cientista da universidade estuda as reações do corpo. Eles descobriu que as pessoas quando sorri muito consegue diminuir a ansiedade.”`,
+        prompt: `Qual reescrita corrige TODOS os erros de concordância verbal e deixa o texto na norma-padrão?`,
+        options: [
+          `Os cientistas da universidade estuda as reações do corpo. Eles descobriu que as pessoas, quando sorriem muito, consegue diminuir a ansiedade.`,
+          `Os cientistas da universidade estudam as reações do corpo. Eles descobriram que as pessoas, quando sorriem muito, conseguem diminuir a ansiedade.`,
+          `Os cientista da universidade estudam as reações do corpo. Eles descobriram que as pessoas, quando sorri muito, conseguem diminuir a ansiedade.`,
+          `Os cientistas da universidade estudaram as reações do corpo. Eles descobriu que as pessoas, quando sorriem muito, conseguiu diminuir a ansiedade.`
+        ],
+        correct: 1,
+        explanation: `Que olhar de revisor(a) atento(a)! Todos os sujeitos estão no plural (“Os cientistas”, “Eles”, “as pessoas”), então todos os verbos também concordam no plural: estudam, descobriram, sorriem e conseguem!`
+      },
+      {
+        id: 22,
+        block: 3,
+        themeKey: `pronomes`,
+        themeLabel: `Demonstrativos no Diálogo`,
+        bncc: `EF04LP06`,
+        visual: `demonstratives_scene`,
+        prompt: `Observe a cena acima. Ana está falando com Pedro na biblioteca. Como Ana deve apontar, na ordem: (1) a redação na mão dela, (2) o estojo na mesa de Pedro e (3) o troféu lá no armário distante?`,
+        options: [
+          `“Essa redação aqui” / “Aquele estojo na sua mesa” / “Este troféu lá no armário”.`,
+          `“Esta redação aqui nas minhas mãos” / “Esse estojo na sua mesa” / “Aquele troféu lá no armário”.`,
+          `“Aquela redação aqui nas minhas mãos” / “Este estojo na sua mesa” / “Esse troféu lá no armário”.`,
+          `“Esta redação aqui nas minhas mãos” / “Este estojo na sua mesa” / “Esse troféu lá no armário”.`
+        ],
+        correct: 1,
+        explanation: `Impecável! Como Ana é quem está falando: a redação em suas próprias mãos é “Esta”; o estojo perto de Pedro (com quem ela conversa) é “Esse”; e o troféu lá longe no armário é “Aquele”! `
+      },
+      {
+        id: 23,
+        block: 3,
+        themeKey: `variacao`,
+        themeLabel: `História da Língua`,
+        bncc: `EF35LP08`,
+        visual: `jornal_1915`,
+        prompt: `No anúncio de 1915 aparecem palavras como “pharmacia”, “illustres” e “producto” (hoje: farmácia, ilustres e produto). Isso significa que as pessoas de 1915 escreviam “errado”?`,
+        options: [
+          `Sim, porque antigamente ninguém frequentava a escola nem tinha dicionários.`,
+          `Não! Naquela época, essa era a ortografia oficial usada em livros e jornais. A língua é viva e suas regras mudam ao longo da história.`,
+          `Sim, o dono do jornal inventou essas letras só para economizar tinta.`,
+          `Não, porque essas palavras eram escritas em inglês e nunca existiram em português.`
+        ],
+        correct: 1,
+        explanation: `Excelente reflexão! Ninguém escrevia “errado” em 1915: as regras ortográficas daquela época usavam letras dobradas (ll), PH e consoantes mudas (ct). Com as reformas ortográficas e o uso dos falantes, a escrita ficou mais simples!`
+      },
+      {
+        id: 24,
+        block: 3,
+        themeKey: `ortografia`,
+        themeLabel: `Regra de -oso / -osa`,
+        bncc: `EF04LP08`,
+        excerpt: `Leia estas palavras derivadas de substantivos:\n• perigo → perigoso\n• primor → primoroso\n• coragem → corajosa\n• milagre → milagroso`,
+        prompt: `Por que todas essas palavras são escritas com a letra S antes da vogal final, e nunca com a letra Z?`,
+        options: [
+          `Porque na língua portuguesa a letra Z não existe no meio de nenhuma palavra.`,
+          `Porque todo adjetivo formado pelos sufixos -oso e -osa se escreve sempre com S, mesmo quando tem som de Z entre duas vogais.`,
+          `Porque apenas palavras que começam com a letra P ou M podem usar a letra S.`,
+          `Porque o som final de -oso é igual ao som da letra X.`
+        ],
+        correct: 1,
+        explanation: `Regra de ouro memorizada! Entre duas vogais, a letra S fica com som de Z (como em “casa”). Nos sufixos formadores de adjetivos -oso e -osa (cheio de...), usamos sempre S!`
+      },
+      {
+        id: 25,
+        block: 3,
+        themeKey: `divulgacao`,
+        themeLabel: `Divulgação Científica`,
+        bncc: `EF04LP19`,
+        prompt: `Sobre a produção e leitura de artigos de divulgação científica para crianças, qual alternativa está correta?`,
+        options: [
+          `O autor inventa lendas e monstros sem se preocupar com pesquisas ou provas.`,
+          `Os títulos e subtítulos costumam despertar a curiosidade, muitas vezes em forma de pergunta, como “Por que bocejamos?”, usando dados reais e linguagem acessível.`,
+          `O texto deve usar apenas palavras extremamente difíceis para que as crianças não entendam nada.`,
+          `Em um seminário sobre o artigo, é proibido explicar com as próprias palavras.`
+        ],
+        correct: 1,
+        explanation: `Muito bem! Artigos de divulgação científica para o público infantil unem duas qualidades incríveis: seriedade científica (dados comprovados) e curiosidade convidativa (perguntas no título e explicações claras)!`
+      },
+      {
+        id: 26,
+        block: 3,
+        themeKey: `pronomes`,
+        themeLabel: `Função dos Pronomes`,
+        bncc: `EF04LP06`,
+        prompt: `Cada tipo de pronome tem uma missão dentro do texto. Qual associação está totalmente certa?`,
+        options: [
+          `Pronome Possessivo → indica quem pratica a ação do verbo sem mostrar posse.`,
+          `Pronome de Tratamento → serve apenas para apontar objetos distantes no espaço.`,
+          `Pronome Pessoal Reto → substitui o nome (substantivo) e atua como sujeito da ação verbal (eu, nós, ele, elas).`,
+          `Pronome Demonstrativo → mede a temperatura do corpo durante um experimento.`
+        ],
+        correct: 2,
+        explanation: `Perfeito! Cada pronome ajuda a organizar o texto: o Pessoal Reto substitui o sujeito; o Possessivo mostra posse (meu, nossa); o Demonstrativo situa no espaço/tempo/texto (este, essa, aquele); e o de Tratamento adequa a formalidade (você, senhor, Vossa Excelência).`
+      },
+      {
+        id: 27,
+        block: 3,
+        themeKey: `concordancia`,
+        themeLabel: `Sujeito Oculto no Verbo`,
+        bncc: `EF35LP14`,
+        excerpt: `“Durante a caminhada na floresta, ouvimos o canto de pássaros raros e recolhemos folhas caídas para análise no laboratório.”`,
+        prompt: `Mesmo sem aparecer escrito antes dos verbos, quem realizou as ações de “ouvimos” e “recolhemos”?`,
+        options: [
+          `Apenas a pessoa que escreveu o relato sozinha (Eu).`,
+          `Um grupo de pessoas do qual quem escreve faz parte (Nós).`,
+          `Apenas o guia que ficou esperando no ônibus (Ele).`,
+          `Animais desconhecidos da floresta (Eles).`
+        ],
+        correct: 1,
+        explanation: `Que percepção afiada! Em português, a terminação -mos nos verbos (“ouvimos”, “recolhemos”) já entrega quem praticou a ação: é o pronome “Nós” (sujeito oculto/desinencial)!`
+      },
+      {
+        id: 28,
+        block: 3,
+        themeKey: `cordel`,
+        themeLabel: `Rima na Quadra de Cordel`,
+        bncc: `EF35LP27`,
+        visual: `cordel_heroinas`,
+        excerpt: `Complete esta quadra de cordel (4 versos) homenageando Dandara dos Palmares:\n(1) “Dandara foi grande líder\n(2) De coragem e valor,\n(3) Defendeu seu quilombo\n(4) Com justiça e com ______.”`,
+        prompt: `Seguindo a regra da quadra de cordel (em que o verso 2 rima com o verso 4) e o ritmo da leitura, qual palavra completa o verso 4?`,
+        options: [
+          `esperança`,
+          `destemor`,
+          `liberdade`,
+          `alegria`
+        ],
+        correct: 1,
+        explanation: `Belo verso de poeta! “Destemor” (que significa coragem, ausência de medo) rima perfeitamente com “valor” no verso 2 e mantém o ritmo gostoso da quadra de cordel!`
+      },
+      {
+        id: 29,
+        block: 3,
+        themeKey: `pronomes`,
+        themeLabel: `Coesão no Parágrafo`,
+        bncc: `EF04LP06`,
+        excerpt: `“Dandara viveu no Quilombo dos Palmares. [1] ______ lutou com coragem. A bravura era a [2] ______ marca principal. Todos rendiam-[3] ______ homenagens. [4] ______ história jamais será esquecida.”`,
+        prompt: `Para o parágrafo sobre Dandara dos Palmares ficar bem amarrado e sem repetições, quais pronomes preenchem [1], [2], [3] e [4]?`,
+        options: [
+          `Ela — sua — lhe — Essa`,
+          `Eles — minha — me — Aquele`,
+          `Nós — nossa — nos — Este`,
+          `Ele — seu — a — Aquilo`
+        ],
+        correct: 0,
+        explanation: `Texto super bem costurado! “Ela” retoma Dandara; “sua” indica que a bravura pertencia a ela; “lhe” mostra a quem eram feitas as homenagens; e “Essa história” retoma tudo o que acabou de ser contado!`
+      },
+      {
+        id: 30,
+        block: 3,
+        themeKey: `divulgacao`,
+        themeLabel: `Síntese do Módulo 4`,
+        bncc: `EF04LP19`,
+        visual: `sintese_mod4`,
+        prompt: `Unindo o que aprendemos no Módulo 4 (ciência no Cap. 11 e cordel/história da língua no Cap. 12), por que textos de divulgação científica e folhetos de cordel são importantes para nós?`,
+        options: [
+          `Porque os dois servem apenas para decorar regras chatas sem relação com a vida real.`,
+          `A divulgação científica nos ajuda a entender o corpo, as emoções e a natureza com pesquisas reais, enquanto o cordel valoriza a cultura popular e mantém viva a memória de heroínas brasileiras como Dandara, Maria Quitéria e Anita Garibaldi.`,
+          `Porque apenas os textos científicos têm valor; poesias populares não ensinam nada sobre o Brasil.`,
+          `Porque ambos servem somente para treinar caligrafia antiga de 1915.`
+        ],
+        correct: 1,
+        explanation: `Parabéns por concluir o desafio! Ciência e cultura caminham juntas: enquanto a divulgação científica desperta nossa curiosidade sobre como o mundo e o cérebro funcionam, o cordel celebra nossa história, nossa língua viva e a força de grandes heroínas brasileiras!`
+      }
+    ];
+
+    const BLOCK_INFO = [
+      { id: 1, title: `Bloco I — Descobertas Iniciais`, desc: `Questões 1 a 10: identificação direta, regras básicas e gêneros em foco.` },
+      { id: 2, title: `Bloco II — Conexões e Imagens`, desc: `Questões 11 a 20: leitura de infográficos, xilogravura, versos e morfossintaxe.` },
+      { id: 3, title: `Bloco III — Mestre da Língua`, desc: `Questões 21 a 30: análise crítica, revisão textual, história da língua e síntese.` }
+    ];
+
+    const LETTERS = ['A', 'B', 'C', 'D'];
+
+    // State model
+    let quizState = {
+      solved: {},      // { [qId]: true }
+      wrongTries: {},  // { [qId]: [optIndex, ...] }
+      firstTry: {},    // { [qId]: true | false }
+      showFinal: false
+    };
+
+    function createEmptyState() {
+      return {
+        solved: {},
+        wrongTries: {},
+        firstTry: {},
+        showFinal: false
+      };
+    }
+
+    async function persistState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
+        try {
+          await window.notebookAppApi.setAppState(quizState);
+        } catch (e) {
+          // Ignore persistence errors silently in non-hosted preview
+        }
+      }
+    }
+
+    function renderQuiz() {
+      var container = document.getElementById('quiz-container');
+      if (!container) return;
+
+      var html = '';
+      for (var b = 0; b < BLOCK_INFO.length; b++) {
+        var block = BLOCK_INFO[b];
+        html += `<div class="block-divider">
+          <div>
+            <h2 class="block-heading">${block.title}</h2>
+            <p class="block-desc">${block.desc}</p>
+          </div>
+        </div>
+        <div class="questions-list">`;
+
+        var blockQs = QUESTIONS.filter(function(q) { return q.block === block.id; });
+        for (var i = 0; i < blockQs.length; i++) {
+          html += renderQuestionCardHTML(blockQs[i]);
+        }
+        html += `</div>`;
+      }
+      container.innerHTML = html;
+
+      renderNavPills();
+      updateProgressUI();
+      if (quizState.showFinal) {
+        renderFinalResultCard();
+      }
+    }
+
+    function renderQuestionCardHTML(q) {
+      var isSolved = Boolean(quizState.solved[q.id]);
+      var wrongList = quizState.wrongTries[q.id] || [];
+      var hasWrong = wrongList.length > 0;
+
+      var statusBadge = '';
+      if (isSolved) {
+        statusBadge = `<span class="q-status-pill solved">✔ Concluída</span>`;
+      } else if (hasWrong) {
+        statusBadge = `<span class="q-status-pill retry">💡 Tente outra opção</span>`;
+      }
+
+      var excerptHTML = '';
+      if (q.excerpt) {
+        var isVerse = q.themeKey === 'cordel';
+        var formattedText = q.excerpt.replace(/\n/g, '<br>');
+        var sourceLine = q.source ? `<span class="q-excerpt-source">Fonte: ${q.source}</span>` : '';
+        excerptHTML = `<div class="q-excerpt ${isVerse ? 'verse' : ''}">${formattedText}${sourceLine}</div>`;
+      }
+
+      var visualHTML = q.visual ? getIllustrationHTML(q.visual) : '';
+
+      var optionsHTML = '';
+      for (var idx = 0; idx < q.options.length; idx++) {
+        var isWrongTried = wrongList.indexOf(idx) !== -1;
+        var isThisCorrect = isSolved && idx === q.correct;
+        var cls = 'option-btn';
+        if (isThisCorrect) cls += ' is-correct';
+        else if (isWrongTried) cls += ' is-wrong';
+
+        var disabledAttr = (isSolved || isWrongTried) ? 'disabled' : '';
+        optionsHTML += `<button type="button" class="${cls}" ${disabledAttr} onclick="handleOptionSelect(${q.id}, ${idx})">
+          <span class="option-letter">${LETTERS[idx]}</span>
+          <span class="option-text">${q.options[idx]}</span>
+        </button>`;
+      }
+
+      var feedbackHTML = '';
+      if (isSolved) {
+        var firstTag = quizState.firstTry[q.id]
+          ? `<span class="sparkle-burst">★ Acertou de 1ª!</span>`
+          : `<span class="sparkle-burst">✨ Acertou!</span>`;
+        feedbackHTML = `<div class="feedback-explanation" role="status" aria-live="polite">
+          <div class="explanation-head">
+            <span>🎉 Muito bem! Resposta certa!</span>
+            ${firstTag}
+          </div>
+          <p class="explanation-body">${q.explanation}</p>
+        </div>`;
+      } else if (hasWrong) {
+        feedbackHTML = `<div class="feedback-warning" role="status" aria-live="polite">
+          <span>💛 Ops! Essa ainda não é a resposta certa. Releia com calma e escolha outra alternativa!</span>
+        </div>`;
+      }
+
+      return `<article class="question-card ${isSolved ? 'is-solved' : ''}" id="q-card-${q.id}">
+        <div class="q-header">
+          <div class="q-meta">
+            <span class="q-num-badge">Questão ${q.id < 10 ? '0' + q.id : q.id}</span>
+            <span class="q-topic-tag">${q.themeLabel}</span>
+            <span class="q-bncc-tag">BNCC ${q.bncc}</span>
+          </div>
+          ${statusBadge}
+        </div>
+        ${visualHTML}
+        ${excerptHTML}
+        <p class="q-prompt">${q.prompt}</p>
+        <div class="options-grid" role="group" aria-label="Alternativas da Questão ${q.id}">
+          ${optionsHTML}
+        </div>
+        ${feedbackHTML}
+      </article>`;
+    }
+
+    function refreshSingleCard(qId) {
+      var q = null;
+      for (var i = 0; i < QUESTIONS.length; i++) {
+        if (QUESTIONS[i].id === qId) {
+          q = QUESTIONS[i];
+          break;
+        }
+      }
+      if (!q) return;
+      var cardEl = document.getElementById('q-card-' + qId);
+      if (!cardEl) return;
+      var wrapper = document.createElement('div');
+      wrapper.innerHTML = renderQuestionCardHTML(q);
+      var newCard = wrapper.firstElementChild;
+      if (newCard && cardEl.parentNode) {
+        cardEl.parentNode.replaceChild(newCard, cardEl);
+      }
+    }
+
+    function renderNavPills() {
+      var nav = document.getElementById('question-nav-pills');
+      if (!nav) return;
+      var html = '';
+      for (var i = 0; i < QUESTIONS.length; i++) {
+        var id = QUESTIONS[i].id;
+        var cls = 'nav-pill';
+        if (quizState.solved[id]) cls += ' is-solved';
+        else if ((quizState.wrongTries[id] || []).length > 0) cls += ' is-retried';
+        html += `<button type="button" class="${cls}" onclick="jumpToQuestion(${id})" title="Ir para a Questão ${id}" aria-label="Ir para a Questão ${id}">${id}</button>`;
+      }
+      nav.innerHTML = html;
+    }
+
+    function updateProgressUI() {
+      var solvedCount = Object.keys(quizState.solved).length;
+      var firstTryCount = 0;
+      var keys = Object.keys(quizState.firstTry);
+      for (var i = 0; i < keys.length; i++) {
+        if (quizState.firstTry[keys[i]]) firstTryCount++;
+      }
+
+      var solvedEl = document.getElementById('progress-solved');
+      if (solvedEl) solvedEl.textContent = String(solvedCount);
+
+      var firstEl = document.getElementById('first-try-count');
+      if (firstEl) firstEl.textContent = String(firstTryCount);
+
+      var fillEl = document.getElementById('progress-bar-fill');
+      if (fillEl) fillEl.style.width = Math.round((solvedCount / 30) * 100) + '%';
+
+      var trackEl = document.getElementById('progress-bar-track');
+      if (trackEl) trackEl.setAttribute('aria-valuenow', String(solvedCount));
+    }
+
+    function handleOptionSelect(qId, optIdx) {
+      if (quizState.solved[qId]) return;
+
+      var q = null;
+      for (var i = 0; i < QUESTIONS.length; i++) {
+        if (QUESTIONS[i].id === qId) {
+          q = QUESTIONS[i];
+          break;
+        }
+      }
+      if (!q) return;
+
+      if (!quizState.wrongTries[qId]) {
+        quizState.wrongTries[qId] = [];
+      }
+
+      if (optIdx === q.correct) {
+        quizState.solved[qId] = true;
+        if (typeof quizState.firstTry[qId] === 'undefined') {
+          quizState.firstTry[qId] = (quizState.wrongTries[qId].length === 0);
+        }
+      } else {
+        if (quizState.wrongTries[qId].indexOf(optIdx) === -1) {
+          quizState.wrongTries[qId].push(optIdx);
+        }
+        quizState.firstTry[qId] = false;
+      }
+
+      refreshSingleCard(qId);
+      renderNavPills();
+      updateProgressUI();
+
+      if (quizState.showFinal) {
+        renderFinalResultCard();
+      }
+      persistState();
+    }
+
+    function jumpToQuestion(qId) {
+      var el = document.getElementById('q-card-' + qId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function showFinalScore() {
+      quizState.showFinal = true;
+      renderFinalResultCard();
+      persistState();
+      var slot = document.getElementById('final-result-slot');
+      if (slot) {
+        slot.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    function renderFinalResultCard() {
+      var slot = document.getElementById('final-result-slot');
+      if (!slot) return;
+
+      var solvedCount = Object.keys(quizState.solved).length;
+      var firstTryHits = 0;
+      for (var i = 0; i < QUESTIONS.length; i++) {
+        if (quizState.solved[QUESTIONS[i].id] && quizState.firstTry[QUESTIONS[i].id]) {
+          firstTryHits++;
+        }
+      }
+
+      var tier = 'seed';
+      var medalTitle = 'Distintivo Semente do Saber!';
+      var message = '';
+
+      if (solvedCount < 30) {
+        var remaining = 30 - solvedCount;
+        medalTitle = 'Jornada em Andamento!';
+        message = `Você já completou ${solvedCount} de 30 questões (com ${firstTryHits}/30 acertos de primeira tentativa). Ainda faltam ${remaining} questão(ões) para fechar todo o desafio — continue explorando, você está indo super bem!`;
+        if (firstTryHits >= 20) tier = 'silver';
+        else if (firstTryHits >= 12) tier = 'bronze';
+      } else {
+        if (firstTryHits >= 27) {
+          tier = 'gold';
+          medalTitle = 'Medalha de Ouro — Mestre da Língua Portuguesa!';
+          message = `Que desempenho extraordinário! Você acertou ${firstTryHits} de 30 questões logo na primeira tentativa e concluiu todo o desafio! Sua atenção na leitura científica, nos pronomes, na concordância e na poesia do cordel brilhou muito!`;
+        } else if (firstTryHits >= 21) {
+          tier = 'silver';
+          medalTitle = 'Medalha de Prata — Explorador(a) Brilhante!';
+          message = `Parabéns! Você conquistou ${firstTryHits}/30 acertos de primeira tentativa e completou todas as 30 questões com muita dedicação! Cada revisão que você fez tornou seu aprendizado ainda mais forte!`;
+        } else if (firstTryHits >= 14) {
+          tier = 'bronze';
+          medalTitle = 'Medalha de Bronze — Leitor(a) Curioso(a)!';
+          message = `Muito bem! Você completou todas as 30 questões e acertou ${firstTryHits}/30 de primeira! O mais legal é que você não desistiu nas tentativas e aprendeu com cada explicação até conquistar o 30/30 final!`;
+        } else {
+          tier = 'seed';
+          medalTitle = 'Distintivo Coragem de Aprender!';
+          message = `Você chegou até o fim das 30 questões e conquistou ${firstTryHits}/30 de primeira! Persistir e ler as explicações é o jeito mais esperto de aprender. Que tal reiniciar o quiz agora e tentar bater seu próprio recorde?`;
+        }
+      }
+
+      // Compute theme breakdown
+      var themes = [
+        { key: 'divulgacao', name: 'Divulgação Científica' },
+        { key: 'pronomes', name: 'Pronomes e Coesão' },
+        { key: 'concordancia', name: 'Concordância Verbal' },
+        { key: 'cordel', name: 'Cordel e Heroínas' },
+        { key: 'variacao', name: 'História da Língua' },
+        { key: 'ortografia', name: 'Sufixos -oso / -osa' },
+        { key: 'oralidade', name: 'Seminário e Recital' }
+      ];
+
+      var breakdownHTML = '';
+      for (var t = 0; t < themes.length; t++) {
+        var th = themes[t];
+        var list = QUESTIONS.filter(function(q) { return q.themeKey === th.key; });
+        var thFirst = 0;
+        var thSolved = 0;
+        for (var j = 0; j < list.length; j++) {
+          if (quizState.solved[list[j].id]) thSolved++;
+          if (quizState.solved[list[j].id] && quizState.firstTry[list[j].id]) thFirst++;
+        }
+        breakdownHTML += `<div class="breakdown-tile">
+          <span class="breakdown-name">${th.name}</span>
+          <span class="breakdown-val">${thFirst}/${list.length} <small style="font-weight:600; font-size:0.8rem; color: var(--on-surface-variant);">(${thSolved} feitas)</small></span>
+        </div>`;
+      }
+
+      // Find first unsolved question button if < 30
+      var nextActionHTML = '';
+      if (solvedCount < 30) {
+        var nextId = 1;
+        for (var n = 0; n < QUESTIONS.length; n++) {
+          if (!quizState.solved[QUESTIONS[n].id]) {
+            nextId = QUESTIONS[n].id;
+            break;
+          }
+        }
+        nextActionHTML = `<div>
+          <button type="button" class="btn btn-secondary" onclick="jumpToQuestion(${nextId})">
+            ➡ Ir para a Questão ${nextId}
+          </button>
+        </div>`;
+      }
+
+      slot.innerHTML = `<div class="result-card" role="region" aria-live="polite">
+        <div class="result-hero">
+          <div class="medal-wrap">${getMedalSVG(tier)}</div>
+          <div class="result-stats">
+            <span class="section-label">Resultado Final (Acertos de 1ª Tentativa)</span>
+            <p class="result-score-big">${firstTryHits}/30</p>
+            <h3 class="result-title">${medalTitle}</h3>
+            <p class="result-message">${message}</p>
+          </div>
+        </div>
+        ${nextActionHTML}
+        <div class="result-breakdown">${breakdownHTML}</div>
+      </div>`;
+    }
+
+    // Two-step inline reset confirmation (safe inside sandboxed iframe without confirm())
+    function handleResetClick(btn) {
+      if (!btn) return;
+      if (btn.dataset.armed !== 'true') {
+        btn.dataset.armed = 'true';
+        btn.textContent = '⚠️ Clique novamente para confirmar o reinício';
+        setTimeout(function() {
+          if (btn.dataset.armed === 'true') {
+            btn.dataset.armed = 'false';
+            btn.textContent = '🔄 Reiniciar Quiz';
+          }
+        }, 4500);
+        return;
+      }
+
+      btn.dataset.armed = 'false';
+      btn.textContent = '🔄 Reiniciar Quiz';
+      quizState = createEmptyState();
+      var slot = document.getElementById('final-result-slot');
+      if (slot) slot.innerHTML = '';
+      renderQuiz();
+      persistState();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    async function initApp() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === 'function') {
+        try {
+          var saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === 'object') {
+            quizState = {
+              solved: saved.solved || {},
+              wrongTries: saved.wrongTries || {},
+              firstTry: saved.firstTry || {},
+              showFinal: Boolean(saved.showFinal)
+            };
+          }
+        } catch (e) {
+          quizState = createEmptyState();
+        }
+      }
+
+      renderQuiz();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    initApp();
+  </script>
+</body>
+</html>

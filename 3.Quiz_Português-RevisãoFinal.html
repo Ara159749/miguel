@@ -1,0 +1,2663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="sticker">
+  <title>Missão de Português — 4º Ano (Módulo 4)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Sticker palette */
+      --background: #fef7ff;
+      --surface-container-low: #ffffff;
+      --surface-container: #f8eef8;
+      --surface-container-high: #f2e8f2;
+
+      /* Ink */
+      --on-surface: #2e1a28;
+      --on-surface-variant: #604868;
+
+      /* Rules */
+      --outline: #907898;
+      --outline-variant: #dcc8e0;
+
+      /* Accents */
+      --primary: #c2207f;
+      --on-primary: #ffffff;
+      --primary-container: #f080c0;
+      --on-primary-container: #2e1a28;
+      --secondary: #7c52aa;
+      --on-secondary: #ffffff;
+      --secondary-container: #ede4f7;
+      --on-secondary-container: #3d2160;
+      --tertiary: #0096cc;
+      --tertiary-container: #dff4fc;
+      --on-tertiary-container: #0c4a6e;
+      --error: #c53030;
+      --on-error: #ffffff;
+      --error-container: #fde8e8;
+      --on-error-container: #8b1e1e;
+
+      /* Semantic */
+      --positive: #137a4b;
+      --on-positive: #ffffff;
+      --positive-container: #e3f7ec;
+      --on-positive-container: #0d4f30;
+      --warning: #b45309;
+      --warning-container: #fef3c7;
+      --on-warning-container: #78350f;
+
+      /* Data series */
+      --data-1: #c2207f;
+      --data-2: #7c52aa;
+      --data-3: #0096cc;
+      --data-4: #d96a00;
+      --data-context: #c8b8d0;
+
+      /* Fonts */
+      --font-headline: 'DM Sans', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-label: 'DM Sans', sans-serif;
+
+      /* Shape */
+      --rounded: 1rem;
+      --rounded-lg: 2rem;
+      --rounded-full: 9999px;
+
+      /* Sticker effects */
+      --shadow-pink: 0 4px 16px rgb(224 64 160 / 0.2);
+      --shadow-pink-deep: 0 10px 28px rgb(224 64 160 / 0.32);
+      --shadow-grape: 0 4px 16px rgb(124 82 170 / 0.2);
+      --shadow-grape-deep: 0 10px 28px rgb(124 82 170 / 0.3);
+      --shadow-sky: 0 4px 16px rgb(0 150 204 / 0.2);
+      --shadow-positive: 0 4px 16px rgb(19 122 75 / 0.18);
+      --pop-scale: scale(1.03);
+      --lift: translateY(-4px);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      /* Focus */
+      --focus: var(--primary);
+
+      /* Type scale (Focused Tool + Kid-friendly legibility) */
+      --display-size: clamp(1.875rem, 1.45rem + 1.5vw, 2.5rem);
+      --headline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+      --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+      --label-size: 0.75rem;
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* Focus rings */
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .page-grid {
+      display: grid;
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      max-width: 1180px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Hero / Top Header Card */
+    .hero-panel {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-xl);
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--on-primary-container);
+      background: var(--primary-container);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      margin-bottom: var(--space-sm);
+    }
+
+    .display {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: var(--display-size);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--on-surface);
+      margin: 0 0 var(--space-sm) 0;
+    }
+    .display em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .hero-lede {
+      margin: 0;
+      color: var(--on-surface-variant);
+      max-width: 60ch;
+      font-size: var(--body-size);
+      line-height: 1.6;
+    }
+
+    /* Live Score & Progress Summary */
+    .stats-cluster {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+
+    .stat-tile {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .stat-tile--wide {
+      grid-column: 1 / -1;
+    }
+
+    .stat-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+    }
+
+    .stat-value {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+      color: var(--on-surface);
+      line-height: 1.1;
+    }
+    .stat-value--pink {
+      color: var(--primary);
+    }
+    .stat-value--grape {
+      color: var(--secondary);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 14px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded-full);
+      overflow: hidden;
+      margin-top: var(--space-xs);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--tertiary);
+      border-radius: var(--rounded-full);
+      transition: width var(--dur-long) var(--ease-bounce);
+    }
+
+    /* Navigator & Filter Card */
+    .nav-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-sky);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .nav-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .chip {
+      appearance: none;
+      border: 2px solid var(--outline-variant);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-size: 0.875rem;
+      font-weight: 700;
+      padding: var(--space-sm) var(--space-md);
+      min-height: 44px;
+      border-radius: var(--rounded-full);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-short) var(--ease-out),
+                  border-color var(--dur-short) var(--ease-out),
+                  color var(--dur-short) var(--ease-out);
+    }
+    .chip:hover {
+      transform: var(--pop-scale);
+      background: var(--surface-container);
+    }
+    .chip:active {
+      transform: scale(0.97);
+    }
+    .chip.is-active {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: var(--on-secondary);
+      box-shadow: var(--shadow-grape);
+    }
+
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: center;
+      font-size: var(--label-size);
+      font-weight: 600;
+      color: var(--on-surface-variant);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: var(--rounded-full);
+      display: inline-block;
+    }
+    .legend-dot--pending { background: var(--surface-container-high); border: 2px solid var(--outline); }
+    .legend-dot--first { background: var(--positive); }
+    .legend-dot--retry { background: var(--tertiary); }
+    .legend-dot--current { background: var(--primary); }
+
+    .question-dots {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .q-dot {
+      appearance: none;
+      border: 2px solid var(--outline-variant);
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-weight: 700;
+      font-size: 0.875rem;
+      font-variant-numeric: tabular-nums;
+      min-height: 44px;
+      min-width: 44px;
+      border-radius: var(--rounded-full);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-short) var(--ease-out),
+                  box-shadow var(--dur-short) var(--ease-out);
+    }
+    .q-dot:hover {
+      transform: var(--pop-scale);
+    }
+    .q-dot.is-first-try {
+      background: var(--positive-container);
+      border-color: var(--positive);
+      color: var(--on-positive-container);
+    }
+    .q-dot.is-solved-retry {
+      background: var(--tertiary-container);
+      border-color: var(--tertiary);
+      color: var(--on-tertiary-container);
+    }
+    .q-dot.is-current {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--shadow-pink);
+      transform: scale(1.06);
+    }
+    .q-dot.is-dimmed {
+      opacity: 0.4;
+    }
+
+    /* Main Quiz Stage */
+    .quiz-stage {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    .question-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .visual-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-grape);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .q-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+    }
+    .badge--pink {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+    .badge--grape {
+      background: var(--secondary-container);
+      color: var(--on-secondary-container);
+    }
+    .badge--sky {
+      background: var(--tertiary-container);
+      color: var(--on-tertiary-container);
+    }
+    .badge--outline {
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+      border: 1.5px solid var(--outline-variant);
+    }
+
+    .q-title {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--headline-size);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      color: var(--on-surface);
+      margin: 0;
+    }
+
+    .q-excerpt {
+      background: var(--surface-container);
+      border-left: 5px solid var(--secondary);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      color: var(--on-surface);
+      font-size: var(--body-size);
+      line-height: 1.65;
+    }
+    .q-excerpt strong {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    /* Options List */
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .option-btn {
+      appearance: none;
+      width: 100%;
+      text-align: left;
+      background: var(--surface-container);
+      border: 2px solid var(--outline-variant);
+      border-radius: var(--rounded-full);
+      padding: var(--space-md) var(--space-lg);
+      min-height: 54px;
+      color: var(--on-surface);
+      font-size: var(--body-size);
+      font-weight: 600;
+      line-height: 1.45;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  background-color var(--dur-short) var(--ease-out),
+                  border-color var(--dur-short) var(--ease-out),
+                  box-shadow var(--dur-short) var(--ease-out);
+    }
+    .option-btn:hover:not(:disabled) {
+      transform: var(--pop-scale);
+      background: var(--surface-container-low);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-pink);
+    }
+    .option-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    .option-letter {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container-low);
+      border: 2px solid var(--outline-variant);
+      color: var(--on-surface);
+      font-weight: 800;
+      font-size: 0.9375rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .option-text {
+      flex: 1;
+    }
+
+    .option-status-icon {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Option States */
+    .option-btn.is-wrong {
+      background: var(--error-container);
+      border-color: var(--error);
+      color: var(--on-error-container);
+      opacity: 0.85;
+    }
+    .option-btn.is-wrong .option-letter {
+      background: var(--error);
+      border-color: var(--error);
+      color: var(--on-error);
+    }
+
+    .option-btn.is-correct {
+      background: var(--positive-container);
+      border-color: var(--positive);
+      color: var(--on-positive-container);
+      box-shadow: var(--shadow-positive);
+    }
+    .option-btn.is-correct .option-letter {
+      background: var(--positive);
+      border-color: var(--positive);
+      color: var(--on-positive);
+    }
+
+    .option-btn.is-muted {
+      opacity: 0.55;
+    }
+
+    /* Feedback Banners */
+    .feedback-box {
+      border-radius: var(--rounded);
+      padding: var(--space-lg);
+      display: flex;
+      gap: var(--space-md);
+      align-items: flex-start;
+      animation: popIn var(--dur-long) var(--ease-bounce);
+    }
+    .feedback-box--retry {
+      background: var(--warning-container);
+      color: var(--on-warning-container);
+    }
+    .feedback-box--success {
+      background: var(--positive-container);
+      color: var(--on-positive-container);
+    }
+
+    .feedback-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--rounded-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feedback-box--retry .feedback-icon {
+      background: var(--warning);
+      color: var(--on-primary);
+    }
+    .feedback-box--success .feedback-icon {
+      background: var(--positive);
+      color: var(--on-positive);
+    }
+
+    .feedback-content h3 {
+      margin: 0 0 var(--space-xs) 0;
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--subhead-size);
+    }
+    .feedback-content p {
+      margin: 0;
+      font-size: var(--body-size);
+      line-height: 1.55;
+    }
+    .feedback-meta {
+      margin-top: var(--space-sm);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.9;
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: translateY(8px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Question Footer Controls */
+    .q-nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+      padding-top: var(--space-sm);
+    }
+
+    /* Buttons */
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: var(--rounded-full);
+      padding: var(--space-sm) var(--space-lg);
+      min-height: 46px;
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  box-shadow var(--dur-short) var(--ease-out),
+                  background-color var(--dur-short) var(--ease-out);
+    }
+    .btn:hover:not(:disabled) {
+      transform: var(--pop-scale);
+    }
+    .btn:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--shadow-pink);
+    }
+    .btn-primary:hover:not(:disabled) {
+      box-shadow: var(--shadow-pink-deep);
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      box-shadow: var(--shadow-grape);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      box-shadow: var(--shadow-grape-deep);
+    }
+
+    .btn-quiet {
+      background: var(--surface-container);
+      color: var(--primary);
+    }
+    .btn-quiet:hover:not(:disabled) {
+      background: var(--surface-container-high);
+    }
+
+    .btn-armed {
+      background: var(--error);
+      color: var(--on-error);
+      box-shadow: var(--shadow-pink);
+    }
+
+    /* Visual Support Panel */
+    .visual-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+    .visual-kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--secondary);
+    }
+    .visual-frame {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+    }
+    .visual-frame svg {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      display: block;
+    }
+    .visual-caption {
+      margin: 0;
+      color: var(--on-surface-variant);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+    }
+    .tip-pill {
+      background: var(--tertiary-container);
+      color: var(--on-tertiary-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+
+    /* Final Action Bar & Scoreboard */
+    .end-actions-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-xl);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+    }
+
+    .end-actions-copy h2 {
+      margin: 0 0 var(--space-xs) 0;
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--headline-size);
+      letter-spacing: -0.02em;
+    }
+    .end-actions-copy p {
+      margin: 0;
+      color: var(--on-surface-variant);
+      max-width: 55ch;
+    }
+
+    .end-actions-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+
+    /* Scoreboard Result Card */
+    .scoreboard-card {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-grape);
+      padding: var(--space-xl);
+      display: none;
+      flex-direction: column;
+      gap: var(--space-xl);
+      animation: popIn var(--dur-long) var(--ease-bounce);
+    }
+    .scoreboard-card.is-visible {
+      display: flex;
+    }
+
+    .score-hero {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: center;
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-xl);
+    }
+
+    .score-trophy-wrap {
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-full);
+      box-shadow: var(--shadow-pink);
+    }
+
+    .score-big-number {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: clamp(2.25rem, 1.8rem + 2vw, 3.25rem);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--primary);
+      margin: var(--space-xs) 0;
+    }
+
+    .score-motivation {
+      margin: var(--space-sm) 0 0 0;
+      font-size: var(--subhead-size);
+      font-weight: 600;
+      color: var(--on-surface);
+      max-width: 60ch;
+      line-height: 1.5;
+    }
+
+    .score-sub-note {
+      margin: var(--space-xs) 0 0 0;
+      color: var(--on-surface-variant);
+      font-size: 0.9375rem;
+    }
+
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+
+    .breakdown-item {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .breakdown-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-sm);
+    }
+    .breakdown-name {
+      font-weight: 700;
+      color: var(--on-surface);
+      font-size: 0.95rem;
+    }
+    .breakdown-count {
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      color: var(--secondary);
+      font-size: 0.95rem;
+    }
+
+    .lollipop-track {
+      height: 12px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded-full);
+      overflow: hidden;
+    }
+    .lollipop-fill {
+      height: 100%;
+      border-radius: var(--rounded-full);
+      background: var(--primary);
+      transition: width var(--dur-long) var(--ease-bounce);
+    }
+    .breakdown-item:nth-child(3n+2) .lollipop-fill { background: var(--secondary); }
+    .breakdown-item:nth-child(3n+3) .lollipop-fill { background: var(--tertiary); }
+
+    /* Footer Sources Note */
+    .sources-footer {
+      color: var(--on-surface-variant);
+      font-size: 0.875rem;
+      padding: var(--space-md) var(--space-sm) var(--space-xl);
+      line-height: 1.6;
+    }
+
+    /* Responsive Breakpoint */
+    @media (max-width: 860px) {
+      .hero-panel {
+        grid-template-columns: 1fr;
+      }
+      .quiz-stage {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-sm);
+        gap: var(--space-md);
+      }
+      .hero-panel,
+      .question-card,
+      .visual-card,
+      .nav-card,
+      .end-actions-card,
+      .scoreboard-card {
+        padding: var(--space-lg);
+      }
+      .score-hero {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+      .end-actions-buttons {
+        width: 100%;
+      }
+      .end-actions-buttons .btn {
+        width: 100%;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-grid">
+    <!-- Hero / Header -->
+    <section class="hero-panel" aria-label="Cabeçalho e progresso do quiz">
+      <div>
+        <span class="kicker">4º Ano • Língua Portuguesa • Módulo 4 (Cap. 11 e 12)</span>
+        <h1 class="display">Missão de <em>Português</em></h1>
+        <p class="hero-lede">
+          Explore 30 desafios divertidos sobre divulgação científica, cordel e heroínas brasileiras, pronomes, concordância verbal, história das palavras e sufixo -oso/-osa. Se errar, leia a dica e tente de novo!
+        </p>
+      </div>
+      <div class="stats-cluster">
+        <div class="stat-tile">
+          <span class="stat-label">Acertos de 1ª</span>
+          <span class="stat-value stat-value--pink" id="stat-first-try">0 / 30</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Concluídas</span>
+          <span class="stat-value stat-value--grape" id="stat-completed">0 / 30</span>
+        </div>
+        <div class="stat-tile stat-tile--wide">
+          <div class="breakdown-top">
+            <span class="stat-label">Progresso da aventura</span>
+            <span class="stat-label" id="stat-percent">0%</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" id="progress-bar-wrap">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question Navigator & Filters -->
+    <section class="nav-card" aria-label="Mapa das 30 questões">
+      <div class="nav-top-row">
+        <div class="filter-group" role="group" aria-label="Filtrar questões por capítulo">
+          <button type="button" class="chip is-active" id="filter-all" onclick="setFilter('all')">Todas (30)</button>
+          <button type="button" class="chip" id="filter-cap11" onclick="setFilter('cap11')">Cap. 11: Ciência &amp; Gramática (15)</button>
+          <button type="button" class="chip" id="filter-cap12" onclick="setFilter('cap12')">Cap. 12: Cordel &amp; Ortografia (15)</button>
+        </div>
+        <div class="legend-row" aria-hidden="true">
+          <span class="legend-item"><span class="legend-dot legend-dot--current"></span> Atual</span>
+          <span class="legend-item"><span class="legend-dot legend-dot--first"></span> 1ª tentativa</span>
+          <span class="legend-item"><span class="legend-dot legend-dot--retry"></span> Com dica</span>
+          <span class="legend-item"><span class="legend-dot legend-dot--pending"></span> Pendente</span>
+        </div>
+      </div>
+      <div class="question-dots" id="question-dots"></div>
+    </section>
+
+    <!-- Active Question Stage -->
+    <section class="quiz-stage" aria-label="Área da questão atual">
+      <article class="question-card" id="question-card">
+        <div class="q-meta-row" id="q-meta-row"></div>
+        <h2 class="q-title" id="q-title"></h2>
+        <div class="q-excerpt" id="q-excerpt" style="display: none;"></div>
+        <div class="options-list" id="options-list" role="group" aria-label="Alternativas de resposta"></div>
+        <div id="feedback-area" aria-live="polite"></div>
+        <div class="q-nav-actions">
+          <button type="button" class="btn btn-quiet" id="btn-prev" onclick="goPrev()">
+            <i data-lucide="arrow-left" aria-hidden="true"></i>
+            <span>Anterior</span>
+          </button>
+          <button type="button" class="btn btn-primary" id="btn-next" onclick="goNext()">
+            <span>Próxima questão</span>
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </article>
+
+      <aside class="visual-card" aria-label="Ilustração e apoio visual da questão">
+        <div class="visual-header">
+          <span class="visual-kicker" id="visual-kicker">Apoio visual</span>
+          <span class="badge badge--sky" id="visual-bncc">BNCC</span>
+        </div>
+        <div class="visual-frame" id="visual-frame"></div>
+        <p class="visual-caption" id="visual-caption"></p>
+        <div class="tip-pill" id="visual-tip-box">
+          <i data-lucide="sparkles" aria-hidden="true"></i>
+          <span id="visual-tip-text"></span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- End-of-Quiz Action Controls -->
+    <section class="end-actions-card" aria-label="Ações finais do quiz">
+      <div class="end-actions-copy">
+        <h2>Finalizou ou quer revisar seu placar?</h2>
+        <p>Você pode conferir quantas questões acertou de um total de 30 ou reiniciar todas as perguntas para tentar de novo do zero.</p>
+      </div>
+      <div class="end-actions-buttons">
+        <button type="button" class="btn btn-secondary" id="btn-reset-quiz" onclick="handleResetClick(this)">
+          <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+          <span>Reiniciar tudo do zero</span>
+        </button>
+        <button type="button" class="btn btn-primary" id="btn-show-score" onclick="showScoreboard()">
+          <i data-lucide="trophy" aria-hidden="true"></i>
+          <span>Conferir placar final</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Scoreboard Results Card -->
+    <section class="scoreboard-card" id="scoreboard-card" aria-label="Resultado e placar final" tabindex="-1">
+      <div class="score-hero">
+        <div class="score-trophy-wrap" id="score-trophy-wrap" aria-hidden="true"></div>
+        <div>
+          <span class="kicker">Placar Final • 4º Ano</span>
+          <div class="score-big-number" id="score-big-number">0 / 30 acertos</div>
+          <p class="score-motivation" id="score-motivation"></p>
+          <p class="score-sub-note" id="score-sub-note"></p>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin: 0 0 var(--space-md) 0; font-weight: 800;">Desempenho por assunto</h3>
+        <div class="breakdown-grid" id="breakdown-grid"></div>
+      </div>
+
+      <div class="end-actions-buttons">
+        <button type="button" class="btn btn-secondary" id="btn-reset-from-score" onclick="handleResetClick(this)">
+          <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+          <span>Reiniciar e tentar de novo</span>
+        </button>
+        <button type="button" class="btn btn-quiet" onclick="scrollToQuestionStage()">
+          <i data-lucide="book-open" aria-hidden="true"></i>
+          <span>Voltar para as questões</span>
+        </button>
+      </div>
+    </section>
+
+    <footer class="sources-footer">
+      Conteúdo alinhado à Base Nacional Comum Curricular (BNCC — EF04LP06, EF04LP08, EF04LP19, EF04LP20, EF15LP02, EF15LP03, EF35LP05, EF35LP06, EF35LP08, EF35LP11, EF35LP14, EF35LP17, EF35LP20, EF35LP23 e EF35LP27), ao Referencial Curricular do Ensino Fundamental, aos planos de aula Nova Escola, às atividades de cordel do Portal da Educação (SEDUC-GO), ao banco pedagógico de concordância verbal GeraProva e aos eixos dos Capítulos 11 e 12 do livro Trilhas de Língua Portuguesa (4º Ano, Módulo 4, FTD).
+    </footer>
+  </main>
+
+  <api-shim></api-shim>
+  <script>
+    const QUESTIONS = [
+      // --- CAPÍTULO 11: DIVULGAÇÃO CIENTÍFICA & MINISSEMINÁRIOS (Q1 - Q5) ---
+      {
+        id: 1,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Divulgação Científica`,
+        origin: `Avaliação Base`,
+        bncc: `EF04LP19`,
+        visualType: `science_mag`,
+        visualCaption: `Revistas e artigos científicos infantis trazem descobertas reais com linguagem clara.`,
+        visualTip: `Pense: para quem e com qual objetivo o texto de divulgação científica é escrito?`,
+        prompt: `Qual é o principal objetivo de um texto de divulgação científica escrito para crianças?`,
+        excerpt: ``,
+        options: [
+          `Contar uma história inventada com personagens mágicos e castelos encantados.`,
+          `Apresentar descobertas e conhecimentos da ciência em linguagem clara para informar o leitor.`,
+          `Vender brinquedos e jogos em uma loja da cidade.`,
+          `Ensinar passo a passo como preparar uma receita de bolo.`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Histórias inventadas pertencem aos contos literários, não à divulgação científica.`,
+          ``,
+          `Textos que querem vender produtos são anúncios publicitários.`,
+          `Receitas culinárias são textos instrucionais, não textos científicos.`
+        ],
+        explanation: `Os textos de divulgação científica explicam fenômenos da natureza, animais, saúde ou tecnologia usando pesquisas reais e uma linguagem fácil de entender para informar crianças curiosas!`
+      },
+      {
+        id: 2,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Divulgação Científica`,
+        origin: `Avaliação Base`,
+        bncc: `EF04LP20`,
+        visualType: `infographic`,
+        visualCaption: `Infográficos e gráficos comparam números e informações de forma rápida e visual.`,
+        visualTip: `Observe como barras e desenhos ajudam seus olhos a comparar dados na hora.`,
+        prompt: `Em textos de divulgação científica, por que aparecem gráficos, tabelas, fotos e infográficos?`,
+        excerpt: ``,
+        options: [
+          `Apenas para enfeitar a página quando sobra um espaço vazio.`,
+          `Para substituir todas as palavras e deixar o texto sem título.`,
+          `Para ajudar a visualizar dados, comparar informações e facilitar a compreensão do assunto.`,
+          `Para esconder as respostas importantes do leitor.`
+        ],
+        correctIndex: 2,
+        wrongHints: [
+          `Imagens analíticas não são só enfeite: elas trazem informações importantes.`,
+          `Gráficos e tabelas trabalham junto com o texto escrito, sem apagar o título.`,
+          ``,
+          `Na ciência, o objetivo é sempre tornar a informação mais clara, nunca escondê-la.`
+        ],
+        explanation: `Gráficos, diagramas, legendas e infográficos organizam dados e comparações visualmente, ajudando o leitor a entender rapidamente o que o texto explica.`
+      },
+      {
+        id: 3,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Divulgação Científica`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP05`,
+        visualType: `term_explain`,
+        visualCaption: `Na divulgação científica infantil, termos novos vêm acompanhados de explicações acessíveis.`,
+        visualTip: `Quando aparece uma palavra difícil da ciência, o autor costuma dar uma pista logo depois!`,
+        prompt: `Quando um texto de divulgação científica usa uma palavra difícil da ciência (como "metamorfose" ou "fotossíntese"), o que ele costuma fazer para que crianças de 9 anos entendam?`,
+        excerpt: ``,
+        options: [
+          `Explica o significado logo em seguida, usando exemplos simples do dia a dia.`,
+          `Escreve a palavra em outro idioma sem nenhuma tradução.`,
+          `Deixa a frase pela metade para o leitor adivinhar sozinho.`,
+          `Muda de assunto e passa a falar sobre outro tema.`
+        ],
+        correctIndex: 0,
+        wrongHints: [
+          ``,
+          `Um texto para crianças quer ser compreendido; deixar sem explicação atrapalharia a leitura.`,
+          `Os textos científicos explicam bem as ideias, sem deixar frases inacabadas.`,
+          `Mudar de assunto confundiria quem está pesquisando sobre o tema.`
+        ],
+        explanation: `Mesmo usando termos científicos corretos, o autor adapta o texto para o público infantil explicando cada palavra nova com comparações e exemplos fáceis.`
+      },
+      {
+        id: 4,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Divulgação Científica`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP20`,
+        visualType: `seminar`,
+        visualCaption: `Um bom minisseminário combina roteiro escrito, voz clara e apoio visual.`,
+        visualTip: `Imagine que você vai apresentar uma pesquisa na frente da sua turma!`,
+        prompt: `Ao apresentar um minisseminário em sala de aula sobre um fenômeno natural, qual atitude ajuda os colegas a compreenderem melhor o assunto?`,
+        excerpt: ``,
+        options: [
+          `Ler tudo muito depressa e baixinho sem olhar para os colegas.`,
+          `Seguir um roteiro organizado, falar com clareza e mostrar imagens, diagramas ou tabelas de apoio.`,
+          `Ficar de costas para a turma durante toda a apresentação.`,
+          `Contar apenas piadas e esquecer os dados pesquisados.`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Falar muito rápido ou baixo impede que a turma escute e acompanhe as descobertas.`,
+          ``,
+          `Olhar para os colegas e manter boa postura ajuda todos a prestarem atenção.`,
+          `O minisseminário precisa apresentar informações pesquisadas de forma organizada.`
+        ],
+        explanation: `Na exposição oral de um seminário, organizar a fala em introdução e desenvolvimento, usar tom de voz audível e apoiar-se em cartazes ou gráficos torna a explicação muito mais clara!`
+      },
+      {
+        id: 5,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Divulgação Científica`,
+        origin: `Questão Inédita`,
+        bncc: `EF04LP19`,
+        visualType: `whale_compare`,
+        visualCaption: `Comparar um órgão gigante a um carro pequeno ajuda a visualizar medidas reais.`,
+        visualTip: `Pense por que o autor escolheu justamente um objeto do nosso dia a dia para comparar.`,
+        prompt: `Por que o autor comparou o coração da baleia-azul a um carro pequeno?`,
+        excerpt: `Leia o trecho de uma curiosidade científica: <strong>"O coração da baleia-azul é tão grande quanto um carro pequeno e bate bem devagar quando ela mergulha fundo no oceano."</strong>`,
+        options: [
+          `Para provar que as baleias gostam de passear pelas ruas da cidade.`,
+          `Para ajudar o leitor a imaginar o tamanho real usando um objeto conhecido do cotidiano.`,
+          `Porque se trata de uma história de fantasia inventada.`,
+          `Para ensinar as regras de trânsito aos leitores.`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `O texto não diz que baleias andam nas ruas; o carro é apenas uma medida de comparação!`,
+          ``,
+          `Textos de divulgação científica trazem dados reais da natureza, não fantasia.`,
+          `Não há nenhuma regra de trânsito no trecho sobre a baleia.`
+        ],
+        explanation: `Comparar medidas gigantes com objetos conhecidos (como um carro pequeno) é uma ótima estratégia da divulgação científica infantil para transformar números em imagens fáceis de imaginar.`
+      },
+
+      // --- CAPÍTULO 11: PRONOMES PESSOAIS, POSSESSIVOS, DEMONSTRATIVOS E TRATAMENTO (Q6 - Q10) ---
+      {
+        id: 6,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Pronomes`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP06`,
+        visualType: `anaphora`,
+        visualCaption: `Pronomes retomam palavras já ditas, deixando o texto mais fluido e sem repetições.`,
+        visualTip: `Substitua mentalmente "Elas" na segunda frase para descobrir a quem se refere.`,
+        prompt: `Na segunda frase do trecho abaixo, qual é a função da palavra destacada "Elas"?`,
+        excerpt: `As pesquisadoras observaram as estrelas pelo telescópio. <strong>Elas</strong> anotaram tudo no caderno.`,
+        options: [
+          `Indicar uma ação que aconteceu no passado.`,
+          `Retomar "As pesquisadoras" para evitar repetir as mesmas palavras.`,
+          `Dar uma nova qualidade para as estrelas.`,
+          `Mostrar em qual loja o caderno foi comprado.`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Quem indica ação é o verbo ("anotaram"), não a palavra "Elas".`,
+          ``,
+          `Quem dá características é o adjetivo, e "Elas" se refere às pessoas que anotaram.`,
+          `A frase não fala sobre compras ou lojas.`
+        ],
+        explanation: `"Elas" é um pronome pessoal que substitui e retoma "As pesquisadoras". Usar pronomes assim evita repetições cansativas e mantém a ligação entre as frases do texto!`
+      },
+      {
+        id: 7,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Pronomes`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP14`,
+        visualType: `possessive`,
+        visualCaption: `Pronomes possessivos mostram a quem pertence algo: meu, minha, teu, seu, nosso.`,
+        visualTip: `Procure a palavra que indica que o objeto pertence a alguém.`,
+        prompt: `Em qual frase a palavra destacada é um pronome possessivo (indica posse ou pertencimento)?`,
+        excerpt: ``,
+        options: [
+          `<strong>Aquela</strong> revista científica é muito interessante.`,
+          `<strong>Nós</strong> apresentamos o seminário de Ciências hoje.`,
+          `Guardei <strong>meu</strong> livro de descobertas dentro da mochila.`,
+          `<strong>Você</strong> já leu o texto sobre os oceanos?`
+        ],
+        correctIndex: 2,
+        wrongHints: [
+          `"Aquela" mostra distância (pronome demonstrativo), não indica posse.`,
+          `"Nós" indica as pessoas que falam (pronome pessoal reto), não indica posse.`,
+          ``,
+          `"Você" é um pronome de tratamento usado para conversar com alguém.`
+        ],
+        explanation: `"Meu" é um pronome possessivo porque mostra que o livro pertence a quem está falando. Outros exemplos são: minha, seu, sua, nosso e nossa.`
+      },
+      {
+        id: 8,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Pronomes`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP08`,
+        visualType: `demonstrative`,
+        visualCaption: `"Este" mostra o que está perto de quem fala; "aquele" aponta para o que está longe.`,
+        visualTip: `Repare nas expressões "aqui nas minhas mãos" e "lá na estante".`,
+        prompt: `No trecho abaixo, os termos destacados "Este" e "aquele" são classificados como:`,
+        excerpt: `<strong>Este</strong> livro aqui nas minhas mãos fala sobre planetas, mas <strong>aquele</strong> lá na estante é de poesias.`,
+        options: [
+          `Pronomes demonstrativos, pois apontam a posição dos livros em relação a quem fala.`,
+          `Pronomes possessivos, pois dizem quem é o dono da estante.`,
+          `Verbos de ação que mostram movimento rápido.`,
+          `Adjetivos terminados com o sufixo -oso.`
+        ],
+        correctIndex: 0,
+        wrongHints: [
+          ``,
+          `"Este" e "aquele" não indicam dono, e sim onde os objetos estão.`,
+          `Verbos são palavras como "fala" ou "é"; "este" e "aquele" apontam objetos.`,
+          `Nenhum dos dois termos termina em -oso.`
+        ],
+        explanation: `"Este", "esse" e "aquele" são pronomes demonstrativos! Eles indicam se algo está perto de quem fala ("este aqui"), perto de quem ouve ("esse") ou longe dos dois ("aquele lá").`
+      },
+      {
+        id: 9,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Pronomes`,
+        origin: `Questão Inédita`,
+        bncc: `EF35LP14`,
+        visualType: `pronoun_match`,
+        visualCaption: `Para completar bem, observe quem realizou a ação na primeira parte da frase.`,
+        visualTip: `Quem apresentou o cartaz foi a Mariana ("ela"). Qual pronome combina com "ela"?`,
+        prompt: `Complete a frase escolhendo o pronome possessivo adequado: "Mariana pesquisou sobre as abelhas. Ela mostrou com orgulho o ______ cartaz para a turma."`,
+        excerpt: ``,
+        options: [
+          `meu`,
+          `seu`,
+          `aquela`,
+          `nós`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `"Meu" serviria se eu mesmo estivesse falando do meu cartaz, mas quem apresentou foi a Mariana.`,
+          ``,
+          `"Aquela" é pronome demonstrativo feminino e não combina com "o ... cartaz".`,
+          `"Nós" é pronome pessoal reto e não indica posse.`
+        ],
+        explanation: `Como estamos falando sobre o cartaz da Mariana (3ª pessoa — ela), o pronome possessivo correto para concordar no masculino singular é "seu" ("o seu cartaz").`
+      },
+      {
+        id: 10,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Pronomes`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP11`,
+        visualType: `formal_letter`,
+        visualCaption: `Em situações formais, os pronomes de tratamento demonstram respeito ao interlocutor.`,
+        visualTip: `Pense na diferença entre falar com um amigo no recreio e escrever um pedido à diretoria.`,
+        prompt: `Ao escrever um bilhete ou falar com respeito com a diretora da escola, qual forma de tratamento é mais adequada à situação formal?`,
+        excerpt: ``,
+        options: [
+          `E aí, mano, beleza?`,
+          `Senhora diretora`,
+          `Ô, tu aí da sala!`,
+          `Fala aí, colega!`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Essa expressão é uma gíria informal usada entre amigos próximos.`,
+          ``,
+          `Essa forma é muito informal e até um pouco brusca para uma diretora.`,
+          `"Fala aí" combina com conversa descontraída, não com situação formal.`
+        ],
+        explanation: `"Senhor" e "Senhora" (assim como "Vossa Senhoria" em cartas oficiais) são pronomes de tratamento formais que usamos para demonstrar respeito em situações mais sérias ou com autoridades.`
+      },
+
+      // --- CAPÍTULO 11: CONCORDÂNCIA VERBAL (Q11 - Q15) ---
+      {
+        id: 11,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Concordância Verbal`,
+        origin: `Avaliação Base`,
+        bncc: `EF04LP06`,
+        visualType: `scale_balance`,
+        visualCaption: `Sujeito e verbo precisam combinar em número (singular ou plural) e pessoa.`,
+        visualTip: `Pergunte "Quem pratica a ação?" e confira se o verbo está no mesmo número (singular ou plural).`,
+        prompt: `Qual frase abaixo utiliza corretamente a concordância verbal entre o sujeito e o verbo?`,
+        excerpt: ``,
+        options: [
+          `Os aluno estudou para a prova de Ciências.`,
+          `A menina e o menino foi ao parque ler cordel.`,
+          `A professora explica a matéria com muita clareza.`,
+          `As criança brincam no pátio da escola.`
+        ],
+        correctIndex: 2,
+        wrongHints: [
+          `O artigo "Os" pede "alunos" no plural e o verbo no plural ("estudaram").`,
+          `"A menina e o menino" são duas pessoas (sujeito composto), então o verbo precisa ser "foram".`,
+          ``,
+          `O substantivo "criança" deveria estar no plural ("As crianças") para combinar com "As" e "brincam".`
+        ],
+        explanation: `Em "A professora explica a matéria", o sujeito "A professora" está no singular e o verbo "explica" também está no singular. Tudo combina perfeitamente!`
+      },
+      {
+        id: 12,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Concordância Verbal`,
+        origin: `Avaliação Base`,
+        bncc: `EF04LP06`,
+        visualType: `detective_error`,
+        visualCaption: `Fique atento! Um sujeito no plural nunca pode ficar com o verbo no singular.`,
+        visualTip: `Leia cada frase devagar procurando onde o verbo não combinou com o sujeito.`,
+        prompt: `Identifique a única frase que apresenta um ERRO de concordância verbal segundo a norma-padrão:`,
+        excerpt: ``,
+        options: [
+          `As meninas foram à feira cultural da escola.`,
+          `Os alunos foi à biblioteca pesquisar textos científicos.`,
+          `A casa e o jardim estão bem cuidados.`,
+          `As crianças leem livros de divulgação científica.`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Aqui está tudo certo: "As meninas" (plural) combina com "foram" (plural).`,
+          ``,
+          `"A casa e o jardim" são dois elementos, então "estão" no plural está certinho!`,
+          `"As crianças" (plural) concorda direitinho com "leem" (plural).`
+        ],
+        explanation: `Em "Os alunos foi à biblioteca", há um erro porque "Os alunos" está no plural, então o verbo precisa ir para o plural também: "Os alunos foram à biblioteca".`
+      },
+      {
+        id: 13,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Concordância Verbal`,
+        origin: `Avaliação Base`,
+        bncc: `EF04LP06`,
+        visualType: `puzzle_fit`,
+        visualCaption: `Quando sujeito e verbo concordam, as peças da frase se encaixam perfeitamente.`,
+        visualTip: `Confira se todas as palavras do sujeito e o verbo estão juntos no singular ou juntos no plural.`,
+        prompt: `Qual frase está totalmente de acordo com a norma-padrão de concordância verbal?`,
+        excerpt: ``,
+        options: [
+          `A professora e os alunos revisou os exercícios antes da prova.`,
+          `Os alunos revisou os exercícios antes da prova.`,
+          `A aluna revisaram os exercícios antes da prova.`,
+          `Os alunos revisaram os exercícios antes da prova.`
+        ],
+        correctIndex: 3,
+        wrongHints: [
+          `"A professora e os alunos" formam um sujeito composto (várias pessoas), que exige "revisaram".`,
+          `"Os alunos" está no plural, então o verbo deve ficar no plural ("revisaram").`,
+          `"A aluna" é apenas uma pessoa (singular), então o certo seria "revisou".`,
+          ``
+        ],
+        explanation: `"Os alunos revisaram os exercícios" está correta porque tanto o sujeito ("Os alunos") quanto o verbo ("revisaram") estão na 3ª pessoa do plural!`
+      },
+      {
+        id: 14,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Concordância Verbal`,
+        origin: `Avaliação Base`,
+        bncc: `EF04LP06`,
+        visualType: `compound_sum`,
+        visualCaption: `Dois núcleos ligados por "e" somam forças e pedem o verbo no plural!`,
+        visualTip: `Conte quantas heroínas são o sujeito da frase: uma ou duas?`,
+        prompt: `Qual forma verbal completa corretamente a frase: "Dandara e Maria Quitéria ______ exemplos de coragem na história do Brasil."`,
+        excerpt: ``,
+        options: [
+          `é`,
+          `foi`,
+          `são`,
+          `era`
+        ],
+        correctIndex: 2,
+        wrongHints: [
+          `"É" está no singular e serviria para apenas uma pessoa.`,
+          `"Foi" também está no singular; como há duas heroínas, precisamos do plural.`,
+          ``,
+          `"Era" é singular. Para duas pessoas juntas, usamos o plural!`
+        ],
+        explanation: `Como temos duas pessoas ligadas por "e" ("Dandara e Maria Quitéria"), formamos um sujeito composto no plural. Por isso, o verbo também fica no plural: "são".`
+      },
+      {
+        id: 15,
+        chapter: 'cap11',
+        chapterLabel: `Capítulo 11`,
+        topic: `Concordância Verbal`,
+        origin: `Questão Inédita`,
+        bncc: `EF04LP06`,
+        visualType: `nucleus_shield`,
+        visualCaption: `Cuidado com a armadilha! O verbo concorda com o núcleo do sujeito ("A turma"), e não com a palavra mais próxima.`,
+        visualTip: `Pergunte ao verbo: "Quem apresentou o seminário?" — foi "A turma" (um grupo só)!`,
+        prompt: `Atenção ao núcleo do sujeito! Complete a frase: "A turma de alunos do 4º ano ______ um belo minisseminário ontem."`,
+        excerpt: ``,
+        options: [
+          `apresentaram`,
+          `apresentou`,
+          `apresentarão`,
+          `apresentam`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Cuidado para não se enganar com "alunos" logo antes do verbo! Quem fez a ação foi "A turma" (singular).`,
+          ``,
+          `"Apresentarão" indica futuro, mas a palavra "ontem" mostra que já aconteceu no passado!`,
+          `"Apresentam" está no plural e no tempo presente, não combinando com "A turma" nem com "ontem".`
+        ],
+        explanation: `O núcleo do sujeito é "A turma", que é um substantivo coletivo no singular. Por isso, na norma-padrão o verbo fica no singular ("apresentou"), mesmo havendo a palavra "alunos" por perto.`
+      },
+
+      // --- CAPÍTULO 12: CORDEL, XILOGRAVURA, REPENTE & HEROÍNAS BRASILEIRAS (Q16 - Q20) ---
+      {
+        id: 16,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Cordel e Heroínas`,
+        origin: `Questão Inédita`,
+        bncc: `EF35LP23`,
+        visualType: `cordel_stanza`,
+        visualCaption: `As estrofes mais famosas dos folhetos de cordel têm 6 versos e rimas musicais.`,
+        visualTip: `Conte: seis linhas = SEXT... Qual palavra começa assim?`,
+        prompt: `Na literatura de cordel, os versos têm ritmo e rimas marcantes. Como se chama a estrofe tradicional de seis linhas muito usada nos folhetos?`,
+        excerpt: ``,
+        options: [
+          `Quadra`,
+          `Sextilha`,
+          `Parágrafo`,
+          `Manchete`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Quadra é uma estrofe de quatro versos, não de seis.`,
+          ``,
+          `Parágrafo é a divisão de textos em prosa, não de poemas em versos.`,
+          `Manchete é o título principal de uma notícia de jornal.`
+        ],
+        explanation: `A sextilha é uma estrofe formada por seis versos (seis linhas)! Ela é a forma preferida de muitos cordelistas porque cria um ritmo gostoso de ler em voz alta.`
+      },
+      {
+        id: 17,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Cordel e Heroínas`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP27`,
+        visualType: `xilogravura`,
+        visualCaption: `A xilogravura nasce de desenhos talhados na madeira que viram carimbos de capa.`,
+        visualTip: `O prefixo "xilo" significa madeira!`,
+        prompt: `Como se chama a técnica artística tradicional usada para ilustrar as capas dos folhetos de cordel, feita com desenhos talhados em madeira e carimbados no papel?`,
+        excerpt: ``,
+        options: [
+          `Fotografia digital`,
+          `Aquarela líquida`,
+          `Xilogravura`,
+          `Pintura a óleo`
+        ],
+        correctIndex: 2,
+        wrongHints: [
+          `Fotografia usa câmera ou celular, não entalhe em madeira.`,
+          `Aquarela é feita com tintas diluídas em água sobre papel.`,
+          ``,
+          `Pintura a óleo usa pincéis em telas de tecido, não é a técnica tradicional do cordel.`
+        ],
+        explanation: `A xilogravura (de "xilo" = madeira + "gravura") é a arte de esculpir uma imagem na madeira, passar tinta e carimbar no papel. Grandes artistas como J. Borges deixaram capas inesquecíveis!`
+      },
+      {
+        id: 18,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Cordel e Heroínas`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP23`,
+        visualType: `cordel_vs_repente`,
+        visualCaption: `Cordel vem impresso no folheto; repente nasce cantado e improvisado ao som da viola.`,
+        visualTip: `Pense: um você segura no papel e lê; o outro você ouve cantado de improviso!`,
+        prompt: `Qual é a principal diferença entre o CORDEL e o REPENTE, duas manifestações da cultura popular brasileira?`,
+        excerpt: ``,
+        options: [
+          `O cordel é uma poesia escrita e impressa em folhetos, enquanto o repente é cantado e improvisado na hora, geralmente com viola.`,
+          `O cordel nunca tem rimas e o repente só pode ser escrito no computador.`,
+          `O repente só existe fora do Brasil e o cordel só fala de matemática.`,
+          `Não existe diferença: cordel e repente são exatamente a mesma coisa.`
+        ],
+        correctIndex: 0,
+        wrongHints: [
+          ``,
+          `Tanto o cordel quanto o repente usam muitas rimas e musicalidade!`,
+          `Ambos são grandes tesouros da cultura popular brasileira, especialmente no Nordeste.`,
+          `Eles têm semelhanças no ritmo e nas rimas, mas diferem na forma: um é impresso e o outro é cantado de improviso.`
+        ],
+        explanation: `O cordel é pensado, escrito e impresso em livretos para ser lido ou declamado; já o repente é criado na hora (de repente!) pelos repentistas que cantam versos improvisados ao som da viola.`
+      },
+      {
+        id: 19,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Cordel e Heroínas`,
+        origin: `Questão Inédita`,
+        bncc: `EF35LP23`,
+        visualType: `dandara_rhyme`,
+        visualCaption: `Nos versos de cordel, o som final das palavras cria uma melodia fácil de lembrar.`,
+        visualTip: `Leia em voz alta prestando atenção no final da 2ª e da 4ª linha!`,
+        prompt: `Leia a estrofe em homenagem a Dandara dos Palmares. Quais palavras formam a rima dessa estrofe?`,
+        excerpt: `Com coragem e firmeza<br>Lutou pela <strong>liberdade</strong><br>Dandara dos Palmares<br>Defendeu sua <strong>comunidade</strong>.`,
+        options: [
+          `coragem e Palmares`,
+          `liberdade e comunidade`,
+          `lutou e defendeu`,
+          `Dandara e firmeza`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Observe o som final de "coragem" e "Palmares": eles não terminam com o mesmo som.`,
+          ``,
+          `"Lutou" termina com som "-ou" e "defendeu" termina com "-eu" — não rimam.`,
+          `"Dandara" e "firmeza" também têm finais bem diferentes.`
+        ],
+        explanation: `"Liberdade" e "comunidade" terminam exatamente com o mesmo som "-dade", formando a rima perfeita nos versos pares da estrofe!`
+      },
+      {
+        id: 20,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Cordel e Heroínas`,
+        origin: `Questão Inédita`,
+        bncc: `EF35LP27`,
+        visualType: `cordel_line`,
+        visualCaption: `Os livretos ficavam pendurados em cordões nas feiras — daí veio o nome "cordel"!`,
+        visualTip: `Observe a palavra "cordel": ela lembra "corda" ou "cordão".`,
+        prompt: `Por que esse gênero literário tão querido no Brasil recebeu o nome de "literatura de cordel" (e costuma contar histórias de heroínas como Maria Quitéria e Anita Garibaldi)?`,
+        excerpt: ``,
+        options: [
+          `Por causa do costume de pendurar os folhetos em barbantes ou cordões esticados para vender nas feiras.`,
+          `Porque todos os poetas tocavam violino com cordas de ouro.`,
+          `Porque era proibido abrir os livros em mesas escolares.`,
+          `Porque o nome significa "livro sem páginas" em latim.`
+        ],
+        correctIndex: 0,
+        wrongHints: [
+          ``,
+          `O nome vem da forma como os folhetos eram expostos para venda, não de um instrumento de ouro.`,
+          `Não havia proibição nenhuma; os folhetos eram vendidos livremente em praças e mercados.`,
+          `Os folhetos têm várias páginas de papel dobrado e grampeado!`
+        ],
+        explanation: `Os livretos eram expostos pendurados em cordões (ou cordéis) esticados nas feiras populares, para que todos pudessem escolher e levar histórias rimadas sobre o povo, o folclore e grandes heroínas brasileiras.`
+      },
+
+      // --- CAPÍTULO 12: VARIAÇÃO LINGUÍSTICA HISTÓRICA (Q21 - Q25) ---
+      {
+        id: 21,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Variação Histórica`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP11`,
+        visualType: `historic_pharmacy`,
+        visualCaption: `Antigamente escrevia-se "pharmacia" com PH; hoje escrevemos "farmácia" com F.`,
+        visualTip: `As línguas são vivas e mudam com o passar dos séculos!`,
+        prompt: `Ao olhar fotos e jornais antigos do Brasil, encontramos a palavra "pharmacia" escrita com PH. O que esse exemplo mostra sobre a Língua Portuguesa?`,
+        excerpt: ``,
+        options: [
+          `Que os moradores de antigamente não sabiam ler.`,
+          `Que a língua muda ao longo do tempo na escrita e no vocabulário (variação linguística histórica).`,
+          `Que o nome "farmácia" deixou de existir no Brasil.`,
+          `Que as placas antigas eram feitas em outro planeta.`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `As pessoas daquela época sabiam ler perfeitamente — aquela era a regra oficial de então!`,
+          ``,
+          `A palavra continua existindo e é muito usada, apenas ganhou uma escrita mais simples com F.`,
+          `Essa mudança aconteceu na própria história da Língua Portuguesa no Brasil.`
+        ],
+        explanation: `Com o passar dos anos, a ortografia foi sendo simplificada: combinações como "ph" viraram "f" ("pharmacia" virou "farmácia"). Isso prova que a língua é viva e muda na história!`
+      },
+      {
+        id: 22,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Variação Histórica`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP11`,
+        visualType: `voce_timeline`,
+        visualCaption: `De "Vossa Mercê" para "Vosmecê" até "Você": uma viagem no tempo dentro de uma palavra!`,
+        visualTip: `Fale rápido "Vossa Mercê" várias vezes e veja como o som vai ficando parecido com "Você".`,
+        prompt: `A palavra "você", que falamos todos os dias, nasceu da expressão antiga "Vossa Mercê" (que virou "vosmecê" até chegar a "você"). Essa transformação é um exemplo de:`,
+        excerpt: ``,
+        options: [
+          `Erro de concordância verbal no plural.`,
+          `Variação linguística histórica, mostrando como a língua se transforma com o uso ao longo do tempo.`,
+          `Regra exclusiva dos textos de divulgação científica.`,
+          `Formação de adjetivos com o sufixo -oso.`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Não se trata de erro entre sujeito e verbo, mas da história de uma palavra.`,
+          ``,
+          `Essa transformação aconteceu na fala cotidiana de milhões de pessoas durante séculos.`,
+          `A palavra "você" não tem o sufixo -oso.`
+        ],
+        explanation: `A variação linguística histórica mostra como as palavras vão sendo encurtadas e adaptadas pela fala das gerações. "Vossa Mercê" era um tratamento respeitoso antigo que evoluiu até o nosso "você"!`
+      },
+      {
+        id: 23,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Variação Histórica`,
+        origin: `Avaliação Base`,
+        bncc: `EF35LP11`,
+        visualType: `bonde_reclame`,
+        visualCaption: `Palavras antigas como "bonde" e "reclame" contam como era a vida nas cidades de outros tempos.`,
+        visualTip: `Pense nos objetos e costumes de 100 anos atrás comparados aos de hoje.`,
+        prompt: `Em revistas antigas de 100 anos atrás, uma propaganda era chamada de "reclame", e o transporte sobre trilhos nas ruas era o "bonde". Por que hoje quase não usamos essas palavras no dia a dia?`,
+        excerpt: ``,
+        options: [
+          `Porque as palavras acompanham os objetos e costumes de cada época, mudando com o tempo.`,
+          `Porque existe uma lei que proíbe falar palavras antigas na escola.`,
+          `Porque os jornais antigos não tinham letras impressas.`,
+          `Porque ninguém mais faz propagandas hoje em dia.`
+        ],
+        correctIndex: 0,
+        wrongHints: [
+          ``,
+          `Não há nenhuma lei proibindo palavras antigas; elas apenas saem de uso naturalmente.`,
+          `Os jornais antigos tinham muitas letras e anúncios — chamados justamente de reclames!`,
+          `Hoje fazemos muitas propagandas, só mudamos o nome de "reclame" para "anúncio" ou "comercial".`
+        ],
+        explanation: `Quando os costumes e transportes mudam, o vocabulário muda junto! Algumas palavras ficam antigas (arcaísmos) e outras novas aparecem, como "internet" e "aplicativo".`
+      },
+      {
+        id: 24,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Variação Histórica`,
+        origin: `Questão Inédita`,
+        bncc: `EF35LP11`,
+        visualType: `respect_history`,
+        visualCaption: `Ler textos de outras épocas exige curiosidade e respeito pela história da língua.`,
+        visualTip: `Como devemos reagir diante de uma escrita diferente da nossa por ser muito antiga?`,
+        prompt: `Ao ler uma carta antiga escrita há mais de cem anos com palavras como "pharmacia" e "theatro", qual atitude demonstra respeito e compreensão linguística?`,
+        excerpt: ``,
+        options: [
+          `Zombar da carta dizendo que quem escreveu não sabia português.`,
+          `Reconhecer que aquela grafia fazia parte das regras e dos costumes de outra época histórica.`,
+          `Achar que a carta é falsa apenas por causa das letras PH e TH.`,
+          `Rasgar o documento porque não está igual ao dicionário atual.`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Não podemos julgar o passado pelas regras de hoje: na época, aquela era a forma correta!`,
+          ``,
+          `O uso de PH e TH era super comum no Português antigo antes das reformas ortográficas.`,
+          `Documentos antigos são fontes valiosas de história e memória.`
+        ],
+        explanation: `Entender a variação histórica nos ensina a respeitar todas as formas da língua e a reconhecer que o modo como escrevemos hoje também é resultado de muitas mudanças!`
+      },
+      {
+        id: 25,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Variação Histórica`,
+        origin: `Questão Inédita`,
+        bncc: `EF35LP11`,
+        visualType: `new_words`,
+        visualCaption: `Assim como algumas palavras ficam no passado, novas palavras nascem com novas invenções!`,
+        visualTip: `Qual destas palavras NÃO existia no tempo dos seus bisavós porque a invenção ainda não existia?`,
+        prompt: `A língua também ganha palavras novas quando surgem invenções. Qual palavra abaixo entrou recentemente para o nosso vocabulário do dia a dia?`,
+        excerpt: ``,
+        options: [
+          `Caderno`,
+          `Smartphone`,
+          `Caneta`,
+          `Árvore`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Cadernos de papel já existem há séculos nas escolas.`,
+          ``,
+          `Canetas e penas de escrever são usadas há muito tempo.`,
+          `Árvore é uma palavra muito antiga da nossa língua.`
+        ],
+        explanation: `"Smartphone" (e outras como "selfie", "podcast" e "aplicativo") surgiu com a tecnologia moderna, mostrando que o vocabulário continua crescendo e se renovando todos os dias!`
+      },
+
+      // --- CAPÍTULO 12: PALAVRAS TERMINADAS EM -OSO / -OSA (Q26 - Q30) ---
+      {
+        id: 26,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Sufixo -oso/-osa`,
+        origin: `Avaliação Base`,
+        bncc: `EF04LP08`,
+        visualType: `suffix_factory`,
+        visualCaption: `Substantivo + sufixo -oso / -osa = adjetivo que mostra uma característica em destaque!`,
+        visualTip: `Pense em alguém cheio de coragem: dizemos que essa pessoa é...`,
+        prompt: `O sufixo -oso / -osa transforma substantivos em adjetivos. Qual adjetivo é formado corretamente a partir da palavra CORAGEM?`,
+        excerpt: ``,
+        options: [
+          `corageiro`,
+          `corajoso`,
+          `coragendo`,
+          `corajudo`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Não usamos "-eiro" para formar esse adjetivo de qualidade.`,
+          ``,
+          `A terminação "-endo" não forma adjetivos com esse sentido.`,
+          `Embora pareça engraçado, na norma-padrão o adjetivo derivado de coragem termina em -oso.`
+        ],
+        explanation: `De "coragem" formamos "corajoso" (e no feminino, "corajosa")! Perceba também que o G antes do E vira J antes do O para manter o mesmo som.`
+      },
+      {
+        id: 27,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Sufixo -oso/-osa`,
+        origin: `Avaliação Base`,
+        bncc: `EF04LP08`,
+        visualType: `big_s_badge`,
+        visualCaption: `Regra de ouro: o sufixo formador de adjetivos -OSO / -OSA sempre se escreve com S!`,
+        visualTip: `Mesmo tendo som de Z entre vogais, a escrita correta do sufixo é sempre com S.`,
+        prompt: `Assinale a alternativa em que TODAS as palavras derivadas estão escritas corretamente com o sufixo -oso:`,
+        excerpt: ``,
+        options: [
+          `bondozo, saborozo, carinhozo`,
+          `bondoso, saboroso, carinhoso`,
+          `bondosso, saborosso, carinhosso`,
+          `bonduzo, saboruzo, carinhuzo`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Atenção! Mesmo com som de Z, o sufixo -oso nunca se escreve com Z.`,
+          ``,
+          `Não dobramos o S: escreve-se apenas um S entre as vogais.`,
+          `Além da letra Z errada, a vogal do sufixo é O, não U.`
+        ],
+        explanation: `É uma regra regular da ortografia: todos os adjetivos formados pelo sufixo -oso/-osa (bondoso, saboroso, carinhoso, famoso) se escrevem sempre com um único S!`
+      },
+      {
+        id: 28,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Sufixo -oso/-osa`,
+        origin: `Avaliação Base`,
+        bncc: `EF04LP08`,
+        visualType: `suffix_match_fem`,
+        visualCaption: `No feminino, o sufixo -oso vira -osa para concordar com substantivos femininos!`,
+        visualTip: `Qual substantivo deu origem à palavra "maravilhosa"?`,
+        prompt: `Na frase "A história da heroína foi maravilhosa!", a palavra destacada "maravilhosa" é um adjetivo derivado de qual substantivo?`,
+        excerpt: ``,
+        options: [
+          `Maravilha`,
+          `Maré`,
+          `Martelo`,
+          `Madeira`
+        ],
+        correctIndex: 0,
+        wrongHints: [
+          ``,
+          `"Maré" daria origem a palavras ligadas ao mar, não a "maravilhosa".`,
+          `"Martelo" não tem relação com o sentido de algo admirável.`,
+          `"Madeira" não forma a palavra "maravilhosa".`
+        ],
+        explanation: `"Maravilhosa" vem do substantivo "maravilha" + o sufixo "-osa"! Significa algo cheio de maravilha, admirável.`
+      },
+      {
+        id: 29,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Sufixo -oso/-osa`,
+        origin: `Avaliação Base`,
+        bncc: `EF04LP08`,
+        visualType: `suffix_meaning`,
+        visualCaption: `O sufixo -oso/-osa carrega a ideia de "cheio de", "que possui muito".`,
+        visualTip: `Leia a frase pensando no que a palavra "perigosa" acrescenta à viagem.`,
+        prompt: `Em "Anita Garibaldi enfrentou uma travessia muito perigosa", o que a palavra "perigosa" expressa sobre a travessia?`,
+        excerpt: ``,
+        options: [
+          `Que a travessia foi rápida e sem nenhum obstáculo.`,
+          `Que a travessia era cheia de perigo.`,
+          `Que a travessia aconteceu durante uma festa tranquila.`,
+          `Que a travessia foi feita apenas por brincadeira.`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Se não houvesse obstáculos, não haveria perigo!`,
+          ``,
+          `Uma festa tranquila seria o oposto de algo perigoso.`,
+          `O sufixo -osa em "perigosa" indica risco real, não brincadeira.`
+        ],
+        explanation: `O sufixo "-osa" em "perigosa" (de perigo + -osa) indica que a travessia estava cheia de perigo, exigindo muita coragem!`
+      },
+      {
+        id: 30,
+        chapter: 'cap12',
+        chapterLabel: `Capítulo 12`,
+        topic: `Sufixo -oso/-osa`,
+        origin: `Questão Inédita`,
+        bncc: `EF04LP08`,
+        visualType: `suffix_complete`,
+        visualCaption: `Combine o substantivo com -oso ou -osa respeitando o gênero (masculino/feminino).`,
+        visualTip: `A palavra "história" pede masculino ou feminino? E "menina" com "carinho" vira o quê?`,
+        prompt: `Complete corretamente a frase transformando os substantivos entre parênteses em adjetivos com -oso/-osa: "O cordel conta uma história ______ (fama) de uma menina muito ______ (carinho)."`,
+        excerpt: ``,
+        options: [
+          `famozo e carinhosa`,
+          `famosa e carinhosa`,
+          `famosa e carinhoso`,
+          `famosso e carinhossa`
+        ],
+        correctIndex: 1,
+        wrongHints: [
+          `Lembre-se: o sufixo sempre usa S (nunca Z), e "história" está no feminino!`,
+          ``,
+          `Como "uma menina" é feminino, o segundo adjetivo também precisa terminar em -osa!`,
+          `Não se usa SS no sufixo -oso/-osa: basta um S!`
+        ],
+        explanation: `"Uma história" (feminino) pede "famosa" (fama + -osa), e "uma menina" (feminino) pede "carinhosa" (carinho + -osa) — sempre escritos com S!`
+      }
+    ];
+
+    const TOPICS_ORDER = [
+      `Divulgação Científica`,
+      `Pronomes`,
+      `Concordância Verbal`,
+      `Cordel e Heroínas`,
+      `Variação Histórica`,
+      `Sufixo -oso/-osa`
+    ];
+
+    // App State
+    let appState = {
+      currentIndex: 0,
+      filter: 'all',
+      answers: {}, // { [qId]: { triedWrong: number[], solved: boolean, firstTry: boolean, lastHintIdx: number | null } }
+      scoreboardOpen: false
+    };
+
+    let resetTimer = null;
+
+    function getDefaultState() {
+      return {
+        currentIndex: 0,
+        filter: 'all',
+        answers: {},
+        scoreboardOpen: false
+      };
+    }
+
+    function saveState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === 'function') {
+        window.notebookAppApi.setAppState(appState).catch(function() {});
+      }
+    }
+
+    function getQuestionState(qId) {
+      if (!appState.answers[qId]) {
+        appState.answers[qId] = {
+          triedWrong: [],
+          solved: false,
+          firstTry: false,
+          lastHintIdx: null
+        };
+      }
+      return appState.answers[qId];
+    }
+
+    function computeStats() {
+      let firstTryCount = 0;
+      let completedCount = 0;
+      const byTopic = {};
+      TOPICS_ORDER.forEach(function(t) {
+        byTopic[t] = { total: 0, firstTry: 0, completed: 0 };
+      });
+
+      QUESTIONS.forEach(function(q) {
+        byTopic[q.topic].total += 1;
+        const st = appState.answers[q.id];
+        if (st && st.solved) {
+          completedCount += 1;
+          byTopic[q.topic].completed += 1;
+          if (st.firstTry) {
+            firstTryCount += 1;
+            byTopic[q.topic].firstTry += 1;
+          }
+        }
+      });
+
+      return { firstTryCount, completedCount, byTopic };
+    }
+
+    function updateHeaderStats() {
+      const stats = computeStats();
+      const elFirst = document.getElementById('stat-first-try');
+      const elComp = document.getElementById('stat-completed');
+      const elPct = document.getElementById('stat-percent');
+      const elFill = document.getElementById('progress-fill');
+      const elWrap = document.getElementById('progress-bar-wrap');
+
+      if (elFirst) elFirst.textContent = `${stats.firstTryCount} / ${QUESTIONS.length}`;
+      if (elComp) elComp.textContent = `${stats.completedCount} / ${QUESTIONS.length}`;
+      const pct = Math.round((stats.completedCount / QUESTIONS.length) * 100);
+      if (elPct) elPct.textContent = `${pct}%`;
+      if (elFill) elFill.style.width = `${pct}%`;
+      if (elWrap) elWrap.setAttribute('aria-valuenow', String(stats.completedCount));
+    }
+
+    function setFilter(filterKey) {
+      appState.filter = filterKey;
+      const fAll = document.getElementById('filter-all');
+      const f11 = document.getElementById('filter-cap11');
+      const f12 = document.getElementById('filter-cap12');
+      if (fAll) fAll.classList.toggle('is-active', filterKey === 'all');
+      if (f11) f11.classList.toggle('is-active', filterKey === 'cap11');
+      if (f12) f12.classList.toggle('is-active', filterKey === 'cap12');
+
+      const curQ = QUESTIONS[appState.currentIndex];
+      if (filterKey !== 'all' && curQ && curQ.chapter !== filterKey) {
+        const firstMatch = QUESTIONS.findIndex(function(q) { return q.chapter === filterKey; });
+        if (firstMatch !== -1) appState.currentIndex = firstMatch;
+      }
+
+      saveState();
+      renderAll();
+    }
+
+    function jumpToQuestion(index) {
+      if (index < 0 || index >= QUESTIONS.length) return;
+      appState.currentIndex = index;
+      saveState();
+      renderAll();
+    }
+
+    function getFilteredIndices() {
+      const indices = [];
+      QUESTIONS.forEach(function(q, idx) {
+        if (appState.filter === 'all' || q.chapter === appState.filter) {
+          indices.push(idx);
+        }
+      });
+      return indices;
+    }
+
+    function goPrev() {
+      const visible = getFilteredIndices();
+      const pos = visible.indexOf(appState.currentIndex);
+      if (pos > 0) {
+        jumpToQuestion(visible[pos - 1]);
+      } else if (appState.currentIndex > 0) {
+        jumpToQuestion(appState.currentIndex - 1);
+      }
+    }
+
+    function goNext() {
+      const visible = getFilteredIndices();
+      const pos = visible.indexOf(appState.currentIndex);
+      if (pos !== -1 && pos < visible.length - 1) {
+        jumpToQuestion(visible[pos + 1]);
+      } else if (appState.currentIndex < QUESTIONS.length - 1) {
+        jumpToQuestion(appState.currentIndex + 1);
+      } else {
+        showScoreboard();
+      }
+    }
+
+    function selectOption(optionIdx) {
+      const q = QUESTIONS[appState.currentIndex];
+      if (!q) return;
+      const st = getQuestionState(q.id);
+      if (st.solved) return;
+
+      if (optionIdx === q.correctIndex) {
+        st.solved = true;
+        st.firstTry = st.triedWrong.length === 0;
+        st.lastHintIdx = null;
+      } else {
+        if (!st.triedWrong.includes(optionIdx)) {
+          st.triedWrong.push(optionIdx);
+        }
+        st.lastHintIdx = optionIdx;
+      }
+
+      saveState();
+      renderAll();
+    }
+
+    function renderDots() {
+      const container = document.getElementById('question-dots');
+      if (!container) return;
+
+      const html = QUESTIONS.map(function(q, idx) {
+        const st = appState.answers[q.id];
+        const classes = ['q-dot'];
+        if (idx === appState.currentIndex) classes.push('is-current');
+        if (st && st.solved) {
+          classes.push(st.firstTry ? 'is-first-try' : 'is-solved-retry');
+        }
+        if (appState.filter !== 'all' && q.chapter !== appState.filter) {
+          classes.push('is-dimmed');
+        }
+        return `<button type="button" class="${classes.join(' ')}" onclick="jumpToQuestion(${idx})" aria-label="Ir para questão ${idx + 1}">${idx + 1}</button>`;
+      }).join('');
+
+      container.innerHTML = html;
+    }
+
+    function renderVisualAid(q) {
+      const t = q.visualType;
+      // All SVGs use CSS variables only (no inline hex/rgb)
+      if (t === 'science_mag') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="24" y="18" width="210" height="174" rx="18" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="4"/>
+          <rect x="42" y="34" width="174" height="24" rx="12" fill="var(--primary)"/>
+          <text x="129" y="50" text-anchor="middle" fill="var(--on-primary)" font-size="11" font-weight="800" font-family="DM Sans, sans-serif">CIÊNCIA PARA CRIANÇAS</text>
+          <circle cx="96" cy="108" r="34" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="4"/>
+          <circle cx="96" cy="108" r="18" fill="var(--tertiary)"/>
+          <rect x="144" y="82" width="70" height="10" rx="5" fill="var(--on-surface)"/>
+          <rect x="144" y="100" width="60" height="8" rx="4" fill="var(--outline)"/>
+          <rect x="144" y="116" width="66" height="8" rx="4" fill="var(--outline)"/>
+          <rect x="44" y="158" width="166" height="14" rx="7" fill="var(--primary-container)"/>
+          <circle cx="248" cy="128" r="36" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="6"/>
+          <line x1="274" y1="154" x2="298" y2="178" stroke="var(--primary)" stroke-width="10" stroke-linecap="round"/>
+          <circle cx="248" cy="128" r="18" fill="var(--secondary-container)"/>
+        </svg>`;
+      }
+      if (t === 'infographic') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="20" y="18" width="280" height="174" rx="18" fill="var(--surface-container-low)" stroke="var(--outline-variant)" stroke-width="2"/>
+          <text x="40" y="44" fill="var(--on-surface)" font-size="12" font-weight="800" font-family="DM Sans, sans-serif">HORAS DE SONO POR DIA (EXEMPLO)</text>
+          <text x="40" y="78" fill="var(--on-surface-variant)" font-size="11" font-weight="700" font-family="DM Sans, sans-serif">Coala</text>
+          <rect x="108" y="65" width="168" height="18" rx="9" fill="var(--data-1)"/>
+          <text x="284" y="78" fill="var(--primary)" font-size="11" font-weight="800" font-family="DM Sans, sans-serif">20h</text>
+          <text x="40" y="114" fill="var(--on-surface-variant)" font-size="11" font-weight="700" font-family="DM Sans, sans-serif">Gato</text>
+          <rect x="108" y="101" width="118" height="18" rx="9" fill="var(--data-2)"/>
+          <text x="234" y="114" fill="var(--secondary)" font-size="11" font-weight="800" font-family="DM Sans, sans-serif">14h</text>
+          <text x="40" y="150" fill="var(--on-surface-variant)" font-size="11" font-weight="700" font-family="DM Sans, sans-serif">Girafa</text>
+          <rect x="108" y="137" width="42" height="18" rx="9" fill="var(--data-3)"/>
+          <text x="158" y="150" fill="var(--on-surface)" font-size="11" font-weight="800" font-family="DM Sans, sans-serif">4h</text>
+          <rect x="40" y="168" width="240" height="8" rx="4" fill="var(--surface-container)"/>
+        </svg>`;
+      }
+      if (t === 'term_explain') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="24" y="34" width="124" height="58" rx="29" fill="var(--primary)"/>
+          <text x="86" y="68" text-anchor="middle" fill="var(--on-primary)" font-size="13" font-weight="800" font-family="DM Sans, sans-serif">Metamorfose</text>
+          <path d="M154 63 L188 63" stroke="var(--secondary)" stroke-width="5" stroke-linecap="round"/>
+          <polygon points="186,54 202,63 186,72" fill="var(--secondary)"/>
+          <rect x="206" y="28" width="94" height="70" rx="18" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="3"/>
+          <text x="253" y="56" text-anchor="middle" fill="var(--on-surface)" font-size="11" font-weight="800" font-family="DM Sans, sans-serif">Transformação</text>
+          <text x="253" y="74" text-anchor="middle" fill="var(--on-surface-variant)" font-size="11" font-weight="600" font-family="DM Sans, sans-serif">da lagarta</text>
+          <rect x="44" y="122" width="232" height="56" rx="16" fill="var(--tertiary-container)"/>
+          <text x="160" y="146" text-anchor="middle" fill="var(--on-tertiary-container)" font-size="12" font-weight="800" font-family="DM Sans, sans-serif">Palavra técnica + Exemplo claro</text>
+          <text x="160" y="164" text-anchor="middle" fill="var(--on-tertiary-container)" font-size="11" font-weight="600" font-family="DM Sans, sans-serif">= Leitor entende tudo!</text>
+        </svg>`;
+      }
+      if (t === 'seminar') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="130" y="24" width="158" height="114" rx="16" fill="var(--surface-container-low)" stroke="var(--tertiary)" stroke-width="4"/>
+          <rect x="148" y="42" width="122" height="14" rx="7" fill="var(--secondary)"/>
+          <circle cx="176" cy="92" r="22" fill="var(--primary-container)"/>
+          <rect x="210" y="76" width="54" height="10" rx="5" fill="var(--on-surface)"/>
+          <rect x="210" y="94" width="44" height="8" rx="4" fill="var(--outline)"/>
+          <circle cx="72" cy="74" r="24" fill="var(--primary)"/>
+          <rect x="44" y="104" width="56" height="68" rx="22" fill="var(--secondary)"/>
+          <rect x="148" y="160" width="122" height="24" rx="12" fill="var(--positive-container)"/>
+          <text x="209" y="176" text-anchor="middle" fill="var(--on-positive-container)" font-size="11" font-weight="800" font-family="DM Sans, sans-serif">ROTEIRO + VOZ CLARA</text>
+        </svg>`;
+      }
+      if (t === 'whale_compare') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="20" y="24" width="130" height="150" rx="20" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+          <path d="M85 126 C55 104 44 82 58 66 C70 54 85 66 85 74 C85 66 100 54 112 66 C126 82 115 104 85 126 Z" fill="var(--primary)"/>
+          <text x="85" y="156" text-anchor="middle" fill="var(--on-surface)" font-size="11" font-weight="800" font-family="DM Sans, sans-serif">Coração da baleia</text>
+          <text x="160" y="106" text-anchor="middle" fill="var(--secondary)" font-size="22" font-weight="900" font-family="DM Sans, sans-serif">=</text>
+          <rect x="172" y="24" width="128" height="150" rx="20" fill="var(--surface-container-low)" stroke="var(--tertiary)" stroke-width="3"/>
+          <rect x="192" y="84" width="88" height="30" rx="12" fill="var(--tertiary)"/>
+          <rect x="206" y="66" width="56" height="22" rx="10" fill="var(--tertiary-container)"/>
+          <circle cx="212" cy="116" r="10" fill="var(--on-surface)"/>
+          <circle cx="260" cy="116" r="10" fill="var(--on-surface)"/>
+          <text x="236" y="156" text-anchor="middle" fill="var(--on-surface)" font-size="11" font-weight="800" font-family="DM Sans, sans-serif">Carro pequeno</text>
+        </svg>`;
+      }
+      if (t === 'anaphora') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="24" y="36" width="166" height="48" rx="24" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="3"/>
+          <text x="107" y="65" text-anchor="middle" fill="var(--on-secondary-container)" font-size="13" font-weight="800" font-family="DM Sans, sans-serif">As pesquisadoras</text>
+          <path d="M196 60 C248 60, 260 118, 224 134" fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/>
+          <polygon points="228,124 214,138 234,142" fill="var(--primary)"/>
+          <rect x="96" y="114" width="114" height="48" rx="24" fill="var(--primary)"/>
+          <text x="153" y="143" text-anchor="middle" fill="var(--on-primary)" font-size="14" font-weight="900" font-family="DM Sans, sans-serif">Elas</text>
+          <text x="160" y="186" text-anchor="middle" fill="var(--on-surface-variant)" font-size="11" font-weight="700" font-family="DM Sans, sans-serif">Retoma sem repetir palavras!</text>
+        </svg>`;
+      }
+      if (t === 'possessive' || t === 'pronoun_match') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="64" y="34" width="192" height="136" rx="24" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="4"/>
+          <rect x="96" y="54" width="128" height="44" rx="22" fill="var(--primary-container)"/>
+          <text x="160" y="81" text-anchor="middle" fill="var(--on-primary-container)" font-size="14" font-weight="900" font-family="DM Sans, sans-serif">MEU • SEU • NOSSO</text>
+          <rect x="90" y="114" width="140" height="34" rx="17" fill="var(--secondary)"/>
+          <text x="160" y="136" text-anchor="middle" fill="var(--on-secondary)" font-size="12" font-weight="800" font-family="DM Sans, sans-serif">Indica posse!</text>
+        </svg>`;
+      }
+      if (t === 'demonstrative') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="22" y="40" width="118" height="120" rx="20" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+          <rect x="44" y="60" width="74" height="46" rx="10" fill="var(--primary)"/>
+          <text x="81" y="88" text-anchor="middle" fill="var(--on-primary)" font-size="13" font-weight="900" font-family="DM Sans, sans-serif">ESTE</text>
+          <text x="81" y="138" text-anchor="middle" fill="var(--on-surface)" font-size="11" font-weight="700" font-family="DM Sans, sans-serif">Perto de quem fala</text>
+          <rect x="180" y="40" width="118" height="120" rx="20" fill="var(--surface-container-low)" stroke="var(--tertiary)" stroke-width="3"/>
+          <rect x="206" y="64" width="66" height="38" rx="10" fill="var(--tertiary)"/>
+          <text x="239" y="88" text-anchor="middle" fill="var(--on-primary)" font-size="12" font-weight="900" font-family="DM Sans, sans-serif">AQUELE</text>
+          <text x="239" y="138" text-anchor="middle" fill="var(--on-surface)" font-size="11" font-weight="700" font-family="DM Sans, sans-serif">Lá na estante (longe)</text>
+        </svg>`;
+      }
+      if (t === 'formal_letter') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="40" y="34" width="240" height="142" rx="20" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="4"/>
+          <path d="M44 46 L160 114 L276 46" fill="none" stroke="var(--secondary)" stroke-width="4" stroke-linejoin="round"/>
+          <rect x="76" y="118" width="168" height="36" rx="18" fill="var(--primary)"/>
+          <text x="160" y="141" text-anchor="middle" fill="var(--on-primary)" font-size="12" font-weight="800" font-family="DM Sans, sans-serif">Senhora Diretora</text>
+        </svg>`;
+      }
+      if (t === 'scale_balance' || t === 'puzzle_fit') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="148" y="40" width="24" height="120" rx="12" fill="var(--outline)"/>
+          <rect x="96" y="156" width="128" height="18" rx="9" fill="var(--on-surface)"/>
+          <rect x="44" y="64" width="232" height="14" rx="7" fill="var(--secondary)"/>
+          <rect x="26" y="88" width="118" height="46" rx="23" fill="var(--primary)"/>
+          <text x="85" y="116" text-anchor="middle" fill="var(--on-primary)" font-size="12" font-weight="800" font-family="DM Sans, sans-serif">SUJEITO</text>
+          <rect x="176" y="88" width="118" height="46" rx="23" fill="var(--positive)"/>
+          <text x="235" y="116" text-anchor="middle" fill="var(--on-positive)" font-size="12" font-weight="800" font-family="DM Sans, sans-serif">VERBO</text>
+        </svg>`;
+      }
+      if (t === 'detective_error') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="28" y="46" width="264" height="116" rx="22" fill="var(--surface-container-low)" stroke="var(--warning)" stroke-width="4"/>
+          <rect x="46" y="68" width="112" height="34" rx="17" fill="var(--tertiary-container)"/>
+          <text x="102" y="90" text-anchor="middle" fill="var(--on-tertiary-container)" font-size="12" font-weight="800" font-family="DM Sans, sans-serif">PLURAL (2+)</text>
+          <text x="178" y="91" text-anchor="middle" fill="var(--error)" font-size="18" font-weight="900" font-family="DM Sans, sans-serif">≠</text>
+          <rect x="196" y="68" width="80" height="34" rx="17" fill="var(--error-container)"/>
+          <text x="236" y="90" text-anchor="middle" fill="var(--on-error-container)" font-size="12" font-weight="800" font-family="DM Sans, sans-serif">Singular</text>
+          <text x="160" y="136" text-anchor="middle" fill="var(--on-surface-variant)" font-size="12" font-weight="700" font-family="DM Sans, sans-serif">Ache o par que não combina!</text>
+        </svg>`;
+      }
+      if (t === 'compound_sum') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="24" y="44" width="106" height="46" rx="23" fill="var(--primary-container)"/>
+          <text x="77" y="72" text-anchor="middle" fill="var(--on-primary-container)" font-size="13" font-weight="800" font-family="DM Sans, sans-serif">Dandara</text>
+          <text x="150" y="74" text-anchor="middle" fill="var(--primary)" font-size="20" font-weight="900" font-family="DM Sans, sans-serif">+</text>
+          <rect x="168" y="44" width="128" height="46" rx="23" fill="var(--secondary-container)"/>
+          <text x="232" y="72" text-anchor="middle" fill="var(--on-secondary-container)" font-size="12" font-weight="800" font-family="DM Sans, sans-serif">Maria Quitéria</text>
+          <rect x="76" y="118" width="168" height="48" rx="24" fill="var(--positive)"/>
+          <text x="160" y="147" text-anchor="middle" fill="var(--on-positive)" font-size="14" font-weight="900" font-family="DM Sans, sans-serif">PLURAL (2 pessoas)</text>
+        </svg>`;
+      }
+      if (t === 'nucleus_shield') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="24" y="42" width="124" height="52" rx="26" fill="var(--primary)"/>
+          <text x="86" y="73" text-anchor="middle" fill="var(--on-primary)" font-size="14" font-weight="900" font-family="DM Sans, sans-serif">A TURMA (1)</text>
+          <rect x="162" y="50" width="134" height="36" rx="18" fill="var(--surface-container-low)" stroke="var(--outline-variant)" stroke-width="2"/>
+          <text x="229" y="73" text-anchor="middle" fill="var(--on-surface-variant)" font-size="12" font-weight="600" font-family="DM Sans, sans-serif">de alunos (vizinho)</text>
+          <path d="M86 96 L86 146 L132 146" fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/>
+          <rect x="136" y="122" width="154" height="46" rx="23" fill="var(--secondary)"/>
+          <text x="213" y="150" text-anchor="middle" fill="var(--on-secondary)" font-size="13" font-weight="800" font-family="DM Sans, sans-serif">Verbo no Singular</text>
+        </svg>`;
+      }
+      if (t === 'cordel_stanza' || t === 'cordel_line') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <line x1="16" y1="30" x2="304" y2="30" stroke="var(--outline)" stroke-width="4" stroke-linecap="round"/>
+          <rect x="44" y="34" width="104" height="142" rx="12" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+          <rect x="60" y="52" width="72" height="12" rx="6" fill="var(--primary)"/>
+          <line x1="60" y1="80" x2="132" y2="80" stroke="var(--on-surface)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="60" y1="96" x2="120" y2="96" stroke="var(--secondary)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="60" y1="112" x2="132" y2="112" stroke="var(--on-surface)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="60" y1="128" x2="120" y2="128" stroke="var(--secondary)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="60" y1="144" x2="132" y2="144" stroke="var(--on-surface)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="60" y1="160" x2="120" y2="160" stroke="var(--secondary)" stroke-width="4" stroke-linecap="round"/>
+          <rect x="172" y="34" width="104" height="142" rx="12" fill="var(--surface-container-low)" stroke="var(--tertiary)" stroke-width="3"/>
+          <circle cx="224" cy="94" r="24" fill="var(--tertiary-container)"/>
+          <circle cx="224" cy="94" r="12" fill="var(--primary)"/>
+          <text x="224" y="148" text-anchor="middle" fill="var(--on-surface)" font-size="11" font-weight="800" font-family="DM Sans, sans-serif">6 versos =</text>
+          <text x="224" y="164" text-anchor="middle" fill="var(--primary)" font-size="12" font-weight="900" font-family="DM Sans, sans-serif">SEXTILHA</text>
+        </svg>`;
+      }
+      if (t === 'xilogravura') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="64" y="20" width="192" height="170" rx="14" fill="var(--on-surface)"/>
+          <rect x="76" y="32" width="168" height="146" rx="8" fill="var(--surface-container-low)"/>
+          <circle cx="160" cy="78" r="26" fill="var(--primary)"/>
+          <path d="M160 38 L160 46 M160 110 L160 118 M120 78 L128 78 M192 78 L200 78 M132 50 L138 56 M182 100 L188 106 M188 50 L182 56 M138 100 L132 106" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/>
+          <rect x="150" y="114" width="20" height="52" rx="10" fill="var(--on-surface)"/>
+          <path d="M150 142 L134 142 L134 124" fill="none" stroke="var(--on-surface)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M170 134 L186 134 L186 118" fill="none" stroke="var(--on-surface)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+      }
+      if (t === 'cordel_vs_repente') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="22" y="34" width="124" height="142" rx="18" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+          <rect x="48" y="54" width="72" height="60" rx="10" fill="var(--primary-container)"/>
+          <text x="84" y="88" text-anchor="middle" fill="var(--on-primary-container)" font-size="13" font-weight="900" font-family="DM Sans, sans-serif">FOLHETO</text>
+          <text x="84" y="140" text-anchor="middle" fill="var(--primary)" font-size="13" font-weight="900" font-family="DM Sans, sans-serif">CORDEL</text>
+          <text x="84" y="158" text-anchor="middle" fill="var(--on-surface-variant)" font-size="11" font-weight="700" font-family="DM Sans, sans-serif">Escrito e impresso</text>
+          <rect x="174" y="34" width="124" height="142" rx="18" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="3"/>
+          <circle cx="236" cy="84" r="28" fill="var(--secondary-container)"/>
+          <circle cx="236" cy="84" r="10" fill="var(--secondary)"/>
+          <text x="236" y="140" text-anchor="middle" fill="var(--secondary)" font-size="13" font-weight="900" font-family="DM Sans, sans-serif">REPENTE</text>
+          <text x="236" y="158" text-anchor="middle" fill="var(--on-surface-variant)" font-size="11" font-weight="700" font-family="DM Sans, sans-serif">Cantado de improviso</text>
+        </svg>`;
+      }
+      if (t === 'dandara_rhyme') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="28" y="34" width="264" height="142" rx="22" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+          <rect x="52" y="56" width="216" height="36" rx="18" fill="var(--primary-container)"/>
+          <text x="160" y="79" text-anchor="middle" fill="var(--on-primary-container)" font-size="14" font-weight="900" font-family="DM Sans, sans-serif">liberd + ADE</text>
+          <rect x="52" y="108" width="216" height="36" rx="18" fill="var(--secondary-container)"/>
+          <text x="160" y="131" text-anchor="middle" fill="var(--on-secondary-container)" font-size="14" font-weight="900" font-family="DM Sans, sans-serif">comunid + ADE</text>
+        </svg>`;
+      }
+      if (t === 'historic_pharmacy' || t === 'respect_history') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="20" y="48" width="118" height="114" rx="18" fill="var(--surface-container-low)" stroke="var(--outline)" stroke-width="3"/>
+          <text x="79" y="76" text-anchor="middle" fill="var(--on-surface-variant)" font-size="11" font-weight="700" font-family="DM Sans, sans-serif">ANTIGAMENTE</text>
+          <text x="79" y="112" text-anchor="middle" fill="var(--on-surface)" font-size="15" font-weight="900" font-family="DM Sans, sans-serif">PHarmacia</text>
+          <path d="M144 105 L172 105" stroke="var(--primary)" stroke-width="5" stroke-linecap="round"/>
+          <polygon points="170,96 184,105 170,114" fill="var(--primary)"/>
+          <rect x="188" y="48" width="112" height="114" rx="18" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+          <text x="244" y="76" text-anchor="middle" fill="var(--primary)" font-size="11" font-weight="800" font-family="DM Sans, sans-serif">HOJE</text>
+          <text x="244" y="112" text-anchor="middle" fill="var(--primary)" font-size="16" font-weight="900" font-family="DM Sans, sans-serif">Farmácia</text>
+        </svg>`;
+      }
+      if (t === 'voce_timeline') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="44" y="24" width="232" height="42" rx="21" fill="var(--surface-container-low)" stroke="var(--outline)" stroke-width="2"/>
+          <text x="160" y="50" text-anchor="middle" fill="var(--on-surface-variant)" font-size="14" font-weight="800" font-family="DM Sans, sans-serif">1. Vossa Mercê</text>
+          <rect x="64" y="84" width="192" height="42" rx="21" fill="var(--secondary-container)"/>
+          <text x="160" y="110" text-anchor="middle" fill="var(--on-secondary-container)" font-size="14" font-weight="800" font-family="DM Sans, sans-serif">2. Vosmecê</text>
+          <rect x="84" y="144" width="152" height="44" rx="22" fill="var(--primary)"/>
+          <text x="160" y="171" text-anchor="middle" fill="var(--on-primary)" font-size="15" font-weight="900" font-family="DM Sans, sans-serif">3. Você</text>
+        </svg>`;
+      }
+      if (t === 'bonde_reclame' || t === 'new_words') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <rect x="28" y="34" width="264" height="60" rx="20" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="3"/>
+          <text x="160" y="70" text-anchor="middle" fill="var(--secondary)" font-size="14" font-weight="800" font-family="DM Sans, sans-serif">Passado: Bonde • Reclame</text>
+          <rect x="28" y="114" width="264" height="60" rx="20" fill="var(--tertiary-container)"/>
+          <text x="160" y="150" text-anchor="middle" fill="var(--on-tertiary-container)" font-size="14" font-weight="800" font-family="DM Sans, sans-serif">Hoje: Ônibus • Anúncio • App</text>
+        </svg>`;
+      }
+      if (t === 'big_s_badge') {
+        return `<svg viewBox="0 0 320 210" aria-hidden="true">
+          <circle cx="160" cy="96" r="64" fill="var(--primary)"/>
+          <text x="160" y="118" text-anchor="middle" fill="var(--on-primary)" font-size="68" font-weight="900" font-family="DM Sans, sans-serif">S</text>
+          <rect x="52" y="166" width="216" height="28" rx="14" fill="var(--positive-container)"/>
+          <text x="160" y="185" text-anchor="middle" fill="var(--on-positive-container)" font-size="12" font-weight="800" font-family="DM Sans, sans-serif">Sufixo -OSO / -OSA = sempre com S!</text>
+        </svg>`;
+      }
+      // Default suffix factory visual
+      return `<svg viewBox="0 0 320 210" aria-hidden="true">
+        <rect x="24" y="42" width="126" height="52" rx="26" fill="var(--secondary-container)"/>
+        <text x="87" y="73" text-anchor="middle" fill="var(--on-secondary-container)" font-size="13" font-weight="800" font-family="DM Sans, sans-serif">Substantivo</text>
+        <text x="168" y="74" text-anchor="middle" fill="var(--primary)" font-size="22" font-weight="900" font-family="DM Sans, sans-serif">+</text>
+        <rect x="188" y="42" width="108" height="52" rx="26" fill="var(--primary)"/>
+        <text x="242" y="73" text-anchor="middle" fill="var(--on-primary)" font-size="13" font-weight="900" font-family="DM Sans, sans-serif">-OSO / -OSA</text>
+        <rect x="48" y="122" width="224" height="50" rx="25" fill="var(--positive-container)" stroke="var(--positive)" stroke-width="3"/>
+        <text x="160" y="152" text-anchor="middle" fill="var(--on-positive-container)" font-size="14" font-weight="900" font-family="DM Sans, sans-serif">= Adjetivo com S!</text>
+      </svg>`;
+    }
+
+    function renderQuestionStage() {
+      const q = QUESTIONS[appState.currentIndex];
+      if (!q) return;
+      const st = getQuestionState(q.id);
+      const letters = ['A', 'B', 'C', 'D'];
+
+      const metaEl = document.getElementById('q-meta-row');
+      if (metaEl) {
+        const originBadgeClass = q.origin === 'Questão Inédita' ? 'badge--pink' : 'badge--outline';
+        metaEl.innerHTML = `
+          <span class="badge badge--grape">Questão ${appState.currentIndex + 1} de ${QUESTIONS.length}</span>
+          <span class="badge badge--sky">${q.chapterLabel} • ${q.topic}</span>
+          <span class="badge ${originBadgeClass}">${q.origin}</span>
+        `;
+      }
+
+      const titleEl = document.getElementById('q-title');
+      if (titleEl) titleEl.textContent = q.prompt;
+
+      const excerptEl = document.getElementById('q-excerpt');
+      if (excerptEl) {
+        if (q.excerpt && q.excerpt.trim().length > 0) {
+          excerptEl.innerHTML = q.excerpt;
+          excerptEl.style.display = 'block';
+        } else {
+          excerptEl.innerHTML = '';
+          excerptEl.style.display = 'none';
+        }
+      }
+
+      const optionsEl = document.getElementById('options-list');
+      if (optionsEl) {
+        optionsEl.innerHTML = q.options.map(function(optText, idx) {
+          const isTriedWrong = st.triedWrong.includes(idx);
+          const isCorrectChoice = st.solved && idx === q.correctIndex;
+          const classes = ['option-btn'];
+          let iconHtml = '';
+          let disabledAttr = '';
+
+          if (isCorrectChoice) {
+            classes.push('is-correct');
+            iconHtml = `<span class="option-status-icon"><i data-lucide="check-circle-2" aria-hidden="true"></i></span>`;
+            disabledAttr = 'disabled';
+          } else if (isTriedWrong) {
+            classes.push('is-wrong');
+            iconHtml = `<span class="option-status-icon"><i data-lucide="x-circle" aria-hidden="true"></i></span>`;
+            disabledAttr = 'disabled';
+          } else if (st.solved) {
+            classes.push('is-muted');
+            disabledAttr = 'disabled';
+          }
+
+          return `
+            <button type="button" class="${classes.join(' ')}" onclick="selectOption(${idx})" ${disabledAttr}>
+              <span class="option-letter">${letters[idx]}</span>
+              <span class="option-text">${optText}</span>
+              ${iconHtml}
+            </button>
+          `;
+        }).join('');
+      }
+
+      const feedbackEl = document.getElementById('feedback-area');
+      if (feedbackEl) {
+        if (st.solved) {
+          const praise = st.firstTry
+            ? `Mandou muito bem! Você acertou de primeira!`
+            : `Muito bem! Você perseverou e encontrou a resposta certa!`;
+          feedbackEl.innerHTML = `
+            <div class="feedback-box feedback-box--success">
+              <div class="feedback-icon"><i data-lucide="sparkles" aria-hidden="true"></i></div>
+              <div class="feedback-content">
+                <h3>${praise}</h3>
+                <p>${q.explanation}</p>
+                <div class="feedback-meta">Habilidade BNCC: ${q.bncc} • ${q.chapterLabel}</div>
+              </div>
+            </div>
+          `;
+        } else if (st.lastHintIdx !== null) {
+          const customHint = q.wrongHints[st.lastHintIdx] || `Observe com atenção os detalhes da pergunta e tente outra opção!`;
+          feedbackEl.innerHTML = `
+            <div class="feedback-box feedback-box--retry">
+              <div class="feedback-icon"><i data-lucide="lightbulb" aria-hidden="true"></i></div>
+              <div class="feedback-content">
+                <h3>Quase lá! Tente de novo — você consegue!</h3>
+                <p>${customHint}</p>
+              </div>
+            </div>
+          `;
+        } else {
+          feedbackEl.innerHTML = '';
+        }
+      }
+
+      // Visual Aid Panel
+      const vKicker = document.getElementById('visual-kicker');
+      const vBncc = document.getElementById('visual-bncc');
+      const vFrame = document.getElementById('visual-frame');
+      const vCaption = document.getElementById('visual-caption');
+      const vTip = document.getElementById('visual-tip-text');
+
+      if (vKicker) vKicker.textContent = `Apoio visual • ${q.topic}`;
+      if (vBncc) vBncc.textContent = q.bncc;
+      if (vFrame) vFrame.innerHTML = renderVisualAid(q);
+      if (vCaption) vCaption.textContent = q.visualCaption;
+      if (vTip) vTip.textContent = q.visualTip;
+
+      // Prev / Next buttons
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const visible = getFilteredIndices();
+      const pos = visible.indexOf(appState.currentIndex);
+
+      if (btnPrev) {
+        btnPrev.disabled = (pos <= 0 && appState.currentIndex === 0);
+      }
+      if (btnNext) {
+        const isLast = (pos !== -1 && pos === visible.length - 1) || appState.currentIndex === QUESTIONS.length - 1;
+        btnNext.innerHTML = isLast
+          ? `<span>Ir para o placar final</span><i data-lucide="trophy" aria-hidden="true"></i>`
+          : `<span>Próxima questão</span><i data-lucide="arrow-right" aria-hidden="true"></i>`;
+      }
+    }
+
+    function renderScoreboard() {
+      const card = document.getElementById('scoreboard-card');
+      if (!card) return;
+      card.classList.toggle('is-visible', Boolean(appState.scoreboardOpen));
+      if (!appState.scoreboardOpen) return;
+
+      const stats = computeStats();
+      const hits = stats.firstTryCount;
+      const done = stats.completedCount;
+
+      const bigNum = document.getElementById('score-big-number');
+      if (bigNum) bigNum.textContent = `${hits} / ${QUESTIONS.length} acertos`;
+
+      let msg = '';
+      if (done === 0) {
+        msg = `Você ainda não respondeu nenhuma questão. Comece pela questão 1 e divirta-se descobrindo as respostas!`;
+      } else if (hits >= 26) {
+        msg = `Espetacular! Você brilhou como um grande explorador da Língua Portuguesa e dominou o Módulo 4!`;
+      } else if (hits >= 19) {
+        msg = `Parabéns pelo ótimo resultado! Você já domina grande parte dos conteúdos do 4º ano. Continue curioso!`;
+      } else if (hits >= 11) {
+        msg = `Bom trabalho! Cada desafio e cada dica ajudaram você a aprender ainda mais. Que tal tentar bater seu recorde?`;
+      } else {
+        msg = `Todo grande aprendizado começa dando o primeiro passo! Leia as explicações com calma e tente novamente — você é muito capaz!`;
+      }
+
+      const motEl = document.getElementById('score-motivation');
+      if (motEl) motEl.textContent = msg;
+
+      const subEl = document.getElementById('score-sub-note');
+      if (subEl) {
+        const remaining = QUESTIONS.length - done;
+        subEl.textContent = remaining === 0
+          ? `Todas as 30 questões foram concluídas! (${hits} de primeira e ${done - hits} com apoio de dicas).`
+          : `Você já concluiu ${done} de 30 questões (${hits} de primeira). Ainda faltam ${remaining} para completar toda a missão!`;
+      }
+
+      const trophyEl = document.getElementById('score-trophy-wrap');
+      if (trophyEl) {
+        trophyEl.innerHTML = `<svg viewBox="0 0 80 80" width="76" height="76" aria-hidden="true">
+          <path d="M22 18 H58 V36 C58 48 50 56 40 56 C30 56 22 48 22 36 Z" fill="var(--primary)"/>
+          <path d="M22 24 H14 C12 24 12 38 22 40" fill="none" stroke="var(--secondary)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M58 24 H66 C68 24 68 38 58 40" fill="none" stroke="var(--secondary)" stroke-width="5" stroke-linecap="round"/>
+          <rect x="35" y="54" width="10" height="12" fill="var(--secondary)"/>
+          <rect x="26" y="64" width="28" height="8" rx="4" fill="var(--on-surface)"/>
+          <polygon points="40,26 43,33 50,33 44,38 46,45 40,41 34,45 36,38 30,33 37,33" fill="var(--on-primary)"/>
+        </svg>`;
+      }
+
+      const gridEl = document.getElementById('breakdown-grid');
+      if (gridEl) {
+        gridEl.innerHTML = TOPICS_ORDER.map(function(topic) {
+          const item = stats.byTopic[topic];
+          const pct = item.total > 0 ? Math.round((item.firstTry / item.total) * 100) : 0;
+          return `
+            <div class="breakdown-item">
+              <div class="breakdown-top">
+                <span class="breakdown-name">${topic}</span>
+                <span class="breakdown-count">${item.firstTry} / ${item.total}</span>
+              </div>
+              <div class="lollipop-track">
+                <div class="lollipop-fill" style="width: ${pct}%;"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function showScoreboard() {
+      appState.scoreboardOpen = true;
+      saveState();
+      renderScoreboard();
+      const card = document.getElementById('scoreboard-card');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        card.focus({ preventScroll: true });
+      }
+    }
+
+    function scrollToQuestionStage() {
+      const stage = document.getElementById('question-card');
+      if (stage) {
+        stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function handleResetClick(btn) {
+      if (!btn) return;
+      const stats = computeStats();
+      if (stats.completedCount === 0 && Object.keys(appState.answers).length === 0) {
+        resetQuizNow();
+        return;
+      }
+      if (btn.dataset.armed !== 'true') {
+        btn.dataset.armed = 'true';
+        btn.classList.add('btn-armed');
+        btn.innerHTML = `<i data-lucide="alert-circle" aria-hidden="true"></i><span>Clique de novo para confirmar!</span>`;
+        refreshIcons();
+        if (resetTimer) clearTimeout(resetTimer);
+        resetTimer = setTimeout(function() {
+          disarmResetButtons();
+        }, 4000);
+        return;
+      }
+      resetQuizNow();
+    }
+
+    function disarmResetButtons() {
+      const b1 = document.getElementById('btn-reset-quiz');
+      const b2 = document.getElementById('btn-reset-from-score');
+      if (b1) {
+        b1.dataset.armed = 'false';
+        b1.classList.remove('btn-armed');
+        b1.innerHTML = `<i data-lucide="rotate-ccw" aria-hidden="true"></i><span>Reiniciar tudo do zero</span>`;
+      }
+      if (b2) {
+        b2.dataset.armed = 'false';
+        b2.classList.remove('btn-armed');
+        b2.innerHTML = `<i data-lucide="rotate-ccw" aria-hidden="true"></i><span>Reiniciar e tentar de novo</span>`;
+      }
+      refreshIcons();
+    }
+
+    function resetQuizNow() {
+      if (resetTimer) clearTimeout(resetTimer);
+      appState = getDefaultState();
+      disarmResetButtons();
+      saveState();
+      setFilter('all');
+      scrollToQuestionStage();
+    }
+
+    function refreshIcons() {
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    }
+
+    function renderAll() {
+      updateHeaderStats();
+      renderDots();
+      renderQuestionStage();
+      renderScoreboard();
+      refreshIcons();
+    }
+
+    async function initApp() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === 'function') {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === 'object') {
+            appState = Object.assign(getDefaultState(), saved);
+            if (appState.currentIndex < 0 || appState.currentIndex >= QUESTIONS.length) {
+              appState.currentIndex = 0;
+            }
+          }
+        }
+      } catch (e) {
+        appState = getDefaultState();
+      }
+
+      const fAll = document.getElementById('filter-all');
+      const f11 = document.getElementById('filter-cap11');
+      const f12 = document.getElementById('filter-cap12');
+      if (fAll) fAll.classList.toggle('is-active', appState.filter === 'all');
+      if (f11) f11.classList.toggle('is-active', appState.filter === 'cap11');
+      if (f12) f12.classList.toggle('is-active', appState.filter === 'cap12');
+
+      renderAll();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === 'function') {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
