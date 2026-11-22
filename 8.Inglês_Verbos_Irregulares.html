@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="tool">
+  <meta name="design-style" content="riso">
+  <title>Simple Past: Prática de Verbos Irregulares</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Riso) */
+      --background: #f7f3ea;
+      --surface-container-low: #ffffff;
+      --surface-container: #efe8d8;
+      --surface-container-high: #fff8b3;
+
+      /* Ink */
+      --on-surface: #1d2a5a;
+      --on-surface-variant: #3d4775;
+
+      /* Rules */
+      --outline: #1d2a5a;
+      --outline-variant: #c3c6d9;
+
+      /* Accents */
+      --primary: #006aa8;
+      --on-primary: #ffffff;
+      --primary-container: #ffe800;
+      --on-primary-container: #1d2a5a;
+      --secondary: #ff52b4;
+      --tertiary: #d00074;
+      --error: #c0262d;
+      --on-error: #ffffff;
+
+      /* Data series */
+      --data-1: #0078bf;
+      --data-2: #d00074;
+      --data-3: #1d2a5a;
+      --data-4: #d9531e;
+      --data-context: #b4b8cc;
+
+      /* Semantic */
+      --positive: #136f47;
+      --positive-bg: #e3f5ec;
+      --warning: #8f4e00;
+      --warning-bg: #fff3d6;
+      --error-bg: #fdecec;
+      --focus: #006aa8;
+
+      /* Fonts */
+      --font-headline: 'Archivo', sans-serif;
+      --font-body: 'Work Sans', sans-serif;
+      --font-label: 'Space Mono', monospace;
+
+      /* Shape */
+      --rounded: 0.25rem;
+      --rounded-lg: 0.5rem;
+      --rounded-full: 9999px;
+
+      /* Style effects */
+      --misregister: 3px 2px 0 rgb(255 82 180 / 0.85);
+      --ink-border: 2px solid var(--outline);
+      --ink-divider: 1px solid var(--outline-variant);
+      --offset-pink: 5px 5px 0 var(--secondary);
+      --offset-blue: 5px 5px 0 var(--primary);
+      --offset-sm: 3px 3px 0 var(--primary);
+      --offset-sm-navy: 3px 3px 0 var(--outline);
+      --halftone: radial-gradient(rgb(29 42 90 / 0.07) 1px, transparent 1.2px);
+      --halftone-size: 6px 6px;
+
+      /* Type scale (Focused Tool) */
+      --display-size: clamp(1.75rem, 1.35rem + 1.5vw, 2.5rem);
+      --headline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+      --body-size: clamp(0.95rem, 0.92rem + 0.15vw, 1rem);
+      --label-size: 0.75rem;
+
+      /* Spacing scale (4pt base) */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: clip; margin: 0; padding: 0; }
+    header { position: static !important; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      color: var(--on-surface);
+      background-color: var(--background);
+      background-image: var(--halftone);
+      background-size: var(--halftone-size);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      max-width: 1120px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Masthead */
+    .masthead {
+      display: grid;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-md);
+      border-bottom: var(--ink-border);
+    }
+
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      width: fit-content;
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      background: var(--primary);
+      color: var(--on-primary);
+      border-radius: var(--rounded-full);
+      padding: var(--space-xs) var(--space-md);
+    }
+
+    .stamp-yellow {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      border: var(--ink-border);
+    }
+
+    .stamp-pink {
+      background: var(--secondary);
+      color: var(--on-surface);
+      border: var(--ink-border);
+    }
+
+    .stamp-success {
+      background: var(--positive-bg);
+      color: var(--positive);
+      border: 2px solid var(--positive);
+    }
+
+    .stamp-error {
+      background: var(--error-bg);
+      color: var(--error);
+      border: 2px solid var(--error);
+    }
+
+    .misregister {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.03;
+      color: var(--primary);
+      text-shadow: var(--misregister);
+      margin: 0;
+    }
+
+    h1.misregister {
+      font-size: var(--display-size);
+    }
+
+    .lede {
+      margin: 0;
+      max-width: 65ch;
+      color: var(--on-surface);
+    }
+
+    .highlight-mark {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      padding: 0 var(--space-xs);
+      font-weight: 600;
+    }
+
+    /* Ink blocks & KPI row */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: stretch;
+    }
+
+    .ink-block {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--offset-pink);
+      padding: var(--space-lg);
+    }
+
+    .ink-block--alt {
+      background: var(--surface-container-high);
+      box-shadow: var(--offset-blue);
+    }
+
+    .ink-block--compact {
+      padding: var(--space-md);
+      box-shadow: var(--offset-sm);
+    }
+
+    .kpi-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+      margin: 0 0 var(--space-xs) 0;
+    }
+
+    .kpi-value {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: clamp(1.75rem, 1.5rem + 0.8vw, 2.25rem);
+      line-height: 1.05;
+      color: var(--on-surface);
+      font-variant-numeric: tabular-nums;
+      margin: 0;
+    }
+
+    .kpi-note {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--tertiary);
+      font-weight: 700;
+      margin: var(--space-xs) 0 0 0;
+    }
+
+    /* Overprint progress bar */
+    .overprint-track {
+      margin-top: var(--space-sm);
+      height: 14px;
+      background: var(--surface-container);
+      border: var(--ink-border);
+      border-radius: var(--rounded);
+      overflow: hidden;
+      display: flex;
+      position: relative;
+    }
+
+    .overprint-seg {
+      height: 100%;
+      transition: width var(--dur-long) var(--ease-out);
+      mix-blend-mode: multiply;
+    }
+
+    .overprint-seg--s1 { background: var(--data-1); }
+    .overprint-seg--s2 { background: var(--data-2); }
+
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      margin-top: var(--space-xs);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      border: 1px solid var(--outline);
+      display: inline-block;
+    }
+
+    .legend-swatch--s1 { background: var(--data-1); }
+    .legend-swatch--s2 { background: var(--data-2); }
+
+    /* Navigation bar */
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .tab-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border: var(--ink-border);
+      border-radius: var(--rounded);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      box-shadow: var(--offset-sm-navy);
+      transition: transform var(--dur-micro) var(--ease-out),
+                  box-shadow var(--dur-micro) var(--ease-out),
+                  background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0 var(--outline);
+    }
+
+    .btn:active:not(:disabled) {
+      transform: translate(3px, 3px);
+      box-shadow: 0 0 0 var(--outline);
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background: var(--secondary);
+      color: var(--on-surface);
+      box-shadow: var(--offset-sm);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      box-shadow: 2px 2px 0 var(--primary);
+    }
+
+    .btn-blue {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--offset-sm-navy);
+    }
+
+    .btn-yellow {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      box-shadow: var(--offset-sm);
+    }
+
+    .btn-tab.is-active {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: 3px 3px 0 var(--secondary);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .btn-ghost:hover:not(:disabled) {
+      background: var(--surface-container);
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-danger-armed {
+      background: var(--error);
+      color: var(--on-error);
+      box-shadow: var(--offset-sm-navy);
+    }
+
+    /* Section Header Bar */
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding-bottom: var(--space-md);
+      border-bottom: var(--ink-border);
+    }
+
+    .section-title {
+      font-family: var(--font-headline);
+      font-weight: 800;
+      font-size: var(--headline-size);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      color: var(--on-surface);
+      margin: var(--space-xs) 0 0 0;
+    }
+
+    .section-desc {
+      margin: var(--space-xs) 0 0 0;
+      color: var(--on-surface-variant);
+      max-width: 65ch;
+      font-size: var(--body-size);
+    }
+
+    .view-toggle {
+      display: inline-flex;
+      gap: var(--space-xs);
+      background: var(--surface-container);
+      padding: var(--space-xs);
+      border: var(--ink-border);
+      border-radius: var(--rounded);
+    }
+
+    .view-toggle .btn {
+      min-height: 44px;
+      box-shadow: none;
+      border-color: transparent;
+    }
+
+    .view-toggle .btn.is-active {
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      border-color: var(--outline);
+      box-shadow: 2px 2px 0 var(--primary);
+    }
+
+    /* Question Map Stepper */
+    .stepper-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+
+    .step-btn {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0 var(--space-sm);
+      border: var(--ink-border);
+      border-radius: var(--rounded);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      transition: transform var(--dur-micro) var(--ease-out),
+                  background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .step-btn:hover {
+      transform: translateY(-1px);
+      background: var(--surface-container);
+    }
+
+    .step-btn.is-current {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      box-shadow: 3px 3px 0 var(--primary);
+    }
+
+    .step-btn.is-correct {
+      background: var(--positive-bg);
+      color: var(--positive);
+      border-color: var(--positive);
+    }
+
+    .step-btn.is-correct.is-current {
+      background: var(--positive);
+      color: var(--on-primary);
+      box-shadow: 3px 3px 0 var(--outline);
+    }
+
+    .step-btn.is-retry {
+      background: var(--error-bg);
+      color: var(--error);
+      border-color: var(--error);
+    }
+
+    /* Active Question Card */
+    .quiz-card-wrap {
+      container-type: inline-size;
+    }
+
+    .quiz-card {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--offset-pink);
+      padding: var(--space-xl);
+      display: grid;
+      gap: var(--space-lg);
+      animation: cardSlideIn var(--dur-short) var(--ease-out);
+    }
+
+    @keyframes cardSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .quiz-card-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-sm);
+      border-bottom: var(--ink-divider);
+    }
+
+    .quiz-card-body {
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    @container (max-width: 620px) {
+      .quiz-card-body {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-lg);
+      }
+      .quiz-card {
+        padding: var(--space-lg);
+      }
+    }
+
+    .illustration-frame {
+      background: var(--background);
+      border: var(--ink-border);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      display: grid;
+      place-items: center;
+      gap: var(--space-sm);
+      box-shadow: var(--offset-sm);
+    }
+
+    .illustration-frame svg {
+      width: 140px;
+      height: 120px;
+      display: block;
+    }
+
+    .illustration-caption {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--on-surface-variant);
+      text-align: center;
+      margin: 0;
+    }
+
+    .prompt-en {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      margin: 0 0 var(--space-sm) 0;
+    }
+
+    .verb-challenge {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .verb-infinitive {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.35rem);
+      color: var(--on-surface);
+      line-height: 1.1;
+    }
+
+    .verb-meaning {
+      font-family: var(--font-body);
+      font-size: var(--subhead-size);
+      color: var(--on-surface-variant);
+      font-weight: 500;
+    }
+
+    .sentence-box {
+      background: var(--surface-container-high);
+      border: var(--ink-border);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      margin-bottom: var(--space-md);
+      font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.35rem);
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--on-surface);
+    }
+
+    .blank-slot {
+      display: inline-block;
+      min-width: 96px;
+      padding: 0 var(--space-sm);
+      border-bottom: 3px solid var(--primary);
+      font-family: var(--font-label);
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+      background: var(--surface-container-low);
+      border-radius: var(--rounded) var(--rounded) 0 0;
+    }
+
+    .blank-slot.is-correct {
+      border-bottom-color: var(--positive);
+      color: var(--positive);
+      background: var(--positive-bg);
+    }
+
+    .blank-slot.is-wrong {
+      border-bottom-color: var(--error);
+      color: var(--error);
+      background: var(--error-bg);
+    }
+
+    /* Input form */
+    .answer-form {
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .input-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      gap: var(--space-sm);
+    }
+
+    .field-group {
+      flex: 1 1 220px;
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    .field-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--on-surface);
+    }
+
+    .text-input {
+      width: 100%;
+      min-height: 48px;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      border: var(--ink-border);
+      border-radius: var(--rounded);
+      font-family: var(--font-label);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      transition: box-shadow var(--dur-micro) var(--ease-out),
+                  background-color var(--dur-micro) var(--ease-out);
+    }
+
+    .text-input:focus {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+      box-shadow: var(--offset-sm);
+    }
+
+    .text-input.is-correct {
+      background: var(--positive-bg);
+      border-color: var(--positive);
+      color: var(--positive);
+    }
+
+    .text-input.is-error {
+      background: var(--error-bg);
+      border-color: var(--error);
+      color: var(--error);
+    }
+
+    /* Feedback panels */
+    .feedback-box {
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      border: var(--ink-border);
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .feedback-box--correct {
+      background: var(--positive-bg);
+      border-color: var(--positive);
+      color: var(--on-surface);
+    }
+
+    .feedback-box--error {
+      background: var(--error-bg);
+      border-color: var(--error);
+      color: var(--on-surface);
+    }
+
+    .feedback-box--hint {
+      background: var(--warning-bg);
+      border-color: var(--warning);
+      color: var(--on-surface);
+    }
+
+    .feedback-title {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .feedback-title--correct { color: var(--positive); }
+    .feedback-title--error { color: var(--error); }
+    .feedback-title--hint { color: var(--warning); }
+
+    .feedback-text {
+      margin: 0;
+      font-size: var(--body-size);
+    }
+
+    .feedback-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-xs);
+    }
+
+    .card-footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      padding-top: var(--space-md);
+      border-top: var(--ink-divider);
+    }
+
+    /* List mode (all 10 cards in a grid) */
+    .list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));
+      gap: var(--space-lg);
+    }
+
+    .list-card {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--offset-sm);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+      align-content: start;
+    }
+
+    .list-card:nth-child(even) {
+      box-shadow: var(--offset-sm-navy);
+    }
+
+    .list-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .list-card-visual {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .list-mini-svg {
+      width: 68px;
+      height: 60px;
+      flex: 0 0 68px;
+      background: var(--background);
+      border: var(--ink-border);
+      border-radius: var(--rounded);
+      padding: var(--space-xs);
+      display: grid;
+      place-items: center;
+    }
+
+    .list-mini-svg svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Completion banner */
+    .completion-banner {
+      background: var(--surface-container-high);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--offset-blue);
+      padding: var(--space-lg);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    /* Reference Guide Table */
+    .guide-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    .grammar-tip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--offset-blue);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface);
+      padding: var(--space-md);
+      border-bottom: var(--ink-border);
+      background: var(--surface-container);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--ink-divider);
+      vertical-align: middle;
+    }
+
+    tr.is-mastered-row {
+      background: var(--surface-container-high);
+    }
+
+    .mono-cell {
+      font-family: var(--font-label);
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .source-footer {
+      border-top: var(--ink-border);
+      padding-top: var(--space-md);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-md);
+        gap: var(--space-md);
+      }
+      .kpi-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-md);
+      }
+      .nav-bar {
+        align-items: stretch;
+      }
+      .tab-group {
+        width: 100%;
+      }
+      .tab-group .btn {
+        flex: 1 1 auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-grid">
+    <header class="masthead">
+      <span class="stamp">Simple Past · Quiz Interativo</span>
+      <h1 class="misregister">Verbos Irregulares em Inglês</h1>
+      <p class="lede">
+        Pratique a escrita e o uso contextual de <span class="highlight-mark">19 verbos irregulares essenciais</span> no Simple Past. Leia os enunciados em inglês, digite a forma correta no passado e receba feedback imediato — com tentativas livres para corrigir e aprender.
+      </p>
+    </header>
+
+    <!-- Progress KPIs -->
+    <section aria-label="Resumo de progresso">
+      <div class="kpi-grid">
+        <div class="ink-block">
+          <p class="kpi-label">Progresso Geral</p>
+          <p class="kpi-value" id="kpi-progress">0 / 20</p>
+          <div class="overprint-track" role="progressbar" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0" id="progress-bar">
+            <div class="overprint-seg overprint-seg--s1" id="bar-s1" style="width: 0%;"></div>
+            <div class="overprint-seg overprint-seg--s2" id="bar-s2" style="width: 0%;"></div>
+          </div>
+          <div class="legend-row">
+            <span class="legend-item"><span class="legend-swatch legend-swatch--s1"></span>Seção 1: <strong id="count-s1">0/10</strong></span>
+            <span class="legend-item"><span class="legend-swatch legend-swatch--s2"></span>Seção 2: <strong id="count-s2">0/10</strong></span>
+          </div>
+        </div>
+
+        <div class="ink-block ink-block--alt">
+          <p class="kpi-label">Acertos de 1ª Tentativa</p>
+          <p class="kpi-value" id="kpi-first-try">0</p>
+          <p class="kpi-note" id="kpi-first-note">Sem erros prévios</p>
+        </div>
+
+        <div class="ink-block">
+          <p class="kpi-label">Precisão das Tentativas</p>
+          <p class="kpi-value" id="kpi-accuracy">—</p>
+          <p class="kpi-note" id="kpi-attempts-note">0 respostas enviadas</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Completion Banner -->
+    <section id="completion-banner" class="completion-banner is-hidden" aria-live="polite">
+      <div>
+        <span class="stamp stamp-success">Todas as 20 questões concluídas</span>
+        <h2 class="section-title">Parabéns! Você completou o desafio dos verbos irregulares.</h2>
+        <p class="section-desc" id="completion-summary">
+          Você dominou todas as formas no Simple Past da Seção 1 e da Seção 2.
+        </p>
+      </div>
+      <button type="button" class="btn btn-yellow" onclick="switchTab('guide')">
+        Revisar tabela completa
+      </button>
+    </section>
+
+    <!-- Primary Section Tabs & Reset -->
+    <nav class="nav-bar" aria-label="Navegação das seções">
+      <div class="tab-group" role="tablist">
+        <button type="button" role="tab" id="tab-sec1" class="btn btn-tab is-active" aria-selected="true" onclick="switchTab('sec1')">
+          Seção 1 · Verbos Diretos (10)
+        </button>
+        <button type="button" role="tab" id="tab-sec2" class="btn btn-tab" aria-selected="false" onclick="switchTab('sec2')">
+          Seção 2 · Frases em Contexto (10)
+        </button>
+        <button type="button" role="tab" id="tab-guide" class="btn btn-tab" aria-selected="false" onclick="switchTab('guide')">
+          Guia dos 19 Verbos
+        </button>
+      </div>
+      <button type="button" id="reset-btn" class="btn btn-ghost" onclick="handleReset(this)">
+        Reiniciar progresso
+      </button>
+    </nav>
+
+    <!-- Main Quiz Panel (Section 1 & Section 2) -->
+    <main id="quiz-workspace">
+      <div class="section-header">
+        <div>
+          <span class="stamp stamp-yellow" id="section-kicker">Seção 1 de 2 · Correspondência Direta</span>
+          <h2 class="section-title" id="section-heading">Do Infinitivo para o Simple Past</h2>
+          <p class="section-desc" id="section-description">
+            Observe a ilustração, leia o verbo em inglês e digite sua forma correspondente no Simple Past. Se errar, você receberá uma explicação e poderá tentar novamente.
+          </p>
+        </div>
+
+        <div class="view-toggle" role="group" aria-label="Modo de visualização">
+          <button type="button" id="mode-focused-btn" class="btn is-active" onclick="setViewMode('focused')">
+            1 por vez
+          </button>
+          <button type="button" id="mode-list-btn" class="btn" onclick="setViewMode('list')">
+            Todas (10)
+          </button>
+        </div>
+      </div>
+
+      <!-- Focused Single-Question View -->
+      <div id="focused-view" style="display: grid; gap: var(--space-lg); margin-top: var(--space-lg);">
+        <div class="stepper-strip" id="stepper-strip" aria-label="Navegador de questões"></div>
+        <div class="quiz-card-wrap" id="focused-card-host"></div>
+      </div>
+
+      <!-- List All 10 Questions View -->
+      <div id="list-view" class="list-grid is-hidden" style="margin-top: var(--space-lg);"></div>
+    </main>
+
+    <!-- Reference Guide Panel -->
+    <section id="guide-workspace" class="is-hidden" aria-label="Guia de referência dos verbos irregulares">
+      <div class="section-header">
+        <div>
+          <span class="stamp stamp-yellow">Material de Apoio · 19 Verbos</span>
+          <h2 class="section-title">Guia Rápido do Simple Past Irregular</h2>
+          <p class="section-desc">
+            Consulte as formas afirmativas no passado, traduções e exemplos contextualizados. Lembre-se: a forma irregular só é usada em frases afirmativas!
+          </p>
+        </div>
+      </div>
+
+      <div class="grammar-tip-grid" style="margin-top: var(--space-lg);">
+        <div class="ink-block ink-block--compact">
+          <p class="kpi-label">Afirmativa (+)</p>
+          <p class="feedback-text"><strong>Verbo no Simple Past:</strong> Usamos a forma irregular da 2ª coluna.<br><span class="mono-cell">I went to the park yesterday.</span></p>
+        </div>
+        <div class="ink-block ink-block--compact ink-block--alt">
+          <p class="kpi-label">Negativa (−)</p>
+          <p class="feedback-text"><strong>didn't + infinitivo:</strong> O verbo volta à forma normal (exceto <em>was/were</em>).<br><span class="mono-cell">I didn't go to the park.</span></p>
+        </div>
+        <div class="ink-block ink-block--compact">
+          <p class="kpi-label">Interrogativa (?)</p>
+          <p class="feedback-text"><strong>Did + sujeito + infinitivo:</strong> Use <em>Did</em> no início (ou <em>Was/Were</em> para <em>be</em>).<br><span class="mono-cell">Did you go to the park?</span></p>
+        </div>
+      </div>
+
+      <div class="guide-controls" style="margin-top: var(--space-lg); margin-bottom: var(--space-md);">
+        <div class="field-group" style="max-width: 340px;">
+          <label class="field-label" for="guide-search">Filtrar verbo ou tradução</label>
+          <input type="text" id="guide-search" class="text-input" placeholder="Ex: buy, comprar, nadar..." oninput="renderGuideTable()">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="switchTab('sec1')">
+          Voltar para o Quiz
+        </button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Infinitivo</th>
+              <th>Simple Past</th>
+              <th>Tradução</th>
+              <th>Exemplo no Passado</th>
+              <th>Status no Quiz</th>
+            </tr>
+          </thead>
+          <tbody id="guide-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="source-footer">
+      <span>Conteúdo baseado nos roteiros de estudo Simple Past (Verbos Regulares e Irregulares, Verb To Be in the Past) e exercícios preparatórios.</span>
+      <span>Progresso salvo automaticamente no caderno.</span>
+    </footer>
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    // =========================================================================
+    // 1. DATA: 20 Questions covering all 19 irregular verbs + Reference Guide
+    // =========================================================================
+
+    const QUESTIONS = [
+      // --- SECTION 1: 10 Direct Matching Questions ---
+      {
+        id: `q1`,
+        section: `sec1`,
+        num: 1,
+        promptEn: `Type the past simple form of the verb:`,
+        infinitive: `see`,
+        answers: [`saw`],
+        meaningPt: `ver`,
+        hintPt: `Começa com "s" e tem apenas 3 letras (termina com "w").`,
+        exampleEn: `She saw a beautiful sunset on her trip.`,
+        illustration: `see`
+      },
+      {
+        id: `q2`,
+        section: `sec1`,
+        num: 2,
+        promptEn: `Type the past simple form of the verb:`,
+        infinitive: `go`,
+        answers: [`went`],
+        meaningPt: `ir`,
+        hintPt: `Muda totalmente! Começa com "w" e tem 4 letras.`,
+        exampleEn: `I went to the pool last weekend.`,
+        illustration: `go`
+      },
+      {
+        id: `q3`,
+        section: `sec1`,
+        num: 3,
+        promptEn: `Type the past simple form of the verb:`,
+        infinitive: `eat`,
+        answers: [`ate`],
+        meaningPt: `comer`,
+        hintPt: `Usa as mesmas 3 letras de "eat" em outra ordem, começando com "a".`,
+        exampleEn: `Last night, I ate a delicious pizza.`,
+        illustration: `eat`
+      },
+      {
+        id: `q4`,
+        section: `sec1`,
+        num: 4,
+        promptEn: `Type the past simple form of the verb:`,
+        infinitive: `sing`,
+        answers: [`sang`],
+        meaningPt: `cantar`,
+        hintPt: `Troque a letra "i" de "sing" por "a" (4 letras).`,
+        exampleEn: `She sang her favourite song at the party.`,
+        illustration: `sing`
+      },
+      {
+        id: `q5`,
+        section: `sec1`,
+        num: 5,
+        promptEn: `Type the past simple form of the verb:`,
+        infinitive: `drink`,
+        answers: [`drank`],
+        meaningPt: `beber`,
+        hintPt: `Troque a letra "i" de "drink" por "a" (5 letras).`,
+        exampleEn: `I drank two cups of coffee this morning.`,
+        illustration: `drink`
+      },
+      {
+        id: `q6`,
+        section: `sec1`,
+        num: 6,
+        promptEn: `Type the past simple form of the verb:`,
+        infinitive: `wear`,
+        answers: [`wore`],
+        meaningPt: `vestir / usar`,
+        hintPt: `Começa com "w" e termina com "-ore" (4 letras).`,
+        exampleEn: `He wore a smart suit to the ceremony.`,
+        illustration: `wear`
+      },
+      {
+        id: `q7`,
+        section: `sec1`,
+        num: 7,
+        promptEn: `Type the past simple form of the verb:`,
+        infinitive: `write`,
+        answers: [`wrote`],
+        meaningPt: `escrever`,
+        hintPt: `Troque o "i" de "write" por "o" (5 letras).`,
+        exampleEn: `He wrote a letter to his grandmother.`,
+        illustration: `write`
+      },
+      {
+        id: `q8`,
+        section: `sec1`,
+        num: 8,
+        promptEn: `Type the past simple form of the verb:`,
+        infinitive: `give`,
+        answers: [`gave`],
+        meaningPt: `dar`,
+        hintPt: `Troque o "i" de "give" por "a" (4 letras).`,
+        exampleEn: `She gave me a beautiful gift.`,
+        illustration: `give`
+      },
+      {
+        id: `q9`,
+        section: `sec1`,
+        num: 9,
+        promptEn: `Type the past simple form of the verb:`,
+        infinitive: `buy`,
+        answers: [`bought`],
+        meaningPt: `comprar`,
+        hintPt: `Começa com "b" e termina com "-ought" (6 letras, sem "r").`,
+        exampleEn: `She bought a new car yesterday.`,
+        illustration: `buy`
+      },
+      {
+        id: `q10`,
+        section: `sec1`,
+        num: 10,
+        promptEn: `Type the past simple form of the verb:`,
+        infinitive: `swim`,
+        answers: [`swam`],
+        meaningPt: `nadar`,
+        hintPt: `Troque o "i" de "swim" por "a" (4 letras, termina com "m").`,
+        exampleEn: `They swam in the lake last summer.`,
+        illustration: `swim`
+      },
+
+      // --- SECTION 2: 10 Contextual Fill-in-the-Blank Questions ---
+      {
+        id: `q11`,
+        section: `sec2`,
+        num: 1,
+        promptEn: `Fill in the blank with the correct past form of the verb:`,
+        infinitive: `be`,
+        beforeBlank: `Yesterday, the concert `,
+        afterBlank: ` amazing!`,
+        answers: [`was`],
+        meaningPt: `ser / estar (singular)`,
+        sentencePt: `Ontem, o show foi incrível!`,
+        hintPt: `O sujeito "the concert" é singular (it). Use a forma singular de "be" no passado (3 letras, começa com "w").`,
+        illustration: `be_was`
+      },
+      {
+        id: `q12`,
+        section: `sec2`,
+        num: 2,
+        promptEn: `Fill in the blank with the correct past form of the verb:`,
+        infinitive: `have`,
+        beforeBlank: `She `,
+        afterBlank: ` a big breakfast before her English class.`,
+        answers: [`had`],
+        meaningPt: `ter / tomar (refeição)`,
+        sentencePt: `Ela tomou um grande café da manhã antes da aula de inglês.`,
+        hintPt: `O passado de "have" tem apenas 3 letras e começa com "h".`,
+        illustration: `have`
+      },
+      {
+        id: `q13`,
+        section: `sec2`,
+        num: 3,
+        promptEn: `Fill in the blank with the correct past form of the verb:`,
+        infinitive: `take`,
+        beforeBlank: `He `,
+        afterBlank: ` the car keys from the table last week.`,
+        answers: [`took`],
+        meaningPt: `pegar / levar`,
+        sentencePt: `Ele pegou as chaves do carro da mesa na semana passada.`,
+        hintPt: `Começa com "t" e tem "oo" no meio (4 letras, rima com "book").`,
+        illustration: `take`
+      },
+      {
+        id: `q14`,
+        section: `sec2`,
+        num: 4,
+        promptEn: `Fill in the blank with the correct past form of the verb:`,
+        infinitive: `make`,
+        beforeBlank: `My mother `,
+        afterBlank: ` a delicious chocolate cake on Sunday.`,
+        answers: [`made`],
+        meaningPt: `fazer / preparar`,
+        sentencePt: `Minha mãe fez um delicioso bolo de chocolate no domingo.`,
+        hintPt: `Troque a letra "k" de "make" por "d" (4 letras).`,
+        illustration: `make`
+      },
+      {
+        id: `q15`,
+        section: `sec2`,
+        num: 5,
+        promptEn: `Fill in the blank with the correct past form of the verb:`,
+        infinitive: `lose`,
+        beforeBlank: `One of the soldiers `,
+        afterBlank: ` his keys yesterday morning.`,
+        answers: [`lost`],
+        meaningPt: `perder`,
+        sentencePt: `Um dos soldados perdeu suas chaves ontem de manhã.`,
+        hintPt: `Começa com "l" e termina com "-st" (4 letras).`,
+        illustration: `lose`
+      },
+      {
+        id: `q16`,
+        section: `sec2`,
+        num: 6,
+        promptEn: `Fill in the blank with the correct past form of the verb:`,
+        infinitive: `win`,
+        beforeBlank: `Our team `,
+        afterBlank: ` the football match last weekend.`,
+        answers: [`won`],
+        meaningPt: `vencer / ganhar`,
+        sentencePt: `Nosso time venceu a partida de futebol no fim de semana passado.`,
+        hintPt: `Tem 3 letras: troque o "i" de "win" por "o".`,
+        illustration: `win`
+      },
+      {
+        id: `q17`,
+        section: `sec2`,
+        num: 7,
+        promptEn: `Fill in the blank with the correct past form of the verb:`,
+        infinitive: `ride`,
+        beforeBlank: `We `,
+        afterBlank: ` a bike in the park last Sunday.`,
+        answers: [`rode`],
+        meaningPt: `andar de (bicicleta/moto/cavalo)`,
+        sentencePt: `Nós andamos de bicicleta no parque no domingo passado.`,
+        hintPt: `Troque o "i" de "ride" por "o" (4 letras).`,
+        illustration: `ride`
+      },
+      {
+        id: `q18`,
+        section: `sec2`,
+        num: 8,
+        promptEn: `Fill in the blank with the correct past form of the verb:`,
+        infinitive: `do`,
+        beforeBlank: `I `,
+        afterBlank: ` all my English homework last night.`,
+        answers: [`did`],
+        meaningPt: `fazer (tarefa/atividade)`,
+        sentencePt: `Eu fiz toda a minha lição de casa de inglês ontem à noite.`,
+        hintPt: `Tem 3 letras: começa e termina com "d".`,
+        illustration: `do`
+      },
+      {
+        id: `q19`,
+        section: `sec2`,
+        num: 9,
+        promptEn: `Fill in the blank with the correct past form of the verb:`,
+        infinitive: `get`,
+        beforeBlank: `She `,
+        afterBlank: ` a wonderful gift for her birthday.`,
+        answers: [`got`],
+        meaningPt: `receber / ganhar`,
+        sentencePt: `Ela ganhou um presente maravilhoso no aniversário dela.`,
+        hintPt: `Troque o "e" de "get" por "o" (3 letras).`,
+        illustration: `get`
+      },
+      {
+        id: `q20`,
+        section: `sec2`,
+        num: 10,
+        promptEn: `Fill in the blank with the correct past form of the verb:`,
+        infinitive: `be`,
+        beforeBlank: `They `,
+        afterBlank: ` at the cinema last weekend.`,
+        answers: [`were`],
+        meaningPt: `ser / estar (plural)`,
+        sentencePt: `Eles estavam no cinema no fim de semana passado.`,
+        hintPt: `O sujeito "They" é plural. Use a forma plural de "be" no passado (4 letras, começa com "w").`,
+        illustration: `be_were`
+      }
+    ];
+
+    const VERB_GUIDE = [
+      { inf: `be (am / is / are)`, past: `was / were`, pt: `ser / estar`, ex: `I was at home. / They were at the cinema.`, qIds: [`q11`, `q20`] },
+      { inf: `go`, past: `went`, pt: `ir`, ex: `I went to the pool last weekend.`, qIds: [`q2`] },
+      { inf: `see`, past: `saw`, pt: `ver`, ex: `She saw a beautiful sunset.`, qIds: [`q1`] },
+      { inf: `eat`, past: `ate`, pt: `comer`, ex: `Last night, I ate a pizza.`, qIds: [`q3`] },
+      { inf: `sing`, past: `sang`, pt: `cantar`, ex: `She sang on stage yesterday.`, qIds: [`q4`] },
+      { inf: `drink`, past: `drank`, pt: `beber`, ex: `I drank two cups of coffee.`, qIds: [`q5`] },
+      { inf: `wear`, past: `wore`, pt: `vestir / usar`, ex: `He wore a blue jacket.`, qIds: [`q6`] },
+      { inf: `have`, past: `had`, pt: `ter`, ex: `She had a big breakfast.`, qIds: [`q12`] },
+      { inf: `write`, past: `wrote`, pt: `escrever`, ex: `He wrote a letter to his grandmother.`, qIds: [`q7`] },
+      { inf: `give`, past: `gave`, pt: `dar`, ex: `She gave me a gift.`, qIds: [`q8`] },
+      { inf: `take`, past: `took`, pt: `pegar / levar`, ex: `He took the keys last week.`, qIds: [`q13`] },
+      { inf: `make`, past: `made`, pt: `fazer (criar/produzir)`, ex: `My mother made a chocolate cake.`, qIds: [`q14`] },
+      { inf: `buy`, past: `bought`, pt: `comprar`, ex: `She bought a new car yesterday.`, qIds: [`q9`] },
+      { inf: `lose`, past: `lost`, pt: `perder`, ex: `One soldier lost his car keys.`, qIds: [`q15`] },
+      { inf: `win`, past: `won`, pt: `vencer`, ex: `Our team won the football match.`, qIds: [`q16`] },
+      { inf: `swim`, past: `swam`, pt: `nadar`, ex: `They swam in the lake.`, qIds: [`q10`] },
+      { inf: `ride`, past: `rode`, pt: `andar de (bike/cavalo/moto)`, ex: `We rode a bike in the park.`, qIds: [`q17`] },
+      { inf: `do`, past: `did`, pt: `fazer (tarefa/ação)`, ex: `I did my homework last night.`, qIds: [`q18`] },
+      { inf: `get`, past: `got`, pt: `receber / ganhar`, ex: `She got a wonderful gift.`, qIds: [`q19`] }
+    ];
+
+    const PARTICIPLES = new Set([
+      `been`, `gone`, `seen`, `eaten`, `sung`, `drunk`, `worn`, `written`,
+      `given`, `taken`, `bought` /* same */, `swum`, `ridden`, `done`, `gotten`
+    ]);
+
+    const REGULARIZED_ERRORS = new Set([
+      `bed`, `beed`, `goed`, `seed`, `eated`, `singed`, `drinked`, `weared`,
+      `haved`, `writed`, `gived`, `taked`, `maked`, `buyed`, `losed`, `winned`,
+      `swimmed`, `rided`, `doed`, `getted`
+    ]);
+
+    // =========================================================================
+    // 2. CUSTOM RISO-INK SVG ILLUSTRATIONS (100% CSS token colors, no hex)
+    // =========================================================================
+
+    function getIllustrationSvg(key) {
+      const common = `viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"`;
+      const stroke = `stroke="var(--outline)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"`;
+      const svgs = {
+        see: `<svg ${common}>
+          <ellipse cx="70" cy="60" rx="48" ry="26" fill="var(--surface-container-low)" ${stroke}/>
+          <circle cx="70" cy="60" r="18" fill="var(--primary)" ${stroke}/>
+          <circle cx="70" cy="60" r="8" fill="var(--primary-container)" ${stroke}/>
+          <circle cx="75" cy="55" r="3" fill="var(--surface-container-low)"/>
+          <path d="M22 36L32 42M118 36L108 42M70 22V28" ${stroke}/>
+        </svg>`,
+        go: `<svg ${common}>
+          <rect x="64" y="24" width="12" height="76" rx="2" fill="var(--surface-container-high)" ${stroke}/>
+          <path d="M32 32H92L108 44L92 56H32V32Z" fill="var(--primary)" ${stroke}/>
+          <path d="M44 44H86M78 38L86 44L78 50" stroke="var(--on-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M48 64H106V82H48L34 73L48 64Z" fill="var(--secondary)" ${stroke}/>
+          <line x1="24" y1="100" x2="116" y2="100" ${stroke}/>
+        </svg>`,
+        eat: `<svg ${common}>
+          <circle cx="70" cy="62" r="36" fill="var(--surface-container-low)" ${stroke}/>
+          <circle cx="70" cy="62" r="24" fill="var(--surface-container-high)" ${stroke}/>
+          <path d="M58 66C58 56 82 56 82 66C82 76 74 80 70 80C66 80 58 76 58 66Z" fill="var(--secondary)" ${stroke}/>
+          <path d="M70 54C70 48 76 44 80 46" ${stroke}/>
+          <path d="M24 32V56M20 32V44M28 32V44M24 56V90" ${stroke}/>
+          <path d="M114 32V90M114 32C120 38 120 52 114 58" ${stroke}/>
+        </svg>`,
+        sing: `<svg ${common}>
+          <rect x="54" y="26" width="24" height="38" rx="12" fill="var(--primary)" ${stroke}/>
+          <path d="M54 46H78" stroke="var(--on-primary)" stroke-width="2.5"/>
+          <path d="M46 50C46 64 56 72 66 72C76 72 86 64 86 50" ${stroke}/>
+          <path d="M66 72V94M52 94H80" ${stroke}/>
+          <circle cx="100" cy="40" r="6" fill="var(--primary-container)" ${stroke}/>
+          <path d="M106 40V20L120 24V38" ${stroke}/>
+          <circle cx="114" cy="38" r="5" fill="var(--secondary)" ${stroke}/>
+        </svg>`,
+        drink: `<svg ${common}>
+          <path d="M46 38H94L86 98H54L46 38Z" fill="var(--surface-container-low)" ${stroke}/>
+          <path d="M50 58H90L85 94H55L50 58Z" fill="var(--primary)" ${stroke}/>
+          <path d="M76 58L88 20L102 22" ${stroke}/>
+          <circle cx="64" cy="72" r="4" fill="var(--primary-container)"/>
+          <circle cx="76" cy="82" r="3" fill="var(--primary-container)"/>
+        </svg>`,
+        wear: `<svg ${common}>
+          <path d="M44 26L56 22C62 30 78 30 84 22L96 26L114 44L100 58L92 50V96H48V50L40 58L26 44L44 26Z" fill="var(--secondary)" ${stroke}/>
+          <path d="M58 24L70 36L82 24" fill="var(--surface-container-low)" ${stroke}/>
+          <rect x="58" y="54" width="24" height="14" rx="2" fill="var(--primary-container)" ${stroke}/>
+        </svg>`,
+        write: `<svg ${common}>
+          <rect x="30" y="22" width="60" height="76" rx="4" fill="var(--surface-container-low)" ${stroke}/>
+          <path d="M42 40H78M42 54H78M42 68H66" ${stroke}/>
+          <path d="M84 74L112 34L122 42L94 82L80 86L84 74Z" fill="var(--primary-container)" ${stroke}/>
+          <path d="M106 42L116 50" ${stroke}/>
+        </svg>`,
+        give: `<svg ${common}>
+          <rect x="36" y="48" width="68" height="48" rx="4" fill="var(--primary-container)" ${stroke}/>
+          <rect x="30" y="38" width="80" height="14" rx="3" fill="var(--secondary)" ${stroke}/>
+          <rect x="64" y="38" width="12" height="58" fill="var(--primary)" ${stroke}/>
+          <path d="M70 38C60 22 44 24 50 36C54 40 66 38 70 38Z" fill="var(--primary)" ${stroke}/>
+          <path d="M70 38C80 22 96 24 90 36C86 40 74 38 70 38Z" fill="var(--primary)" ${stroke}/>
+        </svg>`,
+        buy: `<svg ${common}>
+          <path d="M36 42H104L98 96H42L36 42Z" fill="var(--primary)" ${stroke}/>
+          <path d="M54 42V32C54 24 61 18 70 18C79 18 86 24 86 32V42" ${stroke}/>
+          <circle cx="96" cy="78" r="16" fill="var(--primary-container)" ${stroke}/>
+          <path d="M96 70V86M91 74C91 72 101 72 101 75C101 78 91 78 91 81C91 84 101 84 101 82" ${stroke}/>
+        </svg>`,
+        swim: `<svg ${common}>
+          <circle cx="78" cy="40" r="10" fill="var(--primary-container)" ${stroke}/>
+          <path d="M40 58L62 46L80 56L100 48" ${stroke}/>
+          <path d="M18 74C28 66 38 66 48 74C58 82 68 82 78 74C88 66 98 66 108 74C114 79 118 80 124 78" ${stroke}/>
+          <path d="M18 90C28 82 38 82 48 90C58 98 68 98 78 90C88 82 98 82 108 90C114 95 118 96 124 94" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"/>
+        </svg>`,
+        be_was: `<svg ${common}>
+          <rect x="26" y="34" width="88" height="58" rx="6" fill="var(--primary)" ${stroke}/>
+          <polygon points="70,42 75,54 88,54 78,62 82,74 70,66 58,74 62,62 52,54 65,54" fill="var(--primary-container)" ${stroke}/>
+          <circle cx="40" cy="48" r="4" fill="var(--secondary)"/>
+          <circle cx="100" cy="48" r="4" fill="var(--secondary)"/>
+          <line x1="48" y1="22" x2="92" y2="22" ${stroke}/>
+        </svg>`,
+        have: `<svg ${common}>
+          <ellipse cx="70" cy="84" rx="46" ry="12" fill="var(--surface-container-high)" ${stroke}/>
+          <path d="M42 46H78V68C78 76 70 82 60 82C50 82 42 76 42 68V46Z" fill="var(--primary)" ${stroke}/>
+          <path d="M78 52H86C90 52 92 56 92 60C92 64 90 68 86 68H78" ${stroke}/>
+          <path d="M52 34C52 28 56 26 56 20M66 34C66 28 70 26 70 20" ${stroke}/>
+          <path d="M88 76C88 64 108 64 108 76H88Z" fill="var(--secondary)" ${stroke}/>
+        </svg>`,
+        take: `<svg ${common}>
+          <rect x="20" y="76" width="100" height="14" rx="3" fill="var(--surface-container-high)" ${stroke}/>
+          <circle cx="52" cy="56" r="12" fill="var(--primary-container)" ${stroke}/>
+          <circle cx="52" cy="56" r="4" fill="var(--surface-container-low)" ${stroke}/>
+          <path d="M64 56H98V66M86 56V64" ${stroke}/>
+          <path d="M68 24V38M60 30L68 38L76 30" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`,
+        make: `<svg ${common}>
+          <rect x="34" y="64" width="72" height="26" rx="4" fill="var(--primary-container)" ${stroke}/>
+          <rect x="44" y="42" width="52" height="22" rx="4" fill="var(--secondary)" ${stroke}/>
+          <path d="M44 52C50 58 58 58 64 52C70 58 78 58 84 52C90 58 94 56 96 52" ${stroke}/>
+          <rect x="67" y="26" width="6" height="16" fill="var(--primary)" ${stroke}/>
+          <circle cx="70" cy="20" r="4" fill="var(--primary-container)" ${stroke}/>
+          <line x1="24" y1="90" x2="116" y2="90" ${stroke}/>
+        </svg>`,
+        lose: `<svg ${common}>
+          <circle cx="62" cy="54" r="24" fill="var(--surface-container-low)" ${stroke}/>
+          <circle cx="62" cy="54" r="15" fill="var(--surface-container-high)" ${stroke}/>
+          <path d="M80 72L102 94" stroke-width="5" stroke="var(--outline)" stroke-linecap="round"/>
+          <path d="M58 46C58 42 66 42 66 47C66 51 62 52 62 56" ${stroke}/>
+          <circle cx="62" cy="63" r="1.5" fill="var(--outline)"/>
+        </svg>`,
+        win: `<svg ${common}>
+          <path d="M44 26H96V48C96 64 84 76 70 76C56 76 44 64 44 48V26Z" fill="var(--primary-container)" ${stroke}/>
+          <path d="M44 34H30C30 48 36 54 44 54M96 34H110C110 48 104 54 96 54" ${stroke}/>
+          <path d="M70 76V92M52 92H88" ${stroke}/>
+          <polygon points="70,36 73,44 82,44 75,49 78,57 70,52 62,57 65,49 58,44 67,44" fill="var(--secondary)" ${stroke}/>
+        </svg>`,
+        ride: `<svg ${common}>
+          <circle cx="42" cy="76" r="18" fill="var(--surface-container-low)" ${stroke}/>
+          <circle cx="98" cy="76" r="18" fill="var(--surface-container-low)" ${stroke}/>
+          <path d="M42 76L62 46H86L98 76M62 46L70 76H42M86 46L92 34H102M56 38H68" ${stroke}/>
+          <circle cx="70" cy="76" r="4" fill="var(--primary)"/>
+          <line x1="20" y1="96" x2="120" y2="96" ${stroke}/>
+        </svg>`,
+        do: `<svg ${common}>
+          <rect x="34" y="22" width="72" height="78" rx="6" fill="var(--surface-container-low)" ${stroke}/>
+          <rect x="52" y="16" width="36" height="12" rx="3" fill="var(--primary)" ${stroke}/>
+          <path d="M46 46L52 52L62 40" stroke="var(--positive)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="68" y1="46" x2="94" y2="46" ${stroke}/>
+          <path d="M46 66L52 72L62 60" stroke="var(--positive)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="68" y1="66" x2="94" y2="66" ${stroke}/>
+          <line x1="46" y1="84" x2="88" y2="84" ${stroke}/>
+        </svg>`,
+        get: `<svg ${common}>
+          <rect x="38" y="42" width="64" height="50" rx="4" fill="var(--primary)" ${stroke}/>
+          <path d="M38 56H102" stroke="var(--primary-container)" stroke-width="4"/>
+          <path d="M70 42V92" stroke="var(--primary-container)" stroke-width="4"/>
+          <path d="M70 20V34M62 26L70 34L78 26" stroke="var(--secondary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`,
+        be_were: `<svg ${common}>
+          <rect x="26" y="44" width="88" height="48" rx="4" fill="var(--surface-container-low)" ${stroke}/>
+          <path d="M26 44L110 26L114 38L30 56L26 44Z" fill="var(--primary)" ${stroke}/>
+          <path d="M44 40L52 51M66 35L74 46M88 30L96 41" stroke="var(--on-primary)" stroke-width="3"/>
+          <circle cx="52" cy="70" r="8" fill="var(--primary-container)" ${stroke}/>
+          <circle cx="88" cy="70" r="8" fill="var(--secondary)" ${stroke}/>
+        </svg>`
+      };
+      return svgs[key] || svgs.do;
+    }
+
+    // =========================================================================
+    // 3. STATE MANAGEMENT
+    // =========================================================================
+
+    const DEFAULT_STATE = {
+      activeTab: `sec1`,
+      viewMode: `focused`,
+      currentIndex: { sec1: 0, sec2: 0 },
+      progress: {}
+    };
+
+    let appState = cloneDefaultState();
+
+    function cloneDefaultState() {
+      return {
+        activeTab: `sec1`,
+        viewMode: `focused`,
+        currentIndex: { sec1: 0, sec2: 0 },
+        progress: {}
+      };
+    }
+
+    function getQuestionState(qId) {
+      if (!appState.progress[qId]) {
+        appState.progress[qId] = {
+          value: ``,
+          status: `unanswered`,
+          attempts: 0,
+          firstTryCorrect: false,
+          hintShown: false,
+          feedbackMsg: ``
+        };
+      }
+      return appState.progress[qId];
+    }
+
+    async function persistState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+        try {
+          await window.notebookAppApi.setAppState(appState);
+        } catch (err) {
+          // Safe fallback if API unavailable during local preview
+        }
+      }
+    }
+
+    // =========================================================================
+    // 4. DIAGNOSTIC VALIDATION & RETRY LOGIC
+    // =========================================================================
+
+    function normalizeInput(str) {
+      return String(str || ``).trim().toLowerCase().replace(/\s+/g, ` `);
+    }
+
+    function diagnoseWrongAnswer(q, typed) {
+      if (!typed) {
+        return `Digite uma resposta no campo acima antes de verificar.`;
+      }
+      if (typed === q.infinitive.toLowerCase()) {
+        return `"${q.infinitive}" ainda está no infinitivo/presente. Digite a forma irregular no Simple Past e tente novamente.`;
+      }
+      if (q.infinitive === `be`) {
+        if (q.answers[0] === `was` && typed === `were`) {
+          return `Quase lá! "were" é usado no plural (you, we, they). Aqui o sujeito "the concert" é singular — tente novamente.`;
+        }
+        if (q.answers[0] === `were` && typed === `was`) {
+          return `Quase lá! "was" é usado no singular (I, he, she, it). Aqui o sujeito é "They" (plural) — tente novamente.`;
+        }
+        if (typed === `am` || typed === `is` || typed === `are`) {
+          return `"${typed}" está no presente! Precisamos da forma do verbo "be" no passado (was ou were).`;
+        }
+      }
+      if (q.infinitive === `swim` && typed === `swan`) {
+        return `Quase! Atenção à última letra: o passado de "swim" termina com "m", e não "n". Tente novamente.`;
+      }
+      if (q.infinitive === `buy` && typed === `brought`) {
+        return `Atenção para não confundir: "brought" é o passado de "bring" (trazer). O passado de "buy" (comprar) não tem a letra "r".`;
+      }
+      if (PARTICIPLES.has(typed) && !q.answers.includes(typed)) {
+        return `"${typed}" é o Past Participle (3ª coluna da tabela). Aqui precisamos do Simple Past (2ª coluna)! Tente novamente.`;
+      }
+      if (REGULARIZED_ERRORS.has(typed) || typed.endsWith(`ed`)) {
+        return `Cuidado: "${q.infinitive}" é um verbo irregular! Ele não recebe "-ed" no Simple Past. Tente novamente.`;
+      }
+      return `Resposta incorreta ("${typed}"). Revise a forma irregular de "${q.infinitive}" (${q.meaningPt}) e tente novamente!`;
+    }
+
+    function submitAnswer(qId, sourceContext) {
+      const q = QUESTIONS.find((item) => item.id === qId);
+      if (!q) return;
+
+      const inputId = sourceContext === `list` ? `input-list-${qId}` : `input-focused-${qId}`;
+      const inputEl = document.getElementById(inputId);
+      if (!inputEl) return;
+
+      const rawVal = inputEl.value;
+      const typed = normalizeInput(rawVal);
+      const qState = getQuestionState(qId);
+
+      if (!typed) {
+        qState.status = `incorrect`;
+        qState.value = ``;
+        qState.feedbackMsg = `Digite uma palavra no campo antes de verificar sua resposta.`;
+        renderAll();
+        const refreshedInput = document.getElementById(inputId);
+        if (refreshedInput) refreshedInput.focus();
+        return;
+      }
+
+      qState.value = rawVal.trim();
+      qState.attempts += 1;
+
+      if (q.answers.includes(typed)) {
+        qState.status = `correct`;
+        if (qState.attempts === 1) {
+          qState.firstTryCorrect = true;
+        }
+        qState.feedbackMsg = q.section === `sec1`
+          ? `Correto! "${q.infinitive}" no Simple Past é "${q.answers[0]}" (${q.meaningPt}). Exemplo: "${q.exampleEn}"`
+          : `Correto! Frase completa: "${q.beforeBlank}${q.answers[0]}${q.afterBlank}" (${q.sentencePt})`;
+      } else {
+        qState.status = `incorrect`;
+        qState.feedbackMsg = diagnoseWrongAnswer(q, typed);
+      }
+
+      persistState();
+      renderAll();
+
+      if (qState.status === `incorrect`) {
+        const retryInput = document.getElementById(inputId);
+        if (retryInput) {
+          retryInput.focus();
+          retryInput.select();
+        }
+      }
+    }
+
+    function retryQuestion(qId, sourceContext) {
+      const qState = getQuestionState(qId);
+      qState.status = `unanswered`;
+      qState.value = ``;
+      qState.feedbackMsg = ``;
+      persistState();
+      renderAll();
+
+      const inputId = sourceContext === `list` ? `input-list-${qId}` : `input-focused-${qId}`;
+      const inputEl = document.getElementById(inputId);
+      if (inputEl) inputEl.focus();
+    }
+
+    function toggleHint(qId) {
+      const qState = getQuestionState(qId);
+      qState.hintShown = !qState.hintShown;
+      persistState();
+      renderAll();
+    }
+
+    function handleLiveBlankPreview(qId, val) {
+      const preview = document.getElementById(`blank-preview-${qId}`);
+      if (!preview) return;
+      const clean = String(val || ``).trim();
+      preview.textContent = clean ? clean : `_____`;
+    }
+
+    function handleInputKeydown(event, qId, sourceContext) {
+      if (event.key === `Enter`) {
+        event.preventDefault();
+        submitAnswer(qId, sourceContext);
+      }
+    }
+
+    // =========================================================================
+    // 5. NAVIGATION & RESET HANDLERS (hoisted function declarations)
+    // =========================================================================
+
+    function switchTab(tabName) {
+      appState.activeTab = tabName;
+      persistState();
+      renderAll();
+    }
+
+    function setViewMode(mode) {
+      appState.viewMode = mode;
+      persistState();
+      renderAll();
+    }
+
+    function goToQuestion(section, index) {
+      const sectionQs = QUESTIONS.filter((q) => q.section === section);
+      if (index < 0 || index >= sectionQs.length) return;
+      appState.currentIndex[section] = index;
+      persistState();
+      renderAll();
+    }
+
+    function handleReset(btn) {
+      if (!btn) return;
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.classList.add(`btn-danger-armed`);
+        btn.textContent = `Clique novamente para confirmar`;
+        setTimeout(() => {
+          if (btn.dataset.armed === `true`) {
+            btn.dataset.armed = `false`;
+            btn.classList.remove(`btn-danger-armed`);
+            btn.textContent = `Reiniciar progresso`;
+          }
+        }, 4000);
+        return;
+      }
+      btn.dataset.armed = `false`;
+      btn.classList.remove(`btn-danger-armed`);
+      btn.textContent = `Reiniciar progresso`;
+      appState = cloneDefaultState();
+      persistState();
+      renderAll();
+    }
+
+    // =========================================================================
+    // 6. RENDERING
+    // =========================================================================
+
+    function escapeHtml(str) {
+      return String(str || ``)
+        .replace(/&/g, `&amp;`)
+        .replace(/</g, `&lt;`)
+        .replace(/>/g, `&gt;`)
+        .replace(/"/g, `&quot;`);
+    }
+
+    function renderStats() {
+      const s1Qs = QUESTIONS.filter((q) => q.section === `sec1`);
+      const s2Qs = QUESTIONS.filter((q) => q.section === `sec2`);
+
+      const s1Done = s1Qs.filter((q) => getQuestionState(q.id).status === `correct`).length;
+      const s2Done = s2Qs.filter((q) => getQuestionState(q.id).status === `correct`).length;
+      const totalDone = s1Done + s2Done;
+
+      const firstTryCount = QUESTIONS.filter((q) => getQuestionState(q.id).firstTryCorrect).length;
+      const totalAttempts = QUESTIONS.reduce((acc, q) => acc + getQuestionState(q.id).attempts, 0);
+
+      const kpiProg = document.getElementById(`kpi-progress`);
+      const barS1 = document.getElementById(`bar-s1`);
+      const barS2 = document.getElementById(`bar-s2`);
+      const progressBar = document.getElementById(`progress-bar`);
+      const countS1 = document.getElementById(`count-s1`);
+      const countS2 = document.getElementById(`count-s2`);
+      const kpiFirst = document.getElementById(`kpi-first-try`);
+      const kpiFirstNote = document.getElementById(`kpi-first-note`);
+      const kpiAcc = document.getElementById(`kpi-accuracy`);
+      const kpiAttemptsNote = document.getElementById(`kpi-attempts-note`);
+      const completionBanner = document.getElementById(`completion-banner`);
+      const completionSummary = document.getElementById(`completion-summary`);
+
+      if (kpiProg) kpiProg.textContent = `${totalDone} / 20`;
+      if (progressBar) progressBar.setAttribute(`aria-valuenow`, String(totalDone));
+      if (barS1) barS1.style.width = `${(s1Done / 20) * 100}%`;
+      if (barS2) barS2.style.width = `${(s2Done / 20) * 100}%`;
+      if (countS1) countS1.textContent = `${s1Done}/10`;
+      if (countS2) countS2.textContent = `${s2Done}/10`;
+      if (kpiFirst) kpiFirst.textContent = `${firstTryCount}`;
+      if (kpiFirstNote) {
+        kpiFirstNote.textContent = firstTryCount === 20
+          ? `Pontuação perfeita!`
+          : `De ${totalDone} concluídas`;
+      }
+
+      const accPct = totalAttempts > 0 ? Math.round((totalDone / totalAttempts) * 100) : null;
+      if (kpiAcc) kpiAcc.textContent = accPct !== null ? `${accPct}%` : `—`;
+      if (kpiAttemptsNote) {
+        kpiAttemptsNote.textContent = `${totalAttempts} ${totalAttempts === 1 ? `resposta enviada` : `respostas enviadas`}`;
+      }
+
+      if (completionBanner) {
+        if (totalDone === 20) {
+          completionBanner.classList.remove(`is-hidden`);
+          if (completionSummary) {
+            completionSummary.textContent = `Você acertou ${firstTryCount} de 20 questões logo na primeira tentativa (${accPct || 100}% de precisão geral).`;
+          }
+        } else {
+          completionBanner.classList.add(`is-hidden`);
+        }
+      }
+
+      // Update tab labels
+      const t1 = document.getElementById(`tab-sec1`);
+      const t2 = document.getElementById(`tab-sec2`);
+      if (t1) t1.textContent = `Seção 1 · Verbos Diretos (${s1Done}/10)`;
+      if (t2) t2.textContent = `Seção 2 · Frases em Contexto (${s2Done}/10)`;
+    }
+
+    function renderQuestionContent(q, context) {
+      const qState = getQuestionState(q.id);
+      const isCorrect = qState.status === `correct`;
+      const isError = qState.status === `incorrect`;
+      const inputId = `input-${context}-${q.id}`;
+      const inputClass = isCorrect ? `text-input is-correct` : (isError ? `text-input is-error` : `text-input`);
+      const statusBadge = isCorrect
+        ? `<span class="stamp stamp-success">Correto ✓</span>`
+        : (isError ? `<span class="stamp stamp-error">Tente novamente</span>` : `<span class="stamp stamp-yellow">Pendente</span>`);
+
+      const promptBody = q.section === `sec1`
+        ? `<div class="verb-challenge">
+             <span class="verb-infinitive">${escapeHtml(q.infinitive)}</span>
+             <span class="verb-meaning">(${escapeHtml(q.meaningPt)})</span>
+           </div>`
+        : `<div class="sentence-box">
+             ${escapeHtml(q.beforeBlank)}<span class="blank-slot ${isCorrect ? `is-correct` : (isError ? `is-wrong` : ``)}" id="blank-preview-${q.id}">${escapeHtml(qState.value || `_____`)}</span>${escapeHtml(q.afterBlank)}
+             <div style="margin-top: var(--space-xs); font-family: var(--font-label); font-size: var(--label-size); color: var(--on-surface-variant);">
+               Verbo base: <strong>${escapeHtml(q.infinitive)}</strong> (${escapeHtml(q.meaningPt)})
+             </div>
+           </div>`;
+
+      const labelText = q.section === `sec1`
+        ? `Digite o Simple Past de "${q.infinitive}":`
+        : `Complete a lacuna com o Simple Past de "${q.infinitive}":`;
+
+      const hintBlock = qState.hintShown && !isCorrect
+        ? `<div class="feedback-box feedback-box--hint">
+             <p class="feedback-title feedback-title--hint">Dica de apoio</p>
+             <p class="feedback-text">${escapeHtml(q.hintPt)}</p>
+           </div>`
+        : ``;
+
+      let feedbackBlock = ``;
+      if (isCorrect) {
+        feedbackBlock = `<div class="feedback-box feedback-box--correct" role="status">
+          <p class="feedback-title feedback-title--correct">Excelente! Resposta correta</p>
+          <p class="feedback-text">${escapeHtml(qState.feedbackMsg)}</p>
+        </div>`;
+      } else if (isError) {
+        feedbackBlock = `<div class="feedback-box feedback-box--error" role="alert">
+          <p class="feedback-title feedback-title--error">Ainda não — revise e tente novamente</p>
+          <p class="feedback-text">${escapeHtml(qState.feedbackMsg)}</p>
+          <div class="feedback-actions">
+            <button type="button" class="btn btn-yellow" onclick="retryQuestion('${q.id}', '${context}')">
+              Tentar novamente
+            </button>
+          </div>
+        </div>`;
+      }
+
+      if (context === `list`) {
+        return `
+          <article class="list-card" id="card-list-${q.id}">
+            <div class="list-card-head">
+              <span class="stamp">Questão ${String(q.num).padStart(2, `0`)}</span>
+              ${statusBadge}
+            </div>
+            <div class="list-card-visual">
+              <div class="list-mini-svg">${getIllustrationSvg(q.illustration)}</div>
+              <div>
+                <p class="prompt-en" style="margin-bottom: var(--space-xs);">${escapeHtml(q.promptEn)}</p>
+                <span style="font-size: var(--label-size); font-family: var(--font-label); color: var(--on-surface-variant);">
+                  ${escapeHtml(q.meaningPt)}
+                </span>
+              </div>
+            </div>
+            ${promptBody}
+            <div class="answer-form">
+              <div class="input-row">
+                <div class="field-group">
+                  <label class="field-label" for="${inputId}">${escapeHtml(labelText)}</label>
+                  <input
+                    type="text"
+                    id="${inputId}"
+                    class="${inputClass}"
+                    value="${escapeHtml(qState.value)}"
+                    autocomplete="off"
+                    autocapitalize="none"
+                    spellcheck="false"
+                    ${isCorrect ? `readonly` : ``}
+                    oninput="handleLiveBlankPreview('${q.id}', this.value)"
+                    onkeydown="handleInputKeydown(event, '${q.id}', 'list')"
+                  >
+                </div>
+                ${isCorrect ? `` : `
+                  <button type="button" class="btn btn-primary" onclick="submitAnswer('${q.id}', 'list')">
+                    Verificar
+                  </button>
+                `}
+              </div>
+              ${isCorrect ? `` : `
+                <div style="display: flex; gap: var(--space-sm);">
+                  <button type="button" class="btn btn-ghost" onclick="toggleHint('${q.id}')">
+                    ${qState.hintShown ? `Ocultar dica` : `Ver dica`}
+                  </button>
+                </div>
+              `}
+              ${hintBlock}
+              ${feedbackBlock}
+            </div>
+          </article>
+        `;
+      }
+
+      // Focused Card View
+      const sectionQs = QUESTIONS.filter((item) => item.section === q.section);
+      const currentIdx = sectionQs.findIndex((item) => item.id === q.id);
+      const hasPrev = currentIdx > 0;
+      const hasNext = currentIdx < sectionQs.length - 1;
+      const nextBtnHtml = hasNext
+        ? `<button type="button" class="btn btn-blue" onclick="goToQuestion('${q.section}', ${currentIdx + 1})">Próxima questão →</button>`
+        : (q.section === `sec1`
+            ? `<button type="button" class="btn btn-blue" onclick="switchTab('sec2')">Avançar para Seção 2 →</button>`
+            : `<button type="button" class="btn btn-blue" onclick="switchTab('guide')">Ver Guia dos 19 Verbos →</button>`);
+
+      return `
+        <article class="quiz-card">
+          <div class="quiz-card-top">
+            <span class="stamp">Questão ${String(q.num).padStart(2, `0`)} de 10</span>
+            ${statusBadge}
+          </div>
+
+          <div class="quiz-card-body">
+            <div class="illustration-frame">
+              ${getIllustrationSvg(q.illustration)}
+              <p class="illustration-caption">${escapeHtml(q.infinitive)} · ${escapeHtml(q.meaningPt)}</p>
+            </div>
+
+            <div>
+              <p class="prompt-en">${escapeHtml(q.promptEn)}</p>
+              ${promptBody}
+
+              <div class="answer-form">
+                <div class="input-row">
+                  <div class="field-group">
+                    <label class="field-label" for="${inputId}">${escapeHtml(labelText)}</label>
+                    <input
+                      type="text"
+                      id="${inputId}"
+                      class="${inputClass}"
+                      value="${escapeHtml(qState.value)}"
+                      autocomplete="off"
+                      autocapitalize="none"
+                      spellcheck="false"
+                      ${isCorrect ? `readonly` : ``}
+                      oninput="handleLiveBlankPreview('${q.id}', this.value)"
+                      onkeydown="handleInputKeydown(event, '${q.id}', 'focused')"
+                    >
+                  </div>
+                  ${isCorrect ? `` : `
+                    <button type="button" class="btn btn-primary" onclick="submitAnswer('${q.id}', 'focused')">
+                      Verificar resposta
+                    </button>
+                  `}
+                  ${isCorrect ? `` : `
+                    <button type="button" class="btn" onclick="toggleHint('${q.id}')">
+                      ${qState.hintShown ? `Ocultar dica` : `Ver dica`}
+                    </button>
+                  `}
+                </div>
+
+                ${hintBlock}
+                ${feedbackBlock}
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer-nav">
+            <button type="button" class="btn" ${hasPrev ? `` : `disabled`} onclick="goToQuestion('${q.section}', ${currentIdx - 1})">
+              ← Anterior
+            </button>
+            <span style="font-family: var(--font-label); font-size: var(--label-size); color: var(--on-surface-variant);">
+              Tentativas nesta questão: <strong>${qState.attempts}</strong>
+            </span>
+            ${nextBtnHtml}
+          </div>
+        </article>
+      `;
+    }
+
+    function renderQuizWorkspace() {
+      const quizWrap = document.getElementById(`quiz-workspace`);
+      const guideWrap = document.getElementById(`guide-workspace`);
+      if (!quizWrap || !guideWrap) return;
+
+      if (appState.activeTab === `guide`) {
+        quizWrap.classList.add(`is-hidden`);
+        guideWrap.classList.remove(`is-hidden`);
+        renderGuideTable();
+        return;
+      }
+
+      quizWrap.classList.remove(`is-hidden`);
+      guideWrap.classList.add(`is-hidden`);
+
+      const sec = appState.activeTab;
+      const kicker = document.getElementById(`section-kicker`);
+      const heading = document.getElementById(`section-heading`);
+      const desc = document.getElementById(`section-description`);
+
+      if (sec === `sec1`) {
+        if (kicker) kicker.textContent = `Seção 1 de 2 · Correspondência Direta`;
+        if (heading) heading.textContent = `Do Infinitivo para o Simple Past`;
+        if (desc) desc.textContent = `Observe a ilustração, leia o verbo em inglês e digite sua forma correspondente no Simple Past. Se errar, você receberá feedback imediato e poderá refazer.`;
+      } else {
+        if (kicker) kicker.textContent = `Seção 2 de 2 · Frases em Contexto`;
+        if (heading) heading.textContent = `Preenchimento de Lacunas no Passado`;
+        if (desc) desc.textContent = `Leia cada frase contextualizada em inglês e complete a lacuna com o verbo entre parênteses conjugado no Simple Past (incluindo "was" e "were").`;
+      }
+
+      // View mode toggle buttons
+      const focusedBtn = document.getElementById(`mode-focused-btn`);
+      const listBtn = document.getElementById(`mode-list-btn`);
+      const focusedView = document.getElementById(`focused-view`);
+      const listView = document.getElementById(`list-view`);
+
+      if (focusedBtn) focusedBtn.classList.toggle(`is-active`, appState.viewMode === `focused`);
+      if (listBtn) listBtn.classList.toggle(`is-active`, appState.viewMode === `list`);
+
+      const sectionQs = QUESTIONS.filter((q) => q.section === sec);
+
+      if (appState.viewMode === `focused`) {
+        if (focusedView) focusedView.classList.remove(`is-hidden`);
+        if (listView) listView.classList.add(`is-hidden`);
+
+        const idx = Math.max(0, Math.min(appState.currentIndex[sec] || 0, sectionQs.length - 1));
+        const stepper = document.getElementById(`stepper-strip`);
+        if (stepper) {
+          stepper.innerHTML = sectionQs.map((q, i) => {
+            const st = getQuestionState(q.id).status;
+            const classes = [`step-btn`];
+            if (i === idx) classes.push(`is-current`);
+            if (st === `correct`) classes.push(`is-correct`);
+            if (st === `incorrect`) classes.push(`is-retry`);
+            const mark = st === `correct` ? `✓` : (st === `incorrect` ? `!` : ``);
+            return `<button type="button" class="${classes.join(` `)}" onclick="goToQuestion('${sec}', ${i})" aria-label="Questão ${q.num}">
+              ${String(q.num).padStart(2, `0`)}${mark ? ` ${mark}` : ``}
+            </button>`;
+          }).join(``);
+        }
+
+        const host = document.getElementById(`focused-card-host`);
+        if (host && sectionQs[idx]) {
+          host.innerHTML = renderQuestionContent(sectionQs[idx], `focused`);
+        }
+      } else {
+        if (focusedView) focusedView.classList.add(`is-hidden`);
+        if (listView) {
+          listView.classList.remove(`is-hidden`);
+          listView.innerHTML = sectionQs.map((q) => renderQuestionContent(q, `list`)).join(``);
+        }
+      }
+    }
+
+    function renderGuideTable() {
+      const tbody = document.getElementById(`guide-tbody`);
+      if (!tbody) return;
+      const searchEl = document.getElementById(`guide-search`);
+      const query = searchEl ? normalizeInput(searchEl.value) : ``;
+
+      const filtered = VERB_GUIDE.filter((row) => {
+        if (!query) return true;
+        return row.inf.toLowerCase().includes(query)
+          || row.past.toLowerCase().includes(query)
+          || row.pt.toLowerCase().includes(query);
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5">Nenhum verbo encontrado para "${escapeHtml(query)}".</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map((row) => {
+        const solvedAll = row.qIds.every((id) => getQuestionState(id).status === `correct`);
+        const statusHtml = solvedAll
+          ? `<span class="stamp stamp-success">Dominado ✓</span>`
+          : `<span class="stamp stamp-yellow">Praticar</span>`;
+        return `<tr class="${solvedAll ? `is-mastered-row` : ``}">
+          <td><strong>${escapeHtml(row.inf)}</strong></td>
+          <td class="mono-cell">${escapeHtml(row.past)}</td>
+          <td>${escapeHtml(row.pt)}</td>
+          <td>${escapeHtml(row.ex)}</td>
+          <td>${statusHtml}</td>
+        </tr>`;
+      }).join(``);
+    }
+
+    function renderTabs() {
+      const tabs = [`sec1`, `sec2`, `guide`];
+      tabs.forEach((t) => {
+        const el = document.getElementById(`tab-${t}`);
+        if (!el) return;
+        const active = appState.activeTab === t;
+        el.classList.toggle(`is-active`, active);
+        el.setAttribute(`aria-selected`, active ? `true` : `false`);
+      });
+    }
+
+    function renderAll() {
+      renderStats();
+      renderTabs();
+      renderQuizWorkspace();
+    }
+
+    // =========================================================================
+    // 7. INITIALIZATION WITH NOTEBOOK APP API
+    // =========================================================================
+
+    async function initApp() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            appState = {
+              activeTab: saved.activeTab || `sec1`,
+              viewMode: saved.viewMode || `focused`,
+              currentIndex: saved.currentIndex && typeof saved.currentIndex === `object`
+                ? { sec1: saved.currentIndex.sec1 || 0, sec2: saved.currentIndex.sec2 || 0 }
+                : { sec1: 0, sec2: 0 },
+              progress: saved.progress && typeof saved.progress === `object` ? saved.progress : {}
+            };
+          }
+        } catch (err) {
+          appState = cloneDefaultState();
+        }
+      }
+
+      renderAll();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    initApp();
+  </script>
+</body>
+</html>
